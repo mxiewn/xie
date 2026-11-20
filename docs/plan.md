@@ -9,12 +9,16 @@ file này để mỗi phiên làm việc mới đọc lại là biết đang ở
 | font | **mali** (tiêu đề) + **nunito** (nội dung), google fonts, `display=swap`, có subset vietnamese |
 | ngữ pháp + nâng cấp câu | nằm trong tab **luyện nói & viết**, chia 4 mục: viết · nói · ngữ pháp · nâng cấp câu (gồm linking words + bẫy người việt) |
 | nhãn tab | thanh dưới ghi `nói & viết`; tiêu đề trong trang ghi đủ `luyện nói & viết` |
-| thỏ ban đêm | **ngôi sao cài nơ** (không dùng mũ ngủ để khỏi đụng vương miện của các level sau) |
+| nơ của thỏ | nằm ở **cổ**, không ở đầu. đồ cầm tay (cà rốt, tim, bút, micro) che lên nơ; riêng khăn nằm **sau** nơ |
+| thỏ ban đêm | **ngôi sao cài chính giữa nơ cổ** (không dùng mũ ngủ để khỏi đụng vương miện của các level sau) |
+| buồn / ngủ | thỏ **tai cụp**: đổi sang đôi tai rũ xuống hai bên đầu |
+| tủ đồ của thỏ | `#/wardrobe` (trong tab tui). mỗi cấp mở 1 bộ đồ theo thứ tự spec: nơ cài tai → chuỗi ngọc trai → cổ áo ren → vòng hoa anh đào → vương miện nhỏ → vương miện lớn → áo choàng tuyết → vầng trăng sau lưng (cấp 1 là nơ cổ cơ bản). bộ khoá vẫn **mặc thử** được nhưng không chọn được. bộ đang mặc hiện ở trang chủ và tab tui. lưu ở key `xie:skin` |
+| màu trang phục | biến `--acc-…` riêng cho từng chế độ; vầng trăng ban ngày nhạt, ban đêm sáng + quầng sáng |
 | màu nhấn chữ | `#E57A9C` trên nền trắng chỉ đạt 2.76:1 nên chỉ dùng cho trang trí; chữ nhấn + viền focus dùng `#B23F68` (5.52:1); nút chính là nền `#F8C8DC` + chữ cacao |
 | điều hướng | hash: `#/home`, `#/vocab`, `#/practice[/writing|speaking|grammar|upgrade]`, `#/games`, `#/me`, `#/lab` (phòng thử, ẩn) |
 | lưu chế độ giao diện | key riêng `xie:theme` = `system` / `light` / `dark` / `time`, để script trong `<head>` đọc nhanh |
 | múi giờ | dùng `Asia/Ho_Chi_Minh` (tên chuẩn của `Asia/Saigon`) |
-| file thêm ngoài spec | `js/theme.js`, `js/bunny.js`, `js/views/`, `package.json` (chỉ để node chạy tools/test dạng es module), `.nojekyll` |
+| file thêm ngoài spec | `js/theme.js`, `js/bunny.js`, `js/levels.js`, `js/views/`, `package.json` (chỉ để node chạy tools/test dạng es module), `.nojekyll` |
 
 ## các giai đoạn (spec mục 16)
 
@@ -50,6 +54,13 @@ file này để mỗi phiên làm việc mới đọc lại là biết đang ở
 - chạy ở đường dẫn con `/xie/` giống github pages
 - localStorage bị chặn hoàn toàn: web vẫn chạy, đổi chế độ vẫn được trong phiên
 - route lạ thì về trang chủ; mở thẳng `#/practice/upgrade` thì đúng mục
+
+## sau giai đoạn 1: tinh chỉnh thỏ + tủ đồ
+
+- nơ dời xuống cổ, sao đêm nằm giữa nơ, khăn nằm sau nơ, đồ cầm tay che nơ
+- buồn và ngủ: tai cụp
+- tủ đồ của thỏ với 9 bộ đồ theo cấp; phòng thử có ô chọn trang phục để soi cả 10 dáng
+- **cấp hiện tại tạm luôn là 1** vì chưa có xp. giai đoạn 4 chỉ cần sửa `currentLevel()` trong `js/levels.js` là tủ đồ tự mở khoá
 
 ## còn để giai đoạn sau
 

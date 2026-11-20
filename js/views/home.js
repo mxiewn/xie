@@ -6,6 +6,7 @@
 import { createBunny } from '../bunny.js';
 import { createBubble, icons, skyDecor } from '../ui.js';
 import { currentTheme, toggleQuick, saigonHour, THEME_EVENT } from '../theme.js';
+import { getEquippedSkin } from '../levels.js';
 
 function greetingFor(hour) {
   if (hour >= 5 && hour < 11) return 'sáng rồi nè';
@@ -58,7 +59,7 @@ export function render(view) {
     </section>
   `;
 
-  const bunny = createBunny({ state: 'happy' });
+  const bunny = createBunny({ state: 'happy', skin: getEquippedSkin() });
   const bubble = createBubble();
   view.querySelector('.bunny-btn').append(bunny.node);
   view.querySelector('.bubble-slot').append(bubble.node);

@@ -10,7 +10,8 @@ const ROUTES = {
   practice: { title: 'luyện nói & viết', load: () => import('./views/practice.js') },
   games: { title: 'game', load: () => import('./views/games.js') },
   me: { title: 'tui', load: () => import('./views/me.js') },
-  lab: { title: 'phòng thử', load: () => import('./views/lab.js') },
+  wardrobe: { title: 'tủ đồ của thỏ', tab: 'me', load: () => import('./views/wardrobe.js') },
+  lab: { title: 'phòng thử', tab: 'me', load: () => import('./views/lab.js') },
 };
 
 const DEFAULT_ROUTE = 'home';
@@ -72,7 +73,7 @@ export function initRouter({ view, nav }) {
 
     const myToken = ++token;
     const route = ROUTES[name];
-    markTabs(nav, name);
+    markTabs(nav, route.tab || name);
     document.title = name === DEFAULT_ROUTE ? 'xie' : `${route.title} · xie`;
 
     let mod;

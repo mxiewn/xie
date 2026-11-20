@@ -49,7 +49,7 @@ các giai đoạn sau sẽ thêm kiểm tra json, câu thoại, kaomoji, chữ t
 ## phòng thử của thỏ
 
 mở `#/lab` (hoặc vào tab **tui** → **phòng thử của thỏ**) để xem bằng mắt:
-- đủ 10 dáng của thỏ
+- đủ 10 dáng của thỏ, chọn được bộ trang phục để xem từng dáng mặc ra sao
 - chuỗi `ẩn ẵ ậ ữ ỷ ơ ư đ ộ ỡ ặ ừ ẫ` ở mọi cỡ chữ
 - kaomoji, thỏ ascii, bảng màu của chế độ hiện tại
 
@@ -63,10 +63,11 @@ css/components.css  khung app, thanh tab, thẻ, nút, trang trí, thỏ, bong b
 js/app.js           điểm khởi động
 js/router.js        điều hướng bằng hash, tải màn khi cần
 js/theme.js         4 chế độ: theo máy / sáng / tối / theo giờ (giờ việt nam)
-js/bunny.js         thỏ svg + 10 trạng thái
+js/bunny.js         thỏ svg: 10 trạng thái + 9 bộ trang phục
+js/levels.js        9 cấp + trang phục mở khoá theo cấp (tủ đồ)
 js/storage.js       đọc/ghi localStorage có bọc try/catch
 js/ui.js            helper giao diện, icon, bong bóng thoại
-js/views/           màn hình từng tab: home, vocab, practice, games, me, lab
+js/views/           màn hình: home, vocab, practice, games, me, wardrobe, lab
 data/source/        sổ từ vựng excel gốc
 tools/validate.js   kiểm tra
 docs/               spec + kế hoạch

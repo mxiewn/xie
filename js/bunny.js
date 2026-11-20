@@ -1,10 +1,14 @@
 // xie · bunny.js
-// bé thỏ trắng tuyết đeo nơ hồng — svg tự vẽ, nhân vật gốc của xie.
-// mọi màu lấy từ var(--bunny-…) trong css/themes.css nên tự đổi theo chế độ sáng/tối:
+// bé thỏ trắng tuyết đeo nơ hồng ở cổ — svg tự vẽ, nhân vật gốc của xie.
+// mọi màu lấy từ var(--…) trong css/themes.css nên tự đổi theo chế độ sáng/tối:
 //   sáng: viền hồng xám, má hồng rõ, bóng dưới chân
-//   tối:  quầng sáng nhẹ quanh người + ngôi sao cài trên nơ
-// đứng yên thì thở nhẹ và nháy mắt ngẫu nhiên.
-// .b-accessory là chỗ gắn phụ kiện level (làm cùng phần game hoá).
+//   tối:  quầng sáng nhẹ quanh người + ngôi sao cài chính giữa nơ
+// đứng yên thì thở nhẹ và nháy mắt ngẫu nhiên. buồn hoặc ngủ thì tai cụp xuống.
+//
+// thứ tự lớp (dưới → trên), để không đụng nhau:
+//   trăng sau lưng → đuôi → áo choàng → tai đứng → thân → đầu → mặt → tai cụp
+//   → phụ kiện cổ → khăn → nơ cổ → phụ kiện đầu → vương miện (trạng thái)
+//   → đồ cầm tay (che nơ) → tay → hiệu ứng
 
 import { prefersReducedMotion } from './theme.js';
 
@@ -21,21 +25,206 @@ export const BUNNY_STATES = [
   { id: 'scarf', label: 'quấn khăn' },
 ];
 
-const STATE_IDS = BUNNY_STATES.map((s) => s.id);
+// trang phục mà svg vẽ được. cấp mở khoá nằm ở js/levels.js
+export const BUNNY_SKINS = ['basic', 'ear-bows', 'pearls', 'lace', 'sakura', 'tiara', 'royal', 'snow', 'moon'];
 
+const STATE_IDS = BUNNY_STATES.map((s) => s.id);
+const UPRIGHT_EAR_STATES = STATE_IDS.filter((id) => id !== 'sad' && id !== 'sleep').join(' ');
+
+// ---------- hình học ----------
+const r2 = (n) => Math.round(n * 100) / 100;
+const deg = (d) => (d * Math.PI) / 180;
+
+function starPath(cx, cy, outer, inner) {
+  let d = '';
+  for (let i = 0; i < 10; i++) {
+    const rad = i % 2 === 0 ? outer : inner;
+    const a = deg(-90 + i * 36);
+    d += `${i ? 'L' : 'M'}${r2(cx + rad * Math.cos(a))} ${r2(cy + rad * Math.sin(a))} `;
+  }
+  return `${d}Z`;
+}
+
+function sparklePath(x, y, s) {
+  const k = s * 0.18;
+  return `M${x} ${y - s}C${x + k} ${y - k} ${x + k} ${y - k} ${x + s} ${y}C${x + k} ${y + k} ${x + k} ${y + k} ${x} ${y + s}`
+    + `C${x - k} ${y + k} ${x - k} ${y + k} ${x - s} ${y}C${x - k} ${y - k} ${x - k} ${y - k} ${x} ${y - s}Z`;
+}
+
+function snowflakePath(x, y, s) {
+  const dx = r2(s * 0.866);
+  const dy = r2(s * 0.5);
+  return `M${x} ${y - s}V${y + s}M${x - dx} ${y - dy}L${x + dx} ${y + dy}M${x - dx} ${y + dy}L${x + dx} ${y - dy}`;
+}
+
+function pointOnEllipse(cx, cy, rx, ry, angle) {
+  return [cx + rx * Math.cos(deg(angle)), cy + ry * Math.sin(deg(angle))];
+}
+
+// viền vỏ sò dọc nửa dưới một elip (cổ áo ren, cổ lông)
+function scallopCollar({ cx, cy, rx, ry, from, to, n, innerY, bulge = 1.08 }) {
+  const pts = [];
+  for (let i = 0; i <= n; i++) pts.push(pointOnEllipse(cx, cy, rx, ry, from + ((to - from) * i) / n));
+  let d = `M${r2(pts[0][0])} ${r2(pts[0][1])}`;
+  for (let i = 1; i <= n; i++) {
+    const [ax, ay] = pts[i - 1];
+    const [bx, by] = pts[i];
+    const rad = r2((Math.hypot(bx - ax, by - ay) / 2) * bulge);
+    d += ` A${rad} ${rad} 0 0 0 ${r2(bx)} ${r2(by)}`;
+  }
+  d += ` Q${cx} ${innerY} ${r2(pts[0][0])} ${r2(pts[0][1])}Z`;
+  return d;
+}
+
+function pearl(x, y, r) {
+  return `<circle class="acc-pearl" cx="${r2(x)}" cy="${r2(y)}" r="${r}"/>`
+    + `<circle class="acc-pearl-shine" cx="${r2(x - r * 0.35)}" cy="${r2(y - r * 0.35)}" r="${r2(r * 0.32)}"/>`;
+}
+
+function blossom(cx, cy, r) {
+  const petals = [0, 72, 144, 216, 288]
+    .map((a) => `<ellipse class="acc-petal" cx="${r2(cx)}" cy="${r2(cy - r * 0.55)}" rx="${r2(r * 0.42)}" ry="${r2(r * 0.58)}" transform="rotate(${a} ${r2(cx)} ${r2(cy)})"/>`)
+    .join('');
+  return `<g>${petals}<circle class="acc-petal-center" cx="${r2(cx)}" cy="${r2(cy)}" r="${r2(r * 0.22)}"/></g>`;
+}
+
+// nơ satin, tâm ở (0,0). dùng cho nơ cổ và nơ cài tai
+function bowShape({ withStar = false } = {}) {
+  return `
+    <path class="b-bow-tail" d="M-3 1.5 L-12 21.5 L-6.5 19.5 L-4 24.5 L1.5 3.5 Z"/>
+    <path class="b-bow-tail" d="M3 1.5 L10.5 21 L5.5 20 L3 25 L-1.5 3.5 Z"/>
+    <path class="b-bow-loop" d="M0 -0.5 C-12 -17.5 -30 -14.5 -26.5 0.5 C-23.5 11.5 -10 9.5 0 -0.5 Z"/>
+    <path class="b-bow-loop" d="M0 -0.5 C11 -16.5 29 -14.5 26.5 0 C24 11.5 10 9.5 0 -0.5 Z"/>
+    <path class="b-bow-shine" d="M-20 -5.5 Q-15 -10.5 -9 -8"/>
+    <path class="b-bow-shine" d="M10 -8.5 Q16 -11.5 21 -8"/>
+    <path class="b-bow-fold" d="M-9.5 3 Q-5 0.9 -2 1.3 M9.5 3 Q5 0.9 2 1.3"/>
+    <ellipse class="b-bow-knot" cx="0" cy="0" rx="6" ry="6.6"/>
+    ${withStar ? `<path class="b-star" d="${starPath(0, 0.8, 8, 3.4)}"/>` : ''}`;
+}
+
+const miniBow = (x, y, rot) => `<g class="b-bow-mini" transform="translate(${x} ${y}) rotate(${rot}) scale(0.5)">${bowShape()}</g>`;
+
+// ---------- phụ kiện theo cấp ----------
+const MOON_PATH = 'M86.44 38.58 A80 80 0 1 0 164.28 159.66 A72 72 0 1 1 86.44 38.58 Z';
+
+const ACC_MOON = `
+  <g data-skin="moon">
+    <path class="acc-moon-glow" d="${MOON_PATH}"/>
+    <path class="acc-moon" d="${MOON_PATH}"/>
+    <path class="acc-moon-sparkle" d="${sparklePath(24, 62, 5.5)}"/>
+    <path class="acc-moon-sparkle" d="${sparklePath(28, 174, 4)}"/>
+    <path class="acc-moon-sparkle" d="${sparklePath(178, 132, 3.6)}"/>
+  </g>`;
+
+const ACC_CAPE = `
+  <g data-skin="snow">
+    <path class="acc-cape" d="M56 146 C40 168 30 198 25 224 Q100 243 175 224 C170 198 160 168 144 146 Z"/>
+    <path class="acc-cape-fold" d="M44 182 Q40 204 38 222 M156 182 Q160 204 162 222"/>
+    <path class="acc-snow" d="${snowflakePath(49, 166, 4.5)}"/>
+    <path class="acc-snow" d="${snowflakePath(151, 166, 4.5)}"/>
+    <path class="acc-snow" d="${snowflakePath(36, 206, 5)}"/>
+    <path class="acc-snow" d="${snowflakePath(164, 206, 5)}"/>
+  </g>`;
+
+const PEARL_STRAND = (() => {
+  const [x0, y0, cx, cy, x1, y1] = [64, 156, 100, 240, 136, 156];
+  let out = '';
+  const n = 17;
+  for (let i = 0; i < n; i++) {
+    const t = i / (n - 1);
+    const x = (1 - t) ** 2 * x0 + 2 * t * (1 - t) * cx + t ** 2 * x1;
+    const y = (1 - t) ** 2 * y0 + 2 * t * (1 - t) * cy + t ** 2 * y1;
+    out += pearl(x, y, 3.5);
+  }
+  return `${out}${pearl(100, 205.5, 4.8)}`;
+})();
+
+const LACE_COLLAR = (() => {
+  const shape = { cx: 100, cy: 150, rx: 53, ry: 33, from: 163, to: 17, n: 14 };
+  const holes = [];
+  for (let i = 0; i < shape.n; i++) {
+    const a = shape.from + ((shape.to - shape.from) * (i + 0.5)) / shape.n;
+    const [x, y] = pointOnEllipse(shape.cx, shape.cy, shape.rx - 1, shape.ry - 1, a);
+    holes.push(`<circle class="acc-lace-hole" cx="${r2(x)}" cy="${r2(y)}" r="1.4"/>`);
+  }
+  const [sx, sy] = pointOnEllipse(100, 150, 45, 25, 155);
+  const [ex, ey] = pointOnEllipse(100, 150, 45, 25, 25);
+  return `
+    <path class="acc-lace" d="${scallopCollar({ ...shape, innerY: 168 })}"/>
+    <path class="acc-lace-stitch" d="M${r2(sx)} ${r2(sy)} A45 25 0 0 0 ${r2(ex)} ${r2(ey)}"/>
+    ${holes.join('')}`;
+})();
+
+const FUR_COLLAR = `<path class="acc-fur" d="${scallopCollar({ cx: 100, cy: 148, rx: 55, ry: 30, from: 168, to: 12, n: 10, innerY: 163, bulge: 1.3 })}"/>`;
+
+const ACC_NECK = `
+  <g class="acc-neck">
+    <g data-skin="pearls">${PEARL_STRAND}</g>
+    <g data-skin="lace">${LACE_COLLAR}</g>
+    <g data-skin="snow">${FUR_COLLAR}</g>
+  </g>`;
+
+const SAKURA_WREATH = (() => {
+  const [cx, cy, rx, ry] = [100, 110, 54, 48];
+  const [sx, sy] = pointOnEllipse(cx, cy, rx, ry, 202);
+  const [ex, ey] = pointOnEllipse(cx, cy, rx, ry, 338);
+  const leaves = [224, 254, 286, 316].map((a) => {
+    const [x, y] = pointOnEllipse(cx, cy, rx, ry, a);
+    const tangent = (Math.atan2(ry * Math.cos(deg(a)), -rx * Math.sin(deg(a))) * 180) / Math.PI;
+    return `<ellipse class="acc-leaf" cx="${r2(x)}" cy="${r2(y - 2)}" rx="2.6" ry="5.6" transform="rotate(${r2(tangent + 60)} ${r2(x)} ${r2(y - 2)})"/>`;
+  });
+  const flowers = [[212, 6.5], [240, 7.5], [270, 8.6], [300, 7.5], [328, 6.5]].map(([a, size]) => {
+    const [x, y] = pointOnEllipse(cx, cy, rx, ry, a);
+    return blossom(x, y, size);
+  });
+  return `<path class="acc-vine" d="M${r2(sx)} ${r2(sy)} A${rx} ${ry} 0 0 1 ${r2(ex)} ${r2(ey)}"/>${leaves.join('')}${flowers.join('')}`;
+})();
+
+const ACC_HEAD = `
+  <g class="acc-head">
+    <g data-skin="sakura">${SAKURA_WREATH}</g>
+    <g data-skin="tiara">
+      <path class="acc-gold" d="M84 71 L86 59.5 L93 66 L100 53.5 L107 66 L114 59.5 L116 71 Q100 64.5 84 71 Z"/>
+      ${pearl(86, 58.5, 2.5)}${pearl(114, 58.5, 2.5)}${pearl(100, 52, 3.1)}
+      <circle class="acc-gem" cx="100" cy="65" r="2.7"/>
+    </g>
+    <g data-skin="royal">
+      <path class="acc-gold" d="M75 72 L72 40 L82 52 L87 33 L94 50 L100 24 L106 50 L113 33 L118 52 L128 40 L125 72 Q100 66 75 72 Z"/>
+      <path class="acc-gold-band" d="M75.6 65.5 Q100 60 124.4 65.5"/>
+      <circle class="acc-gem-2" cx="86" cy="66.5" r="2.6"/>
+      <circle class="acc-gem" cx="100" cy="64.6" r="3.4"/>
+      <circle class="acc-gem-2" cx="114" cy="66.5" r="2.6"/>
+      ${pearl(72, 39, 2.8)}${pearl(87, 32, 2.8)}${pearl(100, 22.5, 3.4)}${pearl(113, 32, 2.8)}${pearl(128, 39, 2.8)}
+    </g>
+    <g data-skin="snow">
+      <path class="acc-snow acc-snow-clip" d="${snowflakePath(64, 86, 7)}"/>
+      <circle class="acc-fur" cx="64" cy="86" r="2.2"/>
+    </g>
+    <g data-skin="moon">
+      <path class="acc-star" d="${starPath(126, 76, 7, 3)}"/>
+    </g>
+  </g>`;
+
+// ---------- svg ----------
 const SVG = `
 <svg class="bunny-svg" viewBox="0 0 200 240" aria-hidden="true" focusable="false">
   <ellipse class="b-shadow" cx="100" cy="229" rx="52" ry="7"/>
   <g class="b-rig">
+    ${ACC_MOON}
     <g class="b-tail"><circle class="b-fur" cx="146" cy="203" r="11"/></g>
+    ${ACC_CAPE}
 
-    <g class="b-ear b-ear-l">
-      <ellipse class="b-fur" cx="76" cy="44" rx="17" ry="40" transform="rotate(-10 76 44)"/>
-      <ellipse class="b-inner" cx="76.6" cy="49" rx="8.4" ry="28" transform="rotate(-10 76.6 49)"/>
-    </g>
-    <g class="b-ear b-ear-r">
-      <ellipse class="b-fur" cx="124" cy="44" rx="17" ry="40" transform="rotate(10 124 44)"/>
-      <ellipse class="b-inner" cx="123.4" cy="49" rx="8.4" ry="28" transform="rotate(10 123.4 49)"/>
+    <g class="b-ears" data-show="${UPRIGHT_EAR_STATES}">
+      <g class="b-ear b-ear-l">
+        <ellipse class="b-fur" cx="76" cy="44" rx="17" ry="40" transform="rotate(-10 76 44)"/>
+        <ellipse class="b-inner" cx="76.6" cy="49" rx="8.4" ry="28" transform="rotate(-10 76.6 49)"/>
+        <g data-skin="ear-bows">${miniBow(79, 60, -10)}</g>
+      </g>
+      <g class="b-ear b-ear-r">
+        <ellipse class="b-fur" cx="124" cy="44" rx="17" ry="40" transform="rotate(10 124 44)"/>
+        <ellipse class="b-inner" cx="123.4" cy="49" rx="8.4" ry="28" transform="rotate(10 123.4 49)"/>
+        <g data-skin="ear-bows">${miniBow(121, 60, 10)}</g>
+      </g>
     </g>
 
     <g class="b-body">
@@ -89,6 +278,32 @@ const SVG = `
       </g>
     </g>
 
+    <g class="b-lop" data-show="sad sleep">
+      <g class="b-lop-l">
+        <ellipse class="b-fur" cx="46" cy="112" rx="15" ry="38" transform="rotate(20 46 112)"/>
+        <ellipse class="b-inner" cx="43" cy="120" rx="6.8" ry="25" transform="rotate(20 43 120)"/>
+        <g data-skin="ear-bows">${miniBow(57, 84, 20)}</g>
+      </g>
+      <g class="b-lop-r">
+        <ellipse class="b-fur" cx="154" cy="112" rx="15" ry="38" transform="rotate(-20 154 112)"/>
+        <ellipse class="b-inner" cx="157" cy="120" rx="6.8" ry="25" transform="rotate(-20 157 120)"/>
+        <g data-skin="ear-bows">${miniBow(143, 84, -20)}</g>
+      </g>
+    </g>
+
+    ${ACC_NECK}
+
+    <g class="b-scarf" data-show="scarf">
+      <path class="p-scarf" d="M116 168 L131 204 Q125 208.5 117.5 207.5 L106 172 Z"/>
+      <path class="p-scarf" d="M62 153 Q100 174 138 153 Q141 160 139 166 Q100 186 61 166 Q59 160 62 153 Z"/>
+      <path class="p-scarf-stripe" d="M74 160.5 L72.5 171.5 M86 164.6 L85 176 M114 164.6 L115 176 M126 160.5 L127.5 171.5 M112.5 182 L121.5 178.5 M116.8 194 L126 190.5"/>
+      <path class="p-scarf-fringe" d="M119.5 208 L119 213 M123.6 208.4 L123.4 213.6 M127.8 207 L128.4 212"/>
+    </g>
+
+    <g class="b-bow b-bow-neck" transform="translate(100 164) scale(0.92)">${bowShape({ withStar: true })}</g>
+
+    ${ACC_HEAD}
+
     <g class="b-headwear">
       <g class="b-crown" data-show="crown">
         <g transform="rotate(9 110 56)">
@@ -100,19 +315,6 @@ const SVG = `
           <circle class="p-gem" cx="110" cy="56" r="3.6"/>
         </g>
       </g>
-      <g class="b-accessory"></g>
-    </g>
-
-    <g class="b-bow">
-      <path class="b-bow-tail" d="M67 73 L58 93 L63.5 91 L66 96 L71.5 75 Z"/>
-      <path class="b-bow-tail" d="M73 73 L80.5 92.5 L75.5 91.5 L73 96.5 L68.5 75 Z"/>
-      <path class="b-bow-loop" d="M70 71 C 58 54, 40 57, 43.5 72 C 46.5 83, 60 81, 70 71 Z"/>
-      <path class="b-bow-loop" d="M70 71 C 81 55, 99 57, 96.5 71.5 C 94 83, 80 81, 70 71 Z"/>
-      <path class="b-bow-shine" d="M50 66 Q55 61 61 63.5"/>
-      <path class="b-bow-shine" d="M80 63 Q86 60 91 63.5"/>
-      <path class="b-bow-fold" d="M60.5 74.5 Q65 72.4 68 72.8 M79.5 74.5 Q75 72.4 72 72.8"/>
-      <ellipse class="b-bow-knot" cx="70" cy="71.5" rx="6" ry="6.6"/>
-      <path class="b-star" d="M84 49 L86 54.25 L91.6 54.5 L87.2 58 L88.7 63.5 L84 60.4 L79.3 63.5 L80.8 58 L76.4 54.5 L82 54.25 Z"/>
     </g>
 
     <g class="b-props">
@@ -129,13 +331,6 @@ const SVG = `
       <g class="b-heart" data-show="heart">
         <path class="p-heart" d="M100 214 C 68 195, 72 168, 89.5 169.5 C 95.5 170, 98.8 174.5, 100 178 C 101.2 174.5, 104.5 170, 110.5 169.5 C 128 168, 132 195, 100 214 Z"/>
         <path class="p-heart-shine" d="M84 181 Q85.5 175.5 90.5 175"/>
-      </g>
-
-      <g class="b-scarf" data-show="scarf">
-        <path class="p-scarf" d="M116 168 L131 204 Q125 208.5 117.5 207.5 L106 172 Z"/>
-        <path class="p-scarf" d="M62 153 Q100 174 138 153 Q141 160 139 166 Q100 186 61 166 Q59 160 62 153 Z"/>
-        <path class="p-scarf-stripe" d="M74 160.5 L72.5 171.5 M86 164.6 L85 176 M114 164.6 L115 176 M126 160.5 L127.5 171.5 M112.5 182 L121.5 178.5 M116.8 194 L126 190.5"/>
-        <path class="p-scarf-fringe" d="M119.5 208 L119 213 M123.6 208.4 L123.4 213.6 M127.8 207 L128.4 212"/>
       </g>
 
       <g class="b-pen" data-show="pen">
@@ -197,7 +392,7 @@ export function bunnyLabel(state) {
 }
 
 // size (px) bỏ trống thì cỡ thỏ do css quyết định qua --bunny-size (đổi theo màn hình)
-export function createBunny({ state = 'happy', size = null, label = 'thỏ của xie' } = {}) {
+export function createBunny({ state = 'happy', size = null, label = 'thỏ của xie', skin = 'basic' } = {}) {
   const node = document.createElement('div');
   node.className = 'bunny';
   if (size) node.style.setProperty('--bunny-size', `${size}px`);
@@ -218,6 +413,10 @@ export function createBunny({ state = 'happy', size = null, label = 'thỏ của
     const id = STATE_IDS.includes(next) ? next : 'happy';
     node.dataset.state = id;
     node.setAttribute('aria-label', `${label}: ${bunnyLabel(id)}`);
+  }
+
+  function setSkin(next) {
+    node.dataset.skin = BUNNY_SKINS.includes(next) ? next : 'basic';
   }
 
   function blink() {
@@ -249,12 +448,15 @@ export function createBunny({ state = 'happy', size = null, label = 'thỏ của
   }
 
   setState(state);
+  setSkin(skin);
   scheduleBlink();
 
   return {
     node,
     get state() { return node.dataset.state; },
+    get skin() { return node.dataset.skin; },
     setState,
+    setSkin,
     hop() {
       if (!prefersReducedMotion()) replay('is-hop', 560);
     },

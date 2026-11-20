@@ -117,6 +117,31 @@
   --scarf-stripe: #FFFFFF;
   --note: #E57A9C;
   --zzz: #B4A0C6;
+
+  /* trang phục theo cấp (tủ đồ): ban ngày nhạt, mềm */
+  --acc-crown: #F5CF5B;
+  --acc-crown-line: #D6A92E;
+  --acc-gem: #E57A9C;
+  --acc-gem-2: #8FC3E6;
+  --acc-pearl: #FFFFFF;
+  --acc-pearl-line: #D8BFCB;
+  --acc-pearl-shine: #FFFFFF;
+  --acc-lace: #FFFFFF;
+  --acc-lace-line: #E0B4C6;
+  --acc-lace-hole: #F8C8DC;
+  --acc-sakura: #FBD3E2;
+  --acc-sakura-line: #E57A9C;
+  --acc-sakura-center: #E57A9C;
+  --acc-leaf: #8FCB9C;
+  --acc-leaf-line: #5E9E6E;
+  --acc-cape: #E6F4FB;
+  --acc-cape-line: #9CCBE3;
+  --acc-fur: #FFFFFF;
+  --acc-snow: #86BCD8;
+  --acc-moon: #F7EDC9;
+  --acc-moon-line: #E9D89E;
+  --acc-moon-opacity: 0.8;
+  --acc-moon-glow: rgba(246, 231, 176, 0.18);
 }
 
 /* ---------- chế độ tối "đêm trăng" ---------- */
@@ -226,4 +251,29 @@
   --scarf-stripe: #F7F4FA;
   --note: #FF9EC4;
   --zzz: #CBBFD9;
+
+  /* trang phục theo cấp: ban đêm sáng hơn, ánh bạc, trăng phát sáng */
+  --acc-crown: #F6E7B0;
+  --acc-crown-line: #D9C27A;
+  --acc-gem: #FF9EC4;
+  --acc-gem-2: #A9D6F2;
+  --acc-pearl: #EEE9F7;
+  --acc-pearl-line: #A99DB8;
+  --acc-pearl-shine: #FFFFFF;
+  --acc-lace: #E9E3F3;
+  --acc-lace-line: #A99DB8;
+  --acc-lace-hole: #B9AECB;
+  --acc-sakura: #F7B6D2;
+  --acc-sakura-line: #E07AA4;
+  --acc-sakura-center: #FF9EC4;
+  --acc-leaf: #93CFA3;
+  --acc-leaf-line: #6BAA7B;
+  --acc-cape: #CFE6F5;
+  --acc-cape-line: #8CBFDB;
+  --acc-fur: #FAF7FD;
+  --acc-snow: #B8DDF2;
+  --acc-moon: #F6E7B0;
+  --acc-moon-line: #E8D48E;
+  --acc-moon-opacity: 1;
+  --acc-moon-glow: rgba(246, 231, 176, 0.42);
 }

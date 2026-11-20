@@ -5,6 +5,7 @@
 import { pageHead, ASCII_BUNNIES, DIVIDERS, esc } from '../ui.js';
 import { createBunny, BUNNY_STATES } from '../bunny.js';
 import { setMode, currentTheme, THEME_EVENT } from '../theme.js';
+import { SKINS } from '../levels.js';
 
 const VI_TEST = 'ẩn ẵ ậ ữ ỷ ơ ư đ ộ ỡ ặ ừ ẫ';
 const VI_TEST_UPPER = 'Ẩn Ẵ Ậ Ữ Ỷ Ơ Ư Đ Ộ Ỡ Ặ Ừ Ẫ';
@@ -31,6 +32,12 @@ export function render(view) {
     <div class="page-body lab">
       <section class="card">
         <h2 class="card-title">10 dáng của thỏ</h2>
+        <label class="select-row">
+          <span>mặc thử trang phục</span>
+          <select data-action="skin">
+            ${SKINS.map((s) => `<option value="${s.id}">cấp ${s.level} · ${esc(s.name)}</option>`).join('')}
+          </select>
+        </label>
         <ul class="bunny-grid" role="list"></ul>
         <label class="range-row">
           <span>cà rốt lớn dần theo tiến độ</span>
@@ -105,6 +112,10 @@ export function render(view) {
   const carrotBunny = bunnies[BUNNY_STATES.findIndex((s) => s.id === 'carrot')];
   view.querySelector('[data-action="carrot"]').addEventListener('input', (e) => {
     carrotBunny.setCarrotScale(e.target.value);
+  });
+
+  view.querySelector('[data-action="skin"]').addEventListener('change', (e) => {
+    for (const b of bunnies) b.setSkin(e.target.value);
   });
 
   view.querySelector('[data-action="flip-theme"]').addEventListener('click', () => {
