@@ -672,3 +672,96 @@ tỉ lệ giọng của câu giữ lại: genz 40% · ấm áp 26% · có tiến
 - "chuyển sang sáng rồi, tạm biệt bóng đêm" · 3 · sến
 - "bật tối là thỏ đi ngủ đó" · 2 · trùng kiểu ca đêm (bỏ khi đọc lại)
 - "ban ngày ban mặt mà bật tối là sao" · 3 · trách
+
+## kaomoji bị xoá vì lệch trên điện thoại
+
+lý do: có dấu kết hợp (vd. `•̀`, `•́`, `̥`, `̫`). trên ios / android, ký tự gốc và dấu chồng hay lấy từ hai font khác nhau nên dấu trôi lệch sang bên, mặt kaomoji méo. theo spec: lệch thì xoá, không thay bằng ký tự lạ khác. mỗi nhóm được bù kaomoji quen thuộc chỉ dùng ký tự an toàn để vẫn đủ ≥ 20.
+
+- onboarding: (｡•̀ᴗ-)✧
+- onboarding: ٩(｡•́‿•̀｡)۶
+- chao_sang: (*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ
+- chao_sang: (๑˃̵ᴗ˂̵)و
+- chao_sang: ٩(｡•́‿•̀｡)۶
+- chao_trua_chieu: ٩(｡•́‿•̀｡)۶
+- chao_toi_khuya: ( ˘͈ ᵕ ˘͈♡)
+- chao_toi_khuya: (๑´•.̫ • `๑)
+- combo: ₍₍ ◝(•̀ㅂ•́)◟ ⁾⁾
+- combo: ᕙ( •̀ ᗜ •́ )ᕗ
+- combo: ( •̀ ω •́ )✧
+- sai: (｡•́︿•̀｡)
+- sai: ( •̯́ ₃ •̯̀)
+- sai: ₍ᐢ. ̫.ᐢ₎ ?
+- sai: (｡•́ - •̀｡)
+- sai: (´ . .̫ . `)
+- sai: ( ˘͈ ᵕ ˘͈♡)
+- sai: (๑´•.̫ • `๑)
+- sai_nhieu: ( ˘͈ ᵕ ˘͈♡)
+- sai_nhieu: (っ˘̩╭╮˘̩)っ
+- sai_nhieu: (๑´•.̫ • `๑)
+- goi_y: (｡•̀ᴗ-)✧
+- goi_y: (๑•̀ㅁ•́๑)✧
+- goi_y: ( •̀ - •́ )
+- nghe_phat_am: ٩(｡•́‿•̀｡)۶
+- tu_viet: (๑•̀ᴗ•́)و ✎
+- tu_viet: (•̀ᴗ•́)و ✎
+- tu_viet: (ง •̀_•́)ง
+- tu_viet: (๑•̀ㅂ•́)و✧
+- tu_viet: ( •̀ ω •́ )✧
+- tu_viet: ᕙ( •̀ ᗜ •́ )ᕗ
+- tu_viet: (ง'̀-'́)ง
+- tu_viet: ( •̀ᴗ•́ )و
+- tu_viet: (๑•̀ᴗ•́)و
+- noi_to: (ง •̀_•́)ง
+- noi_to: (๑•̀ㅂ•́)و✧
+- noi_to: ( •̀ ω •́ )✧
+- noi_to: ᕙ( •̀ ᗜ •́ )ᕗ
+- tu_moi: ٩(｡•́‿•̀｡)۶
+- tu_output: ᕙ( •̀ ᗜ •́ )ᕗ
+- tien_do: (ง •̀_•́)ง
+- tien_do: (๑•̀ㅂ•́)و✧
+- tien_do: ( •̀ ω •́ )✧
+- tien_do: ᕙ( •̀ ᗜ •́ )ᕗ
+- tien_do: (ง'̀-'́)ง
+- tien_do: ( •̀ᴗ•́ )و
+- tien_do: (•̀ᴗ•́)و ✎
+- tien_do: (๑•̀ᴗ•́)و
+- streak_giu: ٩(｡•́‿•̀｡)۶
+- dung_freeze: ( ˘͈ ᵕ ˘͈♡)
+- dung_freeze: (๑´•.̫ • `๑)
+- mat_streak: (˚ ˃̣̣̥⌓˂̣̣̥ )
+- mat_streak: ( ˃̣̣̥ᯅ˂̣̣̥ )
+- mat_streak: ( ˘͈ ᵕ ˘͈♡)
+- mat_streak: (๑´•.̫ • `๑)
+- mat_streak: (｡•́︿•̀｡)
+- quay_lai: ٩(｡•́‿•̀｡)۶
+- len_level: ദ്ദി(˵ •̀ ᴗ - ˵ ) ✧
+- nhac_hoc: ( •̀ - •́ )
+- nhac_hoc: (｡•̀ᴗ-)✧
+- nhac_hoc: (๑•̀ㅁ•́๑)✧
+- nhac_hoc: ( ˘͈ ᵕ ˘͈♡)
+- nghi_giai_lao: ( ˘͈ ᵕ ˘͈♡)
+- nghi_giai_lao: (๑´•.̫ • `๑)
+- dem_nguoc: (ง •̀_•́)ง
+- dem_nguoc: ᕙ( •̀ ᗜ •́ )ᕗ
+- dem_nguoc: (๑•̀ㅂ•́)و✧
+- dem_nguoc: (ง'̀-'́)ง
+- dem_nguoc: ( •̀ᴗ•́ )و ̑̑
+- dem_nguoc: ( •̀ ω •́ )✧
+- dem_nguoc: ( •̀ᴗ•́ )و
+- dem_nguoc: (•̀ᴗ•́)و ✎
+- dem_nguoc: (๑•̀ᴗ•́)و
+- minigame: (ง •̀_•́)ง
+- minigame: (っ˘̩╭╮˘̩)っ
+- minigame: (๑•̀ㅂ•́)و✧
+- minigame: ( •̀ ω •́ )✧
+- minigame: ᕙ( •̀ ᗜ •́ )ᕗ
+- minigame: (ง'̀-'́)ง
+- minigame: ( •̀ᴗ•́ )و
+- minigame: (•̀ᴗ•́)و ✎
+- minigame: (๑•̀ᴗ•́)و
+- cham_tho: (｡•̀ᴗ-)✧
+- da_luu: ٩(｡•́‿•̀｡)۶
+- trang_thai: ( •̀ - •́ )
+- trang_thai: (｡•̀ᴗ-)✧
+- trang_thai: (๑•̀ㅁ•́๑)✧
+- trang_thai: ( ˘͈ ᵕ ˘͈♡)

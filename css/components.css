@@ -435,13 +435,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  /* chỗ cho bong bóng 2–3 dòng + đuôi + cú nhún của thỏ (nhún cao theo cỡ thỏ) */
-  padding-top: calc(100px + var(--bunny-size) * 0.26);
+  /* khoảng hở bong bóng ↔ đỉnh thỏ: cú nhún (≈ 0.11 cỡ thỏ) + đuôi bong bóng + chút thở */
+  --bubble-gap: calc(var(--bunny-size) * 0.11 + 18px);
+  /* chỗ cho bong bóng (tối đa 2 dòng chữ + 1 dòng kaomoji) nằm ngay trên đầu thỏ */
+  padding-top: calc(116px + var(--bubble-gap));
 }
 
+/* bong bóng neo theo đầu thỏ (đáy khung), không neo đỉnh khung: khung cao bao nhiêu
+   thì bong bóng vẫn sát thỏ, không bao giờ chạm tai kể cả lúc nhún */
 .bubble-slot {
   position: absolute;
-  top: 6px;
+  bottom: calc(var(--bunny-size) * 1.2 + var(--bubble-gap));
   left: 50%;
   z-index: 3;
   display: flex;
@@ -991,6 +995,14 @@
   font-weight: 700;
   line-height: 1.4;
   text-align: center;
+}
+
+/* kaomoji trong bong bóng: dòng riêng, căn giữa, to hơn chữ một chút để rõ mặt */
+.bubble-text .kao {
+  display: table;
+  margin: 2px auto 0;
+  font-size: 1.12em;
+  line-height: 1.25;
 }
 
 /* ---------- trang trống & đang tải ---------- */
@@ -1942,7 +1954,7 @@ html[data-font-size="lon"] { font-size: 112.5%; }
   min-height: 64px;
   align-items: flex-end;
   /* chừa chỗ cho đuôi bong bóng + cú nhún của thỏ (nhún cao theo cỡ thỏ), để tai không chui vào bong bóng */
-  margin-bottom: calc(14px + var(--bunny-size) * 0.26);
+  margin-bottom: calc(18px + var(--bunny-size) * 0.11);
 }
 
 
@@ -2138,7 +2150,9 @@ html[data-font-size="lon"] { font-size: 112.5%; }
     gap: 6px;
     height: 100vh;
     height: 100dvh;
-    padding: 28px 18px 22px;
+    /* trên / dưới 32px: đúng bằng lề của nội dung, để chữ xie ngang mép trên khung thỏ
+       và thẻ "hôm nay" ngang mép dưới khung thỏ */
+    padding: 32px 18px;
     overflow-y: auto;
     border-top: 0;
     border-right: 1.5px solid var(--line);
@@ -2205,12 +2219,124 @@ html[data-font-size="lon"] { font-size: 112.5%; }
     text-align: center;
   }
 
+  /* thẻ "hôm nay" nằm dưới cùng: mép dưới thẻ ngang mép dưới khung thỏ */
+  .nav-today-slot {
+    order: 3;
+  }
+
+  /* thẻ "hôm nay" ở chân menu: cà rốt dài theo lượt, nơ = chuỗi, bông tuyết = băng */
+  .nav-today {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    padding: 12px 14px 12px;
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface-2);
+    color: var(--text);
+    text-align: left;
+    text-decoration: none;
+    transition: border-color 0.2s ease, transform 0.2s var(--ease-soft);
+  }
+
+  .nav-today:hover {
+    border-color: var(--line-strong);
+    transform: translateY(-1px);
+  }
+
+  .nav-today-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 800;
+  }
+
+  .nav-today-num {
+    color: var(--accent-ink);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .nav-today.is-met .nav-today-num::after {
+    content: " ✓";
+    color: var(--ok);
+  }
+
+  .carrot-track {
+    position: relative;
+    display: block;
+    height: 12px;
+    margin: 2px 12px 2px 14px;
+    border-radius: var(--radius-pill);
+    background: var(--ring-track);
+  }
+
+  .carrot-fill {
+    position: relative;
+    display: block;
+    height: 100%;
+    border-radius: 6px 0 0 6px;
+    background: var(--carrot);
+    transition: width 0.6s var(--ease-soft);
+  }
+
+  .carrot-tip {
+    position: absolute;
+    top: 0;
+    right: -11px;
+    width: 12px;
+    height: 12px;
+    fill: var(--carrot);
+  }
+
+  .carrot-leaf {
+    position: absolute;
+    top: -2px;
+    left: -14px;
+    width: 16px;
+    height: 16px;
+    fill: var(--leaf);
+    stroke: var(--leaf-line);
+    stroke-width: 0.6;
+  }
+
+  .nav-today-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .nav-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    min-height: 26px;
+    padding: 1px 10px 1px 6px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    background: var(--surface);
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+
+  .nav-chip .i-bow {
+    width: 18px;
+    height: 14px;
+  }
+
+  .nav-chip .i-snow {
+    width: 15px;
+    height: 15px;
+    color: var(--ice-ink);
+  }
+
   .view {
     grid-column: 2;
     grid-row: 1;
     gap: 24px;
     max-width: 1600px;
-    padding: 32px var(--gutter) 56px;
+    /* lề trên = lề dưới = 32px, bằng lề của thanh menu: cuộn tới cuối trang vẫn thẳng hàng */
+    padding: 32px var(--gutter) 32px;
   }
 
   .page-title {
@@ -2230,9 +2356,14 @@ html[data-font-size="lon"] { font-size: 112.5%; }
     align-items: start;
   }
 
+  /* khung thỏ đứng yên, cao đúng một màn (trừ lề 32px trên dưới) như thanh menu:
+     cột thẻ bên phải cuộn thì thỏ và menu vẫn thẳng hàng với nhau */
   .hero {
-    min-height: clamp(520px, calc(100vh - 64px), 860px);
-    min-height: clamp(520px, calc(100dvh - 64px), 860px);
+    position: sticky;
+    top: 32px;
+    height: calc(100vh - 64px);
+    height: calc(100dvh - 64px);
+    min-height: 520px;
     margin-bottom: 0;
     padding: 24px 28px 26px;
   }
@@ -2649,9 +2780,10 @@ html[data-font-size="lon"] { font-size: 112.5%; }
 
 .streak-head {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 8px 12px;
 }
 
 .streak-count {
@@ -2725,6 +2857,48 @@ html[data-font-size="lon"] { font-size: 112.5%; }
 .freeze-slot svg {
   width: 20px;
   height: 20px;
+}
+
+/* "số băng đang có: 1" */
+.freeze-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 3px 12px 3px 8px;
+  border: 1.5px solid var(--ice-line);
+  border-radius: var(--radius-pill);
+  background: var(--ice-soft);
+  color: var(--text);
+  font-size: 0.84rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.freeze-count svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  color: var(--ice-ink);
+}
+
+.freeze-count b {
+  font-size: 1.08em;
+}
+
+.freeze-count.is-empty {
+  border-style: dashed;
+  background: var(--surface);
+  color: var(--text-muted);
+}
+
+.stat.stat-ice {
+  border-color: var(--ice-line);
+  background: var(--ice-soft);
+}
+
+.stat.stat-ice .stat-value {
+  color: var(--text);
 }
 
 .week-strip {

@@ -140,16 +140,30 @@ svg {
 }
 
 /* ---------- kaomoji ---------- */
+/* khoá hướng chữ trái → phải theo đúng thứ tự gõ: kaomoji có chữ ả rập (ﻌ و ٩ ڡ)
+   không bị trình duyệt đảo vị trí. tắt kerning / ghép chữ để mắt, miệng không xích lại lệch mặt.
+   inline-block: cả khuôn mặt luôn nằm trọn một khối, không bị cắt hay dồn sang một bên */
 .kao {
+  display: inline-block;
   font-family: var(--font-kao);
   font-weight: 400;
   font-style: normal;
+  font-kerning: none;
+  font-variant-ligatures: none;
+  font-synthesis: none;
   letter-spacing: 0;
+  word-spacing: 0;
+  line-height: 1.3;
+  direction: ltr;
+  unicode-bidi: bidi-override;
   white-space: nowrap;
+  vertical-align: baseline;
   color: inherit;
 }
 
 .kao-art {
+  direction: ltr;
+  unicode-bidi: bidi-override;
   margin: 0;
   font-family: var(--font-art);
   font-weight: 400;

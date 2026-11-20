@@ -11,7 +11,7 @@ import { say, greetingNow, countTap } from '../voice.js';
 import { getState, returnGap, examDaysLeft } from '../state.js';
 import { getSummary, currentVoiceContext, peekNotices, dismissNotices, PROGRESS_EVENT } from '../progress.js';
 import {
-  ringHtml, metersHtml, statusLine, weekStripHtml, freezeSlotsHtml, noticeHtml, challengeHtml,
+  ringHtml, metersHtml, statusLine, weekStripHtml, freezeCountHtml, noticeHtml, challengeHtml,
 } from '../progress-ui.js';
 import { CHALLENGE_XP } from '../daily-goal.js';
 
@@ -77,7 +77,7 @@ function streakCard(sum) {
     <a class="card streak-card" href="#/streak" aria-label="chuỗi ${streak.current} ngày, xem lịch nơ">
       <div class="streak-head">
         <p class="streak-count"><span class="streak-num">${streak.current}</span><span class="streak-unit">ngày liền</span></p>
-        ${freezeSlotsHtml(streak.freezes)}
+        ${freezeCountHtml(streak.freezes)}
       </div>
       <p class="card-text streak-sub">${esc(sub)}</p>
       ${weekStripHtml(streak, today)}

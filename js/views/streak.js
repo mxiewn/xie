@@ -3,12 +3,12 @@
 
 import { pageHead, icons, esc } from '../ui.js';
 import { getSummary, PROGRESS_EVENT } from '../progress.js';
-import { monthHtml, legendHtml, freezeSlotsHtml } from '../progress-ui.js';
+import { monthHtml, legendHtml } from '../progress-ui.js';
 import { shiftMonth, FREEZE_EVERY, MAX_FREEZES } from '../streak.js';
 import { GAME_CAP, OUTPUT_MIN } from '../daily-goal.js';
 
-function stat(value, label, extra = '') {
-  return `<div class="stat"><span class="stat-value">${value}</span><span class="stat-label">${esc(label)}</span>${extra}</div>`;
+function stat(value, label, cls = '') {
+  return `<div class="stat${cls ? ` ${cls}` : ''}"><span class="stat-value">${value}</span><span class="stat-label">${esc(label)}</span></div>`;
 }
 
 export function render(view) {
@@ -42,12 +42,11 @@ export function render(view) {
       <section class="card rules-card" aria-labelledby="rules-title">
         <h2 class="card-title" id="rules-title"><span class="title-bow">${icons.bow}</span>luật giữ chuỗi</h2>
         <ul class="rules-list" role="list">
-          <li>mỗi ngày làm đủ <b data-role="goal"></b> lượt, trong đó ít nhất ${OUTPUT_MIN} lượt output (tự viết, paraphrase, nói) thì chuỗi +1</li>
-          <li>lượt game tính tối đa ${GAME_CAP} cho mục tiêu, xp thì vẫn nhận đủ</li>
-          <li>cứ giữ chuỗi tròn ${FREEZE_EVERY} ngày là nhận 1 băng giữ chuỗi, giữ tối đa ${MAX_FREEZES} băng</li>
-          <li>ngày nào chưa đủ, băng tự cứu ngày đó: chuỗi không cộng nhưng không đứt. hết băng thì chuỗi về 0</li>
-          <li>trả lời lại một câu trong 10 phút, bấm nhanh dưới 1 giây liên tục, hay bài output dưới 5 từ thì không tính lượt</li>
-          <li>ngày tính theo giờ việt nam, qua 0 giờ là ngày mới</li>
+          <li><b>đủ <span data-role="goal"></span> lượt</b>, có ${OUTPUT_MIN} lượt viết hoặc nói → chuỗi +1, lịch thêm 1 nơ</li>
+          <li><b>game</b> tính tối đa ${GAME_CAP} lượt</li>
+          <li><b>giữ ${FREEZE_EVERY} ngày liền</b> → tặng 1 băng (có tối đa ${MAX_FREEZES})</li>
+          <li><b>hôm nào chưa đủ</b> → băng tự cứu chuỗi. hết băng → chuỗi về 0</li>
+          <li><b>không tính</b>: làm lại câu vừa làm, bấm quá nhanh, viết dưới 5 chữ</li>
         </ul>
       </section>
     </div>
@@ -63,7 +62,7 @@ export function render(view) {
       <div class="stat-grid">
         ${stat(s.current, s.current ? 'ngày liền' : 'chuỗi hiện tại')}
         ${stat(s.longest, 'ngày kỷ lục')}
-        ${stat(`${s.freezes}/${MAX_FREEZES}`, 'băng đang giữ', freezeSlotsHtml(s.freezes))}
+        ${stat(s.freezes, 'số băng đang có', 'stat-ice')}
         ${stat(s.metDays, 'ngày đạt mục tiêu')}
       </div>
       <p class="card-text">${esc(s.todayMet ? 'hôm nay đã giữ chuỗi. nơ hôm nay là của bạn.' : `hôm nay: ${sum.status.counted}/${sum.status.goal} lượt, output ${sum.status.output}/${sum.status.outputMin}.`)}</p>`;

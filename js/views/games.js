@@ -5,11 +5,11 @@ import { pageHead, icons, esc } from '../ui.js';
 
 const GAMES = [
   { name: 'bunny hop', kao: '₍ᐢ•ﻌ•ᐢ₎' },
-  { name: 'word form ladder', kao: '(ง •̀_•́)ง' },
+  { name: 'word form ladder', kao: '(ง •_•)ง' },
   { name: 'preposition pop', kao: '(・ω・)ノ' },
-  { name: 'collocation match', kao: '(｡•̀ᴗ-)✧' },
-  { name: 'sentence unscramble', kao: '( •̀ ω •́ )✧' },
-  { name: 'upgrade it!', kao: 'ᕙ( •̀ ᗜ •́ )ᕗ' },
+  { name: 'collocation match', kao: '(｡･ω･｡)✧' },
+  { name: 'sentence unscramble', kao: '(•ㅂ•)و✧' },
+  { name: 'upgrade it!', kao: 'ᕙ(•ᴗ•)ᕗ' },
   { name: 'speed spell', kao: '( ˘▽˘)っ🎧' },
   { name: 'spot the trap', kao: '(¬‿¬)' },
   { name: 'carrot rush', kao: '₍ᐢ•ﻌ•ᐢ₎🥕' },

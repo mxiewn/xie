@@ -54,7 +54,7 @@ export function render(view) {
       <a class="card card-link" href="#/streak">
         <span class="card-link-text">
           <span class="card-title">lịch nơ</span>
-          <span class="card-text">chuỗi ${sum.streak.current} ngày · kỷ lục ${sum.streak.longest} · băng ${sum.streak.freezes}/2</span>
+          <span class="card-text">chuỗi ${sum.streak.current} ngày · kỷ lục ${sum.streak.longest} · số băng đang có: ${sum.streak.freezes}</span>
         </span>
         ${icons.chevron}
       </a>

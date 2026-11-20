@@ -134,6 +134,14 @@ file này để mỗi phiên làm việc mới đọc lại là biết đang ở
 - **phòng thử** → giả lập ngày học (dữ liệu tạm)
 - đã kiểm tra: 375 / 414 / 1280px, sáng + tối, thẻ báo dùng băng / đứt chuỗi, ngày đã xong, chưa học gì; không cuộn ngang, nút ≥ 44px, không lỗi console, localStorage bị chặn vẫn chạy, tủ đồ mở đúng theo cấp thật
 
+### chỉnh sau góp ý (giai đoạn 4)
+- **bong bóng ↔ thỏ**: bong bóng neo theo đầu thỏ (đáy khung), không neo đỉnh khung nữa → khung cao bao nhiêu cũng chỉ cách đỉnh thỏ ≈ cú nhún + đuôi (≈ 37px ở điện thoại, trước là 71px). làm quen cũng thu khoảng cách tương tự
+- **kaomoji**: xoá 28 kaomoji có dấu kết hợp (`•̀ •́ ̥ ̫…`, hay trôi lệch trên ios / android; danh sách ở `tools/lines-review.md`), bù kaomoji quen thuộc chỉ dùng ký tự an toàn, mỗi nhóm vẫn ≥ 20. `.kao` khoá hướng chữ trái → phải (`unicode-bidi: bidi-override`, để ﻌ و ٩ không bị đảo), tắt kerning / ghép chữ, `inline-block` cho cả mặt nằm trọn một khối. trong bong bóng, kaomoji xuống dòng riêng, căn giữa, to hơn chữ một chút. `tools/validate.js` báo lỗi nếu kaomoji (trong kho thoại hoặc trong code) có dấu kết hợp
+- **desktop thẳng hàng**: lề trên / dưới của nội dung và thanh menu đều 32px. khung thỏ đứng yên (`sticky`), cao đúng một màn: chữ xie ngang mép trên khung thỏ, thẻ "hôm nay" ở chân menu ngang mép dưới, cuộn tới đâu cũng vậy
+- **thẻ "hôm nay" ở chân menu** (`js/nav-today.js`, chỉ desktop): củ cà rốt dài theo số lượt, nơ = chuỗi ngày, bông tuyết = số băng. bấm vào về trang chủ
+- **số băng**: hiện "số băng đang có: 1" (một con số), không còn kiểu 1/2 hay hai ô
+- **luật giữ chuỗi** rút còn 5 dòng ngắn
+
 ### giai đoạn 5–8 nối vào thế nào
 ```js
 import { recordAnswer, celebrate, setCounters } from './progress.js';

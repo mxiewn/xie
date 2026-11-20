@@ -7,7 +7,7 @@ import { esc, bowConfetti } from '../ui.js';
 import { defaultProgress, recordAnswer, summarize, takeNotices, voiceContext } from '../progress-core.js';
 import { reasonText, ACTIVITIES } from '../daily-goal.js';
 import { addDays, todayIn, DAILY_GOALS } from '../state-core.js';
-import { ringHtml, metersHtml, statusLine, weekStripHtml, monthHtml, freezeSlotsHtml, legendHtml, shortDate } from '../progress-ui.js';
+import { ringHtml, metersHtml, statusLine, weekStripHtml, monthHtml, freezeCountHtml, legendHtml, shortDate } from '../progress-ui.js';
 import { levelInfo } from '../levels.js';
 import { eventLine, sideToast } from '../progress.js';
 import { loadVoice } from '../voice.js';
@@ -173,7 +173,7 @@ export function mountSim(root) {
     $('[data-sim="info"]').innerHTML = `
       ${metersHtml(sum.status)}
       <p class="today-status">${esc(statusLine(sum.status))}</p>
-      <p class="sim-stats">chuỗi <b>${sum.streak.current}</b> · kỷ lục ${sum.streak.longest} · ${freezeSlotsHtml(sum.streak.freezes)}</p>
+      <p class="sim-stats">chuỗi <b>${sum.streak.current}</b> · kỷ lục ${sum.streak.longest} · ${freezeCountHtml(sum.streak.freezes)}</p>
       <p class="sim-stats">${sum.xp} xp · cấp ${sum.level} · ${esc(levelInfo(sum.level).name)} · ${Object.keys(p.badges).length} huy hiệu</p>`;
     $('[data-sim="week"]').innerHTML = weekStripHtml(sum.streak, date);
     const [y, m] = date.split('-').map(Number);

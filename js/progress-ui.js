@@ -3,7 +3,7 @@
 // svg dùng class + var(--…) hoặc currentColor, không có mã màu cứng.
 
 import { esc, icons } from './ui.js';
-import { WEEKDAY_LABELS, MAX_FREEZES, weekOf, monthGrid } from './streak.js';
+import { WEEKDAY_LABELS, weekOf, monthGrid } from './streak.js';
 import { skillLabel } from './topics.js';
 
 const WEEKDAY_FULL = ['thứ hai', 'thứ ba', 'thứ tư', 'thứ năm', 'thứ sáu', 'thứ bảy', 'chủ nhật'];
@@ -119,12 +119,9 @@ export function legendHtml() {
     </ul>`;
 }
 
-// hai ô băng giữ chuỗi (đầy / trống)
-export function freezeSlotsHtml(freezes) {
-  return `
-    <span class="freeze-slots" role="img" aria-label="băng giữ chuỗi: ${freezes} trên ${MAX_FREEZES}">
-      ${Array.from({ length: MAX_FREEZES }, (_, i) => `<span class="freeze-slot${i < freezes ? ' is-full' : ''}">${icons.snow}</span>`).join('')}
-    </span>`;
+// "số băng đang có: 1" — một con số, dễ đọc hơn kiểu 1/2
+export function freezeCountHtml(freezes) {
+  return `<span class="freeze-count${freezes ? '' : ' is-empty'}">${icons.snow}<span>số băng đang có: <b>${freezes}</b></span></span>`;
 }
 
 // thẻ báo tin chuỗi lúc mở web: dùng băng / đứt chuỗi
@@ -144,7 +141,7 @@ export function noticeHtml(notices, streak) {
     const days = used.map((n) => shortDate(n.date)).join(', ');
     title = `băng giữ chuỗi đã cứu ngày ${days}`;
     text = streak.freezes
-      ? `chuỗi ${streak.current} ngày vẫn còn nguyên. còn ${streak.freezes}/${MAX_FREEZES} băng.`
+      ? `chuỗi ${streak.current} ngày vẫn còn nguyên. số băng đang có: ${streak.freezes}.`
       : `chuỗi ${streak.current} ngày vẫn còn nguyên. hết băng rồi, giữ chuỗi tròn 7 ngày là có băng mới.`;
   }
   return `
