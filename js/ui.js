@@ -158,6 +158,12 @@ export function skyDecor() {
       <svg class="sky-cloud cloud-e" viewBox="0 0 120 56" focusable="false">
         <path d="M24 48h74a17 17 0 0 0 0-34 21 21 0 0 0-39-6 16 16 0 0 0-26 10A15 15 0 0 0 24 48z"/>
       </svg>
+      <svg class="sky-cloud cloud-f" viewBox="0 0 120 56" focusable="false">
+        <path d="M24 48h74a17 17 0 0 0 0-34 21 21 0 0 0-39-6 16 16 0 0 0-26 10A15 15 0 0 0 24 48z"/>
+      </svg>
+      <svg class="sky-cloud cloud-g" viewBox="0 0 120 56" focusable="false">
+        <path d="M24 48h74a17 17 0 0 0 0-34 21 21 0 0 0-39-6 16 16 0 0 0-26 10A15 15 0 0 0 24 48z"/>
+      </svg>
       <svg class="sky-sakura" viewBox="0 0 120 90" focusable="false">
         <path class="sakura-branch" d="M120 10C96 18 80 30 66 46S40 74 14 84"/>
         <path class="sakura-branch" d="M86 30c-2 8 0 16 6 22"/>
@@ -177,6 +183,9 @@ export function skyDecor() {
         <path d="M24 48h74a17 17 0 0 0 0-34 21 21 0 0 0-39-6 16 16 0 0 0-26 10A15 15 0 0 0 24 48z"/>
       </svg>
       <svg class="sky-cloud cloud-d" viewBox="0 0 120 56" focusable="false">
+        <path d="M24 48h74a17 17 0 0 0 0-34 21 21 0 0 0-39-6 16 16 0 0 0-26 10A15 15 0 0 0 24 48z"/>
+      </svg>
+      <svg class="sky-cloud cloud-f" viewBox="0 0 120 56" focusable="false">
         <path d="M24 48h74a17 17 0 0 0 0-34 21 21 0 0 0-39-6 16 16 0 0 0-26 10A15 15 0 0 0 24 48z"/>
       </svg>
       ${NIGHT_STARS.map(([x, y, px, cls]) => `

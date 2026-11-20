@@ -20,9 +20,9 @@ const CARROT_TIP = `
 function html(sum) {
   const { status, streak } = sum;
   const pct = Math.round(status.ratio * 100);
-  const label = status.met ? 'hôm nay xong rồi' : 'hôm nay';
+  const label = 'hôm nay';
   return `
-    <a class="nav-today${status.met ? ' is-met' : ''}" href="#/home" aria-label="${esc(`${label}: ${status.counted} trên ${status.goal} lượt, chuỗi ${streak.current} ngày, số băng đang có ${streak.freezes}`)}">
+    <a class="nav-today${status.met ? ' is-met' : ''}" href="#/home" aria-label="${esc(`${label}${status.met ? ' xong rồi' : ''}: ${status.counted} trên ${status.goal} lượt, chuỗi ${streak.current} ngày, số băng đang có ${streak.freezes}`)}">
       <span class="nav-today-head">
         <span>${label}</span>
         <span class="nav-today-num">${status.counted}/${status.goal}</span>

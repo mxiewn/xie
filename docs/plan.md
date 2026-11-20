@@ -144,6 +144,9 @@ file này để mỗi phiên làm việc mới đọc lại là biết đang ở
 - **mây**: thêm 3 mây ban ngày (che hờ chân mặt trời, bên trái thỏ, sát đất) và 2 mây đêm mỏng quanh trăng
 - **nắng / trăng**: dời sang cạnh phải, ngang đầu thỏ (canh theo `--bunny-size` đặt ở `.hero`), xa nút đổi chế độ ~230px trên điện thoại, không chạm bong bóng. desktop: nút đổi chế độ dời xuống chân thanh menu thành viên thuốc "sáng | tối" (đang ở trang chủ thì thỏ vẫn lật người đổi ca qua sự kiện `xie:theme-request`), khung thỏ bỏ hàng trên cho trời thoáng
 - **tên web**: nơ đứng trước "xie", sau tên là kaomoji ngẫu nhiên (`randomKao()` trong `ui.js`), đổi cái khác mỗi lần quay lại màn; kaomoji trên thẻ cà rốt ở chân menu cũng vậy
+- **trang trí canh theo cỡ thỏ**: nắng, trăng, mây, cành hoa tính theo `--bunny-size` với tỉ lệ lấy từ điện thoại (thỏ 172px: nắng 54px = 0.314 cỡ thỏ…) → desktop giống hệt điện thoại, chỉ to hơn. mây luôn che hờ chân nắng / trăng và nằm trọn trong khung. desktop thêm 2 mây ở phần trời phía trên (`cloud-f`, `cloud-g`)
+- **tên web**: nơ nhỏ xíu (19px) dán sát trước "xie", kaomoji cao bằng nửa thân chữ, đứng ngang hàng giữa chữ
+- **thẻ cà rốt**: thân có vân xen kẽ trên / dưới; đầy 50/50 thì cà rốt kín thanh + ✓
 - **đuôi cà rốt**: thanh tiến độ kết thúc bằng hình tròn (tâm đúng đầu thanh, bán kính = nửa bề dày) + tam giác nối từ hai tiếp điểm tới chóp → thân, vai tròn, chóp liền một mạch
 
 ### giai đoạn 5–8 nối vào thế nào
