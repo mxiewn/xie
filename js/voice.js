@@ -89,8 +89,15 @@ export function greetingNow() {
   return greetingGroup(saigonHour());
 }
 
+// một mẹo ngẫu nhiên: { text, group, code }. group "so-loi" là mẹo rút từ sổ lỗi writing của bạn
 export async function randomTip() {
   const data = await loadTips();
   const list = data?.tips || [];
-  return list.length ? list[Math.floor(Math.random() * list.length)].text : '';
+  return list.length ? list[Math.floor(Math.random() * list.length)] : null;
+}
+
+export function tipLabel(tip) {
+  if (tip?.group !== 'so-loi') return 'mẹo ielts';
+  const named = { 'dong-tu': 'gia đình động từ', 'cum-tu': 'cụm từ', 'khung-cau': 'khung câu', 'cach-hoc': 'cách dùng sổ' };
+  return `sổ lỗi của bạn · ${named[tip.code] || tip.code || ''}`.replace(/ · $/, '');
 }

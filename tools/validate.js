@@ -285,6 +285,7 @@ if (voice) {
 }
 
 // ---------- 4. kho mẹo ielts ----------
+const TIP_GROUPS = ['co-ban', 'so-loi', 'ngoai-le'];
 const tips = readJson('data/tips.json');
 if (tips) {
   const list = Array.isArray(tips.tips) ? tips.tips : [];
@@ -298,11 +299,14 @@ if (tips) {
     if (text.length > 170) errors.push(`${at}: dài ${text.length} ký tự (tối đa 170)`);
     const banned = bannedFound(text);
     if (banned.length) errors.push(`${at}: từ cấm ${banned.join(', ')}`);
+    if (tip.group && !TIP_GROUPS.includes(tip.group)) errors.push(`${at}: group "${tip.group}" phải là ${TIP_GROUPS.join(' / ')}`);
+    if (tip.code !== undefined && !/^(l\d{1,2}|dong-tu|cum-tu|khung-cau|cach-hoc)$/.test(tip.code)) errors.push(`${at}: code lạ "${tip.code}"`);
     const key = cleanForCompare(text);
     if (seenTips.has(key)) errors.push(`${at}: trùng mẹo`);
     seenTips.add(key);
   });
-  notes.push(`kho mẹo: ${list.length} mẹo`);
+  const byGroup = TIP_GROUPS.map((g) => `${g} ${list.filter((t) => t.group === g).length}`).join(' · ');
+  notes.push(`kho mẹo: ${list.length} mẹo (${byGroup})`);
 }
 
 // ---------- kết quả ----------

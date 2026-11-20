@@ -81,7 +81,8 @@ file này để mỗi phiên làm việc mới đọc lại là biết đang ở
 - `data/voice.json`: 31 nhóm, 644 câu, 681 kaomoji. tỉ lệ genz 40% · ấm áp 26% · tiếng anh 34%. 11% câu chép nguyên mẫu (giới hạn 15%)
 - **quyết định**: "chào" (nhóm hay hiện) chia 3 nhóm theo giờ, cộng lại ≥ 40 câu, mỗi nhóm ≥ 20 câu; nhóm thường ≥ 16 câu (spec ghi 15, cần 16 để thật sự không lặp 15 câu gần nhất)
 - duyệt chống cringe: viết 1.208 câu nháp, giữ 644, loại 564 (lý do từng câu ở `tools/lines-review.md`)
-- `data/tips.json`: 44 mẹo ielts, hiện ở màn hình đang tải
+- `data/tips.json`: 314 mẹo, hiện ở màn hình đang tải. 44 mẹo cơ bản + 147 mẹo rút từ **sổ lỗi writing của bạn** (l1–l16, gia đình động từ, cụm từ hay dùng sai, khung câu an toàn, cách dùng sổ; màn hình tải ghi rõ "sổ lỗi của bạn · l4") + 123 mẹo ngoài lề (task 1, task 2, speaking, reading, listening, từ vựng, ngữ pháp, cách học, ngày thi)
+- sổ lỗi l1–l16 cũng là nguồn cho phần **sổ lỗi sai** và **ngữ pháp** (giai đoạn 8): các câu 🧪 tự kiểm tra có thể thành bài tập
 - đã gắn vào web: lời chào theo giờ, chạm thỏ (nhiều fun fact từ vựng), đổi giao diện, lưu đồ trong tủ, trang lỗi, màn hình đang tải + mẹo. tab tui có cài đặt **thỏ nói**. phòng thử có **nghe thử thoại** (gọi 100 lần để tự kiểm tra)
 - các nhóm còn lại (đúng, sai, combo, streak, mốc, freeze, lên level, nhắc học…) đã có thoại, sẽ được gọi khi các giai đoạn 3–8 làm ra tính năng tương ứng
 - test: `npm test` → 90 test qua (100 lần mỗi nhóm/mỗi loại không lặp 15 câu gần nhất, câu ghép đạt luật, mật độ, giờ chào, biến tên)

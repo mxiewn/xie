@@ -3,7 +3,7 @@
 // mà không cần cấu hình server. mỗi màn là một module trong js/views/, chỉ tải khi mở.
 
 import { emptyState, ASCII_BUNNIES, esc } from './ui.js';
-import { say, randomTip } from './voice.js';
+import { say, randomTip, tipLabel } from './voice.js';
 
 const ROUTES = {
   home: { title: 'trang chủ', load: () => import('./views/home.js') },
@@ -72,7 +72,7 @@ async function renderLoading(view, isCurrent) {
     <div class="loading">
       <pre class="kao-art" aria-hidden="true">${esc(ASCII_BUNNIES[0])}</pre>
       <p>${esc(line?.text || 'đang tải…')} <span class="kao">${esc(line?.kao || '')}</span></p>
-      ${tip ? `<p class="loading-tip"><span class="loading-tip-label">mẹo ielts</span>${esc(tip)}</p>` : ''}
+      ${tip ? `<p class="loading-tip"><span class="loading-tip-label">${esc(tipLabel(tip))}</span>${esc(tip.text)}</p>` : ''}
     </div>`;
 }
 
