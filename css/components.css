@@ -2802,7 +2802,8 @@ html[data-font-size="lon"] { font-size: 112.5%; }
   height: 128px;
 }
 
-.goal-ring svg {
+/* chỉ xoay vòng tròn (để vạch bắt đầu từ đỉnh), KHÔNG xoay nơ bên trong */
+.goal-ring > svg {
   display: block;
   width: 100%;
   height: 100%;

@@ -1,5 +1,5 @@
 // xie · views/home.js — trang chủ
-// lời chào theo giờ việt nam, thỏ cầm cà rốt lớn dần theo tiến độ + bong bóng thoại, nút đổi sáng/tối,
+// lời chào theo giờ việt nam, thỏ (có lượt rồi thì cầm cà rốt lớn dần theo tiến độ) + bong bóng thoại, nút đổi sáng/tối,
 // vòng tiến độ lượt + thanh output, chuỗi ngày + lịch nơ tuần này, báo băng / đứt chuỗi,
 // thử thách hôm nay, đếm ngược kỳ thi. từ của ngày, kho output, nút "học hôm nay" vào ở giai đoạn 5.
 
@@ -29,8 +29,9 @@ const SOON = [
   'kho từ output',
 ];
 
-// cà rốt từ nhỏ (0.6) tới to (1.5) theo tiến độ lượt
+// chưa có lượt nào: thỏ chưa cầm cà rốt. từ lượt đầu tiên thì cầm, cà rốt từ nhỏ (0.6) tới to (1.5)
 const carrotScale = (ratio) => (0.6 + 0.9 * Math.max(0, Math.min(1, ratio))).toFixed(2);
+const restPoseFor = (status) => (status.counted > 0 ? 'carrot' : 'happy');
 
 function examCard(days) {
   if (days === null || days < 0) {
@@ -130,7 +131,7 @@ export function render(view) {
   `;
 
   // thỏ cầm cà rốt lớn dần theo tiến độ. vừa dùng băng thì quấn khăn, vừa đứt chuỗi thì buồn nhẹ
-  const restPose = 'carrot';
+  let restPose = restPoseFor(sum.status);
   const noticePose = notices.some((n) => n.type === 'broken') ? 'sad' : notices.length ? 'scarf' : null;
   const bunny = createBunny({ state: noticePose || restPose, skin: getEquippedSkin() });
   bunny.setCarrotScale(carrotScale(sum.status.ratio));
@@ -195,6 +196,12 @@ export function render(view) {
     view.querySelector('[data-role="streak"]').innerHTML = streakCard(sum);
     view.querySelector('[data-role="challenge"]').innerHTML = challengeHtml(sum.challenge, sum.challengeProgress, CHALLENGE_XP);
     bunny.setCarrotScale(carrotScale(sum.status.ratio));
+    // vừa có lượt đầu tiên trong ngày thì thỏ cầm cà rốt lên
+    const next = restPoseFor(sum.status);
+    if (next !== restPose) {
+      if (bunny.state === restPose) bunny.setState(next);
+      restPose = next;
+    }
   };
   window.addEventListener(PROGRESS_EVENT, refresh);
   window.addEventListener(THEME_EVENT, syncToggle);

@@ -146,6 +146,8 @@ file này để mỗi phiên làm việc mới đọc lại là biết đang ở
 - **tên web**: nơ đứng trước "xie", sau tên là kaomoji ngẫu nhiên (`randomKao()` trong `ui.js`), đổi cái khác mỗi lần quay lại màn; kaomoji trên thẻ cà rốt ở chân menu cũng vậy
 - **trang trí canh theo cỡ thỏ**: nắng, trăng, mây, cành hoa tính theo `--bunny-size` với tỉ lệ lấy từ điện thoại (thỏ 172px: nắng 54px = 0.314 cỡ thỏ…) → desktop giống hệt điện thoại, chỉ to hơn. mây luôn che hờ chân nắng / trăng và nằm trọn trong khung. desktop thêm 2 mây ở phần trời phía trên (`cloud-f`, `cloud-g`)
 - **tên web**: nơ nhỏ xíu (19px) dán sát trước "xie", kaomoji cao bằng nửa thân chữ, đứng ngang hàng giữa chữ
+- **thỏ và cà rốt**: chưa có lượt nào trong ngày thì thỏ không cầm cà rốt (dáng vui). từ lượt đầu tiên thì cầm, cà rốt to dần 0.6 → 1.5 tới khi đủ mục tiêu; đang mở trang chủ mà làm lượt đầu thì thỏ tự cầm lên
+- **nơ trong vòng tròn** (khi đủ mục tiêu): đứng thẳng (trước bị xoay ngang theo vòng tròn)
 - **thẻ cà rốt**: thân có vân xen kẽ trên / dưới; đầy 50/50 thì cà rốt kín thanh + ✓
 - **đuôi cà rốt**: thanh tiến độ kết thúc bằng hình tròn (tâm đúng đầu thanh, bán kính = nửa bề dày) + tam giác nối từ hai tiếp điểm tới chóp → thân, vai tròn, chóp liền một mạch
 
