@@ -203,3 +203,28 @@ export function createBubble() {
     },
   };
 }
+
+// thông báo nhỏ ở đáy màn hình (đã lưu, lỗi nhập file…), tự ẩn sau vài giây
+let toastTimer = 0;
+export function showToast(text, kao = '') {
+  let node = document.querySelector('.toast');
+  if (!node) {
+    node = document.createElement('div');
+    node.className = 'toast';
+    node.setAttribute('role', 'status');
+    node.setAttribute('aria-live', 'polite');
+    document.getElementById('app')?.append(node);
+  }
+  node.textContent = text;
+  if (kao) {
+    const k = document.createElement('span');
+    k.className = 'kao';
+    k.textContent = kao;
+    node.append(' ', k);
+  }
+  node.classList.remove('is-shown');
+  void node.offsetWidth;
+  node.classList.add('is-shown');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => node.classList.remove('is-shown'), 2600);
+}

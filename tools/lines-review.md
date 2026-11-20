@@ -15,9 +15,9 @@ sau đó `node tools/validate.js` soát lại bằng máy: từ cấm, tối đa
 
 | | số câu |
 | --- | --- |
-| viết nháp | 1.208 |
-| giữ lại (cringe ≤ 2) | 644 |
-| loại | 564 |
+| viết nháp | 1.228 |
+| giữ lại (cringe ≤ 2) | 656 |
+| loại | 572 |
 
 tỉ lệ giọng của câu giữ lại: genz 40% · ấm áp 26% · có tiếng anh 34% (mục tiêu 45/25/30, cho lệch ±7).
 
@@ -39,7 +39,7 @@ tỉ lệ giọng của câu giữ lại: genz 40% · ấm áp 26% · có tiến
 
 ## câu bị loại theo nhóm
 
-### onboarding (loại 14)
+### onboarding (loại 22)
 - "xin chào và chào mừng bạn đến với hành trình chinh phục ielts" · 5 · quảng cáo
 - "hellooo bestie, tên bạn là gì nè" · 4 · chồng lóng, baby talk
 - "trước khi bắt đầu, vui lòng cung cấp tên của bạn" · 4 · sách vở
@@ -54,6 +54,14 @@ tỉ lệ giọng của câu giữ lại: genz 40% · ấm áp 26% · có tiến
 - "your journey to fluency begins now" · 4 · quảng cáo
 - "xong rồi, giờ bạn không được lười nữa đâu" · 5 · áp lực, từ cấm
 - "hoàn tất cài đặt. chúc bạn học tập hiệu quả" · 4 · sách vở
+- "band 7 hay band 6.5, chọn đi đừng phân vân" · 3 · áp lực (bước band)
+- "mục tiêu càng cao, thành công càng lớn" · 5 · poster (bước band)
+- "thi gần thì phải học gấp, đừng chủ quan" · 4 · gây lo (bước ngày thi)
+- "exam date locked. the countdown begins now!" · 3 · gây hoảng, chấm than (bước ngày thi)
+- "chọn 200 lượt đi cho xịn, khét lắm" · 4 · chồng lóng, ép mục tiêu cao (bước mục tiêu)
+- "50 lượt là ít lắm đó nha" · 4 · chê (bước mục tiêu)
+- "kỹ năng yếu nhất là gì? thành thật đi" · 3 · tra hỏi (bước kỹ năng)
+- "chọn chủ đề mà bạn đam mê nhất nhé" · 3 · sách vở (bước chủ đề)
 
 ### chao_sang (loại 20)
 - "chào buổi sáng tốt lành, chúc bạn một ngày học tập hiệu quả" · 4 · sách vở

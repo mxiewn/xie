@@ -1,5 +1,5 @@
 // xie · views/me.js — tab tui
-// hiện có: lối vào tủ đồ của thỏ, cài đặt giao diện (4 chế độ), thỏ nói nhiều / vừa / ít, lối vào phòng thử.
+// hiện có: hồ sơ & cài đặt, tủ đồ của thỏ, giao diện (4 chế độ), thỏ nói nhiều / vừa / ít, phòng thử.
 // thống kê, sổ lỗi, câu của tui, cài đặt đầy đủ làm ở các giai đoạn sau.
 
 import { pageHead, icons, esc } from '../ui.js';
@@ -7,6 +7,8 @@ import { getMode, setMode, THEME_EVENT } from '../theme.js';
 import { createBunny } from '../bunny.js';
 import { currentLevel, levelInfo, getEquippedSkin, skinInfo } from '../levels.js';
 import { TALK_LEVELS, getTalk, setTalk } from '../voice.js';
+import { getState, examDaysLeft } from '../state.js';
+import { skillLabel } from '../topics.js';
 
 const MODES = [
   { id: 'system', label: 'theo máy', desc: 'đi theo chế độ sáng/tối của điện thoại' },
@@ -18,9 +20,25 @@ const MODES = [
 export function render(view) {
   const level = currentLevel();
   const skin = getEquippedSkin();
+  const { profile } = getState();
+  const days = examDaysLeft();
+  const summary = [
+    `band ${profile.target_band.toFixed(1)}`,
+    `${profile.daily_goal} lượt/ngày`,
+    profile.weak_skill ? `ưu tiên ${skillLabel(profile.weak_skill)}` : '',
+    days !== null && days >= 0 ? `còn ${days} ngày thi` : '',
+  ].filter(Boolean).join(' · ');
   view.innerHTML = `
-    ${pageHead({ title: 'tui', sub: 'cài đặt và mọi thứ của riêng bạn' })}
+    ${pageHead({ title: profile.name ? `tui · ${esc(profile.name)}` : 'tui', sub: 'cài đặt và mọi thứ của riêng bạn' })}
     <div class="page-body me-body">
+      <a class="card card-link profile-link" href="#/settings">
+        <span class="card-link-text">
+          <span class="card-title">hồ sơ & cài đặt</span>
+          <span class="card-text">${esc(summary)}</span>
+        </span>
+        ${icons.chevron}
+      </a>
+
       <a class="card card-link wardrobe-link" href="#/wardrobe">
         <span class="wardrobe-thumb"></span>
         <span class="card-link-text">

@@ -29,7 +29,7 @@ file này để mỗi phiên làm việc mới đọc lại là biết đang ở
 
 - [x] **1. khung + điều hướng + coquette + font + thỏ + lowercase** (kèm 2 chế độ sáng/tối của mục 3b)
 - [x] **2. hệ thống giọng nói, thoại, kaomoji** (kèm duyệt chống cringe → `tools/lines-review.md`)
-- [ ] 3. onboarding + lưu trữ (state đầy đủ, số version schema, nâng cấp)
+- [x] **3. onboarding + lưu trữ** (state đầy đủ, số version schema, nâng cấp)
 - [ ] 4. mục tiêu 50 lượt + streak (hàm thuần + test)
 - [ ] 5. từ vựng + srs + kho từ output
 - [ ] 6. luyện viết và nói
@@ -87,8 +87,18 @@ file này để mỗi phiên làm việc mới đọc lại là biết đang ở
 - các nhóm còn lại (đúng, sai, combo, streak, mốc, freeze, lên level, nhắc học…) đã có thoại, sẽ được gọi khi các giai đoạn 3–8 làm ra tính năng tương ứng
 - test: `npm test` → 90 test qua (100 lần mỗi nhóm/mỗi loại không lặp 15 câu gần nhất, câu ghép đạt luật, mật độ, giờ chào, biến tên)
 
+## giai đoạn 3: làm quen + lưu trữ
+
+- `js/state-core.js` (thuần, có test): schema v1 ở `xie:state` (onboarded, profile, settings, visits), nâng cấp từ dữ liệu chưa có version, chuẩn hoá mọi giá trị (mục tiêu không dưới 50, tên viết thường ≤ 24 ký tự, ngày thi hợp lệ, tối đa 4 chủ đề…), ngày theo giờ việt nam, ghi nhận ghé thăm, xuất / nhập
+- `js/state.js`: đọc/ghi trên trình duyệt, dữ liệu hỏng thì bắt đầu lại không sập, localStorage bị chặn thì vẫn chạy trong phiên
+- **làm quen** `#/welcome` (lần đầu mở web tự vào, ẩn thanh điều hướng): tên → band 6.5 / 7.0 → ngày thi (tuỳ chọn, hiện còn bao nhiêu ngày) → 50 / 80 / 120 / 200 lượt → kỹ năng yếu nhất + tối đa 4 chủ đề ưu tiên. vuốt trái / phải để đi tiếp / quay lại, nút tiếp / quay lại, báo lỗi rõ khi thiếu. thỏ đổi dáng và nói câu riêng từng bước (thêm 12 câu vào nhóm onboarding). desktop: thỏ bên trái, khung bên phải
+- **cài đặt** `#/settings`: sửa hồ sơ (tên, band, ngày thi, mục tiêu lượt, số từ mới 3–20, kỹ năng yếu, chủ đề), cỡ chữ nhỏ / vừa / lớn, xuất / nhập / xoá dữ liệu (xoá bấm 2 lần), làm lại phần làm quen. lưu ngay khi đổi, thỏ báo "đã lưu"
+- **trang chủ**: gọi bằng tên (viết thường), thẻ đếm ngược ngày thi kèm câu thoại nhóm đếm ngược, vắng từ 3 ngày thì thỏ chào nhóm "quay lại"
+- **tab tui**: thẻ hồ sơ & cài đặt (band, mục tiêu, kỹ năng ưu tiên, số ngày tới kỳ thi)
+- test: `npm test` → 109 test (thêm 19 test state: dữ liệu hỏng, mục tiêu < 50, nâng cấp version, 23:59 / 00:01 giờ việt nam, năm nhuận, ghé thăm nhiều lần trong ngày, xuất / nhập). playwright: đi hết 5 bước, vuốt, lỗi nhập, lưu, cài đặt, xuất / nhập / xoá, quay lại sau 5 ngày, state hỏng, desktop sáng / tối
+- **để sau**: giọng đọc + tốc độ đọc và mặt trước thẻ (giai đoạn 5), âm thanh + rung (khi có sound.js)
+
 ## còn để giai đoạn sau
 
 - kiểm tra trên **ios safari và chrome android thật** (kaomoji nào hiện ô vuông thì xoá): container chỉ có chromium linux, chưa thử được → làm ở giai đoạn 10
-- `{name}` chưa có cho tới khi làm onboarding (giai đoạn 3); hiện các câu cần tên tự được bỏ qua
 - `css/games.css` tạo ở giai đoạn 7

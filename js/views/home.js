@@ -3,10 +3,11 @@
 // vòng 50 lượt, streak, từ của ngày, đếm ngược… sẽ dọn vào ở các giai đoạn sau.
 
 import { createBunny } from '../bunny.js';
-import { createBubble, icons, skyDecor } from '../ui.js';
+import { createBubble, icons, skyDecor, esc } from '../ui.js';
 import { currentTheme, toggleQuick, saigonHour, THEME_EVENT } from '../theme.js';
 import { getEquippedSkin } from '../levels.js';
 import { say, greetingNow, countTap } from '../voice.js';
+import { getState, returnGap, examDaysLeft } from '../state.js';
 
 function greetingFor(hour) {
   if (hour >= 5 && hour < 11) return 'sáng rồi nè';
@@ -17,15 +18,36 @@ function greetingFor(hour) {
 }
 
 const SOON = [
-  'vòng tiến độ 50 lượt mỗi ngày',
+  'vòng tiến độ lượt mỗi ngày',
   'streak và lịch nơ',
   'kho từ output',
   'từ của ngày',
-  'đếm ngược ngày thi',
 ];
+
+function examCard(days) {
+  if (days === null || days < 0) {
+    const passed = days !== null;
+    return `
+      <a class="card card-link exam-card" href="#/settings">
+        <span class="card-link-text">
+          <span class="card-title">${passed ? 'ngày thi đã qua' : 'chưa có ngày thi'}</span>
+          <span class="card-text">${passed ? 'có lịch thi mới thì cập nhật trong cài đặt nha' : 'đặt ngày thi để tui đếm ngược giùm bạn'}</span>
+        </span>
+        ${icons.chevron}
+      </a>`;
+  }
+  return `
+    <section class="card card-lace exam-card" aria-label="đếm ngược ngày thi">
+      <p class="exam-count"><span class="exam-days">${days}</span><span class="exam-unit">${days === 0 ? 'hôm nay thi' : 'ngày nữa tới ngày thi'}</span></p>
+      <p class="exam-line" data-role="exam-line"></p>
+    </section>`;
+}
 
 export function render(view) {
   const hour = saigonHour();
+  const { profile } = getState();
+  const name = profile.name;
+  const days = examDaysLeft();
   view.innerHTML = `
     <div class="home-layout">
     <section class="hero">
@@ -36,7 +58,7 @@ export function render(view) {
           ${icons.sun}${icons.moon}
         </button>
       </div>
-      <p class="greeting">${greetingFor(hour)}, <span class="greeting-name">bạn</span></p>
+      <p class="greeting">${greetingFor(hour)}, <span class="greeting-name">${esc(name || 'bạn')}</span></p>
       <div class="bunny-stage">
         <div class="bubble-slot"></div>
         <button class="bunny-btn" type="button" aria-label="chạm vào thỏ"></button>
@@ -44,6 +66,8 @@ export function render(view) {
       <div class="lace-edge" aria-hidden="true"></div>
     </section>
 
+    <div class="home-side">
+    ${examCard(days)}
     <section class="card card-lace soon-card">
       <h2 class="card-title"><span class="title-bow">${icons.bow}</span>nhà mới đang dọn</h2>
       <p class="card-text">mấy món này sẽ lần lượt dọn vào đây:</p>
@@ -52,6 +76,7 @@ export function render(view) {
       </ul>
       <div class="pearls" aria-hidden="true"></div>
     </section>
+    </div>
     </div>
   `;
 
@@ -69,6 +94,7 @@ export function render(view) {
   syncToggle();
 
   let alive = true;
+  const ctx = name ? { name } : {};
   const speak = async (group, ctx, opts) => {
     const line = await say(group, ctx, opts);
     if (alive && line) bubble.say(line.text || '', line.kao);
@@ -86,11 +112,28 @@ export function render(view) {
 
   view.querySelector('.bunny-btn').addEventListener('click', () => {
     bunny.hop();
-    speak('cham_tho', { n: countTap() }, { forceLine: true });
+    speak('cham_tho', { ...ctx, n: countTap() }, { forceLine: true });
   });
 
   window.addEventListener(THEME_EVENT, syncToggle);
-  const helloTimer = setTimeout(() => speak(greetingNow(), {}, { forceLine: true }), 700);
+  // vắng từ 3 ngày trở lên thì chào "quay lại", còn không thì chào theo giờ
+  const gap = returnGap();
+  const helloTimer = setTimeout(() => {
+    if (gap) speak('quay_lai', { ...ctx, days: gap }, { forceLine: true });
+    else speak(greetingNow(), ctx, { forceLine: true });
+  }, 700);
+
+  const examLine = view.querySelector('[data-role="exam-line"]');
+  if (examLine && days > 0) {
+    say('dem_nguoc', { days }, { forceLine: true }).then((line) => {
+      if (!alive || !line?.text) return;
+      examLine.textContent = `${line.text} `;
+      const k = document.createElement('span');
+      k.className = 'kao';
+      k.textContent = line.kao;
+      examLine.append(k);
+    });
+  }
 
   return () => {
     alive = false;

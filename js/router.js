@@ -12,6 +12,8 @@ const ROUTES = {
   games: { title: 'game', load: () => import('./views/games.js') },
   me: { title: 'tui', load: () => import('./views/me.js') },
   wardrobe: { title: 'tủ đồ của thỏ', tab: 'me', load: () => import('./views/wardrobe.js') },
+  settings: { title: 'cài đặt', tab: 'me', load: () => import('./views/settings.js') },
+  welcome: { title: 'làm quen', chrome: false, load: () => import('./views/welcome.js') },
   lab: { title: 'phòng thử', tab: 'me', load: () => import('./views/lab.js') },
 };
 
@@ -76,7 +78,8 @@ async function renderLoading(view, isCurrent) {
     </div>`;
 }
 
-export function initRouter({ view, nav }) {
+// guard(name) trả về tên route khác để chuyển hướng (vd. chưa làm quen thì về "welcome"), hoặc null
+export function initRouter({ view, nav, guard = () => null }) {
   let cleanup = null;
   let token = 0;
   let firstRender = true;
@@ -95,8 +98,16 @@ export function initRouter({ view, nav }) {
       return;
     }
 
+    const redirect = guard(name);
+    if (redirect && redirect !== name) {
+      window.location.replace('#/' + redirect);
+      return;
+    }
+
     const myToken = ++token;
     const route = ROUTES[name];
+    const app = view.closest('.app');
+    if (app) app.dataset.chrome = route.chrome === false ? 'off' : 'on';
     markTabs(nav, route.tab || name);
     document.title = name === DEFAULT_ROUTE ? 'xie' : `${route.title} · xie`;
 

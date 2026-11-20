@@ -125,6 +125,10 @@
   "kinds": [
    "hello",
    "named",
+   "band",
+   "exam",
+   "goal",
+   "focus",
    "done"
   ],
   "kaomoji": [
@@ -294,6 +298,102 @@
     "cringe": 1,
     "when": {
      "kind": "done"
+    }
+   },
+   {
+    "text": "band mục tiêu là la bàn, chọn xong tui chỉnh đường đi theo",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "band"
+    }
+   },
+   {
+    "text": "bạn chọn mức nào cũng được, mình đi từng bước tới đó",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "band"
+    }
+   },
+   {
+    "text": "pick your target. the bunny will plan around it",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "band"
+    }
+   },
+   {
+    "text": "có ngày thi thì tui đếm ngược giùm bạn",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "exam"
+    }
+   },
+   {
+    "text": "chưa có ngày thi cũng ổn, để sau điền vẫn kịp",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "exam"
+    }
+   },
+   {
+    "text": "a date makes it real. no pressure, though",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "exam"
+    }
+   },
+   {
+    "text": "50 lượt là mức nhẹ nhất mà vẫn giữ được chuỗi",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "goal"
+    }
+   },
+   {
+    "text": "chọn vừa sức thôi, đều tay mới là trùm",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "goal"
+    }
+   },
+   {
+    "text": "a small daily goal is better than a big plan",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "goal"
+    }
+   },
+   {
+    "text": "chọn kỹ năng bạn thấy yếu, tui sẽ ưu tiên phần đó",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "focus"
+    }
+   },
+   {
+    "text": "chủ đề nào hay gặp trong đề thì chọn trước nha",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "focus"
+    }
+   },
+   {
+    "text": "tell me your weak spot. we'll fix it together",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "focus"
     }
    }
   ]

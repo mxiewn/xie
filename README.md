@@ -76,10 +76,13 @@ js/theme.js         4 chế độ: theo máy / sáng / tối / theo giờ (giờ
 js/bunny.js         thỏ svg: 10 trạng thái + 9 bộ trang phục
 js/levels.js        9 cấp + trang phục mở khoá theo cấp (tủ đồ)
 js/storage.js       đọc/ghi localStorage có bọc try/catch
+js/state-core.js    dữ liệu người học: schema có version, nâng cấp, chuẩn hoá, ngày giờ việt nam (thuần, có test)
+js/state.js         đọc/ghi hồ sơ trên trình duyệt, ghé thăm, xuất / nhập / xoá dữ liệu
+js/topics.js        chủ đề, kỹ năng, mức mục tiêu lượt
 js/ui.js            helper giao diện, icon, bong bóng thoại
 js/voice-core.js    lõi giọng nói: chọn câu, ghép mảnh, chống lặp, luật viết (thuần, có test)
 js/voice.js         giọng nói trên trình duyệt: tải kho thoại, lưu lịch sử, cài đặt nói nhiều/vừa/ít
-js/views/           màn hình: home, vocab, practice, games, me, wardrobe, lab
+js/views/           màn hình: welcome (làm quen), home, vocab, practice, games, me, settings, wardrobe, lab
 data/voice.json     kho thoại + kaomoji của thỏ
 data/tips.json      mẹo ielts (hiện ở màn hình đang tải)
 data/source/        sổ từ vựng excel gốc
@@ -88,6 +91,13 @@ tools/lines-review.md  câu thoại bị loại khi duyệt chống cringe
 tests/              test tự động
 docs/               spec + kế hoạch
 ```
+
+## dữ liệu của bạn
+
+mọi thứ lưu trong localStorage của trình duyệt, key có tiền tố `xie:`. hồ sơ học nằm ở `xie:state` và có số `version` để sau này nâng cấp không mất dữ liệu. vào **tui → hồ sơ & cài đặt → dữ liệu** để:
+- **xuất dữ liệu**: tải về file `xie-du-lieu-ngày.json` để sao lưu hoặc chuyển sang máy khác
+- **nhập dữ liệu**: chọn lại file đó (file lạ hoặc hỏng sẽ bị từ chối, không ghi gì)
+- **xoá toàn bộ dữ liệu**: phải bấm xác nhận 2 lần
 
 ## đổi màu, thêm chế độ
 
