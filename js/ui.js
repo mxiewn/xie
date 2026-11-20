@@ -107,11 +107,6 @@ export function skyDecor() {
         ${blossom(36, 68, 9)}
         ${blossom(104, 18, 7)}
       </svg>
-      <svg class="sky-petals" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" focusable="false">
-        <ellipse class="petal p1" cx="18" cy="30" rx="2.2" ry="1.4" transform="rotate(-30 18 30)"/>
-        <ellipse class="petal p2" cx="46" cy="16" rx="1.8" ry="1.2" transform="rotate(20 46 16)"/>
-        <ellipse class="petal p3" cx="10" cy="72" rx="2" ry="1.3" transform="rotate(40 10 72)"/>
-      </svg>
     </div>`;
 
   const night = `

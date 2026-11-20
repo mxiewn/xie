@@ -591,12 +591,6 @@
   fill: var(--sakura-center);
 }
 
-.sky-petals {
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
 .petal {
   fill: var(--sakura);
   transform-box: fill-box;
