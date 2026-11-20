@@ -657,10 +657,44 @@
   animation: drift 25s ease-in-out infinite alternate-reverse;
 }
 
+/* desktop: khung rộng nên sắp lại mây theo nguyên lý thị giác
+   - số lẻ: 5 đám (2 ở trên, 1 che nắng, 1 cạnh thỏ, 1 phía trên bên phải), không cụm chẵn
+   - phối cảnh: càng cao càng nhỏ (ở xa), càng thấp càng to (ở gần)
+   - cân bằng bất đối xứng: bên phải đã có nắng / trăng nên mây trái to hơn, mây phải nhỏ hơn
+   - nhịp so le trái ↔ phải đi xuống, dẫn mắt về thỏ; chừa khoảng thở quanh chữ chào và bong bóng */
 @media (min-width: 900px) {
   .cloud-f,
   .cloud-g {
     display: block;
+  }
+
+  /* bỏ hai mây chỉ hợp khung hẹp: một nằm sau bong bóng, một chen sát mây cạnh thỏ */
+  .cloud-a,
+  .cloud-e {
+    display: none;
+  }
+
+  /* xa nhất: nhỏ, cao, góc phải */
+  .cloud-g {
+    top: 6%;
+    right: 9%;
+    width: calc(var(--s) * 0.22);
+    opacity: 0.85;
+  }
+
+  /* dưới chữ chào, bên trái */
+  .cloud-f {
+    top: 16%;
+    left: 6%;
+    width: calc(var(--s) * 0.34);
+  }
+
+  /* thấp hơn, to hơn, bên phải: nối nhịp xuống mặt trời */
+  .cloud-b {
+    top: 20%;
+    left: auto;
+    right: 4%;
+    width: calc(var(--s) * 0.4);
   }
 }
 
