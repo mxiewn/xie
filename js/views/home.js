@@ -33,6 +33,7 @@ const SOON = [
 export function render(view) {
   const hour = saigonHour();
   view.innerHTML = `
+    <div class="home-layout">
     <section class="hero">
       <div class="hero-sky" aria-hidden="true">${skyDecor()}</div>
       <div class="hero-top">
@@ -57,6 +58,7 @@ export function render(view) {
       </ul>
       <div class="pearls" aria-hidden="true"></div>
     </section>
+    </div>
   `;
 
   const bunny = createBunny({ state: 'happy', skin: getEquippedSkin() });

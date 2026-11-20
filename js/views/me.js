@@ -19,7 +19,7 @@ export function render(view) {
   const skin = getEquippedSkin();
   view.innerHTML = `
     ${pageHead({ title: 'tui', sub: 'cài đặt và mọi thứ của riêng bạn' })}
-    <div class="page-body">
+    <div class="page-body me-body">
       <a class="card card-link wardrobe-link" href="#/wardrobe">
         <span class="wardrobe-thumb"></span>
         <span class="card-link-text">
@@ -30,7 +30,7 @@ export function render(view) {
         ${icons.chevron}
       </a>
 
-      <section class="card">
+      <section class="card theme-card">
         <h2 class="card-title" id="theme-title"><span class="title-bow">${icons.bow}</span>giao diện</h2>
         <div class="choice-list" role="radiogroup" aria-labelledby="theme-title">
           ${MODES.map((m) => `

@@ -99,9 +99,9 @@
   --carrot-line: #D9823C;
   --leaf: #8FCB9C;
   --leaf-line: #5E9E6E;
-  --heart: #E57A9C;
-  --heart-line: #C85A80;
-  --heart-shine: #FBE3EC;
+  --heart: #FCDCE8;
+  --heart-line: #E57A9C;
+  --heart-shine: #FFFFFF;
   --crown: #F5CF5B;
   --crown-line: #D6A92E;
   --gem: #E57A9C;
@@ -233,9 +233,9 @@
   --carrot-line: #D48A4C;
   --leaf: #93CFA3;
   --leaf-line: #6BAA7B;
-  --heart: #FF9EC4;
-  --heart-line: #E07AA4;
-  --heart-shine: #FFD3E5;
+  --heart: #FFDCEA;
+  --heart-line: #F58AB3;
+  --heart-shine: #FFFFFF;
   --crown: #F6E7B0;
   --crown-line: #D9C27A;
   --gem: #FF9EC4;
@@ -271,7 +271,7 @@
   --acc-cape: #CFE6F5;
   --acc-cape-line: #8CBFDB;
   --acc-fur: #FAF7FD;
-  --acc-snow: #B8DDF2;
+  --acc-snow: #6F9FC2;
   --acc-moon: #F6E7B0;
   --acc-moon-line: #E8D48E;
   --acc-moon-opacity: 1;

@@ -3,11 +3,13 @@
 // mọi màu lấy từ var(--…) trong css/themes.css nên tự đổi theo chế độ sáng/tối:
 //   sáng: viền hồng xám, má hồng rõ, bóng dưới chân
 //   tối:  quầng sáng nhẹ quanh người + ngôi sao cài chính giữa nơ
-// đứng yên thì thở nhẹ và nháy mắt ngẫu nhiên. buồn hoặc ngủ thì tai cụp xuống.
+// đứng yên thì thở nhẹ và nháy mắt ngẫu nhiên. buồn hoặc ngủ thì tai cụp xuống,
+// tai cụp vẽ liền một khối với đầu (chỉ có viền ngoài, không có nét chia, không lộ lòng tai hồng).
 //
 // thứ tự lớp (dưới → trên), để không đụng nhau:
-//   trăng sau lưng → đuôi → áo choàng → tai đứng → thân → đầu → mặt → tai cụp
-//   → phụ kiện cổ → khăn → nơ cổ → phụ kiện đầu → vương miện (trạng thái)
+//   áo choàng / trăng sau lưng (lớp sau cùng) → đuôi → tai đứng → thân
+//   → phụ kiện cổ (luồn dưới cằm nên không lộ cổ) → đầu + tai cụp → mặt
+//   → khăn → nơ cổ (luôn đứng trước, chính giữa) → phụ kiện đầu → vương miện (trạng thái)
 //   → đồ cầm tay (che nơ) → tay → hiệu ứng
 
 import { prefersReducedMotion } from './theme.js';
@@ -61,8 +63,9 @@ function pointOnEllipse(cx, cy, rx, ry, angle) {
   return [cx + rx * Math.cos(deg(angle)), cy + ry * Math.sin(deg(angle))];
 }
 
-// viền vỏ sò dọc nửa dưới một elip (cổ áo ren, cổ lông)
-function scallopCollar({ cx, cy, rx, ry, from, to, n, innerY, bulge = 1.08 }) {
+// cổ áo viền vỏ sò dọc nửa dưới một elip (cổ áo ren, cổ lông).
+// mép trên kéo lên tới topY, nằm sau đầu, nên từ cằm xuống là cổ áo, không lộ cổ thỏ
+function scallopCollar({ cx, cy, rx, ry, from, to, n, topY, bulge = 1.08 }) {
   const pts = [];
   for (let i = 0; i <= n; i++) pts.push(pointOnEllipse(cx, cy, rx, ry, from + ((to - from) * i) / n));
   let d = `M${r2(pts[0][0])} ${r2(pts[0][1])}`;
@@ -72,7 +75,9 @@ function scallopCollar({ cx, cy, rx, ry, from, to, n, innerY, bulge = 1.08 }) {
     const rad = r2((Math.hypot(bx - ax, by - ay) / 2) * bulge);
     d += ` A${rad} ${rad} 0 0 0 ${r2(bx)} ${r2(by)}`;
   }
-  d += ` Q${cx} ${innerY} ${r2(pts[0][0])} ${r2(pts[0][1])}Z`;
+  const [x0, y0] = pts[0];
+  const [x1] = pts[n];
+  d += ` Q${r2(x1)} ${topY + 8} ${cx + 36} ${topY} L${cx - 36} ${topY} Q${r2(x0)} ${topY + 8} ${r2(x0)} ${r2(y0)}Z`;
   return d;
 }
 
@@ -118,25 +123,28 @@ const ACC_MOON = `
 
 const ACC_CAPE = `
   <g data-skin="snow">
-    <path class="acc-cape" d="M56 146 C40 168 30 198 25 224 Q100 243 175 224 C170 198 160 168 144 146 Z"/>
-    <path class="acc-cape-fold" d="M44 182 Q40 204 38 222 M156 182 Q160 204 162 222"/>
-    <path class="acc-snow" d="${snowflakePath(49, 166, 4.5)}"/>
-    <path class="acc-snow" d="${snowflakePath(151, 166, 4.5)}"/>
-    <path class="acc-snow" d="${snowflakePath(36, 206, 5)}"/>
-    <path class="acc-snow" d="${snowflakePath(164, 206, 5)}"/>
+    <path class="acc-cape" d="M50 156 C38 180 30 204 25 224 Q100 243 175 224 C170 204 162 180 150 156 Z"/>
+    <path class="acc-cape-fold" d="M41 188 Q37 207 35 222 M159 188 Q163 207 165 222"/>
+    <path class="acc-snow" d="${snowflakePath(44, 172, 4.5)}"/>
+    <path class="acc-snow" d="${snowflakePath(156, 172, 4.5)}"/>
+    <path class="acc-snow" d="${snowflakePath(33, 208, 5)}"/>
+    <path class="acc-snow" d="${snowflakePath(167, 208, 5)}"/>
+    <path class="acc-snow" d="${snowflakePath(52, 226, 3.4)}"/>
+    <path class="acc-snow" d="${snowflakePath(148, 226, 3.4)}"/>
   </g>`;
 
+// chuỗi ngọc vòng quanh cổ theo đúng đường của khăn; hai đầu luồn ra sau đầu, nơ đứng trước ở giữa
 const PEARL_STRAND = (() => {
-  const [x0, y0, cx, cy, x1, y1] = [64, 156, 100, 240, 136, 156];
+  const [x0, y0, cx, cy, x1, y1] = [56, 153, 100, 184, 144, 153];
   let out = '';
-  const n = 17;
+  const n = 15;
   for (let i = 0; i < n; i++) {
     const t = i / (n - 1);
     const x = (1 - t) ** 2 * x0 + 2 * t * (1 - t) * cx + t ** 2 * x1;
     const y = (1 - t) ** 2 * y0 + 2 * t * (1 - t) * cy + t ** 2 * y1;
-    out += pearl(x, y, 3.5);
+    out += pearl(x, y, 3.8);
   }
-  return `${out}${pearl(100, 205.5, 4.8)}`;
+  return out;
 })();
 
 const LACE_COLLAR = (() => {
@@ -150,12 +158,12 @@ const LACE_COLLAR = (() => {
   const [sx, sy] = pointOnEllipse(100, 150, 45, 25, 155);
   const [ex, ey] = pointOnEllipse(100, 150, 45, 25, 25);
   return `
-    <path class="acc-lace" d="${scallopCollar({ ...shape, innerY: 168 })}"/>
+    <path class="acc-lace" d="${scallopCollar({ ...shape, topY: 136 })}"/>
     <path class="acc-lace-stitch" d="M${r2(sx)} ${r2(sy)} A45 25 0 0 0 ${r2(ex)} ${r2(ey)}"/>
     ${holes.join('')}`;
 })();
 
-const FUR_COLLAR = `<path class="acc-fur" d="${scallopCollar({ cx: 100, cy: 148, rx: 55, ry: 30, from: 168, to: 12, n: 10, innerY: 163, bulge: 1.3 })}"/>`;
+const FUR_COLLAR = `<path class="acc-fur" d="${scallopCollar({ cx: 100, cy: 148, rx: 55, ry: 30, from: 168, to: 12, n: 10, topY: 134, bulge: 1.3 })}"/>`;
 
 const ACC_NECK = `
   <g class="acc-neck">
@@ -196,23 +204,30 @@ const ACC_HEAD = `
       <circle class="acc-gem-2" cx="114" cy="66.5" r="2.6"/>
       ${pearl(72, 39, 2.8)}${pearl(87, 32, 2.8)}${pearl(100, 22.5, 3.4)}${pearl(113, 32, 2.8)}${pearl(128, 39, 2.8)}
     </g>
-    <g data-skin="snow">
-      <path class="acc-snow acc-snow-clip" d="${snowflakePath(64, 86, 7)}"/>
-      <circle class="acc-fur" cx="64" cy="86" r="2.2"/>
-    </g>
     <g data-skin="moon">
       <path class="acc-star" d="${starPath(126, 76, 7, 3)}"/>
     </g>
   </g>`;
+
+// đầu và tai cụp vẽ hai lượt: lượt 1 tô + viền dày, lượt 2 chỉ tô phủ lên.
+// phần chồng nhau xoá mất nét bên trong, chỉ còn viền ngoài như một khối liền.
+// bán kính trừ 1.3 để viền ngoài (2.6) khớp đúng cỡ cũ.
+const LOP_EARS = `
+  <ellipse class="b-sil" cx="43" cy="116" rx="14.7" ry="38.7" transform="rotate(16 43 116)"/>
+  <ellipse class="b-sil" cx="157" cy="116" rx="14.7" ry="38.7" transform="rotate(-16 157 116)"/>`;
+const HEAD = '<ellipse class="b-sil" cx="100" cy="113" rx="58.7" ry="49.7"/>';
+const HEAD_GROUP = ['b-sil-line', 'b-sil-fill']
+  .map((pass) => `<g class="${pass}"><g data-show="sad sleep">${LOP_EARS}</g>${HEAD}</g>`)
+  .join('');
 
 // ---------- svg ----------
 const SVG = `
 <svg class="bunny-svg" viewBox="0 0 200 240" aria-hidden="true" focusable="false">
   <ellipse class="b-shadow" cx="100" cy="229" rx="52" ry="7"/>
   <g class="b-rig">
+    ${ACC_CAPE}
     ${ACC_MOON}
     <g class="b-tail"><circle class="b-fur" cx="146" cy="203" r="11"/></g>
-    ${ACC_CAPE}
 
     <g class="b-ears" data-show="${UPRIGHT_EAR_STATES}">
       <g class="b-ear b-ear-l">
@@ -234,9 +249,9 @@ const SVG = `
       <ellipse class="b-belly" cx="100" cy="195" rx="24" ry="19"/>
     </g>
 
-    <g class="b-head">
-      <ellipse class="b-fur" cx="100" cy="113" rx="60" ry="51"/>
-    </g>
+    ${ACC_NECK}
+
+    <g class="b-head">${HEAD_GROUP}</g>
 
     <g class="b-face">
       <ellipse class="b-cheek" cx="61" cy="133" rx="11" ry="6.5"/>
@@ -278,20 +293,9 @@ const SVG = `
       </g>
     </g>
 
-    <g class="b-lop" data-show="sad sleep">
-      <g class="b-lop-l">
-        <ellipse class="b-fur" cx="46" cy="112" rx="15" ry="38" transform="rotate(20 46 112)"/>
-        <ellipse class="b-inner" cx="43" cy="120" rx="6.8" ry="25" transform="rotate(20 43 120)"/>
-        <g data-skin="ear-bows">${miniBow(57, 84, 20)}</g>
-      </g>
-      <g class="b-lop-r">
-        <ellipse class="b-fur" cx="154" cy="112" rx="15" ry="38" transform="rotate(-20 154 112)"/>
-        <ellipse class="b-inner" cx="157" cy="120" rx="6.8" ry="25" transform="rotate(-20 157 120)"/>
-        <g data-skin="ear-bows">${miniBow(143, 84, -20)}</g>
-      </g>
+    <g data-show="sad sleep">
+      <g data-skin="ear-bows">${miniBow(56, 85, 16)}${miniBow(144, 85, -16)}</g>
     </g>
-
-    ${ACC_NECK}
 
     <g class="b-scarf" data-show="scarf">
       <path class="p-scarf" d="M116 168 L131 204 Q125 208.5 117.5 207.5 L106 172 Z"/>

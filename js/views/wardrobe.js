@@ -17,7 +17,7 @@ export function render(view) {
       sub: `bạn đang ở cấp ${level} · ${levelInfo(level).name}`,
       actions: '<a class="btn btn-ghost btn-small" href="#/me">quay lại</a>',
     })}
-    <div class="page-body">
+    <div class="page-body wardrobe-body">
       <section class="card card-lace wardrobe-stage">
         <div class="wardrobe-bubble"></div>
         <div class="wardrobe-model"></div>

@@ -11,7 +11,12 @@ file này để mỗi phiên làm việc mới đọc lại là biết đang ở
 | nhãn tab | thanh dưới ghi `nói & viết`; tiêu đề trong trang ghi đủ `luyện nói & viết` |
 | nơ của thỏ | nằm ở **cổ**, không ở đầu. đồ cầm tay (cà rốt, tim, bút, micro) che lên nơ; riêng khăn nằm **sau** nơ |
 | thỏ ban đêm | **ngôi sao cài chính giữa nơ cổ** (không dùng mũ ngủ để khỏi đụng vương miện của các level sau) |
-| buồn / ngủ | thỏ **tai cụp**: đổi sang đôi tai rũ xuống hai bên đầu |
+| buồn / ngủ | thỏ **tai cụp**: tai rũ xuống hai bên đầu, vẽ **liền một khối với đầu** (chỉ có viền ngoài, không nét chia, không lộ lòng tai hồng) |
+| ôm tim | tim màu **hồng nhạt** viền hồng đậm, để tách khỏi màu nơ |
+| phụ kiện cổ | chuỗi ngọc, cổ áo ren, cổ lông **luồn dưới cằm** (vẽ sau thân, trước đầu) nên không lộ cổ; nơ luôn đứng trước, chính giữa |
+| áo choàng tuyết | nối từ cổ lông, là **lớp sau cùng** (sau cả đuôi); bông tuyết chỉ ở áo choàng, có ở cả hai chế độ |
+| dáng "đội vương miện" | bộ tiara / vương miện lớn giữ vương miện của bộ; bộ khác cất đồ đội đầu và đội vương miện thường |
+| bố cục | **điện thoại** (< 768px): dọc, thanh tab dưới. **máy tính bảng dọc** (768–899px): dọc, thanh tab nổi. **desktop** (≥ 900px): **màn ngang**, thanh điều hướng bên trái, nội dung chia nhiều cột, không dùng hình nền lấp chỗ trống |
 | tủ đồ của thỏ | `#/wardrobe` (trong tab tui). mỗi cấp mở 1 bộ đồ theo thứ tự spec: nơ cài tai → chuỗi ngọc trai → cổ áo ren → vòng hoa anh đào → vương miện nhỏ → vương miện lớn → áo choàng tuyết → vầng trăng sau lưng (cấp 1 là nơ cổ cơ bản). bộ khoá vẫn **mặc thử** được nhưng không chọn được. bộ đang mặc hiện ở trang chủ và tab tui. lưu ở key `xie:skin` |
 | màu trang phục | biến `--acc-…` riêng cho từng chế độ; vầng trăng ban ngày nhạt, ban đêm sáng + quầng sáng |
 | màu nhấn chữ | `#E57A9C` trên nền trắng chỉ đạt 2.76:1 nên chỉ dùng cho trang trí; chữ nhấn + viền focus dùng `#B23F68` (5.52:1); nút chính là nền `#F8C8DC` + chữ cacao |
@@ -61,6 +66,13 @@ file này để mỗi phiên làm việc mới đọc lại là biết đang ở
 - buồn và ngủ: tai cụp
 - tủ đồ của thỏ với 9 bộ đồ theo cấp; phòng thử có ô chọn trang phục để soi cả 10 dáng
 - **cấp hiện tại tạm luôn là 1** vì chưa có xp. giai đoạn 4 chỉ cần sửa `currentLevel()` trong `js/levels.js` là tủ đồ tự mở khoá
+
+## sau giai đoạn 1: chỉnh tạo hình thỏ lần 2 + desktop màn ngang
+
+- tai cụp liền khối với đầu (vẽ 2 lượt: viền dày rồi tô phủ), tim sáng màu, ngọc trai / cổ ren / cổ lông luồn dưới cằm, áo choàng nối từ cổ lông và nằm sau cùng, bỏ bông tuyết trên đầu
+- đã soi đủ 9 bộ × 10 dáng × 2 chế độ trong phòng thử
+- desktop: trang chủ (khung trời trái, thẻ phải), tủ đồ (người mẫu trái, lưới đồ phải), tab tui (2 cột), game (lưới trải ngang), phòng thử (2 cột)
+- đã kiểm tra 375, 414 (điện thoại), 844×390 (điện thoại xoay ngang), 768, 820 (máy tính bảng), 1024, 1280, 1920 (desktop): không cuộn ngang, thanh tab/thanh trái không che nội dung
 
 ## còn để giai đoạn sau
 

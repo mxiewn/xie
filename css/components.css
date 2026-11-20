@@ -39,13 +39,18 @@
   gap: 16px;
 }
 
-/* nền trang trí cho màn rộng (desktop) */
-.page-deco {
+/* phần chỉ có ở desktop (thanh điều hướng bên trái) */
+.nav-brand,
+.nav-lace,
+.nav-foot,
+.tab-label-full {
   display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
+}
+
+.home-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 /* ---------- thanh tab dưới cùng ---------- */
@@ -159,7 +164,7 @@
   height: 12px;
   background:
     radial-gradient(circle at 42% 40%, var(--pearl-shine) 0 1.2px, var(--pearl) 1.9px 3.4px, var(--pearl-shade) 3.9px 4.5px, transparent 5px)
-    0 50% / 13px 12px repeat-x;
+    50% 50% / 13px 12px repeat-x;
   filter: drop-shadow(var(--pearl-glow));
 }
 
@@ -702,6 +707,19 @@
   stroke-width: 2.6;
 }
 
+/* đầu + tai cụp: lượt viền dày rồi lượt tô phủ, chỉ còn viền ngoài */
+.b-sil-line .b-sil {
+  fill: var(--bunny-fur);
+  stroke: var(--bunny-outline);
+  stroke-width: 5.2;
+  stroke-linejoin: round;
+}
+
+.b-sil-fill .b-sil {
+  fill: var(--bunny-fur);
+  stroke: none;
+}
+
 .b-belly { fill: var(--bunny-belly); }
 .b-inner { fill: var(--bunny-inner-ear); }
 .b-cheek { fill: var(--bunny-cheek); opacity: 0.78; }
@@ -797,6 +815,17 @@
   display: none;
 }
 
+/* bộ đã có vương miện riêng (tiara, vương miện lớn): giữ vương miện của bộ, cất vương miện thường */
+.bunny[data-state="crown"][data-skin="tiara"] .acc-head,
+.bunny[data-state="crown"][data-skin="royal"] .acc-head {
+  display: inline;
+}
+
+.bunny[data-state="crown"][data-skin="tiara"] .b-crown,
+.bunny[data-state="crown"][data-skin="royal"] .b-crown {
+  display: none;
+}
+
 .acc-moon {
   fill: var(--acc-moon);
   stroke: var(--acc-moon-line);
@@ -831,7 +860,6 @@
 .acc-fur { fill: var(--acc-fur); stroke: var(--acc-cape-line); stroke-width: 1.4; stroke-linejoin: round; }
 .acc-cape-fold { fill: none; stroke: var(--acc-cape-line); stroke-width: 1.2; stroke-linecap: round; opacity: 0.7; }
 .acc-snow { fill: none; stroke: var(--acc-snow); stroke-width: 1.6; stroke-linecap: round; }
-.acc-snow-clip { stroke-width: 2.2; }
 
 /* đạo cụ */
 .p-carrot { fill: var(--carrot); stroke: var(--carrot-line); stroke-width: 1.6; stroke-linejoin: round; }
@@ -1558,27 +1586,19 @@
     --gutter: 28px;
   }
 
+  .hero {
+    padding: 20px 24px 22px;
+  }
+
+  .bunny-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .swatch-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* ---------- máy tính bảng dọc (768–899px): vẫn dọc, thanh tab nổi ---------- */
+@media (min-width: 768px) and (max-width: 899.98px) {
   .view {
     padding-top: calc(var(--safe-top) + 24px);
     padding-bottom: calc(var(--tab-h) + var(--safe-bottom) + 56px);
-  }
-
-  .page-deco {
-    display: block;
-    background-image:
-      linear-gradient(90deg, var(--gingham) 50%, transparent 50%),
-      linear-gradient(var(--gingham) 50%, transparent 50%);
-    background-size: 28px 28px;
-    opacity: calc(var(--gingham-opacity) * 0.5);
-  }
-
-  [data-theme="dark"] .page-deco {
-    background-image:
-      radial-gradient(circle, var(--star) 0 1px, transparent 1.6px),
-      radial-gradient(circle, var(--pearl) 0 0.8px, transparent 1.3px);
-    background-size: 150px 150px, 96px 96px;
-    background-position: 0 0, 44px 60px;
-    opacity: 0.4;
   }
 
   .tab-bar {
@@ -1594,15 +1614,242 @@
 
   .hero {
     min-height: 440px;
-    padding: 20px 24px 22px;
   }
 
   .bunny-stage {
     --bunny-size: 210px;
   }
+}
 
-  .bunny-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-  .swatch-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+/* ---------- desktop (≥ 900px): màn NGANG ----------
+   thanh điều hướng thành cột bên trái, nội dung trải hết bề ngang và chia nhiều cột.
+   không dùng hình nền lấp chỗ trống. */
+@media (min-width: 900px) {
+  :root {
+    --gutter: 40px;
+    --nav-w: 248px;
+  }
+
+  .app {
+    display: grid;
+    grid-template-columns: var(--nav-w) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .tab-bar {
+    position: sticky;
+    top: 0;
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    height: 100vh;
+    height: 100dvh;
+    padding: 28px 18px 22px;
+    overflow-y: auto;
+    border-top: 0;
+    border-right: 1.5px solid var(--line);
+    background: var(--surface);
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 12px 4px;
+    color: var(--accent-ink);
+    font-family: var(--font-title);
+    font-size: 2.3rem;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .nav-brand .i-bow {
+    width: 36px;
+    height: 27px;
+    transform: rotate(-8deg) translateY(-7px);
+  }
+
+  .nav-lace {
+    display: block;
+    height: 11px;
+    margin: 0 6px 14px;
+    border-top: 2px solid var(--lace);
+    background:
+      radial-gradient(circle at 50% 3.6px, var(--surface) 0 1.4px, transparent 1.9px) 0 0 / 14px 11px repeat-x,
+      radial-gradient(circle at 50% 0, var(--lace) 0 6.4px, transparent 6.9px) 0 0 / 14px 11px repeat-x;
+    opacity: var(--deco-pattern-opacity);
+  }
+
+  .tab {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 12px;
+    min-height: 50px;
+    padding: 0 16px;
+    font-size: 1rem;
+    text-align: left;
+  }
+
+  .tab:not([aria-current="page"]):hover {
+    background: var(--surface-2);
+    color: var(--text);
+  }
+
+  .tab-label-short { display: none; }
+  .tab-label-full { display: inline; }
+
+  .nav-foot {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: auto;
+    padding: 0 6px;
+    color: var(--accent-ink);
+    text-align: center;
+  }
+
+  .view {
+    grid-column: 2;
+    grid-row: 1;
+    gap: 24px;
+    max-width: 1600px;
+    padding: 32px var(--gutter) 56px;
+  }
+
+  .page-title {
+    font-size: 2rem;
+  }
+
+  /* trang chủ: khung trời + thỏ bên trái, thẻ bên phải */
+  .home-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(320px, 1fr);
+    gap: 28px;
+    align-items: start;
+  }
+
+  .hero {
+    min-height: clamp(520px, calc(100vh - 64px), 860px);
+    min-height: clamp(520px, calc(100dvh - 64px), 860px);
+    margin-bottom: 0;
+    padding: 24px 28px 26px;
+  }
+
+  .hero .brand {
+    display: none;
+  }
+
+  .theme-toggle {
+    margin-left: auto;
+  }
+
+  .greeting {
+    margin-top: 0;
+    font-size: 1.7rem;
+  }
+
+  .bunny-stage {
+    --bunny-size: 250px;
+    padding-top: 92px;
+  }
+
+  /* tab tui: hai cột */
+  .me-body {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .me-body .theme-card {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  /* tủ đồ: người mẫu bên trái (đứng yên khi cuộn), lưới đồ bên phải */
+  .wardrobe-body {
+    display: grid;
+    grid-template-columns: minmax(300px, 400px) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  .wardrobe-stage {
+    position: sticky;
+    top: 32px;
+  }
+
+  .wardrobe-model {
+    --bunny-size: 210px;
+  }
+
+  .outfit-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 14px;
+  }
+
+  .outfit-tile {
+    min-height: 160px;
+  }
+
+  /* game: lưới trải ngang */
+  .game-grid {
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 16px;
+  }
+
+  .game-tile {
+    min-height: 140px;
+  }
+
+  /* luyện nói & viết: thanh mục vừa chữ, không kéo dài hết màn */
+  .segmented {
+    align-self: flex-start;
+  }
+
+  .segment {
+    flex: 0 0 auto;
+    padding: 0 22px;
+  }
+
+  .empty-state {
+    padding: 48px 24px;
+  }
+
+  /* phòng thử: hai cột, lưới thỏ và bảng màu chiếm cả hàng */
+  .lab {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    align-items: start;
+  }
+
+  .lab > .card:first-child,
+  .lab > .card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .swatch-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .bunny-stage {
+    --bunny-size: 280px;
+  }
+}
+
+@media (min-width: 1280px) and (min-height: 900px) {
+  .bunny-stage {
+    --bunny-size: 340px;
+  }
 }
 
 /* ---------- hoạt ảnh ---------- */

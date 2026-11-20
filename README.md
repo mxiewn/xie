@@ -5,6 +5,8 @@ web học từ vựng ielts (mục tiêu 6.5–7.0). triết lý: từ vựng ph
 web tĩnh thuần html + css + javascript (es modules): không framework, không backend, không build step.
 spec đầy đủ ở [`docs/spec.md`](docs/spec.md), kế hoạch và tiến độ ở [`docs/plan.md`](docs/plan.md).
 
+giao diện thiết kế cho cả hai loại màn hình: điện thoại (dọc, thanh tab dưới) và máy tính (màn ngang, thanh điều hướng bên trái, nội dung chia nhiều cột).
+
 ## chạy thử trên máy
 
 es modules không chạy khi mở thẳng file `index.html` (đường dẫn `file://`), nên cần một server tĩnh nhỏ:
