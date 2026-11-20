@@ -136,11 +136,15 @@ file này để mỗi phiên làm việc mới đọc lại là biết đang ở
 
 ### chỉnh sau góp ý (giai đoạn 4)
 - **bong bóng ↔ thỏ**: bong bóng neo theo đầu thỏ (đáy khung), không neo đỉnh khung nữa → khung cao bao nhiêu cũng chỉ cách đỉnh thỏ ≈ cú nhún + đuôi (≈ 37px ở điện thoại, trước là 71px). làm quen cũng thu khoảng cách tương tự
-- **kaomoji**: xoá 28 kaomoji có dấu kết hợp (`•̀ •́ ̥ ̫…`, hay trôi lệch trên ios / android; danh sách ở `tools/lines-review.md`), bù kaomoji quen thuộc chỉ dùng ký tự an toàn, mỗi nhóm vẫn ≥ 20. `.kao` khoá hướng chữ trái → phải (`unicode-bidi: bidi-override`, để ﻌ و ٩ không bị đảo), tắt kerning / ghép chữ, `inline-block` cho cả mặt nằm trọn một khối. trong bong bóng, kaomoji xuống dòng riêng, căn giữa, to hơn chữ một chút. `tools/validate.js` báo lỗi nếu kaomoji (trong kho thoại hoặc trong code) có dấu kết hợp
+- **kaomoji**: giữ nguyên toàn bộ kaomoji gốc (kể cả loại có dấu chồng như `•̀`, theo ý bạn), có thêm vài cái mới cho đa dạng. `.kao` khoá hướng chữ trái → phải (`unicode-bidi: bidi-override`, để ﻌ و ٩ không bị đảo), tắt kerning / ghép chữ, `inline-block` cho cả mặt nằm trọn một khối. trong bong bóng, kaomoji xuống dòng riêng, căn giữa, to hơn chữ một chút
 - **desktop thẳng hàng**: lề trên / dưới của nội dung và thanh menu đều 32px. khung thỏ đứng yên (`sticky`), cao đúng một màn: chữ xie ngang mép trên khung thỏ, thẻ "hôm nay" ở chân menu ngang mép dưới, cuộn tới đâu cũng vậy
 - **thẻ "hôm nay" ở chân menu** (`js/nav-today.js`, chỉ desktop): củ cà rốt dài theo số lượt, nơ = chuỗi ngày, bông tuyết = số băng. bấm vào về trang chủ
 - **số băng**: hiện "số băng đang có: 1" (một con số), không còn kiểu 1/2 hay hai ô
 - **luật giữ chuỗi** rút còn 5 dòng ngắn
+- **mây**: thêm 3 mây ban ngày (che hờ chân mặt trời, bên trái thỏ, sát đất) và 2 mây đêm mỏng quanh trăng
+- **nắng / trăng**: dời sang cạnh phải, ngang đầu thỏ (canh theo `--bunny-size` đặt ở `.hero`), xa nút đổi chế độ ~230px trên điện thoại, không chạm bong bóng. desktop: nút đổi chế độ dời xuống chân thanh menu thành viên thuốc "sáng | tối" (đang ở trang chủ thì thỏ vẫn lật người đổi ca qua sự kiện `xie:theme-request`), khung thỏ bỏ hàng trên cho trời thoáng
+- **tên web**: nơ đứng trước "xie", sau tên là kaomoji ngẫu nhiên (`randomKao()` trong `ui.js`), đổi cái khác mỗi lần quay lại màn; kaomoji trên thẻ cà rốt ở chân menu cũng vậy
+- **đuôi cà rốt**: thanh tiến độ kết thúc bằng hình tròn (tâm đúng đầu thanh, bán kính = nửa bề dày) + tam giác nối từ hai tiếp điểm tới chóp → thân, vai tròn, chóp liền một mạch
 
 ### giai đoạn 5–8 nối vào thế nào
 ```js

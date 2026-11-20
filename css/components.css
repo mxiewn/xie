@@ -353,7 +353,9 @@
 }
 
 /* ---------- trang chủ: khung trời + thỏ ---------- */
+/* --bunny-size đặt ở .hero để cả thỏ lẫn đồ trang trí trời (nắng, trăng, mây) canh theo thỏ */
 .hero {
+  --bunny-size: 172px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -410,7 +412,19 @@
 .brand-bow svg {
   width: 34px;
   height: 26px;
-  transform: rotate(-8deg) translateY(-6px);
+  transform: rotate(-12deg) translateY(-3px);
+}
+
+/* kaomoji sau tên web: đổi ngẫu nhiên mỗi lần quay lại màn */
+.brand-kao {
+  margin-left: 8px;
+  color: var(--accent-ink);
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+.brand .brand-kao {
+  font-size: 1.05rem;
 }
 
 .greeting {
@@ -427,7 +441,6 @@
 }
 
 .bunny-stage {
-  --bunny-size: 172px;
   position: relative;
   z-index: 2;
   display: flex;
@@ -532,9 +545,16 @@
 }
 
 /* ban ngày: nắng nhẹ, mây, hoa anh đào */
+/* nắng / trăng: bên phải, ngang đầu thỏ (khung thỏ neo đáy). xa hẳn nút đổi chế độ ở góc trên,
+   không chạm bong bóng thoại (bong bóng luôn nằm trên đầu thỏ) */
+.sky-sun,
+.sky-moon {
+  top: auto;
+  right: max(10px, calc(50% - var(--bunny-size) * 0.5 - 70px));
+  bottom: calc(16px + var(--bunny-size) * 0.9);
+}
+
 .sky-sun {
-  top: 64px;
-  right: 16px;
   width: 54px;
 }
 
@@ -566,11 +586,42 @@
   animation: drift 13s ease-in-out infinite alternate;
 }
 
+/* mây nhỏ bên phải dòng chào (chừa hàng trên cho tên web + kaomoji) */
 .cloud-b {
-  top: 18px;
-  left: 44%;
-  width: 68px;
+  top: 84px;
+  left: 54%;
+  width: 60px;
   animation: drift 17s ease-in-out infinite alternate-reverse;
+}
+
+/* mây nhỏ che hờ chân mặt trời / trăng */
+.cloud-c {
+  right: max(0px, calc(50% - var(--bunny-size) * 0.5 - 92px));
+  bottom: calc(10px + var(--bunny-size) * 0.86);
+  width: 74px;
+  animation: drift 15s ease-in-out infinite alternate-reverse;
+}
+
+/* mây trôi bên trái thỏ, ngang bụng */
+.cloud-d {
+  left: max(-10px, calc(50% - var(--bunny-size) * 0.5 - 96px));
+  bottom: calc(16px + var(--bunny-size) * 0.42);
+  width: 84px;
+  animation: drift 19s ease-in-out infinite alternate;
+}
+
+/* mây nhỏ sát đất, góc trái (góc phải là cành hoa anh đào) */
+.cloud-e {
+  left: 3%;
+  bottom: 20px;
+  width: 52px;
+  opacity: 0.9;
+  animation: drift 23s ease-in-out infinite alternate-reverse;
+}
+
+/* mây đêm: mỏng, gần như trong suốt, trôi chậm quanh trăng */
+.sky-night .sky-cloud path {
+  stroke-width: 1.6;
 }
 
 .sky-sakura {
@@ -608,8 +659,6 @@
 
 /* ban đêm: trăng lưỡi liềm, sao lấp lánh, cánh hoa trong suốt */
 .sky-moon {
-  top: 62px;
-  right: 16px;
   width: 56px;
   filter: drop-shadow(0 0 10px var(--moon-glow));
 }
@@ -2116,7 +2165,7 @@ html[data-font-size="lon"] { font-size: 112.5%; }
     min-height: 440px;
   }
 
-  .bunny-stage {
+  .hero {
     --bunny-size: 210px;
   }
 
@@ -2175,9 +2224,73 @@ html[data-font-size="lon"] { font-size: 112.5%; }
   }
 
   .nav-brand .i-bow {
-    width: 36px;
-    height: 27px;
-    transform: rotate(-8deg) translateY(-7px);
+    flex: none;
+    width: 34px;
+    height: 26px;
+    transform: rotate(-12deg) translateY(-3px);
+  }
+
+  .nav-brand .brand-kao {
+    min-width: 0;
+    overflow: hidden;
+    margin-left: 6px;
+    font-size: 0.92rem;
+  }
+
+  /* nút sáng / tối ở chân menu (desktop): viên thuốc 2 nửa, nửa đang bật tô hồng */
+  .nav-theme {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    padding: 4px;
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-pill);
+    background: var(--surface-2);
+  }
+
+  .nav-theme-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: var(--tap);
+    padding: 0 10px;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 800;
+    touch-action: manipulation;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .nav-theme-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .nav-theme-btn .i-sun circle {
+    fill: var(--sun);
+  }
+
+  .nav-theme-btn .i-moon path:first-child,
+  .nav-theme-btn .i-moon .i-moon-star {
+    fill: var(--moon);
+  }
+
+  .nav-theme-btn[aria-pressed="true"] {
+    background: var(--tab-active-bg);
+    color: var(--tab-active-ink);
+  }
+
+  .nav-theme-btn:not([aria-pressed="true"]):hover {
+    color: var(--text);
   }
 
   .nav-lace {
@@ -2266,7 +2379,7 @@ html[data-font-size="lon"] { font-size: 112.5%; }
     position: relative;
     display: block;
     height: 12px;
-    margin: 2px 12px 2px 14px;
+    margin: 2px 18px 2px 14px;
     border-radius: var(--radius-pill);
     background: var(--ring-track);
   }
@@ -2280,13 +2393,22 @@ html[data-font-size="lon"] { font-size: 112.5%; }
     transition: width 0.6s var(--ease-soft);
   }
 
+  /* đuôi: tâm hình tròn trùng đầu thanh (svg rộng 22, tâm ở x = 6 → lùi vào 6px) */
   .carrot-tip {
     position: absolute;
     top: 0;
-    right: -11px;
-    width: 12px;
+    right: -16px;
+    width: 22px;
     height: 12px;
+    overflow: visible;
     fill: var(--carrot);
+  }
+
+  .carrot-tip .carrot-line {
+    fill: none;
+    stroke: var(--carrot-line);
+    stroke-width: 1.1;
+    stroke-linecap: round;
   }
 
   .carrot-leaf {
@@ -2368,12 +2490,10 @@ html[data-font-size="lon"] { font-size: 112.5%; }
     padding: 24px 28px 26px;
   }
 
-  .hero .brand {
+  /* desktop: tên web đã ở thanh menu, nút sáng / tối dời xuống chân menu →
+     khung thỏ không còn hàng trên, nắng / trăng có trời thoáng */
+  .hero-top {
     display: none;
-  }
-
-  .theme-toggle {
-    margin-left: auto;
   }
 
   .greeting {
@@ -2381,7 +2501,7 @@ html[data-font-size="lon"] { font-size: 112.5%; }
     font-size: 1.7rem;
   }
 
-  .bunny-stage {
+  .hero {
     --bunny-size: 250px;
   }
 
@@ -2472,13 +2592,13 @@ html[data-font-size="lon"] { font-size: 112.5%; }
 }
 
 @media (min-width: 1280px) {
-  .bunny-stage {
+  .hero {
     --bunny-size: 280px;
   }
 }
 
 @media (min-width: 1280px) and (min-height: 900px) {
-  .bunny-stage {
+  .hero {
     --bunny-size: 340px;
   }
 }

@@ -7,7 +7,7 @@
 //   3. kho thoại data/voice.json: json hợp lệ, đủ trường, đủ số lượng câu và kaomoji,
 //      không trùng câu, biến {…} hợp lệ, không từ cấm, tối đa 1 từ lóng, không chữ hoa,
 //      độ dài, tối đa 1 dấu chấm than, không kéo dài chữ quá 3 ký tự, tỉ lệ giọng 45/25/30,
-//      tối đa 15% câu lấy nguyên văn từ câu mẫu trong spec, kaomoji không có dấu kết hợp (dễ lệch trên điện thoại)
+//      tối đa 15% câu lấy nguyên văn từ câu mẫu trong spec
 //   4. kho mẹo data/tips.json: đủ 40 mẹo, không trùng, viết thường, không từ cấm
 //   5. cấp (đúng 9, xp tăng dần), huy hiệu (≥ 20, id không trùng, viết thường, không từ cấm), thử thách mỗi ngày
 
@@ -20,8 +20,6 @@ import {
 } from '../js/voice-core.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-// dấu kết hợp chồng lên ký tự (khối U+0300–036F và dấu malayalam) — trừ chữ việt đã ghép sẵn (NFC)
-const KAO_SHIFTY = /[\u0300-\u036f\u0d3e-\u0d4d]/u;
 const errors = [];
 const notes = [];
 
@@ -215,8 +213,6 @@ if (voice) {
     if (new Set(kao).size !== kao.length) errors.push(`${where}: kaomoji bị trùng trong nhóm`);
     for (const k of kao) {
       if (typeof k !== 'string' || !k.trim() || k !== k.trim()) errors.push(`${where}: kaomoji rỗng hoặc thừa khoảng trắng "${k}"`);
-      // dấu kết hợp (•̀ •́ ̥ ̫…) hay trôi lệch sang bên trên ios / android → mặt méo. spec: lệch thì xoá
-      if (KAO_SHIFTY.test(String(k))) errors.push(`${where}: kaomoji "${k}" có dấu kết hợp, dễ lệch trên điện thoại`);
     }
 
     const lines = Array.isArray(g.lines) ? g.lines : [];
@@ -320,14 +316,6 @@ if (tips) {
 }
 
 // ---------- 5. cấp + huy hiệu + thử thách ----------
-// kaomoji viết thẳng trong code cũng không được có dấu kết hợp
-for (const file of files) {
-  const rel = relative(root, file).split('\\').join('/');
-  if (!rel.startsWith('js/') && rel !== 'index.html') continue;
-  readFileSync(file, 'utf8').normalize('NFC').split('\n').forEach((line, i) => {
-    if (KAO_SHIFTY.test(line)) errors.push(`${rel}:${i + 1} có ký tự dấu kết hợp (kaomoji dễ lệch trên điện thoại)`);
-  });
-}
 
 {
   const { LEVELS } = await import('../js/levels.js');

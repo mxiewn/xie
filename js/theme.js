@@ -6,6 +6,8 @@ import { readRaw, writeRaw, storageKey } from './storage.js';
 
 export const THEME_MODES = ['system', 'light', 'dark', 'time'];
 export const THEME_EVENT = 'xie:theme';
+// xin đổi chế độ (vd. từ thanh menu): màn nào muốn tự làm hiệu ứng thì gọi preventDefault()
+export const THEME_REQUEST = 'xie:theme-request';
 
 const KEY = 'theme';
 const TIME_ZONE = 'Asia/Ho_Chi_Minh';

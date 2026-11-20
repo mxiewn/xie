@@ -4,8 +4,8 @@
 // thử thách hôm nay, đếm ngược kỳ thi. từ của ngày, kho output, nút "học hôm nay" vào ở giai đoạn 5.
 
 import { createBunny } from '../bunny.js';
-import { createBubble, icons, skyDecor, esc } from '../ui.js';
-import { currentTheme, toggleQuick, saigonHour, THEME_EVENT } from '../theme.js';
+import { createBubble, icons, skyDecor, esc, randomKao } from '../ui.js';
+import { currentTheme, toggleQuick, setMode, saigonHour, THEME_EVENT, THEME_REQUEST } from '../theme.js';
 import { getEquippedSkin } from '../levels.js';
 import { say, greetingNow, countTap } from '../voice.js';
 import { getState, returnGap, examDaysLeft } from '../state.js';
@@ -98,7 +98,7 @@ export function render(view) {
     <section class="hero">
       <div class="hero-sky" aria-hidden="true">${skyDecor()}</div>
       <div class="hero-top">
-        <h1 class="brand">xie <span class="brand-bow">${icons.bow}</span></h1>
+        <h1 class="brand"><span class="brand-bow">${icons.bow}</span>xie<span class="kao brand-kao" aria-hidden="true">${esc(randomKao('hero'))}</span></h1>
         <button class="icon-btn theme-toggle" type="button" data-action="theme">
           ${icons.sun}${icons.moon}
         </button>
@@ -155,14 +155,22 @@ export function render(view) {
   };
 
   let busy = false;
-  toggle.addEventListener('click', async () => {
+  const switchTheme = async (target) => {
     if (busy) return;
     busy = true;
     await bunny.flip();
-    const theme = toggleQuick();
+    let theme;
+    if (target && target !== currentTheme()) { setMode(target); theme = target; } else theme = target || toggleQuick();
     speak('doi_giao_dien', { kind: theme }, { forceLine: true });
     busy = false;
-  });
+  };
+  toggle.addEventListener('click', () => switchTheme());
+  // nút sáng / tối ở thanh menu bên trái (desktop): đang ở trang chủ thì thỏ lật người đổi ca
+  const onThemeRequest = (e) => {
+    e.preventDefault();
+    switchTheme(e.detail?.theme);
+  };
+  window.addEventListener(THEME_REQUEST, onThemeRequest);
 
   view.querySelector('.bunny-btn').addEventListener('click', () => {
     if (bunny.state !== restPose) bunny.setState(restPose);
@@ -218,6 +226,7 @@ export function render(view) {
     alive = false;
     for (const t of timers) clearTimeout(t);
     window.removeEventListener(THEME_EVENT, syncToggle);
+    window.removeEventListener(THEME_REQUEST, onThemeRequest);
     window.removeEventListener(PROGRESS_EVENT, refresh);
     bunny.destroy();
     bubble.destroy();

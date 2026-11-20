@@ -94,7 +94,7 @@ js/badges.js        26 huy hiệu (thuần, có test)
 js/progress-core.js tiến độ: schema xie:progress, ghi câu trả lời → lượt, chuỗi, xp, cấp, huy hiệu, sự kiện (thuần, có test)
 js/progress.js      tiến độ trên trình duyệt + thỏ ăn mừng (thoại, confetti hình nơ, thông báo nhỏ)
 js/progress-ui.js   mảnh giao diện: vòng lượt, thanh output, dải tuần, lịch tháng, thẻ báo băng / đứt chuỗi
-js/nav-today.js     thẻ "hôm nay" ở chân thanh menu (desktop): cà rốt theo lượt, chuỗi, số băng
+js/nav-today.js     thanh menu desktop: kaomoji ngẫu nhiên sau tên web, nút sáng | tối, thẻ "hôm nay" (cà rốt theo lượt, chuỗi, số băng)
 js/storage.js       đọc/ghi localStorage có bọc try/catch
 js/state-core.js    dữ liệu người học: schema có version, nâng cấp, chuẩn hoá, ngày giờ việt nam (thuần, có test)
 js/state.js         đọc/ghi hồ sơ trên trình duyệt, ghé thăm, xuất / nhập / xoá dữ liệu
@@ -148,7 +148,7 @@ mỗi nhóm là một tình huống. thêm câu vào `lines`, thêm kaomoji vào
 - `when` (tuỳ chọn): điều kiện, vd `{ "kind": "dark" }`, `{ "days": [0, 7] }`. nhóm có `kinds` thì mỗi loại cần ít nhất 2 câu.
 - biến dùng được: `{name}` `{streak}` `{n}` `{left}` `{word}` `{days}` `{level}` `{minutes}` `{goal}`.
 - luật viết: toàn chữ thường, tối đa 1 từ lóng, việt ≤ 14 từ, anh ≤ 12 từ, tối đa 1 dấu chấm than, không "lầy", không chê bai, không meme cũ. đọc to lên nghe phải như bạn bè nhắn tin.
-- kaomoji: mỗi nhóm ít nhất 20 cái. cái nào hiện ô vuông hoặc lệch trên điện thoại thì xoá. không dùng kaomoji có dấu chồng lên ký tự (vd. `•̀`, `•́`): dễ lệch mặt, `validate.js` sẽ báo lỗi.
+- kaomoji: mỗi nhóm ít nhất 20 cái. cái nào hiện ô vuông trên điện thoại thì xoá.
 
 ### mẹo ielts (`data/tips.json`)
 

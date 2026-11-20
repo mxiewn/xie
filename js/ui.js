@@ -24,6 +24,22 @@ export const ASCII_BUNNIES = [
   '(\\(\\\n( -.-)\no_(")(")',
 ];
 
+// kaomoji ngắn, dễ thương, đứng sau tên "xie" và trên thẻ cà rốt. mỗi lần quay lại màn đổi một cái
+export const BRAND_KAOS = [
+  '(˶ᵔ ᵕ ᵔ˶)', '₍ᐢ•ﻌ•ᐢ₎ ♡', '૮ ・ﻌ・ა', '(｡•̀ᴗ-)✧', '( ˶ˆᗜˆ˵ )', '(ᵔᴥᵔ)', '(◕ᴗ◕✿)', '(✿◠‿◠)',
+  '( ˘ᵕ˘ ) ☾', '(っ˘ڡ˘ς)', 'ʕ•ᴥ•ʔ', '(≧◡≦) ♡', '(๑ᵔ⤙ᵔ๑)', '(˶˃ ᵕ ˂˶)', '( ´ ꒳ ` )ﾉ', '(｡･ω･｡)ﾉ♡',
+  '(⸝⸝ᵕᴗᵕ⸝⸝)', '٩(ˊᗜˋ*)و', '( ˙꒳˙ )', '(｡◕‿◕｡)', 'ପ(๑•ᴗ•๑)ଓ', '(っ ᵔ◡ᵔ)っ',
+];
+
+const lastPick = {};
+// kaomoji ngẫu nhiên, không trùng lần trước của cùng một chỗ (slot)
+export function randomKao(slot = 'brand', list = BRAND_KAOS) {
+  const pool = list.filter((k) => k !== lastPick[slot]);
+  const k = pool[Math.floor(Math.random() * pool.length)];
+  lastPick[slot] = k;
+  return k;
+}
+
 export const DIVIDERS = ['୨୧', 'ʚ♡ɞ', '✧˖°', '‧₊˚✧', '❀˖°', '⋆˙⟡'];
 
 export const icons = {
@@ -133,6 +149,15 @@ export function skyDecor() {
       <svg class="sky-cloud cloud-b" viewBox="0 0 120 56" focusable="false">
         <path d="M24 48h74a17 17 0 0 0 0-34 21 21 0 0 0-39-6 16 16 0 0 0-26 10A15 15 0 0 0 24 48z"/>
       </svg>
+      <svg class="sky-cloud cloud-c" viewBox="0 0 120 56" focusable="false">
+        <path d="M24 48h74a17 17 0 0 0 0-34 21 21 0 0 0-39-6 16 16 0 0 0-26 10A15 15 0 0 0 24 48z"/>
+      </svg>
+      <svg class="sky-cloud cloud-d" viewBox="0 0 120 56" focusable="false">
+        <path d="M24 48h74a17 17 0 0 0 0-34 21 21 0 0 0-39-6 16 16 0 0 0-26 10A15 15 0 0 0 24 48z"/>
+      </svg>
+      <svg class="sky-cloud cloud-e" viewBox="0 0 120 56" focusable="false">
+        <path d="M24 48h74a17 17 0 0 0 0-34 21 21 0 0 0-39-6 16 16 0 0 0-26 10A15 15 0 0 0 24 48z"/>
+      </svg>
       <svg class="sky-sakura" viewBox="0 0 120 90" focusable="false">
         <path class="sakura-branch" d="M120 10C96 18 80 30 66 46S40 74 14 84"/>
         <path class="sakura-branch" d="M86 30c-2 8 0 16 6 22"/>
@@ -147,6 +172,12 @@ export function skyDecor() {
     <div class="deco-dark sky-night">
       <svg class="sky-moon" viewBox="0 0 80 80" focusable="false">
         <path class="moon-body" d="M52 58A22 22 0 1 1 46 17a17 17 0 1 0 6 41z"/>
+      </svg>
+      <svg class="sky-cloud cloud-c" viewBox="0 0 120 56" focusable="false">
+        <path d="M24 48h74a17 17 0 0 0 0-34 21 21 0 0 0-39-6 16 16 0 0 0-26 10A15 15 0 0 0 24 48z"/>
+      </svg>
+      <svg class="sky-cloud cloud-d" viewBox="0 0 120 56" focusable="false">
+        <path d="M24 48h74a17 17 0 0 0 0-34 21 21 0 0 0-39-6 16 16 0 0 0-26 10A15 15 0 0 0 24 48z"/>
       </svg>
       ${NIGHT_STARS.map(([x, y, px, cls]) => `
         <svg class="sky-star ${cls}" style="left:${x}%;top:${y}%;width:${px}px" viewBox="-1 -1 2 2" focusable="false">

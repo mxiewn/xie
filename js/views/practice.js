@@ -30,7 +30,7 @@ const SECTIONS = [
   {
     id: 'upgrade',
     label: 'nâng cấp câu',
-    kao: '(｡･ω･｡)✧',
+    kao: '(｡•̀ᴗ-)✧',
     title: 'xưởng nâng cấp đang mở',
     text: 'nâng cấp từ, linking words, nối câu, và 40 bẫy người việt hay dính.',
   },
