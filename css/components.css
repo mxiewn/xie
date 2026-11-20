@@ -1028,14 +1028,24 @@
   margin-top: 6px;
 }
 
+/* màn hình đang tải: phủ đúng vùng nội dung (trừ thanh tab / thanh trái), mọi thứ canh chính giữa */
 .loading {
-  display: grid;
-  place-items: center;
-  align-content: center;
-  gap: 8px;
-  min-height: 60vh;
+  position: fixed;
+  z-index: 10;
+  top: var(--safe-top);
+  right: var(--safe-right);
+  bottom: calc(var(--tab-h) + var(--safe-bottom) + 12px);
+  left: var(--safe-left);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 var(--gutter);
+  background: var(--bg);
   color: var(--text-muted);
   font-weight: 700;
+  text-align: center;
 }
 
 .loading .kao-art {
@@ -1044,7 +1054,8 @@
 }
 
 .loading-tip {
-  max-width: 40ch;
+  width: min(100%, 44ch);
+  margin: 0 auto;
   padding: 12px 16px;
   border: 1.5px dashed var(--line-strong);
   border-radius: var(--radius);
@@ -1648,6 +1659,10 @@
   .bunny-stage {
     --bunny-size: 210px;
   }
+
+  .loading {
+    bottom: calc(var(--tab-h) + var(--safe-bottom) + 26px);
+  }
 }
 
 /* ---------- desktop (≥ 900px): màn NGANG ----------
@@ -1752,6 +1767,11 @@
 
   .page-title {
     font-size: 2rem;
+  }
+
+  .loading {
+    left: var(--nav-w);
+    bottom: 0;
   }
 
   /* trang chủ: khung trời + thỏ bên trái, thẻ bên phải */
