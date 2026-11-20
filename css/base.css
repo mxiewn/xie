@@ -1,0 +1,220 @@
+/* ==========================================================
+   xie · base.css
+   reset, chữ, khung trang, lowercase, kaomoji, chuyển chế độ.
+   KHÔNG viết mã màu ở đây — chỉ dùng var(--…) từ themes.css.
+   ========================================================== */
+
+:root {
+  /* font hỗ trợ đủ tiếng việt; fallback cũng là font có dấu tiếng việt */
+  --font-title: "Mali", "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* kaomoji dùng font hệ thống, không dùng font tiêu đề/nội dung */
+  --font-kao: system-ui, "Apple Color Emoji", "Segoe UI Emoji", "Noto Sans", "Noto Sans Symbols 2", sans-serif;
+  --font-art: ui-monospace, "SF Mono", Menlo, Consolas, "Noto Sans Mono", var(--font-kao);
+
+  --radius-sm: 12px;
+  --radius: 18px;
+  --radius-lg: 26px;
+  --radius-pill: 999px;
+
+  --gutter: 16px;
+  --tab-h: 64px;
+  --tap: 44px;
+  --view-max: 720px;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+
+  --ease-soft: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-theme: 250ms;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.55;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+p,
+ul,
+ol,
+figure {
+  margin: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: var(--accent-ink);
+  text-underline-offset: 3px;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+
+/* ô nhập ≥ 16px để ios không tự zoom */
+input,
+select,
+textarea {
+  font-size: max(16px, 1rem);
+}
+
+button {
+  cursor: pointer;
+}
+
+svg {
+  flex-shrink: 0;
+}
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* ---------- lowercase ----------
+   chữ giao diện đã viết thường ngay trong source.
+   .ui là lưới an toàn; .keep-case cho vùng nội dung học
+   (câu ví dụ, câu mẫu, đề writing, ipa, danh từ riêng, chữ "I"). */
+.ui {
+  text-transform: lowercase;
+}
+
+.keep-case,
+.kao,
+.kao-art {
+  text-transform: none;
+}
+
+/* ---------- kaomoji ---------- */
+/* khoá hướng chữ trái → phải theo đúng thứ tự gõ: kaomoji có chữ ả rập (ﻌ و ٩ ڡ)
+   không bị trình duyệt đảo vị trí. tắt kerning / ghép chữ để mắt, miệng không xích lại lệch mặt.
+   inline-block: cả khuôn mặt luôn nằm trọn một khối, không bị cắt hay dồn sang một bên */
+.kao {
+  display: inline-block;
+  font-family: var(--font-kao);
+  font-weight: 400;
+  font-style: normal;
+  font-kerning: none;
+  font-variant-ligatures: none;
+  font-synthesis: none;
+  letter-spacing: 0;
+  word-spacing: 0;
+  line-height: 1.3;
+  direction: ltr;
+  unicode-bidi: bidi-override;
+  white-space: nowrap;
+  vertical-align: baseline;
+  color: inherit;
+}
+
+.kao-art {
+  direction: ltr;
+  unicode-bidi: bidi-override;
+  margin: 0;
+  font-family: var(--font-art);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.2;
+  letter-spacing: 0;
+  white-space: pre;
+  color: inherit;
+}
+
+/* ---------- tiện ích ---------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.noscript {
+  padding: 24px var(--gutter);
+  text-align: center;
+}
+
+/* ---------- chuyển chế độ sáng/tối: mờ 250ms ---------- */
+html.theme-anim,
+html.theme-anim *,
+html.theme-anim *::before,
+html.theme-anim *::after {
+  transition:
+    background-color var(--dur-theme) ease,
+    color var(--dur-theme) ease,
+    border-color var(--dur-theme) ease,
+    fill var(--dur-theme) ease,
+    stroke var(--dur-theme) ease,
+    box-shadow var(--dur-theme) ease,
+    opacity var(--dur-theme) ease !important;
+}
+
+/* ---------- tôn trọng prefers-reduced-motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

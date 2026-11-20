@@ -1,0 +1,291 @@
+/* ==========================================================
+   xie · themes.css
+   NƠI DUY NHẤT được viết mã màu (#hex, rgb, hsl).
+   Mọi file khác chỉ dùng var(--…). tools/validate.js kiểm tra luật này.
+   ========================================================== */
+
+/* ---------- chế độ sáng "tuyết" ---------- */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --theme-color: #FFFFFF;
+
+  /* nền & bề mặt: trắng tuyết, không ngà, không kem */
+  --bg: #FFFFFF;
+  --bg-soft: #FCFCFF;
+  --surface: #FFFFFF;
+  --surface-2: #FCFCFF;
+  --surface-tint: #FBE3EC;
+  --line: #F3DCE6;
+  --line-strong: #EBC4D4;
+
+  /* chữ */
+  --text: #5A3E3E;
+  --text-muted: #77575B;
+  --accent-ink: #B23F68;
+
+  /* hồng */
+  --pink: #F8C8DC;
+  --pink-soft: #FBE3EC;
+  --rose: #E57A9C;
+
+  /* nút & trạng thái */
+  --primary: #F8C8DC;
+  --primary-hover: #F4B5CE;
+  --on-primary: #5A3E3E;
+  --focus: #B23F68;
+  --ok: #2B7352;
+  --ok-soft: #E4F4EA;
+  --bad: #B3335A;
+  --bad-soft: #FDE6EC;
+
+  /* bóng: ban ngày dùng bóng đổ hồng mềm */
+  --shadow-soft: 0 6px 18px rgba(229, 122, 156, 0.16), 0 1px 3px rgba(90, 62, 62, 0.06);
+  --shadow-pop: 0 10px 28px rgba(229, 122, 156, 0.26), 0 2px 6px rgba(90, 62, 62, 0.06);
+
+  /* trang trí ban ngày: mây, nắng, hoa anh đào, gingham, ren trắng */
+  --gingham: rgba(248, 200, 220, 0.22);
+  --gingham-opacity: 1;
+  --lace: #F8C8DC;
+  --lace-hole: #FFFFFF;
+  --pearl: #FFFFFF;
+  --pearl-shade: #E8DAE4;
+  --pearl-shine: #FFFFFF;
+  --pearl-glow: 0 1px 2px rgba(90, 62, 62, 0.18);
+  --sakura: #F8C8DC;
+  --sakura-center: #E57A9C;
+  --sakura-opacity: 1;
+  --cloud: #FFFFFF;
+  --cloud-line: #F1D6E1;
+  --sun: #FFE7AD;
+  --sun-ray: #FFD98F;
+  --moon: #F6E7B0;
+  --moon-glow: rgba(246, 231, 176, 0);
+  --star: #F6E7B0;
+  --hero-top: #FBE3EC;
+  --hero-bottom: #FFFFFF;
+  --deco-pattern-opacity: 0.9;
+
+  /* thanh tab & bong bóng thoại */
+  --tabbar-bg: rgba(255, 255, 255, 0.94);
+  --tab-ink: #77575B;
+  --tab-active-bg: #FBE3EC;
+  --tab-active-ink: #B23F68;
+  --bubble-bg: #FFFFFF;
+  --bubble-line: #F8C8DC;
+  --bubble-ink: #5A3E3E;
+
+  /* thỏ ban ngày: viền hồng xám, má hồng rõ, bóng dưới chân */
+  --bunny-fur: #FFFFFF;
+  --bunny-belly: #FFF6FA;
+  --bunny-outline: #D7B3C1;
+  --bunny-inner-ear: #F8C8DC;
+  --bunny-cheek: #F5A3BF;
+  --bunny-eye: #4A3333;
+  --bunny-eye-shine: #FFFFFF;
+  --bunny-nose: #E57A9C;
+  --bunny-mouth: #8A5763;
+  --bunny-mouth-in: #D9708F;
+  --bunny-bow: #E57A9C;
+  --bunny-bow-light: #FBD3E2;
+  --bunny-bow-dark: #C85A80;
+  --bunny-star: #F6E7B0;
+  --bunny-star-line: #E2C873;
+  --bunny-shadow: rgba(229, 122, 156, 0.22);
+  --bunny-filter: none;
+
+  /* đạo cụ của thỏ */
+  --carrot: #F4A259;
+  --carrot-line: #D9823C;
+  --leaf: #8FCB9C;
+  --leaf-line: #5E9E6E;
+  --heart: #FCDCE8;
+  --heart-line: #E57A9C;
+  --heart-shine: #FFFFFF;
+  --crown: #F5CF5B;
+  --crown-line: #D6A92E;
+  --gem: #E57A9C;
+  --pen-body: #F8C8DC;
+  --pen-line: #D7A3B7;
+  --pen-wood: #F6D7B0;
+  --pen-tip: #5A3E3E;
+  --mic-head: #ECE6F3;
+  --mic-line: #A99DB8;
+  --mic-body: #E57A9C;
+  --scarf: #BFE3F5;
+  --scarf-line: #86BCD8;
+  --scarf-stripe: #FFFFFF;
+  --note: #E57A9C;
+  --zzz: #B4A0C6;
+
+  /* trang phục theo cấp (tủ đồ): ban ngày nhạt, mềm */
+  --acc-crown: #F5CF5B;
+  --acc-crown-line: #D6A92E;
+  --acc-gem: #E57A9C;
+  --acc-gem-2: #8FC3E6;
+  --acc-pearl: #FFFFFF;
+  --acc-pearl-line: #D8BFCB;
+  --acc-pearl-shine: #FFFFFF;
+  --acc-lace: #FFFFFF;
+  --acc-lace-line: #E0B4C6;
+  --acc-lace-hole: #F8C8DC;
+  --acc-sakura: #FBD3E2;
+  --acc-sakura-line: #E57A9C;
+  --acc-sakura-center: #E57A9C;
+  --acc-leaf: #8FCB9C;
+  --acc-leaf-line: #5E9E6E;
+  --acc-cape: #E6F4FB;
+  --acc-cape-line: #9CCBE3;
+  --acc-fur: #FFFFFF;
+  --acc-snow: #86BCD8;
+  --acc-moon: #F7EDC9;
+  --acc-moon-line: #E9D89E;
+  --acc-moon-opacity: 0.8;
+  --acc-moon-glow: rgba(246, 231, 176, 0.18);
+
+  /* tiến độ: vòng lượt, băng giữ chuỗi (xanh băng nhạt, ngày tuyết) */
+  --ring-track: #FBE3EC;
+  --ice-ink: #3F7FA3;
+  --ice-soft: #EAF5FB;
+  --ice-line: #9CCBE3;
+}
+
+/* ---------- chế độ tối "đêm trăng" ---------- */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --theme-color: #1E1A2B;
+
+  /* nền tím than đêm, không đen tuyền */
+  --bg: #1E1A2B;
+  --bg-soft: #231E32;
+  --surface: #2A2338;
+  --surface-2: #342B45;
+  --surface-tint: #3B2C49;
+  --line: rgba(227, 221, 240, 0.14);
+  --line-strong: rgba(227, 221, 240, 0.30);
+
+  --text: #F7F4FA;
+  --text-muted: #CBBFD9;
+  --accent-ink: #FF9EC4;
+
+  --pink: #F7B6D2;
+  --pink-soft: #3B2C49;
+  --rose: #FF9EC4;
+
+  --primary: #F7B6D2;
+  --primary-hover: #FF9EC4;
+  --on-primary: #1E1A2B;
+  --focus: #FF9EC4;
+  --ok: #8FE0B5;
+  --ok-soft: rgba(143, 224, 181, 0.14);
+  --bad: #FF9DB3;
+  --bad-soft: rgba(255, 157, 179, 0.14);
+
+  /* ban đêm KHÔNG dùng bóng đen: viền sáng mảnh + glow nhẹ */
+  --shadow-soft: 0 0 0 1px rgba(227, 221, 240, 0.10), 0 0 22px rgba(255, 158, 196, 0.07);
+  --shadow-pop: 0 0 0 1px rgba(255, 158, 196, 0.30), 0 0 26px rgba(255, 158, 196, 0.16);
+
+  /* trang trí ban đêm: trăng, sao, ren bạc, ngọc phát sáng, cánh hoa trong suốt */
+  --gingham: rgba(227, 221, 240, 0.03);
+  --gingham-opacity: 0;
+  --lace: rgba(227, 221, 240, 0.42);
+  --lace-hole: #1E1A2B;
+  --pearl: #E3DDF0;
+  --pearl-shade: #A99DB8;
+  --pearl-shine: #FFFFFF;
+  --pearl-glow: 0 0 6px rgba(227, 221, 240, 0.65);
+  --sakura: #F7B6D2;
+  --sakura-center: #FF9EC4;
+  --sakura-opacity: 0.30;
+  --cloud: rgba(227, 221, 240, 0.06);
+  --cloud-line: rgba(227, 221, 240, 0.16);
+  --sun: #F6E7B0;
+  --sun-ray: #F6E7B0;
+  --moon: #F6E7B0;
+  --moon-glow: rgba(246, 231, 176, 0.38);
+  --star: #F6E7B0;
+  --hero-top: #2A2338;
+  --hero-bottom: #1E1A2B;
+  --deco-pattern-opacity: 0.55;
+
+  --tabbar-bg: rgba(42, 35, 56, 0.94);
+  --tab-ink: #CBBFD9;
+  --tab-active-bg: #3B2C49;
+  --tab-active-ink: #FF9EC4;
+  --bubble-bg: #342B45;
+  --bubble-line: rgba(255, 158, 196, 0.45);
+  --bubble-ink: #F7F4FA;
+
+  /* thỏ ban đêm: vẫn trắng tuyết, có quầng sáng nhẹ để không thành "lỗ trắng" */
+  --bunny-fur: #FAF7FD;
+  --bunny-belly: #F3EEF8;
+  --bunny-outline: #D9CFE8;
+  --bunny-inner-ear: #F7B6D2;
+  --bunny-cheek: #FF9EC4;
+  --bunny-eye: #3B2C49;
+  --bunny-eye-shine: #FFFFFF;
+  --bunny-nose: #F58AB3;
+  --bunny-mouth: #7A5A7E;
+  --bunny-mouth-in: #E77CA5;
+  --bunny-bow: #FF9EC4;
+  --bunny-bow-light: #FFD3E5;
+  --bunny-bow-dark: #E07AA4;
+  --bunny-star: #F6E7B0;
+  --bunny-star-line: #E8D48E;
+  --bunny-shadow: rgba(255, 158, 196, 0.13);
+  --bunny-filter: drop-shadow(0 0 8px rgba(227, 221, 240, 0.30)) drop-shadow(0 0 22px rgba(255, 158, 196, 0.16));
+
+  --carrot: #F2A766;
+  --carrot-line: #D48A4C;
+  --leaf: #93CFA3;
+  --leaf-line: #6BAA7B;
+  --heart: #FFDCEA;
+  --heart-line: #F58AB3;
+  --heart-shine: #FFFFFF;
+  --crown: #F6E7B0;
+  --crown-line: #D9C27A;
+  --gem: #FF9EC4;
+  --pen-body: #F7B6D2;
+  --pen-line: #D88FB0;
+  --pen-wood: #F1D7B8;
+  --pen-tip: #3B2C49;
+  --mic-head: #E3DDF0;
+  --mic-line: #A99DB8;
+  --mic-body: #FF9EC4;
+  --scarf: #B8DDF2;
+  --scarf-line: #8CBFDB;
+  --scarf-stripe: #F7F4FA;
+  --note: #FF9EC4;
+  --zzz: #CBBFD9;
+
+  /* trang phục theo cấp: ban đêm sáng hơn, ánh bạc, trăng phát sáng */
+  --acc-crown: #F6E7B0;
+  --acc-crown-line: #D9C27A;
+  --acc-gem: #FF9EC4;
+  --acc-gem-2: #A9D6F2;
+  --acc-pearl: #EEE9F7;
+  --acc-pearl-line: #A99DB8;
+  --acc-pearl-shine: #FFFFFF;
+  --acc-lace: #E9E3F3;
+  --acc-lace-line: #A99DB8;
+  --acc-lace-hole: #B9AECB;
+  --acc-sakura: #F7B6D2;
+  --acc-sakura-line: #E07AA4;
+  --acc-sakura-center: #FF9EC4;
+  --acc-leaf: #93CFA3;
+  --acc-leaf-line: #6BAA7B;
+  --acc-cape: #CFE6F5;
+  --acc-cape-line: #8CBFDB;
+  --acc-fur: #FAF7FD;
+  --acc-snow: #6F9FC2;
+  --acc-moon: #F6E7B0;
+  --acc-moon-line: #E8D48E;
+  --acc-moon-opacity: 1;
+  --acc-moon-glow: rgba(246, 231, 176, 0.42);
+
+  /* tiến độ: vòng lượt, băng giữ chuỗi (băng ánh bạc trên nền đêm) */
+  --ring-track: rgba(227, 221, 240, 0.12);
+  --ice-ink: #A9D6F2;
+  --ice-soft: rgba(169, 214, 242, 0.12);
+  --ice-line: rgba(169, 214, 242, 0.42);
+}
