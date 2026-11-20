@@ -180,7 +180,8 @@ export function createBubble() {
       const k = document.createElement('span');
       k.className = 'kao';
       k.textContent = kao;
-      text.append(' ', k);
+      if (line) text.append(' ');
+      text.append(k);
     }
     node.hidden = false;
     node.classList.remove('is-shown');

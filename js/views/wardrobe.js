@@ -5,6 +5,7 @@
 import { pageHead, createBubble, icons, esc } from '../ui.js';
 import { createBunny } from '../bunny.js';
 import { SKINS, currentLevel, levelInfo, isSkinUnlocked, getEquippedSkin, equipSkin } from '../levels.js';
+import { say } from '../voice.js';
 
 export function render(view) {
   const level = currentLevel();
@@ -106,7 +107,9 @@ export function render(view) {
       model.setState('dance');
       clearTimeout(danceTimer);
       danceTimer = setTimeout(() => model.setState('happy'), 1400);
-      bubble.say('saved. safe and sound', '(•ᴗ•)♡');
+      say('da_luu', { kind: 'saved' }, { forceLine: true }).then((line) => {
+        if (line && model.node.isConnected) bubble.say(line.text || '', line.kao);
+      });
       sync();
     }
   });

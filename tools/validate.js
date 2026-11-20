@@ -1,14 +1,22 @@
 #!/usr/bin/env node
 // xie · tools/validate.js
 // chạy: node tools/validate.js
-// giai đoạn 1 kiểm tra:
+// kiểm tra:
 //   1. mã màu (#hex, rgb, hsl) chỉ được nằm trong css/themes.css
 //   2. từng cặp màu chữ/nền đạt WCAG AA ở CẢ HAI chế độ
-// các giai đoạn sau sẽ thêm: json, thoại, kaomoji, lowercase…
+//   3. kho thoại data/voice.json: json hợp lệ, đủ trường, đủ số lượng câu và kaomoji,
+//      không trùng câu, biến {…} hợp lệ, không từ cấm, tối đa 1 từ lóng, không chữ hoa,
+//      độ dài, tối đa 1 dấu chấm than, không kéo dài chữ quá 3 ký tự, tỉ lệ giọng 45/25/30,
+//      tối đa 15% câu lấy nguyên văn từ câu mẫu trong spec
+//   4. kho mẹo data/tips.json: đủ 40 mẹo, không trùng, viết thường, không từ cấm
 
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, extname, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import {
+  VARIABLES, FREQUENT_GROUPS, GREETING_GROUPS, MIN_LINES_FREQUENT, MIN_LINES_GREETING, MIN_LINES, MIN_KAOMOJI, RECENT_LIMIT,
+  TONES, TONE_TARGET, WHEN_KEYS, lineProblems, variablesIn, bannedFound, normalize,
+} from '../js/voice-core.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const errors = [];
@@ -151,6 +159,150 @@ for (const [name, selector] of [['sáng', '\\[data-theme="light"\\]'], ['tối',
     if (ratio < min) errors.push(`chế độ ${name}: ${fgVar} trên ${bgVar} = ${ratio.toFixed(2)}:1, cần ≥ ${min}:1`);
   }
   notes.push(`chế độ ${name}: ${PAIRS.length} cặp màu, thấp nhất ${worst.toFixed(2)}:1`);
+}
+
+// ---------- 3. kho thoại ----------
+function readJson(rel) {
+  try {
+    return JSON.parse(readFileSync(join(root, rel), 'utf8'));
+  } catch (err) {
+    errors.push(`${rel}: json không hợp lệ hoặc không đọc được (${err.message})`);
+    return null;
+  }
+}
+
+const cleanForCompare = (s) => normalize(s).replace(/[.?!…\s]+$/u, '').trim();
+
+function specSamples() {
+  try {
+    const spec = readFileSync(join(root, 'docs/spec.md'), 'utf8');
+    return new Set([...spec.matchAll(/^- "(.+)"\s*$/gm)].map((m) => cleanForCompare(m[1])));
+  } catch {
+    return new Set();
+  }
+}
+
+const voice = readJson('data/voice.json');
+if (voice) {
+  const groups = Object.entries(voice).filter(([key]) => !key.startsWith('_'));
+  const allTexts = new Map();
+  const toneCount = Object.fromEntries(TONES.map((t) => [t, 0]));
+  const samples = specSamples();
+  let total = 0;
+  let verbatim = 0;
+  let kaoTotal = 0;
+
+  for (const [id, g] of groups) {
+    const where = `voice.json › ${id}`;
+    if (!/^[a-z0-9_]+$/.test(id)) errors.push(`${where}: tên nhóm phải là snake_case viết thường`);
+    if (!g.label || g.label !== g.label.toLowerCase()) errors.push(`${where}: thiếu "label" viết thường`);
+    if (g.density !== undefined && !(g.density > 0 && g.density <= 1)) errors.push(`${where}: "density" phải trong (0, 1]`);
+    for (const key of Object.keys(g.conditions || {})) {
+      if (!WHEN_KEYS.includes(key)) errors.push(`${where}: điều kiện lạ "${key}"`);
+    }
+
+    const kao = Array.isArray(g.kaomoji) ? g.kaomoji : [];
+    kaoTotal += kao.length;
+    if (kao.length < MIN_KAOMOJI) errors.push(`${where}: có ${kao.length} kaomoji, cần ít nhất ${MIN_KAOMOJI}`);
+    if (new Set(kao).size !== kao.length) errors.push(`${where}: kaomoji bị trùng trong nhóm`);
+    for (const k of kao) {
+      if (typeof k !== 'string' || !k.trim() || k !== k.trim()) errors.push(`${where}: kaomoji rỗng hoặc thừa khoảng trắng "${k}"`);
+    }
+
+    const lines = Array.isArray(g.lines) ? g.lines : [];
+    const min = FREQUENT_GROUPS.includes(id) ? MIN_LINES_FREQUENT : GREETING_GROUPS.includes(id) ? MIN_LINES_GREETING : MIN_LINES;
+    if (lines.length < min) errors.push(`${where}: có ${lines.length} câu, cần ít nhất ${min}`);
+    if (FREQUENT_GROUPS.includes(id) || GREETING_GROUPS.includes(id)) {
+      const plain = lines.filter((l) => !variablesIn(l.text || '').length && !l.when).length;
+      if (plain <= RECENT_LIMIT) errors.push(`${where}: chỉ ${plain} câu không cần biến/điều kiện, cần > ${RECENT_LIMIT} để chống lặp khi chưa có dữ liệu`);
+    }
+
+    const kinds = g.kinds || null;
+    const perKind = {};
+    lines.forEach((line, i) => {
+      const at = `${where} › câu ${i + 1}`;
+      if (!line || typeof line.text !== 'string') { errors.push(`${at}: thiếu "text"`); return; }
+      if (!TONES.includes(line.tone)) errors.push(`${at}: "tone" phải là ${TONES.join(' / ')}`);
+      if (!(line.cringe === 1 || line.cringe === 2)) errors.push(`${at}: "cringe" phải là 1 hoặc 2 (câu ≥ 3 bị loại)`);
+      if (line.join && !['opener', 'tail', 'both'].includes(line.join)) errors.push(`${at}: "join" phải là opener / tail / both`);
+      for (const key of Object.keys(line.when || {})) {
+        if (!WHEN_KEYS.includes(key)) errors.push(`${at}: điều kiện lạ "${key}"`);
+      }
+      const k = line.when?.kind;
+      if (k !== undefined) {
+        for (const one of [].concat(k)) {
+          if (!kinds || !kinds.includes(one)) errors.push(`${at}: kind "${one}" không có trong "kinds" của nhóm`);
+          perKind[one] = (perKind[one] || 0) + 1;
+        }
+      }
+      for (const problem of lineProblems(line.text, line.tone)) errors.push(`${at} "${line.text}": ${problem}`);
+      const key = cleanForCompare(line.text);
+      if (allTexts.has(key)) errors.push(`${at}: trùng câu với ${allTexts.get(key)} "${line.text}"`);
+      else allTexts.set(key, `${id} › câu ${i + 1}`);
+      if (TONES.includes(line.tone)) toneCount[line.tone] += 1;
+      if (samples.has(key)) verbatim += 1;
+      total += 1;
+    });
+    if (kinds) {
+      for (const one of kinds) {
+        if ((perKind[one] || 0) < 2) errors.push(`${where}: kind "${one}" có ${perKind[one] || 0} câu, cần ít nhất 2`);
+      }
+    }
+  }
+
+  const greetTotal = GREETING_GROUPS.reduce((sum, gid) => sum + (voice[gid]?.lines?.length || 0), 0);
+  if (greetTotal < MIN_LINES_FREQUENT) errors.push(`voice.json: 3 nhóm chào có tổng ${greetTotal} câu, cần ít nhất ${MIN_LINES_FREQUENT}`);
+  for (const gid of [...FREQUENT_GROUPS, ...GREETING_GROUPS]) {
+    if (!voice[gid]) errors.push(`voice.json: thiếu nhóm bắt buộc "${gid}"`);
+  }
+
+  // mảnh ghép
+  const frags = voice._fragments || {};
+  for (const type of ['openers', 'tails']) {
+    const list = frags[type] || [];
+    if (list.length < 6) errors.push(`voice.json › _fragments.${type}: cần ít nhất 6 mảnh, đang có ${list.length}`);
+    list.forEach((f, i) => {
+      const at = `voice.json › _fragments.${type} ${i + 1}`;
+      if (!f || typeof f.text !== 'string') { errors.push(`${at}: thiếu "text"`); return; }
+      for (const problem of lineProblems(f.text, 'mix')) errors.push(`${at} "${f.text}": ${problem}`);
+      for (const gid of f.groups || []) {
+        if (!voice[gid]) errors.push(`${at}: nhóm "${gid}" không tồn tại`);
+      }
+      if (!(f.groups || []).length) errors.push(`${at}: thiếu "groups"`);
+    });
+  }
+
+  // tỉ lệ giọng: ~45% việt có chút genz, ~25% việt ấm áp, ~30% có tiếng anh (lệch tối đa 7 điểm)
+  const ratio = TONES.map((t) => `${t} ${(toneCount[t] / Math.max(total, 1) * 100).toFixed(0)}%`).join(' · ');
+  for (const t of TONES) {
+    const share = toneCount[t] / Math.max(total, 1);
+    if (Math.abs(share - TONE_TARGET[t]) > 0.07) errors.push(`voice.json: tỉ lệ "${t}" là ${(share * 100).toFixed(0)}%, mục tiêu ${TONE_TARGET[t] * 100}% (±7)`);
+  }
+  const verbatimShare = verbatim / Math.max(total, 1);
+  if (verbatimShare > 0.15) errors.push(`voice.json: ${verbatim} câu lấy nguyên văn từ mẫu (${(verbatimShare * 100).toFixed(0)}%), tối đa 15%`);
+  notes.push(`kho thoại: ${groups.length} nhóm, ${total} câu, ${kaoTotal} kaomoji · ${ratio} · ${verbatim} câu nguyên văn từ mẫu (${(verbatimShare * 100).toFixed(1)}%)`);
+  notes.push(`biến hỗ trợ: ${VARIABLES.map((v) => `{${v}}`).join(' ')}`);
+}
+
+// ---------- 4. kho mẹo ielts ----------
+const tips = readJson('data/tips.json');
+if (tips) {
+  const list = Array.isArray(tips.tips) ? tips.tips : [];
+  if (list.length < 40) errors.push(`tips.json: có ${list.length} mẹo, cần ít nhất 40`);
+  const seenTips = new Set();
+  list.forEach((tip, i) => {
+    const at = `tips.json › mẹo ${i + 1}`;
+    const text = tip?.text;
+    if (typeof text !== 'string' || !text.trim()) { errors.push(`${at}: thiếu "text"`); return; }
+    if (text !== text.toLowerCase()) errors.push(`${at}: có chữ hoa`);
+    if (text.length > 170) errors.push(`${at}: dài ${text.length} ký tự (tối đa 170)`);
+    const banned = bannedFound(text);
+    if (banned.length) errors.push(`${at}: từ cấm ${banned.join(', ')}`);
+    const key = cleanForCompare(text);
+    if (seenTips.has(key)) errors.push(`${at}: trùng mẹo`);
+    seenTips.add(key);
+  });
+  notes.push(`kho mẹo: ${list.length} mẹo`);
 }
 
 // ---------- kết quả ----------

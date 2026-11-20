@@ -28,7 +28,7 @@ file này để mỗi phiên làm việc mới đọc lại là biết đang ở
 ## các giai đoạn (spec mục 16)
 
 - [x] **1. khung + điều hướng + coquette + font + thỏ + lowercase** (kèm 2 chế độ sáng/tối của mục 3b)
-- [ ] 2. hệ thống giọng nói, thoại, kaomoji (kèm duyệt chống cringe → `tools/lines-review.md`)
+- [x] **2. hệ thống giọng nói, thoại, kaomoji** (kèm duyệt chống cringe → `tools/lines-review.md`)
 - [ ] 3. onboarding + lưu trữ (state đầy đủ, số version schema, nâng cấp)
 - [ ] 4. mục tiêu 50 lượt + streak (hàm thuần + test)
 - [ ] 5. từ vựng + srs + kho từ output
@@ -74,9 +74,20 @@ file này để mỗi phiên làm việc mới đọc lại là biết đang ở
 - desktop: trang chủ (khung trời trái, thẻ phải), tủ đồ (người mẫu trái, lưới đồ phải), tab tui (2 cột), game (lưới trải ngang), phòng thử (2 cột)
 - đã kiểm tra 375, 414 (điện thoại), 844×390 (điện thoại xoay ngang), 768, 820 (máy tính bảng), 1024, 1280, 1920 (desktop): không cuộn ngang, thanh tab/thanh trái không che nội dung
 
+## giai đoạn 2: giọng nói, thoại, kaomoji
+
+- `js/voice-core.js` (thuần, có test): chọn câu theo nhóm + điều kiện (giờ, streak, ngày thi, số phút…), ghép mảnh [mở đầu] + [thân] + [đuôi tiếng anh] chỉ khi câu ghép vẫn đạt luật, nhớ 15 câu gần nhất mỗi nhóm, ưu tiên câu chưa hiện trong 7 ngày, không lặp 3 kaomoji gần nhất, mật độ thoại (đúng ≈ 1/3, sự kiện lớn luôn nói) × cài đặt nói nhiều / vừa / ít
+- `js/voice.js`: tải kho khi cần, lưu lịch sử (`xie:voice`), cài đặt (`xie:talk`), số lần chạm thỏ (`xie:taps`)
+- `data/voice.json`: 31 nhóm, 644 câu, 681 kaomoji. tỉ lệ genz 40% · ấm áp 26% · tiếng anh 34%. 11% câu chép nguyên mẫu (giới hạn 15%)
+- **quyết định**: "chào" (nhóm hay hiện) chia 3 nhóm theo giờ, cộng lại ≥ 40 câu, mỗi nhóm ≥ 20 câu; nhóm thường ≥ 16 câu (spec ghi 15, cần 16 để thật sự không lặp 15 câu gần nhất)
+- duyệt chống cringe: viết 1.208 câu nháp, giữ 644, loại 564 (lý do từng câu ở `tools/lines-review.md`)
+- `data/tips.json`: 44 mẹo ielts, hiện ở màn hình đang tải
+- đã gắn vào web: lời chào theo giờ, chạm thỏ (nhiều fun fact từ vựng), đổi giao diện, lưu đồ trong tủ, trang lỗi, màn hình đang tải + mẹo. tab tui có cài đặt **thỏ nói**. phòng thử có **nghe thử thoại** (gọi 100 lần để tự kiểm tra)
+- các nhóm còn lại (đúng, sai, combo, streak, mốc, freeze, lên level, nhắc học…) đã có thoại, sẽ được gọi khi các giai đoạn 3–8 làm ra tính năng tương ứng
+- test: `npm test` → 90 test qua (100 lần mỗi nhóm/mỗi loại không lặp 15 câu gần nhất, câu ghép đạt luật, mật độ, giờ chào, biến tên)
+
 ## còn để giai đoạn sau
 
 - kiểm tra trên **ios safari và chrome android thật** (kaomoji nào hiện ô vuông thì xoá): container chỉ có chromium linux, chưa thử được → làm ở giai đoạn 10
-- thoại hiện đang là vài câu tạm trong `js/views/home.js`; giai đoạn 2 chuyển sang `data/voice.json`
-- `tools/validate.js` sẽ thêm kiểm tra json, thoại, kaomoji, chữ thường ở giai đoạn 2
+- `{name}` chưa có cho tới khi làm onboarding (giai đoạn 3); hiện các câu cần tên tự được bỏ qua
 - `css/games.css` tạo ở giai đoạn 7

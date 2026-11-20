@@ -2,7 +2,8 @@
 // điều hướng bằng hash (#/home, #/vocab…) để chạy được trên github pages ở đường dẫn con
 // mà không cần cấu hình server. mỗi màn là một module trong js/views/, chỉ tải khi mở.
 
-import { emptyState, ASCII_BUNNIES } from './ui.js';
+import { emptyState, ASCII_BUNNIES, esc } from './ui.js';
+import { say, randomTip } from './voice.js';
 
 const ROUTES = {
   home: { title: 'trang chủ', load: () => import('./views/home.js') },
@@ -41,6 +42,7 @@ function markTabs(nav, name) {
   }
 }
 
+// lỗi: câu thoại nhóm "trang thái / lỗi" (có câu dự phòng nếu chưa tải được kho thoại)
 function renderError(view) {
   view.innerHTML = emptyState({
     art: ASCII_BUNNIES[1],
@@ -50,6 +52,28 @@ function renderError(view) {
     action: '<button class="btn btn-primary" type="button" data-action="reload">thử lại</button>',
   });
   view.querySelector('[data-action="reload"]')?.addEventListener('click', () => window.location.reload());
+  say('trang_thai', { kind: 'error' }, { forceLine: true }).then((line) => {
+    const title = view.querySelector('.empty-title');
+    if (!line?.text || !title) return;
+    title.textContent = `${line.text} `;
+    const k = document.createElement('span');
+    k.className = 'kao';
+    k.textContent = line.kao;
+    title.append(k);
+    view.querySelector('.empty-text')?.remove();
+  });
+}
+
+// màn hình đang tải (chỉ hiện khi tải lâu): thoại "đang tải" + một mẹo ielts
+async function renderLoading(view, isCurrent) {
+  const [line, tip] = await Promise.all([say('trang_thai', { kind: 'loading' }, { forceLine: true }), randomTip()]);
+  if (!isCurrent()) return;
+  view.innerHTML = `
+    <div class="loading">
+      <pre class="kao-art" aria-hidden="true">${esc(ASCII_BUNNIES[0])}</pre>
+      <p>${esc(line?.text || 'đang tải…')} <span class="kao">${esc(line?.kao || '')}</span></p>
+      ${tip ? `<p class="loading-tip"><span class="loading-tip-label">mẹo ielts</span>${esc(tip)}</p>` : ''}
+    </div>`;
 }
 
 export function initRouter({ view, nav }) {
@@ -77,15 +101,18 @@ export function initRouter({ view, nav }) {
     document.title = name === DEFAULT_ROUTE ? 'xie' : `${route.title} · xie`;
 
     let mod;
+    const slow = setTimeout(() => renderLoading(view, () => myToken === token && !mod), 300);
     try {
       mod = await route.load();
     } catch (err) {
       console.error(err);
+      clearTimeout(slow);
       if (myToken !== token) return;
       runCleanup();
       renderError(view);
       return;
     }
+    clearTimeout(slow);
     if (myToken !== token) return;
 
     runCleanup();

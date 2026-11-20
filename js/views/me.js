@@ -1,11 +1,12 @@
 // xie · views/me.js — tab tui
-// hiện có: lối vào tủ đồ của thỏ, cài đặt giao diện (4 chế độ), lối vào phòng thử.
+// hiện có: lối vào tủ đồ của thỏ, cài đặt giao diện (4 chế độ), thỏ nói nhiều / vừa / ít, lối vào phòng thử.
 // thống kê, sổ lỗi, câu của tui, cài đặt đầy đủ làm ở các giai đoạn sau.
 
 import { pageHead, icons, esc } from '../ui.js';
 import { getMode, setMode, THEME_EVENT } from '../theme.js';
 import { createBunny } from '../bunny.js';
 import { currentLevel, levelInfo, getEquippedSkin, skinInfo } from '../levels.js';
+import { TALK_LEVELS, getTalk, setTalk } from '../voice.js';
 
 const MODES = [
   { id: 'system', label: 'theo máy', desc: 'đi theo chế độ sáng/tối của điện thoại' },
@@ -45,10 +46,25 @@ export function render(view) {
         </div>
       </section>
 
+      <section class="card talk-card">
+        <h2 class="card-title" id="talk-title"><span class="title-bow">${icons.bow}</span>thỏ nói</h2>
+        <div class="choice-list" role="radiogroup" aria-labelledby="talk-title">
+          ${TALK_LEVELS.map((l) => `
+            <label class="choice">
+              <input type="radio" name="talk" value="${l.id}">
+              <span class="choice-mark" aria-hidden="true"></span>
+              <span class="choice-text">
+                <span class="choice-label">${l.label}${l.id === 'vua' ? ' <span class="tag">mặc định</span>' : ''}</span>
+                <span class="choice-desc">${l.desc}</span>
+              </span>
+            </label>`).join('')}
+        </div>
+      </section>
+
       <a class="card card-link" href="#/lab">
         <span class="card-link-text">
           <span class="card-title">phòng thử của thỏ</span>
-          <span class="card-text">xem đủ 10 dáng thỏ, font tiếng việt, kaomoji và bảng màu</span>
+          <span class="card-text">xem 10 dáng thỏ, nghe thử thoại, font tiếng việt, kaomoji và bảng màu</span>
         </span>
         ${icons.chevron}
       </a>
@@ -67,6 +83,11 @@ export function render(view) {
 
   for (const r of radios) {
     r.addEventListener('change', () => { if (r.checked) setMode(r.value); });
+  }
+
+  for (const r of view.querySelectorAll('input[name="talk"]')) {
+    r.checked = r.value === getTalk();
+    r.addEventListener('change', () => { if (r.checked) setTalk(r.value); });
   }
 
   window.addEventListener(THEME_EVENT, sync);

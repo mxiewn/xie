@@ -1,0 +1,4710 @@
+{
+ "_about": "kho thoại của thỏ xie. luật viết: spec mục 4–5. thêm câu xong nhớ chạy node tools/validate.js",
+ "_fragments": {
+  "openers": [
+   {
+    "text": "ê {name},",
+    "groups": [
+     "dung",
+     "sai",
+     "nhac_hoc",
+     "chao_sang",
+     "chao_trua_chieu",
+     "chao_toi_khuya",
+     "cham_tho"
+    ]
+   },
+   {
+    "text": "khoan,",
+    "groups": [
+     "sai",
+     "nhac_hoc",
+     "cham_tho"
+    ]
+   },
+   {
+    "text": "ủa,",
+    "groups": [
+     "cham_tho",
+     "nhac_hoc",
+     "chao_trua_chieu"
+    ]
+   },
+   {
+    "text": "nè,",
+    "groups": [
+     "dung",
+     "nhac_hoc",
+     "chao_sang",
+     "chao_trua_chieu",
+     "chao_toi_khuya"
+    ]
+   },
+   {
+    "text": "nghe nè,",
+    "groups": [
+     "sai",
+     "nhac_hoc",
+     "chao_toi_khuya"
+    ]
+   },
+   {
+    "text": "à,",
+    "groups": [
+     "sai",
+     "chao_sang",
+     "cham_tho"
+    ]
+   },
+   {
+    "text": "ok,",
+    "groups": [
+     "dung",
+     "sai",
+     "nhac_hoc"
+    ]
+   }
+  ],
+  "tails": [
+   {
+    "text": "no cap.",
+    "groups": [
+     "dung",
+     "combo",
+     "diem_tuyet_doi",
+     "streak_giu",
+     "tu_output"
+    ]
+   },
+   {
+    "text": "we move.",
+    "groups": [
+     "dung",
+     "sai",
+     "combo",
+     "xong_muc_tieu",
+     "streak_giu"
+    ]
+   },
+   {
+    "text": "noted.",
+    "groups": [
+     "dung",
+     "sai",
+     "tu_output"
+    ]
+   },
+   {
+    "text": "facts.",
+    "groups": [
+     "dung",
+     "diem_tuyet_doi",
+     "tu_output"
+    ]
+   },
+   {
+    "text": "just saying.",
+    "groups": [
+     "dung",
+     "combo",
+     "xong_muc_tieu"
+    ]
+   },
+   {
+    "text": "trust me.",
+    "groups": [
+     "sai",
+     "streak_giu",
+     "xong_muc_tieu"
+    ]
+   }
+  ]
+ },
+ "onboarding": {
+  "label": "chào mở đầu / onboarding",
+  "kinds": [
+   "hello",
+   "named",
+   "done"
+  ],
+  "kaomoji": [
+   "(˶ᵔ ᵕ ᵔ˶)ﾉ",
+   "₍ᐢ•ﻌ•ᐢ₎ ?",
+   "( ˶ˆᗜˆ˵ )",
+   "૮ ・ﻌ・ა ?",
+   "(◍•ᴗ•◍)ゝ",
+   "ヾ(・ω・*)ノ",
+   "( ´ ꒳ ` )ﾉ♡",
+   "(｡•̀ᴗ-)✧",
+   "(｡･ω･｡)ﾉ♡",
+   "( ˊᵕˋ )ﾉ",
+   "(っ ᵔ◡ᵔ)っ",
+   "ʕ•ᴥ•ʔﾉ",
+   "(✿◠‿◠)",
+   "(｡◕‿◕｡)",
+   "(ᵔᴥᵔ)",
+   "(˶ᵔ ᵕ ᵔ˶)",
+   "₍ᐢ•ﻌ•ᐢ₎ ♡",
+   "(◍•ᴗ•◍)",
+   "٩(｡•́‿•̀｡)۶",
+   "(*^▽^*)",
+   "(◠‿◠✿)",
+   "( ´ ▽ ` )ﾉ"
+  ],
+  "lines": [
+   {
+    "text": "hii, tui là thỏ của xie. bạn tên gì?",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "hello"
+    }
+   },
+   {
+    "text": "chào bạn, tui là thỏ. cho tui biết tên bạn nha",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "hello"
+    }
+   },
+   {
+    "text": "tui là thỏ, chuyên gia cà rốt và từ vựng. bạn là ai?",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "hello"
+    }
+   },
+   {
+    "text": "hi, i'm the bunny. what should i call you?",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "hello"
+    }
+   },
+   {
+    "text": "nhập tên vô đây, tui hứa không đặt biệt danh kì cục",
+    "tone": "genz",
+    "cringe": 2,
+    "when": {
+     "kind": "hello"
+    }
+   },
+   {
+    "text": "mình làm quen trước đã nha. bạn tên gì nè?",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "hello"
+    }
+   },
+   {
+    "text": "{name}. tên đẹp, tui nhớ rồi",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "named"
+    }
+   },
+   {
+    "text": "rất vui được gặp {name}. mình bắt đầu nhẹ nhàng thôi",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "named"
+    }
+   },
+   {
+    "text": "nice to meet you, {name}. let's set things up",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "named"
+    }
+   },
+   {
+    "text": "{name} nghe sang ghê, hợp đi thi ielts lắm",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "named"
+    }
+   },
+   {
+    "text": "{name}, noted. the bunny never forgets a name",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "named"
+    }
+   },
+   {
+    "text": "welcome to your ielts era, {name}",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "done"
+    }
+   },
+   {
+    "text": "setup xong. gét gô",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "done"
+    }
+   },
+   {
+    "text": "xong rồi đó. từ giờ mỗi ngày mình học một chút nha",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "done"
+    }
+   },
+   {
+    "text": "cài đặt xong, giờ tới phần vui nhất là học",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "done"
+    }
+   },
+   {
+    "text": "all set. your vocabulary glow-up starts today",
+    "tone": "en",
+    "cringe": 2,
+    "when": {
+     "kind": "done"
+    }
+   },
+   {
+    "text": "tui sẵn sàng rồi, bắt đầu từ chữ đầu tiên nha",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "done"
+    }
+   },
+   {
+    "text": "ok xong khâu giấy tờ, vào học thôi",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "done"
+    }
+   }
+  ]
+ },
+ "chao_sang": {
+  "label": "chào sáng",
+  "conditions": {
+   "hour": [
+    5,
+    11
+   ]
+  },
+  "kaomoji": [
+   "(˶ᵔ ᵕ ᵔ˶)☀︎",
+   "₍ᐢ. .ᐢ₎ ♡",
+   "૮ ˶ᵔ ᵕ ᵔ˶ ა",
+   "(っ˘ω˘ς )☕",
+   "⸜(｡˃ ᵕ ˂ )⸝♡",
+   "ヾ(˶ᵔ ᗜ ᵔ˶)ﾉ",
+   "(*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ",
+   "( ˘▽˘)っ🍵",
+   "(๑˃̵ᴗ˂̵)و",
+   "(◕ᴗ◕✿)",
+   "✿◕ ‿ ◕✿",
+   "(*^▽^*)",
+   "(◠‿◠✿)",
+   "٩(｡•́‿•̀｡)۶",
+   "(⑅˘꒳˘)",
+   "(˶ᵔ ᵕ ᵔ˶)",
+   "₍ᐢ•ﻌ•ᐢ₎ ♡",
+   "( ˶ˆᗜˆ˵ )",
+   "(◍•ᴗ•◍)",
+   "(｡◕‿◕｡)",
+   "(✿◠‿◠)",
+   "(ᵔᴥᵔ)"
+  ],
+  "lines": [
+   {
+    "text": "dậy sớm vậy, chắc hôm nay muốn học khét lắm đây",
+    "tone": "genz",
+    "cringe": 1,
+    "join": "opener"
+   },
+   {
+    "text": "chào buổi sáng. não đang tươi, học vài từ là vừa",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "good morning. your brain is fresh, let's use it",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "rise and grind? nah. rise and review",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "sáng nay thỏ ăn cà rốt rồi, tới lượt bạn ăn từ vựng",
+    "tone": "genz",
+    "cringe": 1,
+    "join": "opener"
+   },
+   {
+    "text": "buổi sáng là lúc nhớ từ tốt, mình tranh thủ nha",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "cà phê một ly, từ vựng năm từ, vậy là ổn áp",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "morning. the words are awake, are you?",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "mới sáng ra đã ghé, tui thấy vui ghê",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "sáng sớm mà mở xie, đúng là chuẩn bài",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "early bird gets the vocabulary. that's how it works",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "ăn sáng chưa? học xong mấy từ rồi ăn cũng được",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "đánh răng xong rồi thì luyện thêm cái lưỡi bằng tiếng anh",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "coffee first, then the words. deal?",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "sáng nay trời đẹp, hợp ôn từ ghê",
+    "tone": "genz",
+    "cringe": 2
+   },
+   {
+    "text": "một ngày mới, thêm vài từ mới. nghe cũng hay đó",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "good morning. today's plan: words, then more words",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "dậy rồi thì mở mắt to ra, từ mới tới kìa",
+    "tone": "genz",
+    "cringe": 1,
+    "join": "opener"
+   },
+   {
+    "text": "sáng rồi {name}. vài từ vựng thay cà phê hông?",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "morning, {name}. the bunny saved you a word",
+    "tone": "en",
+    "cringe": 1
+   }
+  ]
+ },
+ "chao_trua_chieu": {
+  "label": "chào trưa / chiều",
+  "conditions": {
+   "hour": [
+    11,
+    18
+   ]
+  },
+  "kaomoji": [
+   "( ´ ▽ ` )ﾉ",
+   "(｡･ω･｡)ﾉ♡",
+   "૮ ・ﻌ・ა ♪",
+   "(◍•ᴗ•◍)✧",
+   "(˶˃ ᵕ ˂˶) 🍓",
+   "( ◜‿◝ )♡",
+   "(๑•ᴗ•๑)♡",
+   "(っ˘ڡ˘ς)🍰",
+   "(｡♥‿♥｡)",
+   "(◡‿◡✿)",
+   "(´꒳`)ﾉ",
+   "(ɔ◔‿◔)ɔ ♥",
+   "(っ´▽`)っ",
+   "(｡•ᴗ•｡)♡",
+   "(˶ᵔ ᵕ ᵔ˶)",
+   "₍ᐢ•ﻌ•ᐢ₎ ♡",
+   "( ˶ˆᗜˆ˵ )",
+   "(◍•ᴗ•◍)",
+   "(｡◕‿◕｡)",
+   "(✿◠‿◠)",
+   "(ᵔᴥᵔ)",
+   "٩(｡•́‿•̀｡)۶"
+  ],
+  "lines": [
+   {
+    "text": "chiều buồn ngủ hả. một ván game là tỉnh",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "afternoon slump? we fight it with vocabulary",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "ủa alo, đúng giờ học luôn nè",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "nghỉ trưa xong rồi, mình học nhẹ vài phút nha",
+    "tone": "warm",
+    "cringe": 1,
+    "join": "opener"
+   },
+   {
+    "text": "ăn trưa no rồi thì nạp thêm chút từ vựng",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "lunch break plus five words. that's balance",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "chiều nay học một chút thôi cũng được, đều đặn là quý",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "cơn buồn ngủ hai giờ chiều sợ nhất là flashcard",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "the afternoon is long. a few words won't hurt",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "trưa nắng thì ngồi trong nhà ôn từ cho mát",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "giữa ngày bận rộn mà vẫn ghé, tui quý lắm",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "chiều rồi, cà rốt của tui cũng đang chờ bạn",
+    "tone": "genz",
+    "cringe": 2,
+    "join": "opener"
+   },
+   {
+    "text": "quick afternoon session? the bunny is ready",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "nếu mệt thì ôn từ cũ thôi, nhẹ đầu hơn",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "học xíu rồi đi uống trà sữa, nghe hợp lý hông",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "you showed up mid-day. that counts",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "buổi chiều là giờ vàng để ôn lại từ sáng nay",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "học xong phần chiều, tối mình đỡ phải chạy deadline",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "chiều rồi {name}, ghé tui chơi vài câu nha",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "hey {name}. perfect time for a little review",
+    "tone": "en",
+    "cringe": 1
+   }
+  ]
+ },
+ "chao_toi_khuya": {
+  "label": "chào tối / khuya",
+  "conditions": {
+   "hour": [
+    18,
+    5
+   ]
+  },
+  "kaomoji": [
+   "(ᴗ˳ᴗ)ᶻ𝗓𝐰",
+   "( ˘ᵕ˘ ) ☾",
+   "₍ᐢ‥ᐢ₎ zZ",
+   "(っ- ‸ – ς)",
+   "૮ ˶ᵕ ༝ ᵕ˶ა ⋆｡˚☽",
+   "(｡-ω-)zzz",
+   "(∪｡∪)｡｡｡zzZ",
+   "( ˶˘ ᵕ ˘˶ )🌙",
+   "(－ω－) zzZ",
+   "(˘ω˘)",
+   "(－_－) zzZ",
+   "( ˘ω˘ )ｽﾔｧ",
+   "(っ˕ -｡)",
+   "(⸝⸝ᵕᴗᵕ⸝⸝)",
+   "(づ ᴗ _ᴗ)づ♡",
+   "( ˘͈ ᵕ ˘͈♡)",
+   "૮ ˶• ﻌ •˶ ა ♡",
+   "(๑´•.̫ • `๑)",
+   "ʚ♡ɞ",
+   "(´｡• ᵕ •｡`) ♡",
+   "(っ´ω`)ﾉ",
+   "⊂(・﹏・⊂)"
+  ],
+  "lines": [
+   {
+    "text": "khuya rồi {name}, học xíu rồi ngủ nha",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "fun fact: your brain saves new words while you sleep. so… sleep",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "tối rồi, ôn lại vài từ hôm nay trước khi nghỉ nha",
+    "tone": "warm",
+    "cringe": 1,
+    "join": "opener"
+   },
+   {
+    "text": "tối nay ôn nhẹ thôi, đừng thức khuya quá",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "evening review is the best kind of review",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "cả ngày mệt rồi, học năm phút thôi cũng đủ",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "ánh đèn, ly trà, vài từ vựng. mood ghê",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "night owl mode? fine, but just ten minutes",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "khuya thế này mà còn học, cú đêm chính hiệu",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "ngủ đủ giấc cũng là một cách học, nhớ nha",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "a calm night is good for remembering things",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "tui mặc đồ ngủ rồi mà vẫn chờ bạn học",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "tối nay mình ôn những từ hay quên nhé",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "trước khi lướt điện thoại, lướt qua vài từ đã",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "one more review, then lights out. deal?",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "khuya rồi, não cần ngủ để cất từ vào kho",
+    "tone": "genz",
+    "cringe": 2
+   },
+   {
+    "text": "học nhẹ nhàng thôi, mai mình học tiếp",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "trăng lên rồi, thỏ cung trăng còn đang ôn từ đây",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "the moon is up. so is your vocabulary",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "xíu nữa đi ngủ, giờ mình chốt vài từ đã",
+    "tone": "genz",
+    "cringe": 1,
+    "join": "opener"
+   }
+  ]
+ },
+ "dung": {
+  "label": "trả lời đúng",
+  "density": 0.33,
+  "kaomoji": [
+   "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧",
+   "٩(ˊᗜˋ*)و ♡",
+   "(๑˃ᴗ˂)ﻭ",
+   "( ˶ˊᵕˋ)੭♡",
+   "₍ᐢ•ﻌ•ᐢ₎ ♡",
+   "(,,> ᴗ <,,)",
+   "✧˖°(◕ᴗ◕✿)",
+   "(≧◡≦) ♡",
+   "٩(◕‿◕｡)۶",
+   "(๑>◡<๑)",
+   "ヽ(・∀・)ﾉ",
+   "(*≧ω≦*)",
+   "ヽ(>∀<☆)ノ",
+   "＼(^o^)／",
+   "(☆▽☆)",
+   "o(≧▽≦)o",
+   "ヾ(≧▽≦*)o",
+   "⸜(*ˊᗜˋ*)⸝",
+   "(ﾉ^ヮ^)ﾉ*:・ﾟ✧",
+   "(ﾉ´ヮ`)ﾉ",
+   "ヽ(♡‿♡)ノ",
+   "✧*。٩(ˊᗜˋ*)و✧*。"
+  ],
+  "lines": [
+   {
+    "text": "khét",
+    "tone": "genz",
+    "cringe": 1,
+    "join": "tail"
+   },
+   {
+    "text": "that's correct. obviously.",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "that's a w. logging it.",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "the prepositions fear you now",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "ok ngon rồi, ráng tí nữa là ielts 9.0",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "examiner nhìn câu này chắc gật đầu",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "đúng rồi, nhớ cảm giác này nha",
+    "tone": "warm",
+    "cringe": 1,
+    "join": "tail"
+   },
+   {
+    "text": "chuẩn bài luôn",
+    "tone": "genz",
+    "cringe": 1,
+    "join": "tail"
+   },
+   {
+    "text": "câu này bạn làm chắc tay ghê",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "đúng. tui đưa bạn củ cà rốt danh dự 🥕",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "you got it",
+    "tone": "en",
+    "cringe": 1,
+    "join": "tail"
+   },
+   {
+    "text": "chính xác. từ này bắt đầu là của bạn rồi",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "đúng luôn, khỏi cần suy nghĩ lại",
+    "tone": "genz",
+    "cringe": 1,
+    "join": "both"
+   },
+   {
+    "text": "clean answer, no notes from me",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "ăn điểm câu này rồi",
+    "tone": "genz",
+    "cringe": 1,
+    "join": "tail"
+   },
+   {
+    "text": "đúng rồi. bạn đang tiến bộ thật đó",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "giới từ đứng yên cho bạn chọn luôn",
+    "tone": "genz",
+    "cringe": 2
+   },
+   {
+    "text": "the bunny approves this answer",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "đúng như sách, mà nhanh hơn sách",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "làm tốt lắm, mình qua câu tiếp nha",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "that one stuck. nice.",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "não bạn vừa cất thêm một từ vào két sắt",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "trả lời đúng rồi đó, cứ giữ nhịp này",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "câu này dễ với bạn quá rồi",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "easy for you, apparently",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "đúng. cà rốt trong kho vừa tăng thêm một củ",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "bạn nhớ đúng cả cách dùng, quý lắm",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "you make it look easy",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "đúng, khỏi bàn",
+    "tone": "genz",
+    "cringe": 1,
+    "join": "tail"
+   },
+   {
+    "text": "trả lời nhanh mà chuẩn, tui hơi nể",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "chuẩn rồi. từ này mai ôn lại là thuộc hẳn",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "your future writing just got better",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "đúng rồi, tui vỗ tay bằng hai cái tai",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "no hesitation. i like that",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "đúng. mỗi câu đúng là một bước gần band mục tiêu",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "đúng rồi, word form không làm khó được bạn",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "correct, and honestly kind of elegant",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "câu này mà vào phòng thi là ăn trọn",
+    "tone": "genz",
+    "cringe": 2
+   },
+   {
+    "text": "bạn chọn đúng rồi, giỏi ghê",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "the word {word} is officially yours",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "{word} hả, dễ ợt với bạn rồi",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "you nailed it",
+    "tone": "en",
+    "cringe": 1,
+    "join": "tail"
+   }
+  ]
+ },
+ "combo": {
+  "label": "combo đúng liên tiếp",
+  "kaomoji": [
+   "₍₍ ◝(•̀ㅂ•́)◟ ⁾⁾",
+   "⁽⁽◝( ˙ ꒳ ˙ )◜⁾⁾",
+   "ᕙ( •̀ ᗜ •́ )ᕗ",
+   "☆ﾟ.*･｡ﾟ(ﾉ´ヮ`)ﾉ",
+   "✩°｡⋆⸜(ˊᗜˋ )⸝",
+   "( •̀ ω •́ )✧",
+   "♪┏(・o･)┛♪",
+   "٩( ᐛ )و",
+   "┌(・。・)┘♪",
+   "└(・。・)┐",
+   "(〜￣▽￣)〜",
+   "〜(￣▽￣〜)",
+   "ヘ(￣ω￣ヘ)",
+   "(ノ￣ω￣)ノ",
+   "(ง ˙o˙)ว",
+   "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧",
+   "٩(ˊᗜˋ*)و ♡",
+   "(๑˃ᴗ˂)ﻭ",
+   "( ˶ˊᵕˋ)੭♡",
+   "(,,> ᴗ <,,)",
+   "✧˖°(◕ᴗ◕✿)",
+   "(≧◡≦) ♡"
+  ],
+  "lines": [
+   {
+    "text": "{n} câu liền rồi, đừng dừng",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "{n} in a row. who taught you this? oh wait, me",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "combo {n} câu, tay bạn đang nóng đó",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "{n} câu đúng liền nhau, bạn đang vào nhịp rồi",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "{n} straight. the streak inside the streak",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "chuỗi đúng dài thế này tui hơi chóng mặt",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "cứ giữ nhịp này, đừng vội nha",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "you're on a roll. don't look down",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "đúng liền tù tì, máy chấm cũng phải nể",
+    "tone": "genz",
+    "cringe": 1,
+    "join": "tail"
+   },
+   {
+    "text": "combo này mà đem đi khoe thì hợp lý",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "bạn trả lời đều tay quá, tui thích ghê",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "this combo is getting serious",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "thêm một câu nữa là tui nhảy múa thật",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "{n} correct answers and counting",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "nóng tay rồi đó, làm tiếp liền đi",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "bạn đang tập trung rất tốt, giữ vậy nha",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "keep going. the bunny is taking notes",
+    "tone": "en",
+    "cringe": 1
+   }
+  ]
+ },
+ "diem_tuyet_doi": {
+  "label": "điểm tuyệt đối",
+  "kaomoji": [
+   "✧*。٩(ˊᗜˋ*)و✧*。",
+   "(ﾉ≧∀≦)ﾉ",
+   "☆*:.｡.o(≧▽≦)o.｡.:*☆",
+   "ヽ(♡‿♡)ノ",
+   "✿ヽ(•▽•)ノ✿",
+   "(っ˘ڡ˘ς)🥕",
+   "(/≧▽≦)/",
+   "(ﾉ´ヮ`)ﾉ*: ･ﾟ",
+   "(｡♥‿♥｡)",
+   "w(°ｏ°)w",
+   "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧",
+   "٩(ˊᗜˋ*)و ♡",
+   "(๑˃ᴗ˂)ﻭ",
+   "( ˶ˊᵕˋ)੭♡",
+   "(,,> ᴗ <,,)",
+   "✧˖°(◕ᴗ◕✿)",
+   "(≧◡≦) ♡",
+   "٩(◕‿◕｡)۶",
+   "(๑>◡<๑)",
+   "ヽ(・∀・)ﾉ",
+   "(*≧ω≦*)",
+   "＼(^o^)／"
+  ],
+  "lines": [
+   {
+    "text": "you ate. no crumbs left",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "không sai câu nào, flex được rồi đó",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "trọn vẹn không sai câu nào. bạn giỏi thật",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "điểm tuyệt đối, tui đi làm giấy khen cho bạn",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "perfect score. the examiner is nervous",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "trăm phần trăm, không lệch một ly",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "cả bài đều đúng, bạn chuẩn bị kỹ ghê",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "flawless. i'm framing this one",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "sạch bóng lỗi sai, tui hơi bất ngờ",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "làm đúng hết như vậy là nhớ thật rồi",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "zero mistakes. who are you?",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "tuyệt đối luôn, cà rốt hôm nay bao hết",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "điểm tối đa, tui phải ghi vào sổ vàng",
+    "tone": "genz",
+    "cringe": 2
+   },
+   {
+    "text": "that's a perfect run",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "không sai câu nào. hôm nay bạn học rất tập trung",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "full điểm, ăn trọn luôn",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "a clean sweep. the bunny bows",
+    "tone": "en",
+    "cringe": 1
+   }
+  ]
+ },
+ "sai": {
+  "label": "trả lời sai",
+  "density": 0.6,
+  "kaomoji": [
+   "(｡•́︿•̀｡)",
+   "(っ◞‸◟ c)",
+   "(ó﹏ò｡)",
+   "( •̯́ ₃ •̯̀)",
+   "(｡ŏ﹏ŏ)",
+   "₍ᐢ. ̫.ᐢ₎ ?",
+   "(・_・;)",
+   "(>﹏<)",
+   "(｡>﹏<｡)",
+   "(〃＞＿＜;〃)",
+   "(´・ω・`)",
+   "(｡•́ - •̀｡)",
+   "(◞‸◟)",
+   "(´ . .̫ . `)",
+   "(ノ_<。)",
+   "(⊙_⊙;)",
+   "(｡╯︵╰｡)",
+   "(´；ω；`)",
+   "(づ ᴗ _ᴗ)づ♡",
+   "( ˘͈ ᵕ ˘͈♡)",
+   "૮ ˶• ﻌ •˶ ა ♡",
+   "(๑´•.̫ • `๑)"
+  ],
+  "lines": [
+   {
+    "text": "hông sao, thất bại là mẹ thành cônggg",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "bình tĩnh, tự tin, không cay cú",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "sai ở đây free. sai trong phòng thi mới tốn tiền",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "even native speakers mess this up. probably.",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "ghi vào sổ lỗi rồi, lần sau nó hết đường chạy",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "sai một chút thôi, xem lại đáp án là nhớ liền",
+    "tone": "warm",
+    "cringe": 1,
+    "join": "opener"
+   },
+   {
+    "text": "câu này lừa đó, không phải tại bạn",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "close. the answer is hiding below",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "không sao đâu, lỗi sai giúp mình nhớ lâu hơn",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "giới từ này khó chịu thật, tui cũng ghét nó",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "not quite. let's look at it together",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "đọc lại giải thích một lượt, lần sau sẽ khác",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "trật nhẹ thôi, chỉnh xíu là chuẩn",
+    "tone": "genz",
+    "cringe": 1,
+    "join": "tail"
+   },
+   {
+    "text": "mistakes here are free. use them",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "câu này có bẫy, giờ bạn biết bẫy rồi",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "sai rồi, nhưng bạn đã cố nhớ, vậy là có học",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "that word has a twin. tricky one",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "sai xíu, từ này hay đổi word form lắm",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "mình xem lại đáp án đúng rồi thử lại nha",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "your brain just flagged this for later",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "không sao, cà rốt vẫn còn nguyên",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "lỗi này người học tiếng anh hay gặp lắm",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "noted. this one comes back tomorrow",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "chưa trúng, nhưng bạn đoán có logic đó",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "almost. you were one letter away",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "từ này keo thật, nhưng nó sẽ phải nhả ra",
+    "tone": "genz",
+    "cringe": 2
+   },
+   {
+    "text": "bình thường thôi, ai học từ mới cũng sai vài lần",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "wrong, but in a useful way",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "sai thì sửa, đơn giản vậy thôi",
+    "tone": "genz",
+    "cringe": 1,
+    "join": "tail"
+   },
+   {
+    "text": "nhìn kỹ lại cấu trúc câu, bạn sẽ thấy chỗ lệch",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "the trap got you this time",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "lần này hụt, lần sau tui cược bạn trúng",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "sai rồi, mà đáp án đúng cũng không xa đâu",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "đừng nản nha, mình đang học mà",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "it happens. on to the next one",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "lỗi này đã vào sổ, mình sẽ ôn lại sau",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "the dictionary is laughing. we'll get it back",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "hơi lệch, nhưng hướng nghĩ đúng rồi",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "tricky word. you'll see it again soon",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "trật rồi, mà giờ bạn sẽ nhớ nó lâu",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "không sao cả, mình cùng xem lại nhé",
+    "tone": "warm",
+    "cringe": 1
+   }
+  ]
+ },
+ "sai_nhieu": {
+  "label": "sai nhiều lần liền / an ủi",
+  "kaomoji": [
+   "(づ ᴗ _ᴗ)づ♡",
+   "( ˘͈ ᵕ ˘͈♡)",
+   "(っ˘̩╭╮˘̩)っ",
+   "૮ ˶• ﻌ •˶ ა ♡",
+   "(๑´•.̫ • `๑)",
+   "ʚ♡ɞ",
+   "(づ｡◕‿‿◕｡)づ",
+   "(´｡• ᵕ •｡`) ♡",
+   "(っ´ω`)ﾉ",
+   "(つ≧▽≦)つ",
+   "⊂(・﹏・⊂)",
+   "(っ ᵔ◡ᵔ)っ",
+   "(∩˃o˂∩)♡",
+   "(ㅅ´ ˘ `)",
+   "(っ˘ω˘ς )",
+   "(⸝⸝ᵕᴗᵕ⸝⸝)",
+   "( ˘ ³˘)♥",
+   "(˶ᵔ ᵕ ᵔ˶) ♡",
+   "₍ᐢ. .ᐢ₎ ♡",
+   "(˶ᵔ ᵕ ᵔ˶)",
+   "₍ᐢ•ﻌ•ᐢ₎ ♡",
+   "( ˶ˆᗜˆ˵ )"
+  ],
+  "lines": [
+   {
+    "text": "từ này dai thật, nhưng bạn còn dai hơn",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "nghỉ 10 giây, uống miếng nước rồi quay lại",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "hard words stick longer. that's science. kind of.",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "sai vài câu liền là bình thường, não đang làm việc đó",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "tui ngồi đây với bạn, không đi đâu hết",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "deep breath. this is how learning feels",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "mình chậm lại một chút, đọc kỹ từng câu nha",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "từ khó nhất cũng có ngày phải đầu hàng",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "rough patch. the bunny is still on your side",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "nếu mệt quá thì chuyển sang ôn từ dễ trước",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "hôm nay từ này thắng, mai tới lượt bạn",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "struggle now, fluency later. that's the deal",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "ôm cái nè, rồi mình làm lại từ câu đầu",
+    "tone": "genz",
+    "cringe": 2
+   },
+   {
+    "text": "sai nhiều không có nghĩa là bạn không học được",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "you're not behind. you're just learning",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "thỏ cũng từng nhầm cà rốt với củ cải, ai cũng có lúc",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "mình xem lại phần giải thích, rồi thử lại thật chậm",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "hey, this is the hard part. it passes",
+    "tone": "en",
+    "cringe": 1
+   }
+  ]
+ },
+ "goi_y": {
+  "label": "gợi ý",
+  "kaomoji": [
+   "(｡•̀ᴗ-)✧",
+   "( ˙꒳˙ )ゞ",
+   "(・ω・)ノ💡",
+   "₍ᐢ. .ᐢ₎ ?",
+   "( ⸝⸝´꒳`⸝⸝)",
+   "(๑•̀ㅁ•́๑)✧",
+   "( ◕ᴗ◕)っ📖",
+   "(¬‿¬)",
+   "(≖ᴗ≖๑)",
+   "(￣ー￣)",
+   "(｡・ω・｡)?",
+   "( •̀ - •́ )",
+   "(・・ ) ?",
+   "(´・ω・`)?",
+   "( ˙꒳˙ )",
+   "૮ ・ﻌ・ა ?",
+   "(・ω・)ノ",
+   "(˶ᵔ ᵕ ᵔ˶)",
+   "₍ᐢ•ﻌ•ᐢ₎ ♡",
+   "( ˶ˆᗜˆ˵ )",
+   "(◍•ᴗ•◍)",
+   "(｡◕‿◕｡)"
+  ],
+  "lines": [
+   {
+    "text": "psst. chữ cái đầu nè",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "i'm not saying it starts with that letter. but it does",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "gợi ý nhỏ: nhìn số chữ cái trước đã",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "tui nhắc khẽ thôi, đừng nói với examiner",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "small hint: think about the word family",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "từ này hay đi chung với một giới từ quen lắm",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "thử nhớ lại câu ví dụ hôm trước xem",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "the answer rhymes with nothing. good luck",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "nhìn kỹ đuôi của từ, manh mối nằm ở đó",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "nghĩ xem câu này cần danh từ hay động từ",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "hint unlocked. use it wisely",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "gợi ý thêm là tui hết cà rốt để đút lót",
+    "tone": "genz",
+    "cringe": 2
+   },
+   {
+    "text": "đọc chậm lại nửa câu sau, chỗ trống đang chờ đúng loại từ",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "think of a collocation you've seen before",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "từ này bạn gặp rồi, nó đang trốn đâu đó trong đầu",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "close your eyes and picture the word",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "không cần vội, gợi ý chỉ để mở đường thôi",
+    "tone": "warm",
+    "cringe": 2
+   }
+  ]
+ },
+ "nghe_phat_am": {
+  "label": "nghe phát âm",
+  "kaomoji": [
+   "( ˘▽˘)っ🎧",
+   "(・ω・)ﾉ🔊",
+   "₍ᐢ. .ᐢ₎🎧",
+   "( ˶ˊᵕˋ)🎵",
+   "♪(´ε｀ )",
+   "♪～(￣ε￣)",
+   "(ᵔᴥᵔ)♪",
+   "ヾ(´〇`)ﾉ♪♪♪",
+   "♪┏(・o･)┛♪",
+   "┌(・。・)┘♪",
+   "└(・。・)┐",
+   "(〜￣▽￣)〜",
+   "〜(￣▽￣〜)",
+   "(˶ᵔ ᵕ ᵔ˶)",
+   "₍ᐢ•ﻌ•ᐢ₎ ♡",
+   "( ˶ˆᗜˆ˵ )",
+   "(◍•ᴗ•◍)",
+   "(｡◕‿◕｡)",
+   "(✿◠‿◠)",
+   "(ᵔᴥᵔ)",
+   "٩(｡•́‿•̀｡)۶",
+   "(*^▽^*)"
+  ],
+  "lines": [
+   {
+    "text": "repeat after me. yes, out loud",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "nghe kỹ chỗ nhấn âm nha, nhấn sai là khó hiểu",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "nghe một lần, đọc theo một lần, vậy mới thấm",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "listen to the stress. it moves around",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "phát âm chuẩn rồi thì nói mới tự tin",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "bạn thử đọc theo, chậm cũng được",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "the vowel is doing something weird here",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "giọng anh hay giọng mỹ cũng được, miễn rõ",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "nghe lại lần nữa nếu chưa chắc nha",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "say it like you mean it",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "tai tui dài vậy là để nghe phát âm đó",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "âm cuối quan trọng lắm, đừng nuốt mất nhé",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "one more listen. your ears will thank you",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "đọc theo đi, miệng quen rồi não mới nhớ",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "that silent letter is silent for a reason",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "nghe xong nhớ nhại lại, nhại càng giống càng tốt",
+    "tone": "genz",
+    "cringe": 2
+   },
+   {
+    "text": "nghe kỹ nhịp của từ, nhịp đúng thì nghe tự nhiên",
+    "tone": "warm",
+    "cringe": 1
+   }
+  ]
+ },
+ "tu_viet": {
+  "label": "tự viết câu / viết đoạn",
+  "kaomoji": [
+   "( ˶ˊᵕˋ)✍",
+   "(๑•̀ᴗ•́)و ✎",
+   "₍ᐢ. .ᐢ₎✎",
+   "(｀・ω・´)ゞ✎",
+   "φ(゜▽゜*)♪",
+   "✍(◔◡◔)",
+   "_φ(°-°=)",
+   "φ(．．)",
+   "_〆(・∀・＠)",
+   "(•̀ᴗ•́)و ✎",
+   "(ง •̀_•́)ง",
+   "(๑•̀ㅂ•́)و✧",
+   "( •̀ ω •́ )✧",
+   "(｀・ω・´)",
+   "ᕦ(ò_óˇ)ᕤ",
+   "ᕙ( •̀ ᗜ •́ )ᕗ",
+   "(ง'̀-'́)ง",
+   "( •̀ᴗ•́ )و",
+   "(｀・ω・´)ゞ",
+   "(๑•̀ᴗ•́)و",
+   "٩( ᐛ )و"
+  ],
+  "lines": [
+   {
+    "text": "câu tự viết mới là từ của bạn thật",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "câu này mà vào writing là có điểm vocab",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "your writer era is on",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "viết sai cũng được, miễn là bạn tự viết",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "your sentence, your rules. grammar's rules too",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "thử dùng từ mới trong một câu về chính bạn",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "câu ngắn mà đúng còn hơn câu dài mà rối",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "the blank page is scared of you",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "viết xong nhớ đọc lại để kiểm tra giới từ nha",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "bút của tui sẵn sàng, tới phiên bạn",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "one sentence. that's all it takes",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "viết đi, chữ xấu tui cũng không chê",
+    "tone": "genz",
+    "cringe": 2
+   },
+   {
+    "text": "câu nào bạn tự nghĩ ra thì sẽ nhớ lâu hơn",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "make it personal. examiners love that",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "thử nhét thêm một collocation vào câu xem",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "viết chậm cũng được, quan trọng là đúng ý",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "show me what you can do with {word}",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "dùng {word} trong câu thử xem nó có ngoan không",
+    "tone": "genz",
+    "cringe": 1
+   }
+  ]
+ },
+ "noi_to": {
+  "label": "nói to / speaking",
+  "kaomoji": [
+   "( ˶ˆᗜˆ˵ )🎤",
+   "(っ˘ω˘ς )♪",
+   "ヾ(´〇`)ﾉ♪♪♪",
+   "₍ᐢ•ﻌ•ᐢ₎🎤",
+   "(ﾉ´ з `)ノ",
+   "(`•ω•´)ゞ",
+   "( ˘▽˘)っ🎧",
+   "(・ω・)ﾉ🔊",
+   "♪(´ε｀ )",
+   "♪～(￣ε￣)",
+   "(ᵔᴥᵔ)♪",
+   "♪┏(・o･)┛♪",
+   "┌(・。・)┘♪",
+   "└(・。・)┐",
+   "(〜￣▽￣)〜",
+   "〜(￣▽￣〜)",
+   "(ง •̀_•́)ง",
+   "(๑•̀ㅂ•́)و✧",
+   "( •̀ ω •́ )✧",
+   "(｀・ω・´)",
+   "ᕦ(ò_óˇ)ᕤ",
+   "ᕙ( •̀ ᗜ •́ )ᕗ"
+  ],
+  "lines": [
+   {
+    "text": "nói to lên, nói sai cũng được",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "hàng xóm nghe thì coi như họ học ké",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "the mic is yours. well, imaginary mic.",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "nói chậm và rõ, không cần nhanh như người bản xứ",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "speak like nobody is grading you",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "nói ra miệng một lần nhớ hơn đọc mười lần",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "nếu bí ý thì nói lý do và một ví dụ thôi",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "fluency first. perfection can wait",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "tưởng tượng examiner đang gật gù nghe bạn",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "ngập ngừng một chút cũng không sao, cứ nói tiếp",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "two minutes. you have more to say than you think",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "tấm gương trong phòng là khán giả trung thành nhất",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "nói xong nhớ tự tick những từ bạn đã dùng nha",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "say it out loud. the walls won't judge",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "nói như đang kể chuyện cho bạn thân nghe vậy",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "your voice, your band score. go",
+    "tone": "en",
+    "cringe": 2
+   },
+   {
+    "text": "nói vấp thì cười một cái rồi nói tiếp",
+    "tone": "genz",
+    "cringe": 1
+   }
+  ]
+ },
+ "tu_moi": {
+  "label": "từ mới / từ của ngày",
+  "kaomoji": [
+   "✧˖°(◕ᴗ◕✿)",
+   "₍ᐢ•ﻌ•ᐢ₎✨",
+   "(๑˃ᴗ˂)ﻭ📖",
+   "( ˶ˆ꒳ˆ˵ )✨",
+   "(☆▽☆)",
+   "(｡◕‿◕｡)",
+   "(˶ᵔ ᵕ ᵔ˶)",
+   "₍ᐢ•ﻌ•ᐢ₎ ♡",
+   "( ˶ˆᗜˆ˵ )",
+   "(◍•ᴗ•◍)",
+   "(✿◠‿◠)",
+   "(ᵔᴥᵔ)",
+   "٩(｡•́‿•̀｡)۶",
+   "(*^▽^*)",
+   "(◠‿◠✿)",
+   "( ´ ▽ ` )ﾉ",
+   "(๑•ᴗ•๑)♡",
+   "(◡‿◡✿)",
+   "(っ´▽`)っ",
+   "(｡•ᴗ•｡)♡",
+   "ヾ(・ω・*)ノ",
+   "(｡･ω･｡)ﾉ♡"
+  ],
+  "lines": [
+   {
+    "text": "từ hôm nay: {word}. nghe sang hông",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "a new word for you: {word}",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "hôm nay mình làm quen với {word} nha",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "{word} mới tới, chào hỏi nó đàng hoàng đi",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "meet {word}. you two will get along",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "đọc kỹ ví dụ của {word} trước khi học tiếp",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "{word} là từ đắt giá đó, giữ kỹ nha",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "today's word is {word}. use it wisely",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "thêm {word} vào bộ sưu tập, kệ sắp đầy rồi",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "{word} nghe lạ nhưng dùng nhiều sẽ quen",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "{word} looks fancy. it's actually friendly",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "tui đã ngửi thử {word}, thơm mùi band 7",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "thử đặt {word} vào một câu của riêng bạn nhé",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "add {word} to your writing toolkit",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "{word} nè, học xong nhớ khoe với examiner",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "this is {word}. it wants to be in your essay",
+    "tone": "en",
+    "cringe": 2
+   },
+   {
+    "text": "gặp {word} rồi thì đừng để nó thành người lạ",
+    "tone": "genz",
+    "cringe": 1
+   }
+  ]
+ },
+ "tu_output": {
+  "label": "từ thành output",
+  "kaomoji": [
+   "૮ ˶ᵔ ᵕ ᵔ˶ ა 🎀",
+   "✧*。٩(ˊᗜˋ*)و✧*。",
+   "ヽ(♡‿♡)ノ",
+   "⸜(｡˃ ᵕ ˂ )⸝♡",
+   "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧",
+   "٩(ˊᗜˋ*)و ♡",
+   "(๑˃ᴗ˂)ﻭ",
+   "( ˶ˊᵕˋ)੭♡",
+   "(,,> ᴗ <,,)",
+   "✧˖°(◕ᴗ◕✿)",
+   "(≧◡≦) ♡",
+   "٩(◕‿◕｡)۶",
+   "(๑>◡<๑)",
+   "ヽ(・∀・)ﾉ",
+   "(*≧ω≦*)",
+   "＼(^o^)／",
+   "(☆▽☆)",
+   "o(≧▽≦)o",
+   "⸜(*ˊᗜˋ*)⸝",
+   "(ﾉ´ヮ`)ﾉ",
+   "(ﾉ≧∀≦)ﾉ",
+   "ᕙ( •̀ ᗜ •́ )ᕗ"
+  ],
+  "lines": [
+   {
+    "text": "{word} giờ là từ của bạn. no take-backs",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "{word} has joined your active vocabulary. welcome",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "{word} đã thành từ bạn tự dùng được rồi, mừng ghê",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "{word} chính thức về đội của bạn",
+    "tone": "genz",
+    "cringe": 1,
+    "join": "tail"
+   },
+   {
+    "text": "you don't just know {word}. you use it",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "dùng được {word} hai lần ở hai ngày khác nhau, vậy là vững",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "{word} đã có tên trong kho output, khỏi tranh cãi",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "{word} is part of your voice now",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "lên đời rồi, {word} giờ ra trận được",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "lần sau viết essay, nhớ gọi {word} ra nha",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "another word you can actually use. nice",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "kho output vừa có thêm {word}, tui cất kỹ rồi",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "từ hôm nay {word} là của bạn thật sự",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "{word} graduated. the bunny cried a little",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "{word} giờ ngoan rồi, gọi là tới",
+    "tone": "genz",
+    "cringe": 2
+   },
+   {
+    "text": "from flashcard to your own sentence. that's growth",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "từ nhìn quen tới dùng quen, {word} đi xong rồi",
+    "tone": "genz",
+    "cringe": 1
+   }
+  ]
+ },
+ "tien_do": {
+  "label": "tiến độ trong ngày",
+  "kinds": [
+   "half",
+   "almost"
+  ],
+  "kaomoji": [
+   "(ง •̀_•́)ง",
+   "(๑•̀ㅂ•́)و✧",
+   "( •̀ ω •́ )✧",
+   "(｀・ω・´)",
+   "ᕦ(ò_óˇ)ᕤ",
+   "ᕙ( •̀ ᗜ •́ )ᕗ",
+   "(ง'̀-'́)ง",
+   "( •̀ᴗ•́ )و",
+   "(•̀ᴗ•́)و ✎",
+   "(｀・ω・´)ゞ",
+   "(๑•̀ᴗ•́)و",
+   "٩( ᐛ )و",
+   "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧",
+   "٩(ˊᗜˋ*)و ♡",
+   "(๑˃ᴗ˂)ﻭ",
+   "( ˶ˊᵕˋ)੭♡",
+   "(,,> ᴗ <,,)",
+   "✧˖°(◕ᴗ◕✿)",
+   "(≧◡≦) ♡",
+   "٩(◕‿◕｡)۶",
+   "(๑>◡<๑)",
+   "ヽ(・∀・)ﾉ"
+  ],
+  "lines": [
+   {
+    "text": "còn {left} lượt nữa là giữ chuỗi",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "almost"
+    }
+   },
+   {
+    "text": "{left} more. you're basically there",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "almost"
+    }
+   },
+   {
+    "text": "còn {left} lượt thôi, mình làm nốt nha",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "almost"
+    }
+   },
+   {
+    "text": "sắp tới đích rồi, {left} lượt nữa thôi",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "almost"
+    }
+   },
+   {
+    "text": "just {left} left. you've got this",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "almost"
+    }
+   },
+   {
+    "text": "nửa chặng rồi đó, đi tiếp hông",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "half"
+    }
+   },
+   {
+    "text": "bạn đã làm được một nửa mục tiêu hôm nay rồi",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "half"
+    }
+   },
+   {
+    "text": "halfway there. the second half is shorter, promise",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "half"
+    }
+   },
+   {
+    "text": "{left} lượt nữa, cà rốt to đang chờ",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "almost"
+    }
+   },
+   {
+    "text": "gần xong rồi, cố thêm chút xíu nữa thôi",
+    "tone": "warm",
+    "cringe": 2,
+    "when": {
+     "kind": "almost"
+    }
+   },
+   {
+    "text": "the finish line is right there",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "almost"
+    }
+   },
+   {
+    "text": "chuỗi ngày đang ngóng {left} lượt cuối của bạn",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "almost"
+    }
+   },
+   {
+    "text": "thêm vài câu nữa là hôm nay trọn vẹn",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "almost"
+    }
+   },
+   {
+    "text": "{left} more answers and the streak is safe",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "almost"
+    }
+   },
+   {
+    "text": "nửa đường rồi, quay đầu là phí lắm",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "half"
+    }
+   },
+   {
+    "text": "you're closer than you think",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "half"
+    }
+   },
+   {
+    "text": "còn {left} lượt, nhanh hơn lướt hết một clip ngắn",
+    "tone": "genz",
+    "cringe": 2,
+    "when": {
+     "kind": "almost"
+    }
+   }
+  ]
+ },
+ "streak_giu": {
+  "label": "streak giữ",
+  "conditions": {
+   "streak": [
+    1,
+    null
+   ]
+  },
+  "kaomoji": [
+   "₍ᐢ. .ᐢ₎♡",
+   "(๑ᵔ⤙ᵔ๑)🎀",
+   "ପ(๑•ᴗ•๑)ଓ ♡",
+   "٩(๑❛ᴗ❛๑)۶",
+   "(˶ᵔ ᵕ ᵔ˶)🎀",
+   "(ﾉ´ヮ`)ﾉ",
+   "(✿◠‿◠)",
+   "(｡♥‿♥｡)",
+   "(˶ᵔ ᵕ ᵔ˶)",
+   "₍ᐢ•ﻌ•ᐢ₎ ♡",
+   "( ˶ˆᗜˆ˵ )",
+   "(◍•ᴗ•◍)",
+   "(｡◕‿◕｡)",
+   "(ᵔᴥᵔ)",
+   "٩(｡•́‿•̀｡)۶",
+   "(*^▽^*)",
+   "(◠‿◠✿)",
+   "( ´ ▽ ` )ﾉ",
+   "(๑•ᴗ•๑)♡",
+   "(◡‿◡✿)",
+   "(っ´▽`)っ",
+   "(｡•ᴗ•｡)♡"
+  ],
+  "lines": [
+   {
+    "text": "{streak} ngày liền. đều tay ghê",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "{streak} days. consistency looks good on you",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "thêm một ngày giữ chuỗi, bạn đều đặn thật",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "chuỗi {streak} ngày, lửa vẫn cháy đều",
+    "tone": "genz",
+    "cringe": 1,
+    "join": "tail"
+   },
+   {
+    "text": "day {streak}. the habit is forming",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "{streak} ngày học liền, não bạn quen nhịp rồi",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "hôm nay giữ chuỗi xong, đi ngủ ngon được rồi",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "another day, another tick on the calendar",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "lịch nơ của bạn thêm một cái nơ hồng nữa",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "giữ chuỗi không cần hoành tráng, chỉ cần có mặt",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "{streak} days and you haven't missed a beat",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "chuỗi này mà đứt thì tui khóc thật đó",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "cảm ơn bạn đã quay lại hôm nay",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "small steps, {streak} times in a row",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "{streak} ngày, chuỗi dài hơn tai tui rồi đó",
+    "tone": "genz",
+    "cringe": 2
+   },
+   {
+    "text": "the streak lives another day",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "giữ chuỗi xong, cà rốt hôm nay ngọt hơn",
+    "tone": "genz",
+    "cringe": 1
+   }
+  ]
+ },
+ "moc_streak": {
+  "label": "mốc streak 7/30/100 + nhận băng giữ chuỗi",
+  "kinds": [
+   "m7",
+   "m30",
+   "m100"
+  ],
+  "kaomoji": [
+   "૮ ˶ᵔ ᵕ ᵔ˶ ა 🎁",
+   "✧*。٩(ˊᗜˋ*)و✧*。🧊",
+   "ヽ(♡‿♡)ノ👑",
+   "(ﾉ≧∀≦)ﾉ",
+   "(っ˘ڡ˘ς)❄︎",
+   "☆*:.｡.o(≧▽≦)o.｡.:*☆",
+   "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧",
+   "٩(ˊᗜˋ*)و ♡",
+   "(๑˃ᴗ˂)ﻭ",
+   "( ˶ˊᵕˋ)੭♡",
+   "(,,> ᴗ <,,)",
+   "✧˖°(◕ᴗ◕✿)",
+   "(≧◡≦) ♡",
+   "٩(◕‿◕｡)۶",
+   "(๑>◡<๑)",
+   "ヽ(・∀・)ﾉ",
+   "(*≧ω≦*)",
+   "＼(^o^)／",
+   "(☆▽☆)",
+   "o(≧▽≦)o",
+   "⸜(*ˊᗜˋ*)⸝",
+   "(ﾉ´ヮ`)ﾉ"
+  ],
+  "lines": [
+   {
+    "text": "7 ngày rồi. tặng bạn một bé băng giữ chuỗi, cất kỹ nha",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "m7"
+    }
+   },
+   {
+    "text": "milestone unlocked. the bunny is proud",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "tròn một tuần học đều, bạn nhận được một băng giữ chuỗi",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "m7"
+    }
+   },
+   {
+    "text": "one week strong. here's a freeze, just in case",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "m7"
+    }
+   },
+   {
+    "text": "bảy ngày liền, lịch nơ bắt đầu hồng rực rồi",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "m7"
+    }
+   },
+   {
+    "text": "30 ngày rồi đó, chuỗi này có hộ khẩu luôn",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "m30"
+    }
+   },
+   {
+    "text": "một tháng trọn vẹn. bạn đã xây được thói quen thật",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "m30"
+    }
+   },
+   {
+    "text": "thirty days. this is a lifestyle now",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "m30"
+    }
+   },
+   {
+    "text": "tháng này bạn đi học đều hơn tui ăn cà rốt",
+    "tone": "genz",
+    "cringe": 2,
+    "when": {
+     "kind": "m30"
+    }
+   },
+   {
+    "text": "100 ngày, tui đội vương miện lên cho bạn luôn",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "m100"
+    }
+   },
+   {
+    "text": "một trăm ngày kiên trì, tui thật sự nể bạn",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "m100"
+    }
+   },
+   {
+    "text": "100 days. you're officially a legend",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "m100"
+    }
+   },
+   {
+    "text": "trăm ngày rồi, chuỗi này đáng lên báo",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "m100"
+    }
+   },
+   {
+    "text": "cứ mỗi mốc là một món quà nhỏ cho sự chăm chỉ",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "the calendar is mostly bows now",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "mốc mới mở khoá, cà rốt mở tiệc",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "a month of showing up. that's the secret",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "m30"
+    }
+   }
+  ]
+ },
+ "dung_freeze": {
+  "label": "dùng băng giữ chuỗi",
+  "kaomoji": [
+   "(⸝⸝ᵕᴗᵕ⸝⸝) ❄︎",
+   "₍ᐢ. .ᐢ₎🧊",
+   "(づ ᴗ _ᴗ)づ🧊",
+   "૮ ˶ᵕ ༝ ᵕ˶ა ❆",
+   "( ˘ ³˘)♥",
+   "(づ ᴗ _ᴗ)づ♡",
+   "( ˘͈ ᵕ ˘͈♡)",
+   "૮ ˶• ﻌ •˶ ა ♡",
+   "(๑´•.̫ • `๑)",
+   "ʚ♡ɞ",
+   "(´｡• ᵕ •｡`) ♡",
+   "(っ´ω`)ﾉ",
+   "⊂(・﹏・⊂)",
+   "(ㅅ´ ˘ `)",
+   "(っ˘ω˘ς )",
+   "(⸝⸝ᵕᴗᵕ⸝⸝)",
+   "(っ ᵔ◡ᵔ)っ",
+   "(˶ᵔ ᵕ ᵔ˶) ♡",
+   "₍ᐢ. .ᐢ₎ ♡",
+   "(˶ᵔ ᵕ ᵔ˶)",
+   "₍ᐢ•ﻌ•ᐢ₎ ♡",
+   "( ˶ˆᗜˆ˵ )"
+  ],
+  "lines": [
+   {
+    "text": "hôm qua bạn vắng, băng giữ chuỗi cứu kịp rồi",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "streak saved. you owe me a carrot",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "hôm qua bận hả, băng giữ chuỗi đã giữ giùm rồi",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "băng tan một bé, chuỗi vẫn nguyên vẹn",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "the freeze did its job. welcome back",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "chuỗi vẫn còn đó, hôm nay mình học bù nha",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "tui quấn khăn giữ ấm cho chuỗi của bạn cả đêm",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "your streak took a nap. it's awake now",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "hên ghê, còn băng nên chuỗi không sao",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "nghỉ một ngày không sao, quan trọng là bạn quay lại",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "one freeze used. the streak survives",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "băng giữ chuỗi vừa làm việc, giờ tới lượt bạn",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "mình dùng một băng rồi, còn lại thì cất cho lúc cần",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "close call. let's keep it that way",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "chuỗi được ướp lạnh an toàn, giờ rã đông bằng vài câu",
+    "tone": "genz",
+    "cringe": 2
+   },
+   {
+    "text": "saved by the ice. classic",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "hôm qua tui canh chuỗi giùm bạn rồi đó",
+    "tone": "genz",
+    "cringe": 1
+   }
+  ]
+ },
+ "mat_streak": {
+  "label": "mất streak",
+  "kaomoji": [
+   "(˚ ˃̣̣̥⌓˂̣̣̥ )",
+   "( ˃̣̣̥ᯅ˂̣̣̥ )",
+   "(◞‸◟；)",
+   "(´｡• ᵕ •｡`)",
+   "(｡╯︵╰｡)",
+   "(´；ω；`)",
+   "(づ ᴗ _ᴗ)づ♡",
+   "( ˘͈ ᵕ ˘͈♡)",
+   "૮ ˶• ﻌ •˶ ა ♡",
+   "(๑´•.̫ • `๑)",
+   "ʚ♡ɞ",
+   "(´｡• ᵕ •｡`) ♡",
+   "(っ´ω`)ﾉ",
+   "⊂(・﹏・⊂)",
+   "(ㅅ´ ˘ `)",
+   "(っ˘ω˘ς )",
+   "(⸝⸝ᵕᴗᵕ⸝⸝)",
+   "( ˘ ³˘)♥",
+   "(っ ᵔ◡ᵔ)っ",
+   "(˶ᵔ ᵕ ᵔ˶) ♡",
+   "₍ᐢ. .ᐢ₎ ♡",
+   "(｡•́︿•̀｡)"
+  ],
+  "lines": [
+   {
+    "text": "chuỗi đứt rồi. ngày 1 mới, tui vẫn ở đây",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "kỷ lục {n} ngày vẫn là của bạn. giờ làm phần 2",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "new season. you're still the main character",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "không sao đâu, mình bắt đầu lại từ hôm nay",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "chuỗi đứt chứ từ vựng trong đầu đâu có mất",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "the streak reset. your vocabulary didn't",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "ngày 1 cũng là một ngày tốt để học",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "làm lại từ đầu, lần này tui tin chuỗi dài hơn",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "day one again. we know the way now",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "nghỉ vài hôm là chuyện bình thường, quay lại là được",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "kỷ lục cũ để đó làm mục tiêu vượt",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "records are made to be broken. including yours",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "chuỗi mới, nơ mới, lịch mới",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "tui vẫn nhớ hết những gì bạn đã học",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "fresh start. the bunny saved your seat",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "đứt chuỗi thì nối lại, có gì đâu",
+    "tone": "genz",
+    "cringe": 2
+   },
+   {
+    "text": "your best was {n} days. let's chase it",
+    "tone": "en",
+    "cringe": 1
+   }
+  ]
+ },
+ "quay_lai": {
+  "label": "quay lại sau nhiều ngày",
+  "kaomoji": [
+   "(*´▽`*)",
+   "૮ ˶ᵔ ᵕ ᵔ˶ ა",
+   "(っ˘ω˘ς )",
+   "ヾ(・ω・*)ノ",
+   "(づ￣ ³￣)づ",
+   "(つ≧▽≦)つ",
+   "(ノ´ з `)ノ",
+   "(˶ᵔ ᵕ ᵔ˶)",
+   "₍ᐢ•ﻌ•ᐢ₎ ♡",
+   "( ˶ˆᗜˆ˵ )",
+   "(◍•ᴗ•◍)",
+   "(｡◕‿◕｡)",
+   "(✿◠‿◠)",
+   "(ᵔᴥᵔ)",
+   "٩(｡•́‿•̀｡)۶",
+   "(*^▽^*)",
+   "(◠‿◠✿)",
+   "( ´ ▽ ` )ﾉ",
+   "(๑•ᴗ•๑)♡",
+   "(◡‿◡✿)",
+   "(っ´▽`)っ",
+   "(｡•ᴗ•｡)♡"
+  ],
+  "lines": [
+   {
+    "text": "{name}! đi đâu mất tiêu, tui nhớ xỉu",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "look who's back. hi, you",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "lâu rồi mới gặp lại, tui mừng lắm",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "{days} ngày không gặp, cà rốt héo hết rồi",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "welcome back. we missed you",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "quay lại là giỏi rồi, mình học nhẹ nhàng trước nha",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "về rồi hả, tui mở cửa liền",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "you're back. the words waited for you",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "vắng {days} ngày mà vẫn nhớ đường về, ổn áp",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "mình ôn lại vài từ cũ trước cho quen tay nha",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "{days} days away. no judgment, just vocabulary",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "tui đếm từng ngày đó, nói thật",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "chào mừng bạn trở lại với xie",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "hi again, {name}. ready when you are",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "bạn về đúng lúc tui đang buồn chán",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "the bunny kept your seat warm",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "{name} về rồi, mở tiệc cà rốt thôi",
+    "tone": "genz",
+    "cringe": 2
+   }
+  ]
+ },
+ "xong_muc_tieu": {
+  "label": "xong mục tiêu ngày",
+  "kaomoji": [
+   "(˶˃ ᵕ ˂˶) ♡",
+   "( ´ ▽ ` )ﾉ🥕",
+   "૮₍ ˶ᵔ ᵕ ᵔ˶ ₎ა 🎀",
+   "(๑˘︶˘๑) ✿",
+   "₍ᐢ•ﻌ•ᐢ₎🥕",
+   "( ˶ˆ꒳ˆ˵ )🥕",
+   "(*´ڡ`●)",
+   "(っ˘ڡ˘ς)",
+   "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧",
+   "٩(ˊᗜˋ*)و ♡",
+   "(๑˃ᴗ˂)ﻭ",
+   "( ˶ˊᵕˋ)੭♡",
+   "(,,> ᴗ <,,)",
+   "✧˖°(◕ᴗ◕✿)",
+   "(≧◡≦) ♡",
+   "٩(◕‿◕｡)۶",
+   "(๑>◡<๑)",
+   "ヽ(・∀・)ﾉ",
+   "(*≧ω≦*)",
+   "＼(^o^)／",
+   "(☆▽☆)",
+   "o(≧▽≦)o"
+  ],
+  "lines": [
+   {
+    "text": "{goal}/{goal}. hôm nay xong rồi, đi chill đi",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "mission complete. here's your carrot",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "xong mục tiêu hôm nay rồi, bạn nghỉ ngơi nha",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "đủ {goal} lượt, chuỗi hôm nay đã khoá",
+    "tone": "genz",
+    "cringe": 1,
+    "join": "tail"
+   },
+   {
+    "text": "that's {goal} for today. well done",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "hôm nay bạn học đủ và đều, tốt lắm",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "xong việc rồi, giờ học thêm là học cho vui",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "goal reached. anything more is a bonus",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "hôm nay ăn trọn mục tiêu rồi",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "làm xong rồi thì cho mình nghỉ, não cũng cần thở",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "you did the thing. the whole thing",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "tui cất củ cà rốt to nhất cho bạn rồi",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "mục tiêu xong, chuỗi ngày vẫn giữ nguyên",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "done for today. see you tomorrow",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "xong {goal} lượt, cái nơ hôm nay là của bạn",
+    "tone": "genz",
+    "cringe": 2
+   },
+   {
+    "text": "streak secured. the bunny can relax now",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "hôm nay xong sớm, phần còn lại của ngày là của bạn",
+    "tone": "genz",
+    "cringe": 1
+   }
+  ]
+ },
+ "len_level": {
+  "label": "lên level / huy hiệu",
+  "kaomoji": [
+   "✧*。٩(ˊᗜˋ*)و✧*。",
+   "⸜(｡˃ ᵕ ˂ )⸝♡",
+   "(ﾉ´ヮ`)ﾉ*: ･ﾟ👑",
+   "ദ്ദി(˵ •̀ ᴗ - ˵ ) ✧",
+   "(ﾉ≧∀≦)ﾉ🎀",
+   "w(°ｏ°)w",
+   "( ˶°ㅁ°) !!",
+   "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧",
+   "٩(ˊᗜˋ*)و ♡",
+   "(๑˃ᴗ˂)ﻭ",
+   "( ˶ˊᵕˋ)੭♡",
+   "(,,> ᴗ <,,)",
+   "✧˖°(◕ᴗ◕✿)",
+   "(≧◡≦) ♡",
+   "٩(◕‿◕｡)۶",
+   "(๑>◡<๑)",
+   "ヽ(・∀・)ﾉ",
+   "(*≧ω≦*)",
+   "＼(^o^)／",
+   "(☆▽☆)",
+   "o(≧▽≦)o",
+   "⸜(*ˊᗜˋ*)⸝"
+  ],
+  "lines": [
+   {
+    "text": "lên level rồi {name}. giờ bạn là {level}",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "level up. same you, bigger vocabulary",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "chúc mừng lên cấp mới, bạn đã cố gắng nhiều",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "cấp mới mở rồi, tủ đồ có món mới đó",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "new level, new outfit. the bunny is thrilled",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "bạn vừa lên {level}, xứng đáng lắm",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "lên cấp ngon lành, cà rốt cũng lên đời",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "you leveled up. try not to get cocky",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "{level} đã gọi tên bạn",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "mỗi cấp là bằng chứng bạn đã dùng từ thật",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "rank up. the wardrobe just got bigger",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "lên {level} rồi, tui phải cúi chào thôi",
+    "tone": "genz",
+    "cringe": 2
+   },
+   {
+    "text": "lên cấp không cần vội, cứ đều đặn là tới",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "promotion approved. {level} suits you",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "lên cấp xong ghé tủ đồ thử đồ mới đi",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "this level looks good on you",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "lên đời rồi đó {name}, nhớ khoe tui đồ mới",
+    "tone": "genz",
+    "cringe": 1
+   }
+  ]
+ },
+ "nhac_hoc": {
+  "label": "nhắc học / thỏ chờ",
+  "kaomoji": [
+   "(・・ ) ?",
+   "૮ ・ﻌ・ა ...",
+   "(｡･ω･｡)ﾉ♡",
+   "(っ˘ω˘ς )",
+   "₍ᐢ. .ᐢ₎",
+   "(´・ω・`)?",
+   "( ꒪⌓꒪)",
+   "₍ᐢ. .ᐢ₎ ?",
+   "(｡・ω・｡)?",
+   "( ˙꒳˙ )",
+   "(¬‿¬)",
+   "(≖ᴗ≖๑)",
+   "(￣ー￣)",
+   "( •̀ - •́ )",
+   "(｡•̀ᴗ-)✧",
+   "( ⸝⸝´꒳`⸝⸝)",
+   "(๑•̀ㅁ•́๑)✧",
+   "૮ ・ﻌ・ა ?",
+   "(・ω・)ノ",
+   "(づ ᴗ _ᴗ)づ♡",
+   "( ˘͈ ᵕ ˘͈♡)",
+   "૮ ˶• ﻌ •˶ ა ♡"
+  ],
+  "lines": [
+   {
+    "text": "5 phút thôi, hứa",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "{n} từ đang chờ ôn, tụi nó nhớ bạn",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "your streak is looking at you. kindly.",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "hôm nay mình học một chút thôi cũng được nha",
+    "tone": "warm",
+    "cringe": 1,
+    "join": "opener"
+   },
+   {
+    "text": "five minutes. that's all the bunny asks",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "tui ngồi chờ nãy giờ, tai muốn rũ luôn",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "vài từ ôn lại hôm nay sẽ giúp mai nhớ lâu hơn",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "a tiny session is still a session",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "mở xie rồi thì học luôn cho trọn",
+    "tone": "genz",
+    "cringe": 1,
+    "join": "opener"
+   },
+   {
+    "text": "từ vựng cần gặp lại đều đặn mới nhớ được",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "the flashcards are getting lonely",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "cà rốt hôm nay vẫn chưa có ai nhận",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "nếu bận thì làm một bài ngắn thôi cũng tốt",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "one round. then you're free",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "chuỗi ngày đang hồi hộp lắm đó",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "học một ít mỗi ngày dễ hơn học dồn cuối tuần",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "your future self says thanks in advance",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "tui hứa bài hôm nay ngắn, ngắn thật",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "bạn còn {left} lượt nữa để giữ chuỗi hôm nay",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "{n} words are due. they asked about you",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "không học thì tui ăn hết cà rốt của bạn",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "mình ôn từ đến hạn trước, nhanh lắm",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "quick review now, less panic later",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "lướt mạng xã hội năm phút, lướt từ vựng năm phút",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "đều đặn quan trọng hơn học nhiều một lúc",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "let's do the easy ones first",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "tui gõ cửa nhẹ thôi: cốc cốc, học hông",
+    "tone": "genz",
+    "cringe": 2
+   },
+   {
+    "text": "hôm nay bạn đã sẵn sàng chưa? mình bắt đầu nhé",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "the bunny is waiting. patiently. mostly",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "từ vựng không tự chui vô đầu đâu nè",
+    "tone": "genz",
+    "cringe": 1,
+    "join": "opener"
+   },
+   {
+    "text": "ôn một chút trước khi quên là cách học hiệu quả",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "don't let the streak down",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "bài hôm nay nhẹ như lông thỏ",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "tui đã chuẩn bị sẵn bài ôn cho bạn rồi",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "what if we just did five words?",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "examiner không đợi, nhưng tui thì đợi được",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "xie mở sẵn rồi, chỉ thiếu bạn thôi",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "your words miss you. this is not a drill",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "học xong rồi đi chơi, tui duyệt",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "bắt đầu với vài câu dễ cho nóng máy nha",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "the hardest part is opening the app",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "ngày hôm nay còn trống một ô cho từ vựng",
+    "tone": "genz",
+    "cringe": 1
+   }
+  ]
+ },
+ "nghi_giai_lao": {
+  "label": "nghỉ giải lao (học quá 25 phút)",
+  "conditions": {
+   "minutes": [
+    25,
+    null
+   ]
+  },
+  "kaomoji": [
+   "( ˘ω˘ )🍵",
+   "(っ˘ڡ˘ς)🍓",
+   "₍ᐢ‥ᐢ₎ ☁︎",
+   "(￣▽￣)ノ",
+   "(づ ᴗ _ᴗ)づ♡",
+   "( ˘͈ ᵕ ˘͈♡)",
+   "૮ ˶• ﻌ •˶ ა ♡",
+   "(๑´•.̫ • `๑)",
+   "ʚ♡ɞ",
+   "(´｡• ᵕ •｡`) ♡",
+   "(っ´ω`)ﾉ",
+   "⊂(・﹏・⊂)",
+   "(ㅅ´ ˘ `)",
+   "(っ˘ω˘ς )",
+   "(⸝⸝ᵕᴗᵕ⸝⸝)",
+   "( ˘ ³˘)♥",
+   "(っ ᵔ◡ᵔ)っ",
+   "(˶ᵔ ᵕ ᵔ˶) ♡",
+   "₍ᐢ. .ᐢ₎ ♡",
+   "(ᴗ˳ᴗ)ᶻ𝗓𝐰",
+   "( ˘ᵕ˘ ) ☾",
+   "₍ᐢ‥ᐢ₎ zZ"
+  ],
+  "lines": [
+   {
+    "text": "học {minutes} phút rồi. đi touch grass xíu",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "bạn học lâu rồi, đứng dậy duỗi người chút nha",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "{minutes} minutes in. your eyes need a break",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "não nóng máy rồi, cho nó nghỉ năm phút",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "uống nước, nhìn ra xa một chút rồi quay lại nha",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "break time. the words will still be here",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "tui đi lấy cà rốt, bạn đi lấy nước đi",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "nghỉ ngắn giúp não sắp xếp lại những gì vừa học",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "stretch and drink some water. we'll continue",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "ngồi lâu quá lưng nó biểu tình đó",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "học tiếp sau khi nghỉ sẽ vào nhanh hơn",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "you earned a short break",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "cho mắt nghỉ, nhìn tui nè",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "{minutes} phút rồi, mình nghỉ một chút nhé",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "even the bunny takes naps",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "nghỉ giải lao không tính là trốn học đâu",
+    "tone": "genz",
+    "cringe": 2
+   },
+   {
+    "text": "pause here. your brain is filing everything",
+    "tone": "en",
+    "cringe": 1
+   }
+  ]
+ },
+ "dem_nguoc": {
+  "label": "đếm ngược ngày thi",
+  "kaomoji": [
+   "(ง •̀_•́)ง",
+   "ᕙ( •̀ ᗜ •́ )ᕗ",
+   "(๑•̀ㅂ•́)و✧",
+   "(ง'̀-'́)ง",
+   "( •̀ᴗ•́ )و ̑̑",
+   "ᕦ(ò_óˇ)ᕤ",
+   "( •̀ ω •́ )✧",
+   "(｀・ω・´)",
+   "( •̀ᴗ•́ )و",
+   "(•̀ᴗ•́)و ✎",
+   "(｀・ω・´)ゞ",
+   "(๑•̀ᴗ•́)و",
+   "٩( ᐛ )و",
+   "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧",
+   "٩(ˊᗜˋ*)و ♡",
+   "(๑˃ᴗ˂)ﻭ",
+   "( ˶ˊᵕˋ)੭♡",
+   "(,,> ᴗ <,,)",
+   "✧˖°(◕ᴗ◕✿)",
+   "(≧◡≦) ♡",
+   "٩(◕‿◕｡)۶",
+   "(๑>◡<๑)"
+  ],
+  "lines": [
+   {
+    "text": "còn {days} ngày. chưa phải lúc hoảng, là lúc tăng tốc",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "{days} days left. plenty of time to become dangerous",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "đếm ngược {days} ngày, tui bắt đầu hồi hộp giùm bạn",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "mỗi ngày còn lại là thêm vài từ dùng được",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "{days} days. that's {days} chances to improve",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "còn {days} ngày, cà rốt dự trữ đủ chưa",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "mình đi đều mỗi ngày, tới hôm thi sẽ vững",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "the exam is coming. so is your vocabulary",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "còn {days} ngày, examiner đang chuẩn bị tinh thần",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "không cần học quá sức, chỉ cần không bỏ ngày nào",
+    "tone": "warm",
+    "cringe": 2
+   },
+   {
+    "text": "countdown: {days}. the bunny is in training mode",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "{days} ngày nữa thôi, giờ là lúc chơi thật",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "tuần cuối thì ôn lại từ cũ nhiều hơn học từ mới",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "days": [
+      0,
+      7
+     ]
+    }
+   },
+   {
+    "text": "one week left. review, sleep, and repeat",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "days": [
+      0,
+      7
+     ]
+    }
+   },
+   {
+    "text": "tuần cuối rồi, ôn kỹ từ đã thuộc là chắc ăn",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "days": [
+      0,
+      7
+     ]
+    }
+   },
+   {
+    "text": "the exam is tomorrow. sleep early tonight",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "days": [
+      0,
+      1
+     ]
+    }
+   },
+   {
+    "text": "mai thi rồi, tối nay ngủ sớm là nước đi khôn",
+    "tone": "genz",
+    "cringe": 2,
+    "when": {
+     "days": [
+      0,
+      1
+     ]
+    }
+   },
+   {
+    "text": "còn {days} ngày, mỗi ngày một ít là đủ xa",
+    "tone": "genz",
+    "cringe": 1
+   }
+  ]
+ },
+ "minigame": {
+  "label": "minigame: bắt đầu / thắng / kỷ lục / thua",
+  "kinds": [
+   "start",
+   "win",
+   "record",
+   "lose"
+  ],
+  "kaomoji": [
+   "(ง •̀_•́)ง",
+   "₍ᐢ•ﻌ•ᐢ₎ ready?",
+   "٩(ˊᗜˋ*)و 🏆",
+   "( ˶°ㅁ°) !!",
+   "Σ(°△°|||)︴",
+   "(っ˘̩╭╮˘̩)っ",
+   "(｡ŏ﹏ŏ)",
+   "ε=ε=(ノ≧∇≦)ノ",
+   "(๑•̀ㅂ•́)و✧",
+   "( •̀ ω •́ )✧",
+   "(｀・ω・´)",
+   "ᕦ(ò_óˇ)ᕤ",
+   "ᕙ( •̀ ᗜ •́ )ᕗ",
+   "(ง'̀-'́)ง",
+   "( •̀ᴗ•́ )و",
+   "(•̀ᴗ•́)و ✎",
+   "(｀・ω・´)ゞ",
+   "(๑•̀ᴗ•́)و",
+   "٩( ᐛ )و",
+   "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧",
+   "٩(ˊᗜˋ*)و ♡",
+   "(๑˃ᴗ˂)ﻭ"
+  ],
+  "lines": [
+   {
+    "text": "ready? gét gô",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "start"
+    }
+   },
+   {
+    "text": "bắt đầu nhé, cứ bình tĩnh mà chơi",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "start"
+    }
+   },
+   {
+    "text": "the bunny is warming up. you too",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "start"
+    }
+   },
+   {
+    "text": "ván mới, tay nóng chưa",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "start"
+    }
+   },
+   {
+    "text": "three, two, one. here we go",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "start"
+    }
+   },
+   {
+    "text": "that's a win. the carrots are yours",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "win"
+    }
+   },
+   {
+    "text": "thắng rồi, cà rốt về đội bạn",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "win"
+    }
+   },
+   {
+    "text": "chơi tốt lắm, bạn phản xạ nhanh ghê",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "win"
+    }
+   },
+   {
+    "text": "thắng gọn, game này hơi dễ với bạn rồi",
+    "tone": "genz",
+    "cringe": 2,
+    "when": {
+     "kind": "win"
+    }
+   },
+   {
+    "text": "new high score. the carrots are shaking",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "record"
+    }
+   },
+   {
+    "text": "kỷ lục mới, tui phải dời bảng điểm lên",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "record"
+    }
+   },
+   {
+    "text": "bạn vừa phá kỷ lục của chính mình",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "record"
+    }
+   },
+   {
+    "text": "personal best. frame it",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "record"
+    }
+   },
+   {
+    "text": "ván này là khởi động thôi. run it back?",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "lose"
+    }
+   },
+   {
+    "text": "thua ván này thôi, ván sau mình làm lại",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "lose"
+    }
+   },
+   {
+    "text": "hụt chút xíu, làm ván nữa cho đã tay",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "lose"
+    }
+   },
+   {
+    "text": "good try. one more round?",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "lose"
+    }
+   }
+  ]
+ },
+ "cham_tho": {
+  "label": "chạm thỏ",
+  "kaomoji": [
+   "(˶ᵔ ᵕ ᵔ˶)",
+   "₍ᐢ. .ᐢ₎ ?",
+   "( ⸝⸝´꒳`⸝⸝)",
+   "૮ ˶ᵕ ༝ ᵕ˶ა",
+   "(｡•̀ᴗ-)✧",
+   "ʕ•ᴥ•ʔ",
+   "(〃▽〃)",
+   "(*/ω＼*)",
+   "(//▽//)",
+   "(⊙ˍ⊙)",
+   "(⸝⸝ᵕᴗᵕ⸝⸝)",
+   "(˶˃ ᵕ ˂˶)",
+   "(๑>◡<๑)",
+   "(,,> ᴗ <,,)",
+   "૮ ˶ᵔ ᵕ ᵔ˶ ა",
+   "(｡•ᴗ•｡)♡",
+   "(˶ᵔ ᵕ ᵔ˶)♡",
+   "(・・ ) ?",
+   "(｡・ω・｡)?",
+   "(´・ω・`)?",
+   "( ˙꒳˙ )",
+   "(¬‿¬)"
+  ],
+  "lines": [
+   {
+    "text": "ơi? gọi tui hả",
+    "tone": "genz",
+    "cringe": 1,
+    "join": "opener"
+   },
+   {
+    "text": "fun fact: 'procrastinate' là việc bạn đang làm khi chọc tui",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "tap me again and i'm giving you a quiz",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "đã chọc tui {n} lần. tui đếm hết đó",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "'run' và 'set' thuộc nhóm từ nhiều nghĩa nhất tiếng anh",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "'news' trông như số nhiều nhưng đi với động từ số ít",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "fun fact: 'advice' is uncountable. no 'advices', ever",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "'information' cũng không có số nhiều, đừng thêm s nha",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "'affect' thường là động từ, còn 'effect' thường là danh từ",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "'discuss about' is a trap. just 'discuss'",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "'economic' là về kinh tế, 'economical' là tiết kiệm",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "'fewer' for things you count, 'less' for things you don't",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "'lose' là làm mất, 'loose' là lỏng. thêm một chữ o là khác hẳn",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "'research' thường không đếm được, nói 'a piece of research'",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "'emphasize' needs no 'on'. the noun 'emphasis' does",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "tai tui dài để nghe bạn phát âm, không phải để bị kéo",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "chọc nữa là tui giấu hết cà rốt",
+    "tone": "genz",
+    "cringe": 2
+   },
+   {
+    "text": "that tickles. now learn a word",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "'despite' không đi với 'of', còn 'in spite of' thì có",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "'accommodation' có hai chữ c và hai chữ m, dễ viết sai lắm",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "it's 'responsible for' something, never 'responsible about'",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "'interested in' chứ không phải 'interested about' nha",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "từ 'every' luôn đi với danh từ số ít, như 'every student'",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "'police' is always plural. the police are coming",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "chọc tai trái thì được, tai phải đang dưỡng",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "'make a decision' chứ không 'do a decision' nha",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "'people' đã là số nhiều rồi, không cần thêm s",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "'heavily reliant on' sounds more academic than 'depend a lot'",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "chọc tui hoài, tui tính phí bằng cà rốt đó",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "fun fact: 'bookkeeper' has three double letters in a row",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "'arrive' đi với 'at' hoặc 'in', không đi với 'to'",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "'although' và 'but' không đứng chung một câu nha",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "'a lot of' is fine for speaking. writing likes more options",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "'look forward to' + v-ing, không phải động từ nguyên mẫu",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "tui là thỏ chứ không phải nút bấm đâu nha",
+    "tone": "genz",
+    "cringe": 2
+   },
+   {
+    "text": "'its' owns things, while 'it's' is short for 'it is'",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "'suggest' không đi với 'to do', hãy dùng 'suggest doing'",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "'since' đi với mốc thời gian, 'for' đi với khoảng thời gian",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "'the' is the most common word in english",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "chạm nhẹ thôi, tai tui là hàng hiệu",
+    "tone": "genz",
+    "cringe": 1
+   },
+   {
+    "text": "'married to' ai đó, không phải 'married with'",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "boop. now back to studying",
+    "tone": "en",
+    "cringe": 1
+   },
+   {
+    "text": "'kind of' hay dùng khi nói, viết thì nên tránh",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "'informations' là lỗi rất hay gặp, chỉ có 'information' thôi",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "'equipment' không đếm được, đừng viết 'equipments'",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "'enjoy' đi với danh động từ, như 'enjoy reading'",
+    "tone": "warm",
+    "cringe": 1
+   },
+   {
+    "text": "nói 'a high level', đừng nói 'a big level'",
+    "tone": "warm",
+    "cringe": 1
+   }
+  ]
+ },
+ "da_luu": {
+  "label": "đã lưu / đã xoá",
+  "kinds": [
+   "saved",
+   "deleted"
+  ],
+  "kaomoji": [
+   "(•ᴗ•)♡",
+   "₍ᐢ. .ᐢ₎📌",
+   "( ˘ ³˘)♥",
+   "(・_・)ノ",
+   "(っ ᵔ◡ᵔ)っ",
+   "(˶ᵔ ᵕ ᵔ˶)",
+   "₍ᐢ•ﻌ•ᐢ₎ ♡",
+   "( ˶ˆᗜˆ˵ )",
+   "(◍•ᴗ•◍)",
+   "(｡◕‿◕｡)",
+   "(✿◠‿◠)",
+   "(ᵔᴥᵔ)",
+   "٩(｡•́‿•̀｡)۶",
+   "(*^▽^*)",
+   "(◠‿◠✿)",
+   "( ´ ▽ ` )ﾉ",
+   "(๑•ᴗ•๑)♡",
+   "(◡‿◡✿)",
+   "(っ´▽`)っ",
+   "(｡•ᴗ•｡)♡",
+   "ヾ(・ω・*)ノ",
+   "(｡･ω･｡)ﾉ♡"
+  ],
+  "lines": [
+   {
+    "text": "saved. safe and sound",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "saved"
+    }
+   },
+   {
+    "text": "lưu rồi, cất kỹ trong tủ của tui",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "saved"
+    }
+   },
+   {
+    "text": "đã lưu xong, lát nữa bạn xem lại được",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "saved"
+    }
+   },
+   {
+    "text": "lưu rồi nha, khỏi lo mất",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "saved"
+    }
+   },
+   {
+    "text": "got it. it's in the vault",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "saved"
+    }
+   },
+   {
+    "text": "tui đã ghi lại cẩn thận rồi",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "saved"
+    }
+   },
+   {
+    "text": "lưu xong, tui còn đóng dấu nơ hồng",
+    "tone": "genz",
+    "cringe": 2,
+    "when": {
+     "kind": "saved"
+    }
+   },
+   {
+    "text": "noted and stored. carry on",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "saved"
+    }
+   },
+   {
+    "text": "đồ mới vô tủ rồi đó",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "saved"
+    }
+   },
+   {
+    "text": "xoá rồi, coi như chưa từng gặp",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "deleted"
+    }
+   },
+   {
+    "text": "đã xoá xong theo ý bạn",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "deleted"
+    }
+   },
+   {
+    "text": "deleted. it never happened",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "deleted"
+    }
+   },
+   {
+    "text": "bay màu rồi nha",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "deleted"
+    }
+   },
+   {
+    "text": "xoá rồi, bạn muốn làm lại lúc nào cũng được",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "deleted"
+    }
+   },
+   {
+    "text": "gone. the bunny saw nothing",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "deleted"
+    }
+   },
+   {
+    "text": "tui vứt vào thùng rác rồi, rửa tay luôn",
+    "tone": "genz",
+    "cringe": 2,
+    "when": {
+     "kind": "deleted"
+    }
+   },
+   {
+    "text": "clean slate. that's a fresh start",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "deleted"
+    }
+   }
+  ]
+ },
+ "trang_thai": {
+  "label": "trang trống / lỗi / đang tải",
+  "kinds": [
+   "empty",
+   "error",
+   "loading"
+  ],
+  "kaomoji": [
+   "( ˙꒳˙ )",
+   "૮ ・ﻌ・ა",
+   "(・・ ) ?",
+   "⊂(・▽・⊂)",
+   "(˶ᵔ ᵕ ᵔ˶) ₊˚⊹",
+   "ε=ε=┌( >_<)┘",
+   "┐(￣ヘ￣)┌",
+   "₍ᐢ. .ᐢ₎ ?",
+   "(｡・ω・｡)?",
+   "(´・ω・`)?",
+   "(¬‿¬)",
+   "(≖ᴗ≖๑)",
+   "(￣ー￣)",
+   "( •̀ - •́ )",
+   "(｡•̀ᴗ-)✧",
+   "( ⸝⸝´꒳`⸝⸝)",
+   "(๑•̀ㅁ•́๑)✧",
+   "૮ ・ﻌ・ა ?",
+   "(・ω・)ノ",
+   "(づ ᴗ _ᴗ)づ♡",
+   "( ˘͈ ᵕ ˘͈♡)",
+   "૮ ˶• ﻌ •˶ ა ♡"
+  ],
+  "lines": [
+   {
+    "text": "ở đây trống trơn. tạo cái đầu tiên nha",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "empty"
+    }
+   },
+   {
+    "text": "chưa có gì ở đây, mình bắt đầu từ từ nhé",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "empty"
+    }
+   },
+   {
+    "text": "nothing here yet. the first one is yours",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "empty"
+    }
+   },
+   {
+    "text": "trống trơn như dĩa cà rốt của tui",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "empty"
+    }
+   },
+   {
+    "text": "an empty page is just potential",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "empty"
+    }
+   },
+   {
+    "text": "ủa alo, có gì đó sai sai. thử lại giùm tui",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "error"
+    }
+   },
+   {
+    "text": "có lỗi nhỏ rồi, bạn tải lại trang giúp tui nha",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "error"
+    }
+   },
+   {
+    "text": "something broke. the bunny is on it",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "error"
+    }
+   },
+   {
+    "text": "lỗi kỹ thuật, không phải lỗi của bạn đâu",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "error"
+    }
+   },
+   {
+    "text": "oops. that wasn't supposed to happen",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "error"
+    }
+   },
+   {
+    "text": "tui thử lại rồi mà chưa được, đợi chút nha",
+    "tone": "warm",
+    "cringe": 2,
+    "when": {
+     "kind": "error"
+    }
+   },
+   {
+    "text": "đang tải, tui chạy nhanh hết mức rồi",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "loading"
+    }
+   },
+   {
+    "text": "đợi tui xíu, đang mở ra đây",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "loading"
+    }
+   },
+   {
+    "text": "loading. the bunny is hopping as fast as it can",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "loading"
+    }
+   },
+   {
+    "text": "đang tải, tranh thủ đọc mẹo bên dưới nè",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "loading"
+    }
+   },
+   {
+    "text": "one sec. fetching your words",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "loading"
+    }
+   },
+   {
+    "text": "chờ xíu, cà rốt đang được vận chuyển",
+    "tone": "genz",
+    "cringe": 2,
+    "when": {
+     "kind": "loading"
+    }
+   }
+  ]
+ },
+ "doi_giao_dien": {
+  "label": "đổi giao diện",
+  "kinds": [
+   "dark",
+   "light"
+  ],
+  "kaomoji": [
+   "(˶ᵔ ᵕ ᵔ˶)☀︎",
+   "( ˘ᵕ˘ ) ☾",
+   "₍ᐢ‥ᐢ₎ ⋆｡˚",
+   "૮ ˶ᵕ ༝ ᵕ˶ა ☽",
+   "(◕ᴗ◕✿)☀︎",
+   "(っ- ‸ – ς)☾",
+   "⋆｡˚ ☁︎ ˚｡⋆",
+   "✧˖°",
+   "(ᴗ˳ᴗ)ᶻ𝗓𝐰",
+   "₍ᐢ‥ᐢ₎ zZ",
+   "(っ- ‸ – ς)",
+   "(｡-ω-)zzz",
+   "(∪｡∪)｡｡｡zzZ",
+   "(－ω－) zzZ",
+   "(˘ω˘)",
+   "( ˘ω˘ )ｽﾔｧ",
+   "(っ˕ -｡)",
+   "(⸝⸝ᵕᴗᵕ⸝⸝)",
+   "( ˶˘ ᵕ ˘˶ )🌙",
+   "(˶ᵔ ᵕ ᵔ˶)",
+   "₍ᐢ•ﻌ•ᐢ₎ ♡",
+   "( ˶ˆᗜˆ˵ )"
+  ],
+  "lines": [
+   {
+    "text": "đèn tắt. thỏ chuyển sang ca đêm",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "dark"
+    }
+   },
+   {
+    "text": "chế độ tối bật rồi, mắt bạn cảm ơn tui đó",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "dark"
+    }
+   },
+   {
+    "text": "night mode is on. vocabulary is still on",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "dark"
+    }
+   },
+   {
+    "text": "chuyển sang tối rồi, đọc sẽ dịu mắt hơn",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "dark"
+    }
+   },
+   {
+    "text": "ca đêm tới, tui cài sao lên nơ rồi",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "dark"
+    }
+   },
+   {
+    "text": "the moon is out. so are we",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "dark"
+    }
+   },
+   {
+    "text": "trời tối thì giao diện cũng tối theo cho êm",
+    "tone": "warm",
+    "cringe": 2,
+    "when": {
+     "kind": "dark"
+    }
+   },
+   {
+    "text": "bật đêm trăng, thỏ chuyển sang chế độ thì thầm",
+    "tone": "genz",
+    "cringe": 2,
+    "when": {
+     "kind": "dark"
+    }
+   },
+   {
+    "text": "lights on. it's bright in here",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "light"
+    }
+   },
+   {
+    "text": "đèn bật. thỏ vào ca ngày",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "light"
+    }
+   },
+   {
+    "text": "chuyển sang sáng rồi, nhìn tươi hẳn ra",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "light"
+    }
+   },
+   {
+    "text": "tuyết trắng trở lại, nơ hồng cũng sáng theo",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "light"
+    }
+   },
+   {
+    "text": "day mode. the bunny put on sunscreen",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "light"
+    }
+   },
+   {
+    "text": "giao diện sáng sẽ dễ nhìn hơn khi ở ngoài trời",
+    "tone": "warm",
+    "cringe": 1,
+    "when": {
+     "kind": "light"
+    }
+   },
+   {
+    "text": "kéo rèm ra rồi, nắng vô học chung",
+    "tone": "genz",
+    "cringe": 1,
+    "when": {
+     "kind": "light"
+    }
+   },
+   {
+    "text": "back to snow white. it's a good look",
+    "tone": "en",
+    "cringe": 1,
+    "when": {
+     "kind": "light"
+    }
+   },
+   {
+    "text": "ban ngày rồi, tui cất sao vô hộp",
+    "tone": "genz",
+    "cringe": 2,
+    "when": {
+     "kind": "light"
+    }
+   }
+  ]
+ }
+}

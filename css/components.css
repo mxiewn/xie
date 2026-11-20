@@ -1043,6 +1043,25 @@
   font-size: 1.3rem;
 }
 
+.loading-tip {
+  max-width: 40ch;
+  padding: 12px 16px;
+  border: 1.5px dashed var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-weight: 600;
+  text-align: center;
+}
+
+.loading-tip-label {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--accent-ink);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
 /* ---------- nút chọn mục (segmented) ---------- */
 .segmented {
   display: flex;
@@ -1361,6 +1380,22 @@
 
 .status-ok { background: var(--ok-soft); color: var(--ok); }
 .status-bad { background: var(--bad-soft); color: var(--bad); }
+
+.voice-lab-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.voice-out {
+  min-height: 3em;
+  padding: 12px 14px;
+  border: 1.5px solid var(--bubble-line);
+  border-radius: 18px;
+  background: var(--bubble-bg);
+  color: var(--bubble-ink);
+  font-weight: 700;
+}
 
 .select-row {
   display: flex;
@@ -1764,6 +1799,10 @@
   .me-body .theme-card {
     grid-column: 2;
     grid-row: 1 / span 2;
+  }
+
+  .me-body .talk-card {
+    grid-column: 2;
   }
 
   /* tủ đồ: người mẫu bên trái (đứng yên khi cuộn), lưới đồ bên phải */

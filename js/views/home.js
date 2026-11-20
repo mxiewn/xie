@@ -1,12 +1,12 @@
 // xie · views/home.js — trang chủ
-// giai đoạn 1: lời chào theo giờ việt nam, thỏ + bong bóng thoại, nút đổi sáng/tối.
+// lời chào theo giờ việt nam, thỏ + bong bóng thoại (data/voice.json), nút đổi sáng/tối.
 // vòng 50 lượt, streak, từ của ngày, đếm ngược… sẽ dọn vào ở các giai đoạn sau.
-// thoại ở đây là bản tạm, giai đoạn 2 chuyển hết sang data/voice.json.
 
 import { createBunny } from '../bunny.js';
 import { createBubble, icons, skyDecor } from '../ui.js';
 import { currentTheme, toggleQuick, saigonHour, THEME_EVENT } from '../theme.js';
 import { getEquippedSkin } from '../levels.js';
+import { say, greetingNow, countTap } from '../voice.js';
 
 function greetingFor(hour) {
   if (hour >= 5 && hour < 11) return 'sáng rồi nè';
@@ -15,12 +15,6 @@ function greetingFor(hour) {
   if (hour >= 18 && hour < 23) return 'tối rồi nè';
   return 'khuya rồi nè';
 }
-
-const LINES = {
-  hello: { text: 'hii, tui là thỏ của xie. nhà mới dọn, ghé chơi trước nha', kao: '(˶ᵔ ᵕ ᵔ˶)ﾉ' },
-  toDark: { text: 'đèn tắt. thỏ chuyển sang ca đêm', kao: '( ˘ᵕ˘ ) ☾' },
-  toLight: { text: 'đèn bật. thỏ vào ca ngày', kao: '(˶ᵔ ᵕ ᵔ˶)☀︎' },
-};
 
 const SOON = [
   'vòng tiến độ 50 lượt mỗi ngày',
@@ -74,26 +68,32 @@ export function render(view) {
   };
   syncToggle();
 
+  let alive = true;
+  const speak = async (group, ctx, opts) => {
+    const line = await say(group, ctx, opts);
+    if (alive && line) bubble.say(line.text || '', line.kao);
+  };
+
   let busy = false;
   toggle.addEventListener('click', async () => {
     if (busy) return;
     busy = true;
     await bunny.flip();
     const theme = toggleQuick();
-    const line = theme === 'dark' ? LINES.toDark : LINES.toLight;
-    bubble.say(line.text, line.kao);
+    speak('doi_giao_dien', { kind: theme }, { forceLine: true });
     busy = false;
   });
 
   view.querySelector('.bunny-btn').addEventListener('click', () => {
     bunny.hop();
-    bubble.say(LINES.hello.text, LINES.hello.kao);
+    speak('cham_tho', { n: countTap() }, { forceLine: true });
   });
 
   window.addEventListener(THEME_EVENT, syncToggle);
-  const helloTimer = setTimeout(() => bubble.say(LINES.hello.text, LINES.hello.kao), 700);
+  const helloTimer = setTimeout(() => speak(greetingNow(), {}, { forceLine: true }), 700);
 
   return () => {
+    alive = false;
     clearTimeout(helloTimer);
     window.removeEventListener(THEME_EVENT, syncToggle);
     bunny.destroy();
