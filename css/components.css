@@ -1,0 +1,1425 @@
+/* ==========================================================
+   xie · components.css
+   khung app, thanh tab, thẻ, nút, trang trí coquette, thỏ, bong bóng thoại.
+   KHÔNG viết mã màu ở đây — chỉ dùng var(--…) từ themes.css.
+   ========================================================== */
+
+/* ---------- khung app ---------- */
+.app {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  isolation: isolate;
+}
+
+.view {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  max-width: var(--view-max);
+  margin: 0 auto;
+  padding:
+    calc(var(--safe-top) + 12px)
+    calc(var(--gutter) + var(--safe-right))
+    calc(var(--tab-h) + var(--safe-bottom) + 28px)
+    calc(var(--gutter) + var(--safe-left));
+}
+
+.view:focus,
+.view:focus-visible {
+  outline: none;
+}
+
+.page-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* nền trang trí cho màn rộng (desktop) */
+.page-deco {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ---------- thanh tab dưới cùng ---------- */
+.tab-bar {
+  position: fixed;
+  z-index: 20;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 2px;
+  padding: 6px calc(6px + var(--safe-right)) calc(6px + var(--safe-bottom)) calc(6px + var(--safe-left));
+  background: var(--tabbar-bg);
+  border-top: 1.5px solid var(--line);
+  box-shadow: var(--shadow-soft);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  backdrop-filter: blur(14px) saturate(1.2);
+}
+
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: var(--tap);
+  min-height: 52px;
+  padding: 4px 2px;
+  border-radius: 16px;
+  color: var(--tab-ink);
+  font-size: 0.74rem;
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: center;
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.tab-label {
+  white-space: nowrap;
+}
+
+.tab-icon {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.25s var(--ease-soft);
+}
+
+.tab-icon .tab-icon-fill {
+  fill: currentColor;
+  stroke: none;
+}
+
+.tab[aria-current="page"] {
+  background: var(--tab-active-bg);
+  color: var(--tab-active-ink);
+}
+
+.tab[aria-current="page"] .tab-icon {
+  transform: translateY(-1px) scale(1.08);
+}
+
+/* ---------- tiêu đề trang + viền ren ---------- */
+.page-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 10px;
+}
+
+.page-title {
+  font-size: 1.75rem;
+  color: var(--text);
+}
+
+.page-sub {
+  margin-top: 2px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.page-actions {
+  flex-shrink: 0;
+}
+
+/* ren: một dải mảnh + hàng vỏ sò có lỗ ren */
+.lace-trim,
+.lace-edge {
+  height: 11px;
+  border-top: 2px solid var(--lace);
+  background:
+    radial-gradient(circle at 50% 3.6px, var(--lace-hole) 0 1.4px, transparent 1.9px) 0 0 / 14px 11px repeat-x,
+    radial-gradient(circle at 50% 0, var(--lace) 0 6.4px, transparent 6.9px) 0 0 / 14px 11px repeat-x;
+  opacity: var(--deco-pattern-opacity);
+}
+
+.lace-trim {
+  margin-top: -6px;
+}
+
+/* chuỗi ngọc trai làm vạch ngăn */
+.pearls {
+  height: 12px;
+  background:
+    radial-gradient(circle at 42% 40%, var(--pearl-shine) 0 1.2px, var(--pearl) 1.9px 3.4px, var(--pearl-shade) 3.9px 4.5px, transparent 5px)
+    0 50% / 13px 12px repeat-x;
+  filter: drop-shadow(var(--pearl-glow));
+}
+
+/* ---------- nút ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 22px;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-pill);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--on-primary);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn-ghost {
+  background: var(--surface);
+  color: var(--accent-ink);
+  border-color: var(--line-strong);
+}
+
+.btn-small {
+  min-height: var(--tap);
+  padding: 0 16px;
+  font-size: 0.92rem;
+}
+
+.icon-btn {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  padding: 0;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--accent-ink);
+  box-shadow: var(--shadow-soft);
+  touch-action: manipulation;
+}
+
+.icon-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- thẻ ---------- */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px 16px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.card-text {
+  color: var(--text-muted);
+}
+
+/* thẻ có dải ren trên đầu */
+.card-lace {
+  overflow: hidden;
+  padding-top: 28px;
+}
+
+.card-lace::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 15px;
+  border-top: 5px solid var(--lace);
+  background:
+    radial-gradient(circle at 50% 3.6px, var(--surface) 0 1.4px, transparent 1.9px) 0 0 / 14px 10px repeat-x,
+    radial-gradient(circle at 50% 0, var(--lace) 0 6.4px, transparent 6.9px) 0 0 / 14px 10px repeat-x;
+  opacity: var(--deco-pattern-opacity);
+}
+
+.title-bow svg,
+.brand-bow svg {
+  display: block;
+}
+
+.title-bow svg {
+  width: 28px;
+  height: 21px;
+}
+
+.i-bow .i-bow-loop,
+.i-bow .i-bow-tail {
+  fill: var(--pink);
+  stroke: var(--rose);
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+}
+
+.i-bow .i-bow-knot {
+  fill: var(--rose);
+}
+
+.i-heart path {
+  fill: var(--pink);
+  stroke: var(--rose);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+.card-link {
+  flex-direction: row;
+  align-items: center;
+  min-height: 72px;
+  color: inherit;
+  text-decoration: none;
+  touch-action: manipulation;
+}
+
+.card-link-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.i-chevron {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: var(--accent-ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tag {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 1px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-tint);
+  color: var(--accent-ink);
+  font-size: 0.72rem;
+  font-weight: 800;
+  vertical-align: 2px;
+}
+
+/* ---------- trang chủ: khung trời + thỏ ---------- */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 384px;
+  margin-bottom: 8px;
+  padding: 14px 16px 16px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(to bottom, var(--hero-top), var(--hero-bottom) 78%);
+  box-shadow: var(--shadow-soft);
+}
+
+/* gingham hồng rất nhạt, mờ dần xuống dưới (ban đêm tắt) */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-image:
+    linear-gradient(90deg, var(--gingham) 50%, transparent 50%),
+    linear-gradient(var(--gingham) 50%, transparent 50%);
+  background-size: 22px 22px;
+  opacity: var(--gingham-opacity);
+  -webkit-mask-image: linear-gradient(to bottom, currentColor 20%, transparent 70%);
+  mask-image: linear-gradient(to bottom, currentColor 20%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-sky {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.hero-top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 2.2rem;
+  line-height: 1.1;
+  color: var(--accent-ink);
+}
+
+.brand-bow svg {
+  width: 34px;
+  height: 26px;
+  transform: rotate(-8deg) translateY(-6px);
+}
+
+.greeting {
+  position: relative;
+  z-index: 2;
+  margin-top: 4px;
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.greeting-name {
+  color: var(--accent-ink);
+}
+
+.bunny-stage {
+  --bunny-size: 172px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 78px;
+}
+
+.bubble-slot {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  width: min(290px, 100%);
+  transform: translateX(-50%);
+}
+
+.hero > .lace-edge {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: -11px;
+  z-index: 1;
+  border-top: 0;
+}
+
+/* nút đổi sáng/tối: mặt trời ↔ trăng */
+.theme-toggle svg {
+  position: absolute;
+  transition: transform 0.45s var(--ease-soft), opacity 0.3s ease;
+}
+
+.theme-toggle .i-sun circle {
+  fill: var(--sun);
+}
+
+.theme-toggle .i-moon path:first-child {
+  fill: var(--moon);
+  stroke: var(--crown-line);
+}
+
+.theme-toggle .i-moon .i-moon-star {
+  fill: var(--moon);
+  stroke: none;
+}
+
+.theme-toggle[data-theme="light"] .i-moon,
+.theme-toggle[data-theme="dark"] .i-sun {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.4);
+}
+
+.soon-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.soon-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface-2);
+  font-weight: 600;
+}
+
+.soon-list svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ---------- đồ trang trí: bộ ngày và bộ đêm riêng ---------- */
+[data-theme="light"] .deco-dark,
+[data-theme="dark"] .deco-light {
+  display: none;
+}
+
+.sky-day,
+.sky-night {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-sky svg {
+  position: absolute;
+  overflow: visible;
+}
+
+/* ban ngày: nắng nhẹ, mây, hoa anh đào */
+.sky-sun {
+  top: 64px;
+  right: 16px;
+  width: 54px;
+}
+
+.sun-core {
+  fill: var(--sun);
+}
+
+.sun-rays {
+  fill: none;
+  stroke: var(--sun-ray);
+  stroke-width: 3.6;
+  stroke-linecap: round;
+  transform-box: view-box;
+  transform-origin: 40px 40px;
+  animation: spin 48s linear infinite;
+}
+
+.sky-cloud path {
+  fill: var(--cloud);
+  stroke: var(--cloud-line);
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+}
+
+.cloud-a {
+  top: 136px;
+  left: -18px;
+  width: 104px;
+  animation: drift 13s ease-in-out infinite alternate;
+}
+
+.cloud-b {
+  top: 18px;
+  left: 44%;
+  width: 68px;
+  animation: drift 17s ease-in-out infinite alternate-reverse;
+}
+
+.sky-sakura {
+  right: -4px;
+  bottom: 6px;
+  width: 104px;
+}
+
+.sakura-branch {
+  fill: none;
+  stroke: var(--bunny-outline);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+.sakura-petal {
+  fill: var(--sakura);
+  stroke: var(--rose);
+  stroke-width: 0.7;
+}
+
+.sakura-center {
+  fill: var(--sakura-center);
+}
+
+.sky-petals {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.petal {
+  fill: var(--sakura);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: petal-sway 6s ease-in-out infinite alternate;
+}
+
+.petal.p2 { animation-delay: -2s; }
+.petal.p3 { animation-delay: -4s; }
+
+/* ban đêm: trăng lưỡi liềm, sao lấp lánh, cánh hoa trong suốt */
+.sky-moon {
+  top: 62px;
+  right: 16px;
+  width: 56px;
+  filter: drop-shadow(0 0 10px var(--moon-glow));
+}
+
+.moon-body {
+  fill: var(--moon);
+}
+
+.hero-sky .sky-star {
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.star {
+  fill: var(--star);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: twinkle 3.2s ease-in-out infinite;
+}
+
+.s2 .star { animation-delay: -0.6s; }
+.s3 .star { animation-delay: -1.3s; }
+.s4 .star { animation-delay: -2.1s; }
+.s5 .star { animation-delay: -0.9s; }
+.s6 .star { animation-delay: -2.6s; }
+.s7 .star { animation-delay: -1.8s; }
+
+.star-dot {
+  fill: var(--pearl);
+  opacity: 0.7;
+}
+
+.sky-sakura-night {
+  opacity: var(--sakura-opacity);
+}
+
+/* ---------- thỏ ---------- */
+.bunny {
+  position: relative;
+  width: var(--bunny-size, 160px);
+  aspect-ratio: 200 / 240;
+  transform-origin: 50% 100%;
+}
+
+.bunny-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: var(--bunny-filter);
+}
+
+.bunny-btn {
+  appearance: none;
+  padding: 0;
+  border: 0;
+  border-radius: 40%;
+  background: none;
+  color: inherit;
+  touch-action: manipulation;
+}
+
+.bunny-btn:focus-visible {
+  outline-offset: 6px;
+}
+
+/* chỉ hiện chi tiết thuộc trạng thái hiện tại */
+.bunny [data-show] {
+  display: none;
+}
+
+.bunny[data-state="happy"] [data-show~="happy"],
+.bunny[data-state="sad"] [data-show~="sad"],
+.bunny[data-state="sleep"] [data-show~="sleep"],
+.bunny[data-state="dance"] [data-show~="dance"],
+.bunny[data-state="carrot"] [data-show~="carrot"],
+.bunny[data-state="heart"] [data-show~="heart"],
+.bunny[data-state="crown"] [data-show~="crown"],
+.bunny[data-state="pen"] [data-show~="pen"],
+.bunny[data-state="mic"] [data-show~="mic"],
+.bunny[data-state="scarf"] [data-show~="scarf"] {
+  display: inline;
+}
+
+.b-shadow {
+  fill: var(--bunny-shadow);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.b-fur {
+  fill: var(--bunny-fur);
+  stroke: var(--bunny-outline);
+  stroke-width: 2.6;
+}
+
+.b-belly { fill: var(--bunny-belly); }
+.b-inner { fill: var(--bunny-inner-ear); }
+.b-cheek { fill: var(--bunny-cheek); opacity: 0.78; }
+.b-eye { fill: var(--bunny-eye); }
+.b-shine { fill: var(--bunny-eye-shine); }
+.b-nose { fill: var(--bunny-nose); }
+
+.b-eye-line,
+.b-brow,
+.b-mouth {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.b-eye-line {
+  stroke: var(--bunny-eye);
+  stroke-width: 3.2;
+}
+
+.b-brow {
+  stroke: var(--bunny-mouth);
+  stroke-width: 2.4;
+}
+
+.b-mouth {
+  stroke: var(--bunny-mouth);
+  stroke-width: 2.4;
+}
+
+.b-mouth-in {
+  fill: var(--bunny-mouth-in);
+  stroke: var(--bunny-mouth);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+
+/* nơ satin */
+.b-bow-loop,
+.b-bow-tail,
+.b-bow-knot {
+  fill: var(--bunny-bow);
+  stroke: var(--bunny-bow-dark);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+
+.b-bow-shine {
+  fill: none;
+  stroke: var(--bunny-bow-light);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.b-bow-fold {
+  fill: none;
+  stroke: var(--bunny-bow-dark);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+
+/* ngôi sao cài nơ: chỉ có ban đêm */
+.b-star {
+  display: none;
+  fill: var(--bunny-star);
+  stroke: var(--bunny-star-line);
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+}
+
+[data-theme="dark"] .b-star {
+  display: inline;
+}
+
+/* đạo cụ */
+.p-carrot { fill: var(--carrot); stroke: var(--carrot-line); stroke-width: 1.6; stroke-linejoin: round; }
+.p-carrot-line { fill: none; stroke: var(--carrot-line); stroke-width: 1.6; stroke-linecap: round; }
+.p-leaf { fill: var(--leaf); stroke: var(--leaf-line); stroke-width: 1.3; stroke-linejoin: round; }
+.p-heart { fill: var(--heart); stroke: var(--heart-line); stroke-width: 1.8; stroke-linejoin: round; }
+.p-heart-shine { fill: none; stroke: var(--heart-shine); stroke-width: 2.6; stroke-linecap: round; }
+.p-crown { fill: var(--crown); stroke: var(--crown-line); stroke-width: 1.6; stroke-linejoin: round; }
+.p-crown-band { fill: none; stroke: var(--crown-line); stroke-width: 1.4; }
+.p-pearl { fill: var(--pearl); stroke: var(--pearl-shade); stroke-width: 1.2; }
+.p-gem { fill: var(--gem); stroke: var(--crown-line); stroke-width: 1; }
+.p-pen-eraser { fill: var(--rose); }
+.p-pen-band { fill: var(--pearl-shade); }
+.p-pen-body { fill: var(--pen-body); stroke: var(--pen-line); stroke-width: 1.2; }
+.p-pen-stripe { fill: none; stroke: var(--pen-line); stroke-width: 1; opacity: 0.7; }
+.p-pen-wood { fill: var(--pen-wood); stroke: var(--pen-line); stroke-width: 1; stroke-linejoin: round; }
+.p-pen-tip { fill: var(--pen-tip); }
+.p-mic-body { fill: var(--mic-body); stroke: var(--heart-line); stroke-width: 1.2; stroke-linejoin: round; }
+.p-mic-head { fill: var(--mic-head); stroke: var(--mic-line); stroke-width: 1.6; }
+.p-mic-line { fill: none; stroke: var(--mic-line); stroke-width: 1.1; }
+.p-scarf { fill: var(--scarf); stroke: var(--scarf-line); stroke-width: 1.6; stroke-linejoin: round; }
+.p-scarf-stripe { fill: none; stroke: var(--scarf-stripe); stroke-width: 2.6; stroke-linecap: round; }
+.p-scarf-fringe,
+.p-snow { fill: none; stroke: var(--scarf-line); stroke-width: 1.8; stroke-linecap: round; }
+.p-zzz { fill: none; stroke: var(--zzz); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.p-note { fill: var(--note); }
+.p-note-stem { fill: none; stroke: var(--note); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.p-sparkle { fill: var(--crown); stroke: var(--crown-line); stroke-width: 0.8; }
+
+/* cà rốt lớn dần theo tiến độ: đặt --carrot-scale trên .bunny */
+.b-carrot {
+  transform: scale(var(--carrot-scale, 1));
+  transform-box: fill-box;
+  transform-origin: 50% 40%;
+  transition: transform 0.35s var(--ease-soft);
+}
+
+/* tai */
+.b-ear {
+  transform-box: fill-box;
+  transform-origin: 50% 92%;
+  transition: transform 0.45s var(--ease-soft);
+}
+
+.bunny[data-state="sad"] .b-ear-l { transform: rotate(-24deg); }
+.bunny[data-state="sad"] .b-ear-r { transform: rotate(24deg); }
+.bunny[data-state="sleep"] .b-ear-l { transform: rotate(-14deg); }
+.bunny[data-state="sleep"] .b-ear-r { transform: rotate(18deg); }
+.bunny[data-state="dance"] .b-ear-l { animation: ear-wiggle 0.9s ease-in-out infinite; }
+.bunny[data-state="dance"] .b-ear-r { animation: ear-wiggle 0.9s ease-in-out infinite reverse; }
+
+/* thở nhẹ khi đứng yên */
+.b-rig {
+  transform-box: view-box;
+  transform-origin: 100px 226px;
+  animation: b-breathe 3.6s ease-in-out infinite;
+}
+
+.bunny[data-state="sleep"] .b-rig { animation-duration: 5.2s; }
+.bunny[data-state="dance"] .b-rig { animation: b-dance 0.9s ease-in-out infinite; }
+
+/* nháy mắt (js bật/tắt .is-blink ngẫu nhiên) */
+.b-eyes-open {
+  transform-box: fill-box;
+  transform-origin: 50% 55%;
+  transition: transform 0.07s ease;
+}
+
+.bunny.is-blink .b-eyes-open {
+  transform: scaleY(0.1);
+}
+
+/* nhún khi chạm, lật người khi đổi ca */
+.bunny.is-hop .b-rig { animation: b-hop 0.56s var(--ease-soft); }
+.bunny.is-hop .b-shadow { animation: shadow-hop 0.56s var(--ease-soft); }
+.bunny.is-flip { animation: b-flip 0.72s ease-in-out; }
+
+.fx-zzz .p-zzz {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: zzz 2.8s ease-in-out infinite;
+}
+
+.fx-zzz .z2 { animation-delay: 0.9s; }
+
+.fx-notes .note {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: note-float 1.8s ease-in-out infinite;
+}
+
+.fx-notes .n2 { animation-delay: -0.9s; }
+
+.p-sparkle {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: twinkle 2.4s ease-in-out infinite;
+}
+
+/* ---------- bong bóng thoại ---------- */
+.bubble {
+  position: relative;
+  max-width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--bubble-line);
+  border-radius: 20px;
+  background: var(--bubble-bg);
+  color: var(--bubble-ink);
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(6px) scale(0.96);
+  transition: opacity 0.2s ease, transform 0.25s var(--ease-soft);
+}
+
+.bubble.is-shown {
+  opacity: 1;
+  transform: none;
+}
+
+.bubble::after {
+  content: "";
+  position: absolute;
+  left: calc(50% - 7px);
+  bottom: -8px;
+  width: 14px;
+  height: 14px;
+  border-right: 1.5px solid var(--bubble-line);
+  border-bottom: 1.5px solid var(--bubble-line);
+  border-bottom-right-radius: 4px;
+  background: var(--bubble-bg);
+  transform: rotate(45deg);
+}
+
+.bubble-text {
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* ---------- trang trống & đang tải ---------- */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 28px 18px;
+  border: 1.5px dashed var(--line-strong);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  text-align: center;
+}
+
+.empty-art {
+  color: var(--accent-ink);
+  font-size: 1.15rem;
+}
+
+.empty-title {
+  font-size: 1.2rem;
+}
+
+.empty-title .kao {
+  font-size: 0.95em;
+  color: var(--accent-ink);
+}
+
+.empty-text {
+  max-width: 34ch;
+  color: var(--text-muted);
+}
+
+.empty-action {
+  margin-top: 6px;
+}
+
+.loading {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 8px;
+  min-height: 60vh;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.loading .kao-art {
+  color: var(--accent-ink);
+  font-size: 1.3rem;
+}
+
+/* ---------- nút chọn mục (segmented) ---------- */
+.segmented {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+}
+
+.segment {
+  flex: 1 1 auto;
+  min-height: var(--tap);
+  padding: 0 8px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  font-weight: 800;
+  white-space: nowrap;
+  touch-action: manipulation;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.segment[aria-selected="true"] {
+  background: var(--surface-tint);
+  color: var(--accent-ink);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ---------- lưới game ---------- */
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.game-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 116px;
+  padding: 14px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.game-kao {
+  overflow: hidden;
+  color: var(--accent-ink);
+  font-size: 1.05rem;
+  text-overflow: ellipsis;
+}
+
+.game-name {
+  font-family: var(--font-title);
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.game-lock {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: auto;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.game-lock svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+}
+
+/* ---------- lựa chọn dạng radio ---------- */
+.choice-list {
+  display: grid;
+  gap: 8px;
+}
+
+.choice {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 60px;
+  padding: 10px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.choice input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.choice:has(input:checked) {
+  border-color: var(--rose);
+  background: var(--surface-tint);
+}
+
+.choice:has(input:focus-visible) {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.choice-mark {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--line-strong);
+  border-radius: 50%;
+  background: var(--surface);
+}
+
+.choice input:checked + .choice-mark {
+  border-color: var(--accent-ink);
+}
+
+.choice input:checked + .choice-mark::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-ink);
+}
+
+.choice-label {
+  display: block;
+  font-weight: 800;
+}
+
+.choice-desc {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+/* ---------- phòng thử ---------- */
+.bunny-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bunny-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 4px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+
+.bunny-cap {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.range-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.range-row input {
+  width: 100%;
+  min-height: var(--tap);
+  accent-color: var(--rose);
+}
+
+.font-row {
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--line);
+}
+
+.font-row:last-child {
+  border-bottom: 0;
+}
+
+.font-row p {
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.font-size-tag {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.ft-title { font-family: var(--font-title); font-weight: 600; }
+.ft-body { font-family: var(--font-body); font-weight: 500; }
+.ft-bold { font-weight: 800; }
+
+.kao-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kao-grid li {
+  overflow: hidden;
+  padding: 10px 6px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface-2);
+  font-size: 1.05rem;
+  text-align: center;
+}
+
+.divider-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  color: var(--accent-ink);
+  font-size: 1.1rem;
+}
+
+.ascii-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 12px;
+  color: var(--accent-ink);
+}
+
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.swatch {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  column-gap: 8px;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface-2);
+}
+
+.swatch-chip {
+  grid-row: span 2;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+}
+
+.swatch-name {
+  font-size: 0.78rem;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.swatch-value {
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  overflow-wrap: anywhere;
+}
+
+.lab-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: var(--radius-pill);
+  font-weight: 800;
+}
+
+.status-ok { background: var(--ok-soft); color: var(--ok); }
+.status-bad { background: var(--bad-soft); color: var(--bad); }
+
+/* ---------- màn rộng ---------- */
+@media (min-width: 560px) {
+  .game-grid,
+  .bunny-grid,
+  .kao-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 28px;
+  }
+
+  .view {
+    padding-top: calc(var(--safe-top) + 24px);
+    padding-bottom: calc(var(--tab-h) + var(--safe-bottom) + 56px);
+  }
+
+  .page-deco {
+    display: block;
+    background-image:
+      linear-gradient(90deg, var(--gingham) 50%, transparent 50%),
+      linear-gradient(var(--gingham) 50%, transparent 50%);
+    background-size: 28px 28px;
+    opacity: calc(var(--gingham-opacity) * 0.5);
+  }
+
+  [data-theme="dark"] .page-deco {
+    background-image:
+      radial-gradient(circle, var(--star) 0 1px, transparent 1.6px),
+      radial-gradient(circle, var(--pearl) 0 0.8px, transparent 1.3px);
+    background-size: 150px 150px, 96px 96px;
+    background-position: 0 0, 44px 60px;
+    opacity: 0.4;
+  }
+
+  .tab-bar {
+    left: 50%;
+    right: auto;
+    bottom: calc(14px + var(--safe-bottom));
+    width: min(560px, calc(100% - 32px));
+    padding: 6px;
+    border: 1.5px solid var(--line);
+    border-radius: 28px;
+    transform: translateX(-50%);
+  }
+
+  .hero {
+    min-height: 440px;
+    padding: 20px 24px 22px;
+  }
+
+  .bunny-stage {
+    --bunny-size: 210px;
+  }
+
+  .bunny-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .swatch-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* ---------- hoạt ảnh ---------- */
+@keyframes b-breathe {
+  0%, 100% { transform: scale(1, 1); }
+  50% { transform: scale(1.008, 1.018); }
+}
+
+@keyframes b-dance {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-6px) rotate(-5deg); }
+  75% { transform: translateY(-6px) rotate(5deg); }
+}
+
+@keyframes b-hop {
+  0% { transform: translateY(0) scale(1, 1); }
+  18% { transform: translateY(0) scale(1.06, 0.92); }
+  50% { transform: translateY(-22px) scale(0.96, 1.05); }
+  82% { transform: translateY(0) scale(1.04, 0.96); }
+  100% { transform: translateY(0) scale(1, 1); }
+}
+
+@keyframes shadow-hop {
+  50% { transform: scale(0.7); opacity: 0.6; }
+}
+
+@keyframes b-flip {
+  from { transform: perspective(600px) rotateY(0deg); }
+  to { transform: perspective(600px) rotateY(360deg); }
+}
+
+@keyframes ear-wiggle {
+  0%, 100% { transform: rotate(-6deg); }
+  50% { transform: rotate(6deg); }
+}
+
+@keyframes zzz {
+  0% { opacity: 0; transform: translate(0, 4px); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: translate(6px, -10px); }
+}
+
+@keyframes note-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(-8deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.4; transform: scale(0.82); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(14px); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes petal-sway {
+  from { transform: translate(0, 0) rotate(0deg); }
+  to { transform: translate(6px, 10px) rotate(35deg); }
+}
+
+/* giảm chuyển động: tắt hẳn hoạt ảnh lặp, giữ trạng thái tĩnh dễ nhìn */
+@media (prefers-reduced-motion: reduce) {
+  .b-rig,
+  .b-ear,
+  .fx-zzz .p-zzz,
+  .fx-notes .note,
+  .p-sparkle,
+  .star,
+  .sun-rays,
+  .sky-cloud,
+  .petal {
+    animation: none !important;
+  }
+}

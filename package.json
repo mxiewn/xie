@@ -1,0 +1,9 @@
+{
+  "name": "xie",
+  "private": true,
+  "type": "module",
+  "description": "web tĩnh, không build step. package.json chỉ để node chạy tools/ và test dạng es module.",
+  "scripts": {
+    "validate": "node tools/validate.js"
+  }
+}
