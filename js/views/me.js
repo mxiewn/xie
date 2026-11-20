@@ -1,14 +1,17 @@
 // xie · views/me.js — tab tui
-// hiện có: hồ sơ & cài đặt, tủ đồ của thỏ, giao diện (4 chế độ), thỏ nói nhiều / vừa / ít, phòng thử.
-// thống kê, sổ lỗi, câu của tui, cài đặt đầy đủ làm ở các giai đoạn sau.
+// hiện có: hồ sơ & cài đặt, cấp + xp, lịch nơ, huy hiệu, tủ đồ của thỏ, giao diện (4 chế độ),
+// thỏ nói nhiều / vừa / ít, phòng thử. thống kê, sổ lỗi, câu của tui làm ở các giai đoạn sau.
 
 import { pageHead, icons, esc } from '../ui.js';
 import { getMode, setMode, THEME_EVENT } from '../theme.js';
 import { createBunny } from '../bunny.js';
-import { currentLevel, levelInfo, getEquippedSkin, skinInfo } from '../levels.js';
+import { currentLevel, levelInfo, levelProgress, getEquippedSkin, skinInfo } from '../levels.js';
 import { TALK_LEVELS, getTalk, setTalk } from '../voice.js';
 import { getState, examDaysLeft } from '../state.js';
 import { skillLabel } from '../topics.js';
+import { getSummary, getProgress } from '../progress.js';
+import { levelMeterHtml } from '../progress-ui.js';
+import { BADGES } from '../badges.js';
 
 const MODES = [
   { id: 'system', label: 'theo máy', desc: 'đi theo chế độ sáng/tối của điện thoại' },
@@ -28,6 +31,9 @@ export function render(view) {
     profile.weak_skill ? `ưu tiên ${skillLabel(profile.weak_skill)}` : '',
     days !== null && days >= 0 ? `còn ${days} ngày thi` : '',
   ].filter(Boolean).join(' · ');
+  const sum = getSummary();
+  const lp = levelProgress({ xp: sum.xp, outputWords: sum.stats.outputWords, longestStreak: sum.streak.longest });
+  const earned = BADGES.filter((b) => getProgress().badges[b.id]).length;
   view.innerHTML = `
     ${pageHead({ title: profile.name ? `tui · ${esc(profile.name)}` : 'tui', sub: 'cài đặt và mọi thứ của riêng bạn' })}
     <div class="page-body me-body">
@@ -35,6 +41,28 @@ export function render(view) {
         <span class="card-link-text">
           <span class="card-title">hồ sơ & cài đặt</span>
           <span class="card-text">${esc(summary)}</span>
+        </span>
+        ${icons.chevron}
+      </a>
+
+      <section class="card card-lace level-card" aria-labelledby="level-title">
+        <h2 class="card-title" id="level-title"><span class="title-bow">${icons.bow}</span>cấp ${level} · ${esc(levelInfo(level).name)}</h2>
+        <p class="level-xp"><span class="level-xp-num">${sum.xp}</span> xp</p>
+        ${levelMeterHtml(lp)}
+      </section>
+
+      <a class="card card-link" href="#/streak">
+        <span class="card-link-text">
+          <span class="card-title">lịch nơ</span>
+          <span class="card-text">chuỗi ${sum.streak.current} ngày · kỷ lục ${sum.streak.longest} · băng ${sum.streak.freezes}/2</span>
+        </span>
+        ${icons.chevron}
+      </a>
+
+      <a class="card card-link" href="#/badges">
+        <span class="card-link-text">
+          <span class="card-title">huy hiệu</span>
+          <span class="card-text">${earned}/${BADGES.length} huy hiệu đã nhận</span>
         </span>
         ${icons.chevron}
       </a>

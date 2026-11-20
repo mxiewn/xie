@@ -9,6 +9,7 @@
 //      độ dài, tối đa 1 dấu chấm than, không kéo dài chữ quá 3 ký tự, tỉ lệ giọng 45/25/30,
 //      tối đa 15% câu lấy nguyên văn từ câu mẫu trong spec
 //   4. kho mẹo data/tips.json: đủ 40 mẹo, không trùng, viết thường, không từ cấm
+//   5. cấp (đúng 9, xp tăng dần), huy hiệu (≥ 20, id không trùng, viết thường, không từ cấm), thử thách mỗi ngày
 
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, extname, dirname } from 'node:path';
@@ -140,6 +141,11 @@ const PAIRS = [
   ['--focus', '--bg', 3],
   ['--focus', '--surface', 3],
   ['--focus', '--surface-tint', 3],
+  ['--text', '--ice-soft', 4.5],
+  ['--text-muted', '--ice-soft', 4.5],
+  ['--accent-ink', '--pink-soft', 4.5],
+  ['--ice-ink', '--surface', 3],
+  ['--ice-ink', '--ice-soft', 3],
 ];
 
 for (const [name, selector] of [['sáng', '\\[data-theme="light"\\]'], ['tối', '\\[data-theme="dark"\\]']]) {
@@ -307,6 +313,38 @@ if (tips) {
   });
   const byGroup = TIP_GROUPS.map((g) => `${g} ${list.filter((t) => t.group === g).length}`).join(' · ');
   notes.push(`kho mẹo: ${list.length} mẹo (${byGroup})`);
+}
+
+// ---------- 5. cấp + huy hiệu + thử thách ----------
+{
+  const { LEVELS } = await import('../js/levels.js');
+  const { BADGES, BADGE_GROUPS } = await import('../js/badges.js');
+  const { CHALLENGES, CHALLENGE_SKILLS } = await import('../js/daily-goal.js');
+  if (LEVELS.length !== 9) errors.push(`levels: cần đúng 9 cấp, đang có ${LEVELS.length}`);
+  LEVELS.forEach((l, i) => {
+    if (l.name !== l.name.toLowerCase()) errors.push(`levels: "${l.name}" có chữ hoa`);
+    if (i && l.xp <= LEVELS[i - 1].xp) errors.push(`levels: xp cấp ${l.level} phải lớn hơn cấp trước`);
+  });
+  if (BADGES.length < 20) errors.push(`huy hiệu: cần ít nhất 20, đang có ${BADGES.length}`);
+  const ids = new Set();
+  for (const b of BADGES) {
+    if (ids.has(b.id)) errors.push(`huy hiệu: trùng id "${b.id}"`);
+    ids.add(b.id);
+    for (const field of ['name', 'desc']) {
+      if (b[field] !== b[field].toLowerCase()) errors.push(`huy hiệu ${b.id}: ${field} có chữ hoa`);
+      const banned = bannedFound(b[field]);
+      if (banned.length) errors.push(`huy hiệu ${b.id}: từ cấm ${banned.join(', ')}`);
+    }
+    if (!BADGE_GROUPS.some((g) => g.id === b.group)) errors.push(`huy hiệu ${b.id}: nhóm lạ "${b.group}"`);
+    if (!(b.target > 0) || typeof b.value !== 'function') errors.push(`huy hiệu ${b.id}: thiếu mốc hoặc cách đếm`);
+  }
+  for (const c of CHALLENGES) {
+    if (c.title !== c.title.toLowerCase()) errors.push(`thử thách ${c.id}: có chữ hoa`);
+  }
+  for (const skill of CHALLENGE_SKILLS) {
+    if (!CHALLENGES.some((c) => c.skill === skill)) errors.push(`thử thách: kỹ năng "${skill}" chưa có bài nào`);
+  }
+  notes.push(`cấp: ${LEVELS.length} · huy hiệu: ${BADGES.length} · thử thách mỗi ngày: ${CHALLENGES.length}`);
 }
 
 // ---------- kết quả ----------

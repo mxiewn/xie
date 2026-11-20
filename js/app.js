@@ -2,10 +2,12 @@
 import { initTheme } from './theme.js';
 import { initRouter } from './router.js';
 import { getState, registerVisit, applyFontSize } from './state.js';
+import { loadNotices } from './progress.js';
 
 initTheme();
 applyFontSize();
 registerVisit();
+loadNotices(); // ngày vắng đã qua: tự dùng băng giữ chuỗi hoặc đứt chuỗi → trang chủ báo một lần
 
 initRouter({
   view: document.getElementById('view'),

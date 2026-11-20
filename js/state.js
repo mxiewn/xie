@@ -4,6 +4,7 @@
 import { readRaw, writeRaw, readAll, writeAll, clearAll } from './storage.js';
 import { migrate, recordVisit, buildExport, parseImport, todayIn, daysUntilExam, RETURN_GAP_DAYS } from './state-core.js';
 import { TOPIC_IDS } from './topics.js';
+import { migrateProgress } from './progress-core.js';
 
 export const STATE_EVENT = 'xie:state';
 const KEY = 'state';
@@ -83,7 +84,7 @@ export function exportFile() {
 
 export async function importFile(file) {
   const text = await file.text();
-  const result = parseImport(text);
+  const result = parseImport(text, { 'xie:progress': [migrateProgress, 'phần tiến độ (chuỗi ngày, xp) trong file bị hỏng'] });
   if (!result.ok) return result;
   clearAll();
   if (!writeAll(result.entries)) return { ok: false, error: 'không ghi được dữ liệu, bộ nhớ trình duyệt có thể đã đầy' };

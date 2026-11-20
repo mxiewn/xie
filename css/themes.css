@@ -142,6 +142,12 @@
   --acc-moon-line: #E9D89E;
   --acc-moon-opacity: 0.8;
   --acc-moon-glow: rgba(246, 231, 176, 0.18);
+
+  /* tiến độ: vòng lượt, băng giữ chuỗi (xanh băng nhạt, ngày tuyết) */
+  --ring-track: #FBE3EC;
+  --ice-ink: #3F7FA3;
+  --ice-soft: #EAF5FB;
+  --ice-line: #9CCBE3;
 }
 
 /* ---------- chế độ tối "đêm trăng" ---------- */
@@ -276,4 +282,10 @@
   --acc-moon-line: #E8D48E;
   --acc-moon-opacity: 1;
   --acc-moon-glow: rgba(246, 231, 176, 0.42);
+
+  /* tiến độ: vòng lượt, băng giữ chuỗi (băng ánh bạc trên nền đêm) */
+  --ring-track: rgba(227, 221, 240, 0.12);
+  --ice-ink: #A9D6F2;
+  --ice-soft: rgba(169, 214, 242, 0.12);
+  --ice-line: rgba(169, 214, 242, 0.42);
 }

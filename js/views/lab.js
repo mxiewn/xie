@@ -1,6 +1,6 @@
 // xie · views/lab.js — phòng thử (#/lab), không có trên thanh tab.
 // dùng để kiểm tra bằng mắt ở cả hai chế độ: 10 dáng thỏ, font tiếng việt ở mọi cỡ,
-// kaomoji, thỏ ascii, bảng màu.
+// kaomoji, thỏ ascii, bảng màu, giả lập ngày học (lượt, chuỗi, băng — dữ liệu tạm).
 
 import { pageHead, ASCII_BUNNIES, DIVIDERS, esc } from '../ui.js';
 import { createBunny, BUNNY_STATES } from '../bunny.js';
@@ -8,6 +8,7 @@ import { setMode, currentTheme, THEME_EVENT } from '../theme.js';
 import { SKINS } from '../levels.js';
 import { loadVoice } from '../voice.js';
 import { pick, emptyHistory, RECENT_LIMIT } from '../voice-core.js';
+import { simCardHtml, mountSim } from './lab-sim.js';
 
 // ngữ cảnh mẫu cho phòng thử: đủ mọi biến, giờ hợp với từng nhóm chào
 const SAMPLE_CTX = { name: 'mai', streak: 12, n: 7, left: 4, word: 'sustainable', days: 30, level: 'thỏ ngọc trai', minutes: 30, goal: 50 };
@@ -71,6 +72,8 @@ export function render(view) {
         <p class="voice-stats card-text"></p>
       </section>
 
+      ${simCardHtml()}
+
       <section class="card">
         <h2 class="card-title">chữ tiếng việt</h2>
         <div class="font-test">
@@ -115,6 +118,8 @@ export function render(view) {
       </section>
     </div>
   `;
+
+  mountSim(view.querySelector('.sim-card'));
 
   const grid = view.querySelector('.bunny-grid');
   const bunnies = BUNNY_STATES.map((s) => {

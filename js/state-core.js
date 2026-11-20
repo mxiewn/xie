@@ -9,7 +9,8 @@
 //   settings: { font_size ("nho" | "vua" | "lon") },
 //   visits:   { first_day, last_day ("yyyy-mm-dd" giờ việt nam), count }
 // }
-// các key khác giữ riêng: xie:theme, xie:skin, xie:talk, xie:taps, xie:voice.
+// các key khác giữ riêng: xie:theme, xie:skin, xie:talk, xie:taps, xie:voice,
+// xie:progress (lượt, chuỗi ngày, xp, huy hiệu: schema riêng ở progress-core.js).
 
 export const SCHEMA_VERSION = 1;
 export const TIME_ZONE = 'Asia/Ho_Chi_Minh';
@@ -34,13 +35,40 @@ export function isValidDate(text) {
   return dt.getUTCFullYear() === y && dt.getUTCMonth() === mo - 1 && dt.getUTCDate() === d;
 }
 
+// bộ định dạng ngày/giờ tạo một lần rồi dùng lại (tạo mới mỗi lần khá chậm)
+const formatters = new Map();
+function formatter(kind, timeZone) {
+  const key = `${kind}|${timeZone}`;
+  if (!formatters.has(key)) {
+    formatters.set(key, kind === 'day'
+      ? new Intl.DateTimeFormat('en-CA', { timeZone, year: 'numeric', month: '2-digit', day: '2-digit' })
+      : new Intl.DateTimeFormat('en-GB', { timeZone, hour: '2-digit', hourCycle: 'h23' }));
+  }
+  return formatters.get(key);
+}
+
 // ngày hôm nay theo giờ việt nam, dạng yyyy-mm-dd (không phụ thuộc múi giờ của máy)
 export function todayIn(now = new Date(), timeZone = TIME_ZONE) {
   try {
-    return new Intl.DateTimeFormat('en-CA', { timeZone, year: 'numeric', month: '2-digit', day: '2-digit' }).format(now);
+    return formatter('day', timeZone).format(now);
   } catch {
     return now.toISOString().slice(0, 10);
   }
+}
+
+// giờ (0–23) theo giờ việt nam
+export function hourIn(now = new Date(), timeZone = TIME_ZONE) {
+  try {
+    return Number(formatter('hour', timeZone).format(now)) % 24;
+  } catch {
+    return (now.getUTCHours() + 7) % 24;
+  }
+}
+
+// cộng / trừ ngày trên chuỗi yyyy-mm-dd
+export function addDays(date, n) {
+  const [y, m, d] = String(date).split('-').map(Number);
+  return new Date(Date.UTC(y, m - 1, d + n)).toISOString().slice(0, 10);
 }
 
 export function daysBetween(from, to) {
@@ -187,8 +215,9 @@ export function buildExport(entries, now = new Date()) {
   return { app: EXPORT_APP, schema: SCHEMA_VERSION, exported_at: now.toISOString(), data: entries };
 }
 
-// kiểm tra file nhập. trả về { ok: true, entries } hoặc { ok: false, error } (thông báo viết thường)
-export function parseImport(text) {
+// kiểm tra file nhập. trả về { ok: true, entries } hoặc { ok: false, error } (thông báo viết thường).
+// migrators: { "xie:key": [hàm nâng cấp, thông báo khi hỏng] } cho các key có schema riêng (vd. xie:progress)
+export function parseImport(text, migrators = {}) {
   let obj;
   try {
     obj = JSON.parse(text);
@@ -204,11 +233,13 @@ export function parseImport(text) {
     entries[key] = value;
   }
   if (!Object.keys(entries).length) return { ok: false, error: 'file không có dữ liệu nào để nhập' };
-  if (entries['xie:state']) {
+  const all = { 'xie:state': [migrate, 'phần hồ sơ trong file bị hỏng'], ...migrators };
+  for (const [key, [up, error]] of Object.entries(all)) {
+    if (!entries[key]) continue;
     try {
-      entries['xie:state'] = JSON.stringify(migrate(JSON.parse(entries['xie:state'])));
+      entries[key] = JSON.stringify(up(JSON.parse(entries[key])));
     } catch {
-      return { ok: false, error: 'phần hồ sơ trong file bị hỏng' };
+      return { ok: false, error };
     }
   }
   return { ok: true, entries };

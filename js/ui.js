@@ -53,7 +53,41 @@ export const icons = {
   chevron: `<svg class="i-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
     <path d="m9.5 6 6 6-6 6"/>
   </svg>`,
+  // bé băng giữ chuỗi: bông tuyết 6 cánh
+  snow: `<svg class="i-snow" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M12 2.8v18.4M4 7.4l16 9.2M4 16.6l16-9.2"/>
+    <path d="M9.6 4.4 12 6.6l2.4-2.2M9.6 19.6 12 17.4l2.4 2.2M4.6 10.4l3.1-1 -.7-3.1M19.4 13.6l-3.1 1 .7 3.1M7 16.8l.7-3.1-3.1-1M17 7.2l-.7 3.1 3.1 1"/>
+  </svg>`,
 };
+
+// ---------- confetti hình nơ (lên level, mốc chuỗi) ----------
+// màu lấy từ biến của chế độ hiện tại; giảm chuyển động thì không bắn
+export function bowConfetti(count = 26) {
+  const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  const host = document.getElementById('app') || document.body;
+  if (reduce || !host) return;
+  const layer = document.createElement('div');
+  layer.className = 'confetti';
+  layer.setAttribute('aria-hidden', 'true');
+  for (let i = 0; i < count; i++) {
+    const bow = document.createElement('span');
+    bow.className = `confetti-bow c${(i % 4) + 1}`;
+    bow.style.setProperty('--x', `${Math.round(Math.random() * 100)}vw`);
+    bow.style.setProperty('--drift', `${Math.round((Math.random() - 0.5) * 120)}px`);
+    bow.style.setProperty('--spin', `${Math.round((Math.random() - 0.5) * 720)}deg`);
+    bow.style.setProperty('--delay', `${Math.round(Math.random() * 380)}ms`);
+    bow.style.setProperty('--dur', `${1600 + Math.round(Math.random() * 900)}ms`);
+    bow.style.setProperty('--size', `${16 + Math.round(Math.random() * 14)}px`);
+    bow.innerHTML = `<svg viewBox="0 0 32 24" focusable="false">
+      <path d="M16 12C12.6 6 5.6 4.2 4 8.4s3.4 8.6 12 3.6zM16 12c3.4-6 10.4-7.8 12-3.6s-3.4 8.6-12 3.6z"/>
+      <path d="M14.6 13 10.4 21.6l2.6-.8 1.2 2.2 2.3-9.6zM17.4 13l4.2 8.6-2.6-.8-1.2 2.2-2.3-9.6z"/>
+      <ellipse class="knot" cx="16" cy="12" rx="2.6" ry="2.9"/>
+    </svg>`;
+    layer.append(bow);
+  }
+  host.append(layer);
+  setTimeout(() => layer.remove(), 3200);
+}
 
 // hoa anh đào 5 cánh, dùng lại nhiều chỗ
 function blossom(cx, cy, r, cls = '') {

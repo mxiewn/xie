@@ -30,7 +30,7 @@ file này để mỗi phiên làm việc mới đọc lại là biết đang ở
 - [x] **1. khung + điều hướng + coquette + font + thỏ + lowercase** (kèm 2 chế độ sáng/tối của mục 3b)
 - [x] **2. hệ thống giọng nói, thoại, kaomoji** (kèm duyệt chống cringe → `tools/lines-review.md`)
 - [x] **3. onboarding + lưu trữ** (state đầy đủ, số version schema, nâng cấp)
-- [ ] 4. mục tiêu 50 lượt + streak (hàm thuần + test)
+- [x] **4. mục tiêu 50 lượt + streak** (hàm thuần + test), kèm xp, 9 cấp, 26 huy hiệu, thử thách mỗi ngày
 - [ ] 5. từ vựng + srs + kho từ output
 - [ ] 6. luyện viết và nói
 - [ ] 7. minigame
@@ -65,7 +65,7 @@ file này để mỗi phiên làm việc mới đọc lại là biết đang ở
 - nơ dời xuống cổ, sao đêm nằm giữa nơ, khăn nằm sau nơ, đồ cầm tay che nơ
 - buồn và ngủ: tai cụp
 - tủ đồ của thỏ với 9 bộ đồ theo cấp; phòng thử có ô chọn trang phục để soi cả 10 dáng
-- **cấp hiện tại tạm luôn là 1** vì chưa có xp. giai đoạn 4 chỉ cần sửa `currentLevel()` trong `js/levels.js` là tủ đồ tự mở khoá
+- ~~cấp hiện tại tạm luôn là 1~~ → giai đoạn 4: cấp tính từ xp thật (`js/progress.js` cấp qua `setLevelProvider`), tủ đồ tự mở khoá
 
 ## sau giai đoạn 1: chỉnh tạo hình thỏ lần 2 + desktop màn ngang
 
@@ -97,6 +97,57 @@ file này để mỗi phiên làm việc mới đọc lại là biết đang ở
 - **tab tui**: thẻ hồ sơ & cài đặt (band, mục tiêu, kỹ năng ưu tiên, số ngày tới kỳ thi)
 - test: `npm test` → 109 test (thêm 19 test state: dữ liệu hỏng, mục tiêu < 50, nâng cấp version, 23:59 / 00:01 giờ việt nam, năm nhuận, ghé thăm nhiều lần trong ngày, xuất / nhập). playwright: đi hết 5 bước, vuốt, lỗi nhập, lưu, cài đặt, xuất / nhập / xoá, quay lại sau 5 ngày, state hỏng, desktop sáng / tối
 - **để sau**: giọng đọc + tốc độ đọc và mặt trước thẻ (giai đoạn 5), âm thanh + rung (khi có sound.js)
+
+## giai đoạn 4: mục tiêu lượt + chuỗi ngày + game hoá
+
+### lõi thuần (có test)
+- `js/daily-goal.js`: số lượt mỗi loại bài (nhận biết / nhớ lại / dùng có hướng dẫn / ngữ pháp / bẫy / game = 1; tự viết câu 3, paraphrase 5, part 1 3, part 3 5, topic sprint 10, part 2 10), xp mỗi loại, chống cày, `goalStatus()` (lượt tính vào mục tiêu, output, game, còn thiếu, đã đạt), thử thách mỗi ngày
+- `js/streak.js`: `computeStreak(days, today)` **tính lại từ nhật ký ngày** (không cộng dồn mỗi lần mở web) → chuỗi, kỷ lục, băng, lịch (`met` / `frozen` / `partial`), sự kiện (mốc, nhận băng, dùng băng, đứt chuỗi, nối lại chuỗi). lịch tháng / tuần bắt đầu thứ hai
+- `js/badges.js`: 26 huy hiệu, 5 nhóm (chuỗi ngày, từ thành output, viết & nói, chính xác, nhịp học)
+- `js/levels.js`: thêm xp từng cấp + `levelFor()` / `levelProgress()`
+- `js/progress-core.js`: schema `xie:progress` v1, `recordAnswer()` ráp tất cả lại và trả về sự kiện, `takeNotices()` (tin băng / đứt chuỗi chưa báo), `syncToday()` (đổi mục tiêu giữa ngày), `updateCounters()` (số liệu giai đoạn sau)
+- test: `npm test` → 164 test (thêm 19 chuỗi ngày, 14 mục tiêu lượt, 23 ráp nối). đủ các tình huống spec mục 13
+
+### quyết định
+| chủ đề | quyết định |
+| --- | --- |
+| lưu ở đâu | key riêng `xie:progress` (có version), tách khỏi hồ sơ `xie:state`. xuất / nhập dữ liệu đã gồm key này và chuẩn hoá khi nhập |
+| "đạt" của một ngày | lưu `met_at` lúc đạt. đã đạt thì giữ đạt kể cả khi sau đó nâng mục tiêu; hạ mục tiêu xuống mức đã đủ thì ghi đạt ngay |
+| 10 lượt output | tính trong lượt, cố định 10 cho mọi mức mục tiêu (spec: "output 6/10") |
+| "trả lời lại câu đó trong 10 phút" | đo từ lần trả lời **được tính** gần nhất của cùng id câu hỏi (`item`) |
+| "nhanh hơn 1 giây liên tục" | câu nhanh đầu tiên vẫn tính (biết ngay là chuyện thường), từ câu nhanh thứ 2 **liền nhau** thì không tính. chậm lại (≥ 1 giây) là tính tiếp. không có `ms` thì đo từ câu trước |
+| "bài output dưới 5 từ" | chỉ áp dụng khi có chữ (`words`). bài nói tự tick không có chữ thì vẫn tính |
+| "ở 25 lượt" | thoại "nửa chặng" khi qua **nửa mục tiêu** (= 25 với mục tiêu 50); "sắp xong" khi còn ≤ 5 lượt. mỗi loại 1 lần/ngày |
+| băng giữ chuỗi | nhận ở mỗi mốc chuỗi chia hết cho 7 (7, 14, 21…), giữ tối đa 2. ngày chưa đủ (kể cả có học) thì tự dùng 1 băng, lịch hiện băng tuyết. băng chỉ dùng khi đang có chuỗi |
+| báo tin lúc mở web | `notified_until`: tin tới ngày hôm qua đã báo thì thôi. trang chủ hiện thẻ báo (bấm ok để ẩn), thỏ quấn khăn (dùng băng) hoặc buồn nhẹ (đứt chuỗi) và nói câu nhóm `dung_freeze` / `mat_streak` |
+| xp | nhận biết 2 · nhớ lại 4 · ngữ pháp / bẫy 5 · dùng có hướng dẫn 6 · game 3 · output 18–60 · sai 1 · xong thử thách +50. ≈ 200 xp một ngày đủ 50 lượt |
+| cấp | 0 · 200 · 700 · 1.800 · 3.500 · 6.000 · 9.500 · 14.000 (+ 300 từ output) · 20.000 (+ 500 từ output + kỷ lục chuỗi 60 ngày). học đều thì cung trăng khoảng 4 tháng |
+| huy hiệu | đã nhận thì giữ (lưu ngày). huy hiệu của phần chưa làm (kho output, câu tự viết, part 2…) đã có sẵn, sẽ tự mở khi giai đoạn sau ghi dữ liệu. "nối lại chuỗi" chỉ tính khi chuỗi bị đứt dài từ 3 ngày |
+| thử thách mỗi ngày | 12 bài, 3 bài mỗi kỹ năng. có kỹ năng yếu thì 2/3 số ngày là thử thách kỹ năng đó, ngày còn lại xoay 3 kỹ năng kia; chưa chọn thì xoay đều 4 kỹ năng. xong +50 xp |
+| nghỉ giải lao | phiên học (nghỉ quá 5 phút là phiên mới) dài quá 25 phút thì thỏ nhắc 1 lần |
+| confetti hình nơ | khi lên cấp và chạm mốc chuỗi 7 / 30 / 100. tắt khi giảm chuyển động |
+
+### giao diện
+- **trang chủ**: thẻ báo tin chuỗi (nếu có) → **hôm nay** (vòng "32/50 lượt", thanh output 6/10, thanh lượt game khi có chơi, dòng còn thiếu gì, xp hôm nay) → **chuỗi** (số ngày, 2 ô băng, kỷ lục, dải tuần t2–cn có nơ / băng / chấm, bấm vào là tới lịch nơ) → **thử thách hôm nay** → đếm ngược → nhà mới đang dọn. thỏ cầm cà rốt, cà rốt lớn dần theo tiến độ (0.6 → 1.5). tối (từ 19 giờ) mà chưa xong thì thỏ nhắc học thay câu chào
+- **lịch nơ** `#/streak`: 4 ô số (chuỗi, kỷ lục, băng, ngày đạt), lịch tháng lùi / tới được (không lùi quá tháng đầu có dữ liệu), chú thích, luật giữ chuỗi
+- **huy hiệu** `#/badges` và **cấp + xp** trong tab tui
+- **phòng thử** → giả lập ngày học (dữ liệu tạm)
+- đã kiểm tra: 375 / 414 / 1280px, sáng + tối, thẻ báo dùng băng / đứt chuỗi, ngày đã xong, chưa học gì; không cuộn ngang, nút ≥ 44px, không lỗi console, localStorage bị chặn vẫn chạy, tủ đồ mở đúng theo cấp thật
+
+### giai đoạn 5–8 nối vào thế nào
+```js
+import { recordAnswer, celebrate, setCounters } from './progress.js';
+import { reasonText } from './daily-goal.js';
+
+const result = recordAnswer({ kind: 'recall', item: 'vocab:sustain:recall', correct: true, ms: 4200, tags: ['prep'] });
+celebrate(result.events, { bubble, bunny });       // thoại + dáng thỏ + confetti + thông báo nhỏ
+if (!result.counted) showToast(reasonText(result.reason));
+setCounters({ output_words: 57, my_words: 12 });   // kho output / từ của tui đổi thì báo cho tiến độ
+```
+- `kind`: recognition · recall · guided · grammar · trap · game · sentence · paraphrase · speaking_p1 · speaking_p2 · speaking_p3 · topic_sprint
+- `item`: id câu hỏi (bắt buộc nên có, để chống trả lời lại trong 10 phút). `words`: số từ của bài viết. `tags`: `prep` cho câu giới từ (huy hiệu "tuần không sai giới từ")
+- giai đoạn 5 thêm nút **học hôm nay** + kế hoạch hôm nay vào trang chủ, từ của ngày, số từ kho output (thay mục "nhà mới đang dọn")
+- thoại "đúng" / "sai" / "điểm tuyệt đối" do màn bài tập tự gọi (giai đoạn 5–8); `celebrate()` lo phần sự kiện lớn
 
 ## còn để giai đoạn sau
 
