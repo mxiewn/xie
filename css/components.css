@@ -4292,10 +4292,11 @@ textarea.input {
   max-width: 640px;
 }
 
-/* thỏ nhỏ bên trái; bên phải là bong bóng thoại (đuôi chỉ về thỏ) rồi thanh tiến độ */
+/* thỏ bên trái cao vừa khít hai hàng bên phải (bong bóng thoại + thanh tiến độ) */
 .study-top {
+  --bunny-size: 88px;
   display: grid;
-  grid-template-columns: 64px minmax(0, 1fr);
+  grid-template-columns: var(--bunny-size) minmax(0, 1fr);
   grid-template-rows: auto auto;
   align-items: end;
   column-gap: 12px;
@@ -4305,6 +4306,18 @@ textarea.input {
   grid-column: 1;
   grid-row: 1 / span 2;
   align-self: end;
+}
+
+/* màn hẹp: thỏ nhỏ lại chút để bong bóng vẫn đủ chỗ 3 dòng */
+@media (max-width: 359.98px) {
+  .study-top {
+    --bunny-size: 70px;
+    column-gap: 10px;
+  }
+
+  .study-bubble .bubble-text {
+    font-size: 0.78rem;
+  }
 }
 
 /* khung bong bóng cao cố định: thoại hiện / ẩn không xô thẻ bài lên xuống */

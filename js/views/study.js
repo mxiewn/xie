@@ -232,7 +232,7 @@ export function render(view, { params = [] } = {}) {
   const card = view.querySelector('[data-role="card"]');
   const bar = view.querySelector('.study-progress .mini-bar');
   const countEl = view.querySelector('[data-role="count"]');
-  const bunny = createBunny({ state: 'happy', size: 64, skin: getEquippedSkin() });
+  const bunny = createBunny({ state: 'happy', skin: getEquippedSkin() }) // cỡ do css (--bunny-size ở .study-top);
   const bubble = createBubble();
   view.querySelector('.study-bunny').prepend(bunny.node);
   view.querySelector('.study-bubble').append(bubble.node);
