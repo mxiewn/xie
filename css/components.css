@@ -4882,6 +4882,25 @@ textarea.input {
     max-width: 760px;
   }
 
+  /* desktop: thỏ to hơn, khung bong bóng cao hơn tương ứng → thỏ vẫn khít bong bóng + thanh tiến độ */
+  .study-top {
+    --bunny-size: 116px;
+    column-gap: 16px;
+  }
+
+  .study-bubble {
+    height: 96px;
+  }
+
+  .study-bubble .bubble {
+    max-width: min(100%, 440px);
+    padding: 8px 14px 9px;
+  }
+
+  .study-bubble .bubble-text {
+    font-size: 0.92rem;
+  }
+
   .grade-body {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
