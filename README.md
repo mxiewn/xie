@@ -76,6 +76,33 @@ mở `#/lab` (hoặc vào tab **tui** → **phòng thử của thỏ**) để xe
 - trang chủ: vòng "32/50 lượt", thanh "output 6/10", thỏ cầm cà rốt lớn dần, chuỗi + lịch nơ tuần này, thử thách hôm nay. bấm vào thẻ chuỗi để xem **lịch nơ** cả tháng
 - tab tui: cấp + xp, **huy hiệu** (26 cái), tủ đồ mở theo cấp
 
+## từ vựng
+
+- **kho từ** (tab từ vựng): lọc theo nguồn, nhánh, chủ đề, nhóm con, mức thành thạo, chỉ từ hay sai. mỗi chủ đề có icon + màu riêng và tiến độ "x/y đã thành output"
+- **học hôm nay**: ôn từ đến hạn trước (trộn chủ đề) → từ mới (mặc định 8/ngày) → bài output với từ đã tới mức 4. sai thì câu đó quay lại sau vài câu
+- **4 mức**, đi qua lần lượt: 1 nhận biết (chọn nghĩa) → 2 nhớ lại (gõ ra cụm; gợi ý chữ đầu → số chữ cái → câu ví dụ có chỗ trống; không phân biệt hoa thường; cụm dài cho sai 1 ký tự; "(sth)" tuỳ chọn) → 3 dùng có hướng dẫn (điền vào câu, chọn cụm hợp ngữ cảnh; từ loại "word" có thêm word form, giới từ, collocation, sửa câu sai) → 4 dùng tự do (tự viết hoặc nói to, xem câu mẫu, tự chấm theo checklist)
+- **kho output**: một từ vào kho khi qua mức 4 ở 2 ngày khác nhau. con số chính trên trang chủ
+- **lặp lại ngắt quãng**: leitner 5 hộp, mỗi mức một bộ hộp. sai về hộp 1 (gặp lại sau 10 phút), bấm "khó" thì quay lại sớm. từ đã vào kho vẫn ôn thưa
+- **thẻ từ**: mặt trước en → vi / vi → en / ngẫu nhiên (nhớ lựa chọn), nghe từ và từng ví dụ, mặt sau chia tab. sổ của tui chỉ sửa "câu của tôi" và "đã dùng khi nói"
+- **từ của tui**: thêm từ gặp ngoài đời (bắt buộc từ + nghĩa), tự vào bài ôn
+- **câu của tui + nhờ claude chấm**: mọi câu tự viết được lưu; gom lại thành prompt (band mục tiêu, từ mục tiêu, yêu cầu chấm word form, giới từ, collocation, độ tự nhiên, sửa lỗi, bản band 7), copy dán vào claude, rồi đánh dấu "đã chấm" và dán câu đã sửa
+- **sổ lỗi**: câu sai tự lưu, phân loại (nghĩa, word form, giới từ, collocation, ngữ pháp). nút "ôn lỗi sai"
+- **cài đặt**: mặt trước thẻ, từ mới lấy từ đâu (50% sổ của tui · 25% daily · 25% academic, chỉnh được), giọng đọc en-gb / en-us + tốc độ, âm thanh, rung. trình duyệt không đọc được tiếng anh thì nút loa tự ẩn
+
+## nhập lại sổ từ vựng excel
+
+sửa `data/source/so-tu-vung-theo-chu-de.xlsx` rồi chạy (cần python 3 + openpyxl):
+
+```bash
+pip install openpyxl
+```
+
+```bash
+python3 tools/import-xlsx.py
+```
+
+script in số cụm mỗi chủ đề và tổng. tổng phải đúng 157, lệch thì dừng, không ghi gì. thêm / bớt cụm trong excel thì sửa `EXPECTED_TOTAL` trong script và số 157 trong `tools/validate.js`. tiến độ học không mất vì id cụm là `<chủ-đề>-<số thứ tự>`. cụm tui thấy chưa tự nhiên được ghi ở `tools/review-vocab.md` để bạn duyệt (tui không sửa gì trong sổ).
+
 ## cấu trúc thư mục
 
 ```
@@ -102,10 +129,20 @@ js/topics.js        chủ đề, kỹ năng, mức mục tiêu lượt
 js/ui.js            helper giao diện, icon, bong bóng thoại
 js/voice-core.js    lõi giọng nói: chọn câu, ghép mảnh, chống lặp, luật viết (thuần, có test)
 js/voice.js         giọng nói trên trình duyệt: tải kho thoại, lưu lịch sử, cài đặt nói nhiều/vừa/ít
-js/views/           màn hình: welcome (làm quen), home, streak (lịch nơ), vocab, practice, games, me, badges, settings, wardrobe, lab (+ lab-sim)
+js/srs.js           lặp lại ngắt quãng: leitner 5 hộp riêng từng mức, mở mức, kho output (thuần, có test)
+js/vocab-core.js    lõi từ vựng: chuẩn hoá mục từ, chấm câu gõ, đục lỗ ví dụ, câu hỏi 4 mức, chọn từ mới, từ của ngày, prompt nhờ claude chấm (thuần, có test)
+js/vocab-state.js   dữ liệu học: xie:vocab, câu của tui, sổ lỗi, từ của tui, kế hoạch hôm nay (thuần, có test)
+js/vocab-store.js   từ vựng trên trình duyệt: tải chủ đề khi cần, lưu, ghi mỗi lần trả lời vào srs + lượt + sổ lỗi
+js/speech.js        phát âm (web speech api), ẩn nút nếu không hỗ trợ
+js/sound.js         âm thanh tạo bằng web audio + rung nhẹ
+js/views/           màn hình: welcome (làm quen), home, streak (lịch nơ), vocab, study (phiên học), word (thẻ từ), my-word (từ của tui),
+                    grade (câu của tui + nhờ claude chấm), practice, games, me, badges, settings, wardrobe, lab (+ lab-sim)
 data/voice.json     kho thoại + kaomoji của thỏ
 data/tips.json      mẹo ielts (hiện ở màn hình đang tải)
+data/vocab/         kho từ: index.json + mỗi chủ đề một file (excel-<chủ-đề>.json là sổ của tui)
 data/source/        sổ từ vựng excel gốc
+tools/import-xlsx.py  nhập sổ excel → data/vocab/
+tools/review-vocab.md cụm cần bạn duyệt
 tools/validate.js   kiểm tra
 tools/lines-review.md  câu thoại bị loại khi duyệt chống cringe
 tests/              test tự động
@@ -114,7 +151,7 @@ docs/               spec + kế hoạch
 
 ## dữ liệu của bạn
 
-mọi thứ lưu trong localStorage của trình duyệt, key có tiền tố `xie:`. hồ sơ học nằm ở `xie:state`, tiến độ (lượt từng ngày, chuỗi, xp, huy hiệu) nằm ở `xie:progress`; cả hai có số `version` để sau này nâng cấp không mất dữ liệu. vào **tui → hồ sơ & cài đặt → dữ liệu** để:
+mọi thứ lưu trong localStorage của trình duyệt, key có tiền tố `xie:`. hồ sơ học nằm ở `xie:state`, tiến độ (lượt từng ngày, chuỗi, xp, huy hiệu) ở `xie:progress`, tiến độ từ vựng ở `xie:vocab`, câu tự viết ở `xie:sentences`, sổ lỗi ở `xie:mistakes`, từ của tui ở `xie:my-words`; mỗi key có số `version` để sau này nâng cấp không mất dữ liệu. vào **tui → hồ sơ & cài đặt → dữ liệu** để:
 - **xuất dữ liệu**: tải về file `xie-du-lieu-ngày.json` để sao lưu hoặc chuyển sang máy khác
 - **nhập dữ liệu**: chọn lại file đó (file lạ hoặc hỏng sẽ bị từ chối, không ghi gì)
 - **xoá toàn bộ dữ liệu**: phải bấm xác nhận 2 lần
@@ -160,6 +197,43 @@ viết thường, tối đa 170 ký tự, chính xác, không lóng.
 
 thêm xong luôn chạy `node tools/validate.js` và `npm test`. muốn nghe thử câu mới thì vào phòng thử `#/lab` → **nghe thử thoại**.
 
-### từ vựng, câu hỏi speaking/writing
+### từ vựng (`data/vocab/`)
 
-có từ giai đoạn 5 (từ vựng) và 6 (luyện nói & viết). khi đó tui sẽ thêm mẫu json vào đây.
+cách dễ nhất: thêm trong app (**từ vựng → thêm từ của tui**). muốn thêm thẳng vào kho thì tạo file chủ đề `data/vocab/<tên>.json`
+và khai báo nó trong `data/vocab/index.json` (`{ "id": "<chủ-đề>", "label": "tên chủ đề viết thường", "source": "xie", "track": "academic", "file": "<tên>.json", "count": 1 }`).
+
+mẫu một cụm (type "phrase"):
+
+```json
+{
+ "topic": { "id": "an-uong", "label": "ăn uống & nấu ăn", "source": "xie", "track": "daily" },
+ "items": [
+  {
+   "id": "an-uong-1", "source": "xie", "track": "daily", "topic": "an-uong", "subgroup": "món ruột",
+   "type": "phrase", "phrase": "my comfort food", "alternatives": ["my go-to dish"],
+   "meaning_vi": "món ăn làm mình thấy dễ chịu", "examples": ["Instant noodles are my comfort food on rainy days."],
+   "use_for": "speaking", "note": "", "level": "B2",
+   "speaking_questions": ["What kind of food do you like?"]
+  }
+ ]
+}
+```
+
+mẫu một từ học thuật (type "word", thêm các trường riêng). trường nào không chắc thì để rỗng, **không bịa**:
+
+```json
+{
+ "id": "education-1", "source": "xie", "track": "academic", "topic": "education", "subgroup": "",
+ "type": "word", "phrase": "beneficial", "alternatives": [], "meaning_vi": "có lợi",
+ "examples": ["Regular exercise is beneficial to students' concentration."],
+ "use_for": "writing", "note": "", "level": "B2", "speaking_questions": [],
+ "ipa": "/ˌben.ɪˈfɪʃ.əl/", "pos": "adjective",
+ "word_family": { "noun": ["benefit"], "verb": ["benefit"], "adjective": ["beneficial"], "adverb": ["beneficially"], "negative": [] },
+ "prepositions": [{ "pattern": "beneficial to sb/sth", "example": "Sleep is beneficial to memory." }],
+ "collocations": { "verb": ["prove beneficial"], "adj": ["highly beneficial"], "noun": [] },
+ "register": "trang trọng, hợp writing", "common_mistakes_vi": [{ "wrong": "beneficial for to students", "right": "beneficial to students", "why": "thừa giới từ" }],
+ "synonyms": [{ "word": "advantageous", "note": "trang trọng hơn" }], "antonyms": ["detrimental"], "band_booster": true
+}
+```
+
+id phải không trùng, `count` trong index phải khớp số mục. chạy `node tools/validate.js` để kiểm tra.

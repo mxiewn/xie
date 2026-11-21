@@ -8,6 +8,10 @@ import { say, randomTip, tipLabel } from './voice.js';
 const ROUTES = {
   home: { title: 'trang chủ', load: () => import('./views/home.js') },
   vocab: { title: 'từ vựng', load: () => import('./views/vocab.js') },
+  study: { title: 'học', tab: 'vocab', load: () => import('./views/study.js') },
+  word: { title: 'thẻ từ', tab: 'vocab', load: () => import('./views/word.js') },
+  'my-word': { title: 'từ của tui', tab: 'vocab', load: () => import('./views/my-word.js') },
+  grade: { title: 'câu của tui', tab: 'vocab', load: () => import('./views/grade.js') },
   practice: { title: 'luyện nói & viết', load: () => import('./views/practice.js') },
   games: { title: 'game', load: () => import('./views/games.js') },
   me: { title: 'tui', load: () => import('./views/me.js') },

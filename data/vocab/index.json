@@ -1,0 +1,101 @@
+{
+ "version": 1,
+ "topics": [
+  {
+   "id": "cam-xuc-so-thich",
+   "label": "cảm xúc & sở thích",
+   "source": "excel",
+   "track": "daily",
+   "file": "excel-cam-xuc-so-thich.json",
+   "count": 29
+  },
+  {
+   "id": "quan-ao-thoi-trang",
+   "label": "quần áo & thời trang",
+   "source": "excel",
+   "track": "daily",
+   "file": "excel-quan-ao-thoi-trang.json",
+   "count": 12
+  },
+  {
+   "id": "am-nhac",
+   "label": "âm nhạc",
+   "source": "excel",
+   "track": "daily",
+   "file": "excel-am-nhac.json",
+   "count": 13
+  },
+  {
+   "id": "hoc-tap-ky-nang",
+   "label": "học tập & kỹ năng",
+   "source": "excel",
+   "track": "daily",
+   "file": "excel-hoc-tap-ky-nang.json",
+   "count": 24
+  },
+  {
+   "id": "muc-tieu-thoi-quen",
+   "label": "mục tiêu & thói quen",
+   "source": "excel",
+   "track": "daily",
+   "file": "excel-muc-tieu-thoi-quen.json",
+   "count": 17
+  },
+  {
+   "id": "do-dung-cong-nghe",
+   "label": "đồ dùng & công nghệ",
+   "source": "excel",
+   "track": "daily",
+   "file": "excel-do-dung-cong-nghe.json",
+   "count": 8
+  },
+  {
+   "id": "don-dep-ngan-nap",
+   "label": "dọn dẹp & ngăn nắp",
+   "source": "excel",
+   "track": "daily",
+   "file": "excel-don-dep-ngan-nap.json",
+   "count": 10
+  },
+  {
+   "id": "ban-be-giao-tiep",
+   "label": "bạn bè & giao tiếp",
+   "source": "excel",
+   "track": "daily",
+   "file": "excel-ban-be-giao-tiep.json",
+   "count": 13
+  },
+  {
+   "id": "du-lich-di-lai",
+   "label": "du lịch & đi lại",
+   "source": "excel",
+   "track": "daily",
+   "file": "excel-du-lich-di-lai.json",
+   "count": 4
+  },
+  {
+   "id": "nha-o-moi-truong",
+   "label": "nhà ở & môi trường",
+   "source": "excel",
+   "track": "daily",
+   "file": "excel-nha-o-moi-truong.json",
+   "count": 6
+  },
+  {
+   "id": "suc-khoe-ap-luc",
+   "label": "sức khoẻ & áp lực",
+   "source": "excel",
+   "track": "daily",
+   "file": "excel-suc-khoe-ap-luc.json",
+   "count": 5
+  },
+  {
+   "id": "kinh-doanh",
+   "label": "kinh doanh",
+   "source": "excel",
+   "track": "daily",
+   "file": "excel-kinh-doanh.json",
+   "count": 16
+  }
+ ]
+}

@@ -1,0 +1,123 @@
+{
+ "topic": {
+  "id": "suc-khoe-ap-luc",
+  "label": "sức khoẻ & áp lực",
+  "source": "excel",
+  "track": "daily"
+ },
+ "items": [
+  {
+   "id": "suc-khoe-ap-luc-1",
+   "source": "excel",
+   "track": "daily",
+   "topic": "suc-khoe-ap-luc",
+   "subgroup": "Áp lực",
+   "type": "phrase",
+   "phrase": "a high-pressure environment",
+   "alternatives": [
+    "on call day and night"
+   ],
+   "meaning_vi": "môi trường áp lực / lúc nào cũng phải sẵn sàng",
+   "examples": [
+    "Doctors work in a high-pressure environment."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "suc-khoe-ap-luc-2",
+   "source": "excel",
+   "track": "daily",
+   "topic": "suc-khoe-ap-luc",
+   "subgroup": "Áp lực",
+   "type": "phrase",
+   "phrase": "draining",
+   "alternatives": [
+    "the daily grind"
+   ],
+   "meaning_vi": "bào sức / vòng lặp công việc hằng ngày",
+   "examples": [
+    "The daily grind can be really draining."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "suc-khoe-ap-luc-3",
+   "source": "excel",
+   "track": "daily",
+   "topic": "suc-khoe-ap-luc",
+   "subgroup": "Áp lực",
+   "type": "phrase",
+   "phrase": "take a toll on (sth)",
+   "alternatives": [
+    "ruin their health"
+   ],
+   "meaning_vi": "bào mòn, gây hại / huỷ hoại sức khoẻ",
+   "examples": [
+    "Stress takes a toll on your health."
+   ],
+   "use_for": "both",
+   "note": "Đã sửa: \"toll on\" → cụm đầy đủ take a toll on",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "suc-khoe-ap-luc-4",
+   "source": "excel",
+   "track": "daily",
+   "topic": "suc-khoe-ap-luc",
+   "subgroup": "Áp lực",
+   "type": "phrase",
+   "phrase": "a real headache",
+   "alternatives": [],
+   "meaning_vi": "cực kỳ phiền toái",
+   "examples": [
+    "Finding parking is a real headache."
+   ],
+   "use_for": "speaking",
+   "note": "Đã sửa: \"total real headache\" → a real headache / a total headache",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "suc-khoe-ap-luc-5",
+   "source": "excel",
+   "track": "daily",
+   "topic": "suc-khoe-ap-luc",
+   "subgroup": "Hồi phục",
+   "type": "phrase",
+   "phrase": "take a break",
+   "alternatives": [
+    "regain my strength"
+   ],
+   "meaning_vi": "nghỉ ngơi / lấy lại sức",
+   "examples": [
+    "I take a break every hour to regain my energy."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  }
+ ]
+}

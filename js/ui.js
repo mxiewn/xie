@@ -302,3 +302,30 @@ export function showToast(text, kao = '') {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => node.classList.remove('is-shown'), 2600);
 }
+
+// ---------- tim / hoa anh đào bay lên khi trả lời đúng (spec mục 3) ----------
+// màu lấy từ biến của chế độ hiện tại; giảm chuyển động thì không bay
+export function heartBurst(anchor, count = 5) {
+  const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !anchor) return;
+  const r = anchor.getBoundingClientRect();
+  const layer = document.createElement('div');
+  layer.className = 'heart-burst';
+  layer.setAttribute('aria-hidden', 'true');
+  layer.style.left = `${r.left + r.width / 2}px`;
+  layer.style.top = `${r.top + r.height / 2}px`;
+  for (let i = 0; i < count; i++) {
+    const s = document.createElement('span');
+    s.className = `burst-bit ${i % 2 ? 'is-petal' : 'is-heart'}`;
+    s.style.setProperty('--dx', `${Math.round((Math.random() - 0.5) * 120)}px`);
+    s.style.setProperty('--dy', `${-60 - Math.round(Math.random() * 70)}px`);
+    s.style.setProperty('--rot', `${Math.round((Math.random() - 0.5) * 80)}deg`);
+    s.style.setProperty('--delay', `${i * 50}ms`);
+    s.innerHTML = i % 2
+      ? '<svg viewBox="0 0 20 20" focusable="false"><ellipse cx="10" cy="10" rx="5" ry="8"/></svg>'
+      : '<svg viewBox="0 0 24 24" focusable="false"><path d="M12 20.4S3.6 15.6 3.6 9.6A4.4 4.4 0 0 1 12 7.4a4.4 4.4 0 0 1 8.4 2.2c0 6-8.4 10.8-8.4 10.8z"/></svg>';
+    layer.append(s);
+  }
+  document.body.append(layer);
+  setTimeout(() => layer.remove(), 1300);
+}

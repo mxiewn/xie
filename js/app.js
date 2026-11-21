@@ -4,12 +4,14 @@ import { initRouter } from './router.js';
 import { getState, registerVisit, applyFontSize } from './state.js';
 import { loadNotices } from './progress.js';
 import { mountNavToday } from './nav-today.js';
+import { initVocab } from './vocab-store.js';
 
 initTheme();
 applyFontSize();
 registerVisit();
 loadNotices(); // ngày vắng đã qua: tự dùng băng giữ chuỗi hoặc đứt chuỗi → trang chủ báo một lần
 mountNavToday(document.querySelector('.nav-foot')); // thẻ "hôm nay" ở chân menu (desktop)
+initVocab(); // báo số từ trong kho output cho cấp + huy hiệu
 
 initRouter({
   view: document.getElementById('view'),

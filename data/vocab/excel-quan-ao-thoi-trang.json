@@ -1,0 +1,286 @@
+{
+ "topic": {
+  "id": "quan-ao-thoi-trang",
+  "label": "quần áo & thời trang",
+  "source": "excel",
+  "track": "daily"
+ },
+ "items": [
+  {
+   "id": "quan-ao-thoi-trang-1",
+   "source": "excel",
+   "track": "daily",
+   "topic": "quan-ao-thoi-trang",
+   "subgroup": "Đồ tôi hay mặc",
+   "type": "phrase",
+   "phrase": "my go-to outfit",
+   "alternatives": [
+    "a wardrobe staple"
+   ],
+   "meaning_vi": "bộ đồ ruột / món luôn có trong tủ",
+   "examples": [
+    "Jeans and a T-shirt are my go-to outfit."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "quan-ao-thoi-trang-2",
+   "source": "excel",
+   "track": "daily",
+   "topic": "quan-ao-thoi-trang",
+   "subgroup": "Đồ tôi hay mặc",
+   "type": "phrase",
+   "phrase": "comfy clothes",
+   "alternatives": [
+    "relaxed fits",
+    "soft fabrics",
+    "stretchy fabric"
+   ],
+   "meaning_vi": "đồ thoải mái, dáng rộng, vải mềm, co giãn",
+   "examples": [
+    "I'm all about comfy clothes with relaxed fits."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "quan-ao-thoi-trang-3",
+   "source": "excel",
+   "track": "daily",
+   "topic": "quan-ao-thoi-trang",
+   "subgroup": "Đồ tôi hay mặc",
+   "type": "phrase",
+   "phrase": "perfect for everyday wear",
+   "alternatives": [
+    "wearable in many situations"
+   ],
+   "meaning_vi": "hợp mặc hằng ngày, mặc được nhiều dịp",
+   "examples": [
+    "Sneakers are perfect for everyday wear."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "quan-ao-thoi-trang-4",
+   "source": "excel",
+   "track": "daily",
+   "topic": "quan-ao-thoi-trang",
+   "subgroup": "Phối đồ",
+   "type": "phrase",
+   "phrase": "easy to style",
+   "alternatives": [
+    "match them with anything",
+    "mix and match",
+    "the perfect combo"
+   ],
+   "meaning_vi": "dễ phối, phối gì cũng hợp",
+   "examples": [
+    "Basic tees are easy to style. I can match them with anything."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "quan-ao-thoi-trang-5",
+   "source": "excel",
+   "track": "daily",
+   "topic": "quan-ao-thoi-trang",
+   "subgroup": "Phối đồ",
+   "type": "phrase",
+   "phrase": "come in a ton of colors",
+   "alternatives": [
+    "typically come in (black, white…)"
+   ],
+   "meaning_vi": "có rất nhiều màu / thường có màu…",
+   "examples": [
+    "Hoodies come in a ton of colors."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "quan-ao-thoi-trang-6",
+   "source": "excel",
+   "track": "daily",
+   "topic": "quan-ao-thoi-trang",
+   "subgroup": "Phối đồ",
+   "type": "phrase",
+   "phrase": "affordable and easy to buy",
+   "alternatives": [],
+   "meaning_vi": "rẻ và dễ mua",
+   "examples": [
+    "Basic clothes are affordable and easy to buy."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "quan-ao-thoi-trang-7",
+   "source": "excel",
+   "track": "daily",
+   "topic": "quan-ao-thoi-trang",
+   "subgroup": "Cảm giác khi mặc",
+   "type": "phrase",
+   "phrase": "move easily",
+   "alternatives": [
+    "feel at ease"
+   ],
+   "meaning_vi": "dễ cử động, thoải mái",
+   "examples": [
+    "In loose clothes, I can move easily."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "quan-ao-thoi-trang-8",
+   "source": "excel",
+   "track": "daily",
+   "topic": "quan-ao-thoi-trang",
+   "subgroup": "Cảm giác khi mặc",
+   "type": "phrase",
+   "phrase": "feel weighed down",
+   "alternatives": [],
+   "meaning_vi": "thấy nặng nề, vướng víu",
+   "examples": [
+    "Heavy jackets make me feel weighed down."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "quan-ao-thoi-trang-9",
+   "source": "excel",
+   "track": "daily",
+   "topic": "quan-ao-thoi-trang",
+   "subgroup": "Phong cách",
+   "type": "phrase",
+   "phrase": "a minimalist style",
+   "alternatives": [
+    "minimalistic style",
+    "a minimalist vibe"
+   ],
+   "meaning_vi": "phong cách tối giản",
+   "examples": [
+    "I prefer a minimalist style."
+   ],
+   "use_for": "both",
+   "note": "\"minimalist style\" phổ biến hơn \"minimalistic\"",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "quan-ao-thoi-trang-10",
+   "source": "excel",
+   "track": "daily",
+   "topic": "quan-ao-thoi-trang",
+   "subgroup": "Phong cách",
+   "type": "phrase",
+   "phrase": "chic and stylish",
+   "alternatives": [
+    "extremely fashionable",
+    "a fashionable personality"
+   ],
+   "meaning_vi": "sang, có gu",
+   "examples": [
+    "My sister always looks chic and stylish."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "quan-ao-thoi-trang-11",
+   "source": "excel",
+   "track": "daily",
+   "topic": "quan-ao-thoi-trang",
+   "subgroup": "Phong cách",
+   "type": "phrase",
+   "phrase": "my personal style",
+   "alternatives": [
+    "express myself"
+   ],
+   "meaning_vi": "phong cách cá nhân / thể hiện bản thân",
+   "examples": [
+    "Clothes are a way to express myself."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "quan-ao-thoi-trang-12",
+   "source": "excel",
+   "track": "daily",
+   "topic": "quan-ao-thoi-trang",
+   "subgroup": "Phong cách",
+   "type": "phrase",
+   "phrase": "the perfect middle ground",
+   "alternatives": [],
+   "meaning_vi": "điểm cân bằng hoàn hảo",
+   "examples": [
+    "Smart-casual is the perfect middle ground."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  }
+ ]
+}

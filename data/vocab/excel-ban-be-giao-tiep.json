@@ -1,0 +1,293 @@
+{
+ "topic": {
+  "id": "ban-be-giao-tiep",
+  "label": "bạn bè & giao tiếp",
+  "source": "excel",
+  "track": "daily"
+ },
+ "items": [
+  {
+   "id": "ban-be-giao-tiep-1",
+   "source": "excel",
+   "track": "daily",
+   "topic": "ban-be-giao-tiep",
+   "subgroup": "Giữ liên lạc & nói chuyện",
+   "type": "phrase",
+   "phrase": "keep the lines of communication open",
+   "alternatives": [],
+   "meaning_vi": "giữ liên lạc",
+   "examples": [
+    "I keep the lines of communication open with old friends."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "ban-be-giao-tiep-2",
+   "source": "excel",
+   "track": "daily",
+   "topic": "ban-be-giao-tiep",
+   "subgroup": "Giữ liên lạc & nói chuyện",
+   "type": "phrase",
+   "phrase": "keep the conversation flowing",
+   "alternatives": [],
+   "meaning_vi": "giữ câu chuyện không bị ngắt",
+   "examples": [
+    "Asking questions keeps the conversation flowing."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "ban-be-giao-tiep-3",
+   "source": "excel",
+   "track": "daily",
+   "topic": "ban-be-giao-tiep",
+   "subgroup": "Giữ liên lạc & nói chuyện",
+   "type": "phrase",
+   "phrase": "open up",
+   "alternatives": [
+    "express my thoughts"
+   ],
+   "meaning_vi": "mở lòng / nói ra suy nghĩ",
+   "examples": [
+    "It takes me time to open up to new people."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "ban-be-giao-tiep-4",
+   "source": "excel",
+   "track": "daily",
+   "topic": "ban-be-giao-tiep",
+   "subgroup": "Giữ liên lạc & nói chuyện",
+   "type": "phrase",
+   "phrase": "fear of judgment",
+   "alternatives": [],
+   "meaning_vi": "nỗi sợ bị đánh giá",
+   "examples": [
+    "Fear of judgment stops me from speaking up."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "ban-be-giao-tiep-5",
+   "source": "excel",
+   "track": "daily",
+   "topic": "ban-be-giao-tiep",
+   "subgroup": "Giữ liên lạc & nói chuyện",
+   "type": "phrase",
+   "phrase": "be in the same boat",
+   "alternatives": [],
+   "meaning_vi": "cùng cảnh ngộ",
+   "examples": [
+    "All my classmates are in the same boat."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "ban-be-giao-tiep-6",
+   "source": "excel",
+   "track": "daily",
+   "topic": "ban-be-giao-tiep",
+   "subgroup": "Giữ liên lạc & nói chuyện",
+   "type": "phrase",
+   "phrase": "be open to (new things)",
+   "alternatives": [
+    "be open to embracing…"
+   ],
+   "meaning_vi": "sẵn sàng đón nhận",
+   "examples": [
+    "I'm open to trying new things."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "ban-be-giao-tiep-7",
+   "source": "excel",
+   "track": "daily",
+   "topic": "ban-be-giao-tiep",
+   "subgroup": "Kết nối & tụ tập",
+   "type": "phrase",
+   "phrase": "meaningful connections",
+   "alternatives": [
+    "connect with like-minded people"
+   ],
+   "meaning_vi": "mối quan hệ ý nghĩa / người cùng chí hướng",
+   "examples": [
+    "Art clubs help me connect with like-minded people."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "ban-be-giao-tiep-8",
+   "source": "excel",
+   "track": "daily",
+   "topic": "ban-be-giao-tiep",
+   "subgroup": "Kết nối & tụ tập",
+   "type": "phrase",
+   "phrase": "build a sense of teamwork",
+   "alternatives": [],
+   "meaning_vi": "xây dựng tinh thần đồng đội",
+   "examples": [
+    "Group projects build a sense of teamwork."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "ban-be-giao-tiep-9",
+   "source": "excel",
+   "track": "daily",
+   "topic": "ban-be-giao-tiep",
+   "subgroup": "Kết nối & tụ tập",
+   "type": "phrase",
+   "phrase": "a casual gathering",
+   "alternatives": [
+    "have a good time"
+   ],
+   "meaning_vi": "buổi gặp gỡ thân mật / vui vẻ",
+   "examples": [
+    "We had a casual gathering at a café."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "ban-be-giao-tiep-10",
+   "source": "excel",
+   "track": "daily",
+   "topic": "ban-be-giao-tiep",
+   "subgroup": "Kết nối & tụ tập",
+   "type": "phrase",
+   "phrase": "a welcoming atmosphere",
+   "alternatives": [],
+   "meaning_vi": "không khí thân thiện, chào đón",
+   "examples": [
+    "I like cafés with a welcoming atmosphere."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "ban-be-giao-tiep-11",
+   "source": "excel",
+   "track": "daily",
+   "topic": "ban-be-giao-tiep",
+   "subgroup": "Kết nối & tụ tập",
+   "type": "phrase",
+   "phrase": "life experiences",
+   "alternatives": [
+    "practical advice"
+   ],
+   "meaning_vi": "kinh nghiệm sống / lời khuyên thực tế",
+   "examples": [
+    "My grandpa shares his life experiences and practical advice."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "ban-be-giao-tiep-12",
+   "source": "excel",
+   "track": "daily",
+   "topic": "ban-be-giao-tiep",
+   "subgroup": "Kỷ niệm & quà",
+   "type": "phrase",
+   "phrase": "hold onto memories",
+   "alternatives": [],
+   "meaning_vi": "giữ lại kỷ niệm",
+   "examples": [
+    "I keep photos to hold onto memories."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "ban-be-giao-tiep-13",
+   "source": "excel",
+   "track": "daily",
+   "topic": "ban-be-giao-tiep",
+   "subgroup": "Kỷ niệm & quà",
+   "type": "phrase",
+   "phrase": "show how much people care",
+   "alternatives": [],
+   "meaning_vi": "cho thấy người khác quan tâm mình thế nào",
+   "examples": [
+    "Handmade gifts show how much people care."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  }
+ ]
+}

@@ -31,7 +31,7 @@ file này để mỗi phiên làm việc mới đọc lại là biết đang ở
 - [x] **2. hệ thống giọng nói, thoại, kaomoji** (kèm duyệt chống cringe → `tools/lines-review.md`)
 - [x] **3. onboarding + lưu trữ** (state đầy đủ, số version schema, nâng cấp)
 - [x] **4. mục tiêu 50 lượt + streak** (hàm thuần + test), kèm xp, 9 cấp, 26 huy hiệu, thử thách mỗi ngày
-- [ ] 5. từ vựng + srs + kho từ output
+- [x] **5. từ vựng + srs + kho từ output** (kèm nhập sổ excel 157 cụm, phát âm, âm thanh, câu của tui, nhờ claude chấm, sổ lỗi)
 - [ ] 6. luyện viết và nói
 - [ ] 7. minigame
 - [ ] 8. ngữ pháp + nâng cấp câu + bẫy người việt
@@ -166,6 +166,38 @@ setCounters({ output_words: 57, my_words: 12 });   // kho output / từ của tu
 - `item`: id câu hỏi (bắt buộc nên có, để chống trả lời lại trong 10 phút). `words`: số từ của bài viết. `tags`: `prep` cho câu giới từ (huy hiệu "tuần không sai giới từ")
 - giai đoạn 5 thêm nút **học hôm nay** + kế hoạch hôm nay vào trang chủ, từ của ngày, số từ kho output (thay mục "nhà mới đang dọn")
 - thoại "đúng" / "sai" / "điểm tuyệt đối" do màn bài tập tự gọi (giai đoạn 5–8); `celebrate()` lo phần sự kiện lớn
+
+## giai đoạn 5: từ vựng + srs + kho từ output
+
+### dữ liệu
+- `tools/import-xlsx.py` (python + openpyxl) nhập **sổ của tui**: 12 chủ đề, **đúng 157 cụm** (sai thì dừng). id `<chủ-đề>-<stt>`, không sửa nghĩa / ví dụ / ghi chú. "câu của tôi" và "đã dùng khi nói?" vào `seed` (tiến độ ban đầu). cụm chưa tự nhiên, ví dụ không chứa cụm chính, cụm trùng ghi ở `tools/review-vocab.md`
+- `data/vocab/index.json` + một file mỗi chủ đề, **chỉ tải chủ đề khi cần** (trang chủ chỉ tải 1 chủ đề cho từ của ngày)
+- schema chung đúng spec (phrase + word), thêm source `"mine"` cho từ của tui
+
+### lõi thuần (có test)
+- `js/srs.js`: leitner 5 hộp **riêng từng mức**. đúng → lên hộp; sai → hộp 1, 10 phút sau; "khó" → lùi 1 hộp, tối đa 1 ngày. mở mức kế khi mức đang luyện tới hộp 2 (mức 1, 2) hoặc hộp 3 (mức 3). kho output = qua mức 4 ở 2 ngày khác nhau; từ đã vào kho vẫn ôn thưa (mức 4 hẹn tới 30 ngày). ôn đến hạn: sớm nhất trước, xen kẽ chủ đề
+- `js/vocab-core.js`: chấm câu gõ (không phân biệt hoa thường, dấu nháy cong, "(sth)" tuỳ chọn, khung "+ v-ing", cụm ≥ 6 chữ cái cho sai 1 ký tự, gõ cách nói tương tự vẫn tính đúng nhưng báo cụm chính). **đục lỗ câu ví dụ** chịu chia động từ (cả bất quy tắc), bỏ be / my / từ đệm → 148/157 cụm đục được; 9 cụm còn lại có ví dụ chỉ dùng cách nói tương tự nên dùng dạng bài khác. câu hỏi 4 mức; từ loại "word" có word form, giới từ, collocation, sửa câu sai. chọn từ mới theo tỉ lệ (từ của tui trước, nhánh hết từ thì nhường chỗ). từ của ngày cố định trong ngày, ưu tiên từ chưa vào kho. prompt nhờ claude chấm
+- `js/vocab-state.js`: `xie:vocab`, `xie:sentences`, `xie:mistakes`, `xie:my-words` (mỗi key có version, chuẩn hoá khi đọc / nhập file). kế hoạch hôm nay
+- test: `npm test` → 191 test (thêm 8 srs, 18 từ vựng, 1 cài đặt). `tools/validate.js` kiểm tra thêm kho từ
+
+### quyết định
+| chủ đề | quyết định |
+| --- | --- |
+| lượt của mỗi mức | mức 1 = nhận biết, mức 2 = nhớ lại, mức 3 = dùng có hướng dẫn (1 lượt); mức 4 viết = "tự viết câu" (3 lượt), mức 4 nói = "speaking part 1" (3 lượt). id chống cày: `vocab:<id>:<mức>` |
+| từ mới trong phiên | thẻ giới thiệu → hỏi mức 1 ngay → đúng thì hỏi tiếp mức 2 sau vài câu. mỗi từ tối đa 3 câu / phiên |
+| câu sai | quay lại sau 3 câu (vẫn trong phiên); câu trả lời lại trong 10 phút không tính lượt (đúng luật chống cày) |
+| gợi ý | dùng gợi ý thì srs chấm "khó" (không lên hộp) |
+| mức 4 | viết: cảnh báo nếu câu chưa có cụm, nhắc viết hoa đầu câu. nói: không ghi âm, có ô ghi ý chính (tuỳ chọn) để nhờ claude chấm. sau đó hiện câu mẫu (ví dụ trong sổ) + checklist 4 ý; tick đủ 4 mới bấm "đạt" |
+| phát âm | `js/speech.js` (spec gọi là "voice", nhưng `voice.js` đã là giọng nói của thỏ). bỏ "(sth)" khi đọc |
+| tỉ lệ nguồn | 5 lựa chọn trong cài đặt; "theo kỹ năng yếu": writing / ngữ pháp → nghiêng academic, speaking → nghiêng daily. hiện chỉ có sổ excel nên mọi lựa chọn đều lấy từ sổ, tới giai đoạn 9 mới chia thật |
+| màu chủ đề | 12 cặp `--tN` / `--tN-ink` cho mỗi chế độ, kiểm tra tương phản trong validate |
+| câu của tui | màn `#/grade`: lọc hôm nay / chưa chấm / tất cả, lọc theo từ. đây là bản đầu của "câu của tui" (spec mục 7); giai đoạn 6 mở rộng (lọc theo chủ đề, ngày, bài viết dài) |
+
+### để giai đoạn sau
+- nút **xuất sổ ra excel** (sheetjs qua cdn, chỉ tải khi bấm): làm cùng giai đoạn 9 khi đã có sheet daily + academic
+- **sửa** từ xie tạo (hiện có ẩn / bỏ ẩn): giai đoạn 9 khi có từ xie
+- màn **thống kê** (mức từ, độ chính xác theo loại bài, biểu đồ 14 ngày, điểm yếu nhất) và màn **sổ lỗi** riêng: dữ liệu đã lưu từ giờ, làm màn ở giai đoạn 6–8
+- `tools/dedupe.js`: làm ở giai đoạn 9 trước lô xie tạo đầu tiên
 
 ## còn để giai đoạn sau
 

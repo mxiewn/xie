@@ -1,0 +1,295 @@
+{
+ "topic": {
+  "id": "am-nhac",
+  "label": "âm nhạc",
+  "source": "excel",
+  "track": "daily"
+ },
+ "items": [
+  {
+   "id": "am-nhac-1",
+   "source": "excel",
+   "track": "daily",
+   "topic": "am-nhac",
+   "subgroup": "Kiểu nhạc",
+   "type": "phrase",
+   "phrase": "upbeat songs",
+   "alternatives": [
+    "upbeat tunes"
+   ],
+   "meaning_vi": "bài hát vui tươi",
+   "examples": [
+    "I listen to upbeat songs when I study."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "am-nhac-2",
+   "source": "excel",
+   "track": "daily",
+   "topic": "am-nhac",
+   "subgroup": "Kiểu nhạc",
+   "type": "phrase",
+   "phrase": "lively melodies",
+   "alternatives": [],
+   "meaning_vi": "giai điệu sôi động",
+   "examples": [
+    "I love songs with lively melodies."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "am-nhac-3",
+   "source": "excel",
+   "track": "daily",
+   "topic": "am-nhac",
+   "subgroup": "Kiểu nhạc",
+   "type": "phrase",
+   "phrase": "a unique style",
+   "alternatives": [
+    "a unique way"
+   ],
+   "meaning_vi": "phong cách / cách riêng biệt",
+   "examples": [
+    "That singer has a really unique style."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "am-nhac-4",
+   "source": "excel",
+   "track": "daily",
+   "topic": "am-nhac",
+   "subgroup": "Nhạc làm tôi thế nào",
+   "type": "phrase",
+   "phrase": "make me want to get up and dance",
+   "alternatives": [],
+   "meaning_vi": "khiến tôi muốn đứng dậy nhảy",
+   "examples": [
+    "Some songs just make me want to get up and dance."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "am-nhac-5",
+   "source": "excel",
+   "track": "daily",
+   "topic": "am-nhac",
+   "subgroup": "Nhạc làm tôi thế nào",
+   "type": "phrase",
+   "phrase": "enjoy the good vibes",
+   "alternatives": [
+    "enjoy the good vibes all around"
+   ],
+   "meaning_vi": "tận hưởng không khí vui",
+   "examples": [
+    "At concerts, I just enjoy the good vibes."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "am-nhac-6",
+   "source": "excel",
+   "track": "daily",
+   "topic": "am-nhac",
+   "subgroup": "Nhạc làm tôi thế nào",
+   "type": "phrase",
+   "phrase": "energize and motivate me",
+   "alternatives": [
+    "create a sense of motivation"
+   ],
+   "meaning_vi": "tiếp năng lượng, tạo động lực",
+   "examples": [
+    "Fast songs energize and motivate me when I exercise."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "am-nhac-7",
+   "source": "excel",
+   "track": "daily",
+   "topic": "am-nhac",
+   "subgroup": "Nhạc làm tôi thế nào",
+   "type": "phrase",
+   "phrase": "fit how I feel",
+   "alternatives": [],
+   "meaning_vi": "hợp với tâm trạng lúc đó",
+   "examples": [
+    "I pick songs that fit how I feel."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "am-nhac-8",
+   "source": "excel",
+   "track": "daily",
+   "topic": "am-nhac",
+   "subgroup": "Nhạc làm tôi thế nào",
+   "type": "phrase",
+   "phrase": "work without feeling restricted",
+   "alternatives": [
+    "feel restricted"
+   ],
+   "meaning_vi": "làm việc mà không thấy gò bó",
+   "examples": [
+    "Music lets me work without feeling restricted."
+   ],
+   "use_for": "both",
+   "note": "Ghép từ 2 dòng \"work without feeling\" + \"feeling restricted\"; check lại ngữ cảnh gốc",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "am-nhac-9",
+   "source": "excel",
+   "track": "daily",
+   "topic": "am-nhac",
+   "subgroup": "Chạm đến cảm xúc",
+   "type": "phrase",
+   "phrase": "strike a chord (with me)",
+   "alternatives": [
+    "resonate with (my feelings)"
+   ],
+   "meaning_vi": "chạm đến cảm xúc, thấy đồng cảm",
+   "examples": [
+    "Songs about family really strike a chord with me."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "am-nhac-10",
+   "source": "excel",
+   "track": "daily",
+   "topic": "am-nhac",
+   "subgroup": "Chạm đến cảm xúc",
+   "type": "phrase",
+   "phrase": "tap into my emotions",
+   "alternatives": [],
+   "meaning_vi": "chạm vào cảm xúc sâu bên trong",
+   "examples": [
+    "Slow songs really tap into my emotions."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "am-nhac-11",
+   "source": "excel",
+   "track": "daily",
+   "topic": "am-nhac",
+   "subgroup": "Chạm đến cảm xúc",
+   "type": "phrase",
+   "phrase": "express deep emotions",
+   "alternatives": [],
+   "meaning_vi": "thể hiện cảm xúc sâu sắc",
+   "examples": [
+    "Ballads usually express deep emotions."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "am-nhac-12",
+   "source": "excel",
+   "track": "daily",
+   "topic": "am-nhac",
+   "subgroup": "Chạm đến cảm xúc",
+   "type": "phrase",
+   "phrase": "provide comfort",
+   "alternatives": [],
+   "meaning_vi": "xoa dịu, an ủi",
+   "examples": [
+    "Music provides comfort when I'm stressed."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "am-nhac-13",
+   "source": "excel",
+   "track": "daily",
+   "topic": "am-nhac",
+   "subgroup": "Chạm đến cảm xúc",
+   "type": "phrase",
+   "phrase": "feel seen and understood",
+   "alternatives": [],
+   "meaning_vi": "cảm thấy được thấu hiểu",
+   "examples": [
+    "Some lyrics make me feel seen and understood."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  }
+ ]
+}

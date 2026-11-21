@@ -1,0 +1,98 @@
+{
+ "topic": {
+  "id": "du-lich-di-lai",
+  "label": "du lịch & đi lại",
+  "source": "excel",
+  "track": "daily"
+ },
+ "items": [
+  {
+   "id": "du-lich-di-lai-1",
+   "source": "excel",
+   "track": "daily",
+   "topic": "du-lich-di-lai",
+   "subgroup": "Trải nghiệm",
+   "type": "phrase",
+   "phrase": "eye-opening experiences",
+   "alternatives": [],
+   "meaning_vi": "trải nghiệm mở mang tầm mắt",
+   "examples": [
+    "My trips abroad were truly eye-opening experiences."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "du-lich-di-lai-2",
+   "source": "excel",
+   "track": "daily",
+   "topic": "du-lich-di-lai",
+   "subgroup": "Trải nghiệm",
+   "type": "phrase",
+   "phrase": "when I'm out and about",
+   "alternatives": [],
+   "meaning_vi": "khi ra ngoài, đi đây đi đó",
+   "examples": [
+    "I always bring water when I'm out and about."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "du-lich-di-lai-3",
+   "source": "excel",
+   "track": "daily",
+   "topic": "du-lich-di-lai",
+   "subgroup": "Phương tiện",
+   "type": "phrase",
+   "phrase": "when flying isn't an option",
+   "alternatives": [
+    "there's no airport nearby"
+   ],
+   "meaning_vi": "khi không đi máy bay được / không có sân bay gần",
+   "examples": [
+    "We took the bus because flying wasn't an option."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "du-lich-di-lai-4",
+   "source": "excel",
+   "track": "daily",
+   "topic": "du-lich-di-lai",
+   "subgroup": "Phương tiện",
+   "type": "phrase",
+   "phrase": "cut down on travel time",
+   "alternatives": [
+    "make commuting easier"
+   ],
+   "meaning_vi": "giảm thời gian đi lại / đi lại dễ hơn",
+   "examples": [
+    "The metro will cut down on travel time."
+   ],
+   "use_for": "both",
+   "note": "\"commuting ease\" nghe lạ, nói make commuting easier",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  }
+ ]
+}

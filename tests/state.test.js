@@ -122,3 +122,16 @@ test('nhập file sai thì báo lỗi dễ hiểu, không ghi gì', () => {
   const r = parseImport(JSON.stringify({ app: 'xie', data: {} }));
   assert.match(r.error, /^[^A-Z]*$/);
 });
+
+test('cài đặt giai đoạn 5: giọng đọc, tốc độ, âm thanh, rung, tỉ lệ nguồn có mặc định và được chuẩn hoá', () => {
+  const d = normalize({});
+  assert.deepEqual(d.settings, { font_size: 'vua', speech_accent: 'en-GB', speech_rate: 0.9, sound: true, vibrate: true, new_ratio: 'can_bang' });
+  const s = normalize({ settings: { speech_accent: 'fr-FR', speech_rate: 5, sound: false, vibrate: 0, new_ratio: 'la' } });
+  assert.equal(s.settings.speech_accent, 'en-GB');
+  assert.equal(s.settings.speech_rate, 1.2);
+  assert.equal(s.settings.sound, false);
+  assert.equal(s.settings.vibrate, true); // chỉ false mới tắt
+  assert.equal(s.settings.new_ratio, 'can_bang');
+  assert.equal(normalize({ settings: { speech_rate: 0.73 } }).settings.speech_rate, 0.75);
+  assert.equal(normalize({ settings: { speech_accent: 'en-US' } }).settings.speech_accent, 'en-US');
+});

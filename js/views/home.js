@@ -1,7 +1,7 @@
 // xie · views/home.js — trang chủ
 // lời chào theo giờ việt nam, thỏ (có lượt rồi thì cầm cà rốt lớn dần theo tiến độ) + bong bóng thoại, nút đổi sáng/tối,
-// vòng tiến độ lượt + thanh output, chuỗi ngày + lịch nơ tuần này, báo băng / đứt chuỗi,
-// thử thách hôm nay, đếm ngược kỳ thi. từ của ngày, kho output, nút "học hôm nay" vào ở giai đoạn 5.
+// vòng tiến độ lượt + thanh output, kế hoạch hôm nay + nút "học hôm nay" + số từ kho output,
+// chuỗi ngày + lịch nơ tuần này, báo băng / đứt chuỗi, thử thách hôm nay, từ của ngày, đếm ngược kỳ thi.
 
 import { createBunny } from '../bunny.js';
 import { createBubble, icons, skyDecor, esc, randomKao } from '../ui.js';
@@ -14,6 +14,12 @@ import {
   ringHtml, metersHtml, statusLine, weekStripHtml, freezeCountHtml, noticeHtml, challengeHtml,
 } from '../progress-ui.js';
 import { CHALLENGE_XP } from '../daily-goal.js';
+import { todayIn } from '../state-core.js';
+import { isOutput } from '../srs.js';
+import { todayPlan } from '../vocab-state.js';
+import { wordOfDay, topicOfDay } from '../vocab-core.js';
+import { vocabStats, topicsInfo, loadTopic, getVocab, VOCAB_EVENT } from '../vocab-store.js';
+import { listenButton, wireListen } from '../speech.js';
 
 function greetingFor(hour) {
   if (hour >= 5 && hour < 11) return 'sáng rồi nè';
@@ -23,11 +29,36 @@ function greetingFor(hour) {
   return 'khuya rồi nè';
 }
 
-const SOON = [
-  'kế hoạch hôm nay + nút học hôm nay',
-  'từ của ngày',
-  'kho từ output',
-];
+// kế hoạch hôm nay (spec mục 7): ôn từ đến hạn → từ mới → bài output → minigame → ngữ pháp
+function planCard(sum, vs) {
+  const steps = todayPlan({
+    due: vs.due, newLeft: Math.max(0, vs.newPerDay - vs.newToday), goal: sum.status.goal, weakSkill: getState().profile.weak_skill,
+  });
+  const label = sum.status.met ? 'học thêm' : vs.due || vs.newToday < vs.newPerDay ? 'học hôm nay' : 'ôn thêm';
+  return `
+    <section class="card card-lace plan-card" aria-labelledby="plan-title">
+      <div class="plan-head">
+        <h2 class="card-title" id="plan-title"><span class="title-bow">${icons.bow}</span>kế hoạch hôm nay</h2>
+        <p class="plan-output"><span class="plan-output-num">${vs.output}</span> từ trong kho output</p>
+      </div>
+      <ol class="plan-steps" role="list">
+        ${steps.map((st) => `
+          <li class="plan-step${st.ready ? '' : ' is-later'}">
+            <span class="plan-name">${esc(st.label)}</span>
+            <span class="plan-turns">${st.ready ? `~${st.turns} lượt` : st.id === 'games' || st.id === 'grammar' ? 'sắp có' : 'xong'}</span>
+          </li>`).join('')}
+      </ol>
+      <a class="btn btn-primary plan-go" href="#/study">${label}</a>
+    </section>`;
+}
+
+function wordOfDayCard() {
+  return `
+    <section class="card wotd-card" aria-labelledby="wotd-title" data-role="wotd">
+      <h2 class="card-title" id="wotd-title"><span class="title-bow">${icons.bow}</span>từ của ngày</h2>
+      <p class="card-text">đang chọn từ…</p>
+    </section>`;
+}
 
 // chưa có lượt nào: thỏ chưa cầm cà rốt. từ lượt đầu tiên thì cầm, cà rốt từ nhỏ (0.6) tới to (1.5)
 const carrotScale = (ratio) => (0.6 + 0.9 * Math.max(0, Math.min(1, ratio))).toFixed(2);
@@ -115,17 +146,11 @@ export function render(view) {
     <div class="home-side">
       <div class="notice-slot" data-role="notice">${noticeHtml(notices, sum.streak)}</div>
       <div data-role="today">${todayCard(sum)}</div>
+      <div data-role="plan">${planCard(sum, vocabStats())}</div>
       <div data-role="streak">${streakCard(sum)}</div>
       <div data-role="challenge">${challengeHtml(sum.challenge, sum.challengeProgress, CHALLENGE_XP)}</div>
+      ${wordOfDayCard()}
       ${examCard(days)}
-      <section class="card card-lace soon-card">
-        <h2 class="card-title"><span class="title-bow">${icons.bow}</span>nhà mới đang dọn</h2>
-        <p class="card-text">mấy món này sẽ lần lượt dọn vào đây:</p>
-        <ul class="soon-list" role="list">
-          ${SOON.map((item) => `<li>${icons.heart}<span>${item}</span></li>`).join('')}
-        </ul>
-        <div class="pearls" aria-hidden="true"></div>
-      </section>
     </div>
     </div>
   `;
@@ -195,6 +220,7 @@ export function render(view) {
     view.querySelector('[data-role="today"]').innerHTML = todayCard(sum);
     view.querySelector('[data-role="streak"]').innerHTML = streakCard(sum);
     view.querySelector('[data-role="challenge"]').innerHTML = challengeHtml(sum.challenge, sum.challengeProgress, CHALLENGE_XP);
+    view.querySelector('[data-role="plan"]').innerHTML = planCard(sum, vocabStats());
     bunny.setCarrotScale(carrotScale(sum.status.ratio));
     // vừa có lượt đầu tiên trong ngày thì thỏ cầm cà rốt lên
     const next = restPoseFor(sum.status);
@@ -217,6 +243,31 @@ export function render(view) {
     else speak(greetingNow(), {}, { forceLine: true });
   }, 700));
 
+  // từ của ngày: chỉ tải đúng 1 chủ đề trong ngày
+  const wotd = view.querySelector('[data-role="wotd"]');
+  (async () => {
+    const topics = (await topicsInfo()).filter((t) => t.count > 0);
+    const today = todayIn();
+    const topic = topicOfDay(topics, today);
+    const items = topic ? await loadTopic(topic.id) : [];
+    const it = wordOfDay(items, today, getVocab().items, isOutput);
+    if (!alive) return;
+    if (!it) { wotd.querySelector('.card-text').textContent = 'kho từ đang trống'; return; }
+    const ex = it.examples[0] || '';
+    wotd.innerHTML = `
+      <h2 class="card-title" id="wotd-title"><span class="title-bow">${icons.bow}</span>từ của ngày</h2>
+      <div class="wotd-word" data-say="${esc(it.phrase)}"><p class="word-phrase keep-case">${esc(it.phrase)}</p>${listenButton('nghe từ của ngày')}</div>
+      <p class="word-meaning">${esc(it.meaning_vi)}</p>
+      ${ex ? `<p class="word-example keep-case" data-say="${esc(ex)}">${esc(ex)} ${listenButton('nghe câu ví dụ', 'listen-small')}</p>` : ''}
+      <p class="exam-line" data-role="wotd-line"></p>
+      <a class="btn-link" href="#/word/${encodeURIComponent(it.id)}">xem thẻ từ</a>`;
+    const line = await say('tu_moi', { word: it.phrase }, { forceLine: true });
+    const el = wotd.querySelector('[data-role="wotd-line"]');
+    if (alive && el && line?.text) { el.textContent = `${line.text} `; const k = document.createElement('span'); k.className = 'kao'; k.textContent = line.kao; el.append(k); }
+  })();
+  wireListen(view);
+  window.addEventListener(VOCAB_EVENT, refresh);
+
   const examLine = view.querySelector('[data-role="exam-line"]');
   if (examLine && days > 0) {
     say('dem_nguoc', { days }, { forceLine: true }).then((line) => {
@@ -235,6 +286,7 @@ export function render(view) {
     window.removeEventListener(THEME_EVENT, syncToggle);
     window.removeEventListener(THEME_REQUEST, onThemeRequest);
     window.removeEventListener(PROGRESS_EVENT, refresh);
+    window.removeEventListener(VOCAB_EVENT, refresh);
     bunny.destroy();
     bubble.destroy();
   };

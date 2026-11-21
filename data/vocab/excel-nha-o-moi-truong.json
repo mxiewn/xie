@@ -1,0 +1,142 @@
+{
+ "topic": {
+  "id": "nha-o-moi-truong",
+  "label": "nhà ở & môi trường",
+  "source": "excel",
+  "track": "daily"
+ },
+ "items": [
+  {
+   "id": "nha-o-moi-truong-1",
+   "source": "excel",
+   "track": "daily",
+   "topic": "nha-o-moi-truong",
+   "subgroup": "Nơi ở",
+   "type": "phrase",
+   "phrase": "a snug little apartment",
+   "alternatives": [
+    "a cozy apartment"
+   ],
+   "meaning_vi": "căn hộ nhỏ ấm cúng",
+   "examples": [
+    "I live in a snug little apartment downtown."
+   ],
+   "use_for": "both",
+   "note": "List có 2 dòng trùng, đã gộp",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "nha-o-moi-truong-2",
+   "source": "excel",
+   "track": "daily",
+   "topic": "nha-o-moi-truong",
+   "subgroup": "Nơi ở",
+   "type": "phrase",
+   "phrase": "close to amenities",
+   "alternatives": [
+    "essential services"
+   ],
+   "meaning_vi": "gần tiện ích / dịch vụ thiết yếu",
+   "examples": [
+    "My place is close to amenities like shops and clinics."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "nha-o-moi-truong-3",
+   "source": "excel",
+   "track": "daily",
+   "topic": "nha-o-moi-truong",
+   "subgroup": "Nơi ở",
+   "type": "phrase",
+   "phrase": "a sense of community",
+   "alternatives": [],
+   "meaning_vi": "cảm giác gắn kết hàng xóm",
+   "examples": [
+    "My neighborhood has a strong sense of community."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "nha-o-moi-truong-4",
+   "source": "excel",
+   "track": "daily",
+   "topic": "nha-o-moi-truong",
+   "subgroup": "Bảo vệ môi trường",
+   "type": "phrase",
+   "phrase": "keep their surroundings clean",
+   "alternatives": [],
+   "meaning_vi": "giữ xung quanh sạch sẽ",
+   "examples": [
+    "People should keep their surroundings clean."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "nha-o-moi-truong-5",
+   "source": "excel",
+   "track": "daily",
+   "topic": "nha-o-moi-truong",
+   "subgroup": "Bảo vệ môi trường",
+   "type": "phrase",
+   "phrase": "raise awareness",
+   "alternatives": [],
+   "meaning_vi": "nâng cao nhận thức",
+   "examples": [
+    "Schools should raise awareness about plastic waste."
+   ],
+   "use_for": "writing",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "nha-o-moi-truong-6",
+   "source": "excel",
+   "track": "daily",
+   "topic": "nha-o-moi-truong",
+   "subgroup": "Bảo vệ môi trường",
+   "type": "phrase",
+   "phrase": "make smarter choices",
+   "alternatives": [
+    "make better choices"
+   ],
+   "meaning_vi": "lựa chọn khôn ngoan hơn",
+   "examples": [
+    "I try to make smarter choices, like using a refillable bottle."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  }
+ ]
+}

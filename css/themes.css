@@ -148,6 +148,32 @@
   --ice-ink: #3F7FA3;
   --ice-soft: #EAF5FB;
   --ice-line: #9CCBE3;
+
+  /* 12 màu chủ đề từ vựng: nền pastel nhạt + màu icon (ban ngày) */
+  --t1: #FDE4EE;
+  --t1-ink: #C94F7C;
+  --t2: #FFE9DC;
+  --t2-ink: #C76A3A;
+  --t3: #FFF3CC;
+  --t3-ink: #9A7410;
+  --t4: #E2F5EA;
+  --t4-ink: #2F7D52;
+  --t5: #E1F0FB;
+  --t5-ink: #2F6F9E;
+  --t6: #ECE6FA;
+  --t6-ink: #6A54A8;
+  --t7: #F6E3F7;
+  --t7-ink: #94479A;
+  --t8: #FFE3E0;
+  --t8-ink: #BF4C46;
+  --t9: #E8F0E2;
+  --t9-ink: #58753F;
+  --t10: #DDF4F3;
+  --t10-ink: #287A75;
+  --t11: #F3EBDD;
+  --t11-ink: #86673A;
+  --t12: #F1E6EA;
+  --t12-ink: #8A5A6A;
 }
 
 /* ---------- chế độ tối "đêm trăng" ---------- */
@@ -288,4 +314,30 @@
   --ice-ink: #A9D6F2;
   --ice-soft: rgba(169, 214, 242, 0.12);
   --ice-line: rgba(169, 214, 242, 0.42);
+
+  /* 12 màu chủ đề từ vựng: nền ánh màu trong suốt + màu icon sáng (ban đêm) */
+  --t1: rgba(255, 158, 196, 0.14);
+  --t1-ink: #FF9EC4;
+  --t2: rgba(255, 183, 140, 0.14);
+  --t2-ink: #FFB78C;
+  --t3: rgba(246, 231, 176, 0.13);
+  --t3-ink: #F6E7B0;
+  --t4: rgba(143, 224, 181, 0.13);
+  --t4-ink: #8FE0B5;
+  --t5: rgba(140, 196, 240, 0.14);
+  --t5-ink: #9CCBF0;
+  --t6: rgba(184, 164, 240, 0.16);
+  --t6-ink: #C3B2F5;
+  --t7: rgba(226, 160, 232, 0.14);
+  --t7-ink: #E6A9EC;
+  --t8: rgba(255, 150, 140, 0.14);
+  --t8-ink: #FFA59C;
+  --t9: rgba(180, 214, 150, 0.13);
+  --t9-ink: #B8D89A;
+  --t10: rgba(130, 220, 214, 0.13);
+  --t10-ink: #8EDDD7;
+  --t11: rgba(226, 200, 160, 0.13);
+  --t11-ink: #E3C9A0;
+  --t12: rgba(220, 180, 196, 0.14);
+  --t12-ink: #E0B8C8;
 }

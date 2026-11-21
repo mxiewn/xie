@@ -1,11 +1,16 @@
 // xie · views/settings.js — cài đặt (#/settings, thuộc tab tui).
 // hồ sơ học (sửa mọi thứ đã chọn lúc làm quen), cỡ chữ, dữ liệu: xuất / nhập / xoá (xoá xác nhận 2 lần).
-// giọng đọc, mặt trước thẻ, âm thanh, rung làm cùng các giai đoạn có tính năng đó.
+// học từ vựng: mặt trước thẻ, tỉ lệ nguồn từ mới. giọng đọc en-gb / en-us + tốc độ (ẩn nếu trình duyệt
+// không hỗ trợ), âm thanh hiệu ứng, rung.
 
 import { pageHead, icons, esc, showToast } from '../ui.js';
 import { getState, updateProfile, updateSettings, setOnboarded, exportFile, importFile, wipeAll, STATE_EVENT } from '../state.js';
 import { TOPICS, SKILLS, GOAL_OPTIONS } from '../topics.js';
-import { todayIn, daysBetween, cleanName, NAME_MAX, MAX_TOPICS, NEW_WORDS, BANDS, FONT_SIZES } from '../state-core.js';
+import { todayIn, daysBetween, cleanName, NAME_MAX, MAX_TOPICS, NEW_WORDS, BANDS, FONT_SIZES, ACCENTS, SPEECH_RATE } from '../state-core.js';
+import { RATIO_PRESETS } from '../vocab-core.js';
+import { getVocab, setFront } from '../vocab-store.js';
+import { speechSupported, speak } from '../speech.js';
+import { play, buzz } from '../sound.js';
 import { say } from '../voice.js';
 
 const FONT_LABELS = { nho: 'nhỏ', vua: 'vừa', lon: 'lớn' };
@@ -117,6 +122,47 @@ export function render(view) {
         <p class="card-text">chế độ sáng / tối và thỏ nói nhiều hay ít nằm ở tab <a href="#/me">tui</a>.</p>
       </section>
 
+      <section class="card settings-card" aria-labelledby="set-learn">
+        <h2 class="card-title" id="set-learn"><span class="title-bow">${icons.bow}</span>học từ vựng</h2>
+        <div class="field">
+          <span class="field-label" id="lbl-front">mặt trước thẻ</span>
+          <div class="segmented segmented-fit" role="radiogroup" aria-labelledby="lbl-front">
+            ${[['en', 'en → vi'], ['vi', 'vi → en'], ['random', 'ngẫu nhiên']].map(([v, l]) => `
+              <label class="segment-choice"><input type="radio" name="front" value="${v}"${getVocab().front === v ? ' checked' : ''}><span>${l}</span></label>`).join('')}
+          </div>
+        </div>
+        <div class="field">
+          <span class="field-label" id="lbl-ratio">từ mới lấy từ đâu</span>
+          <div class="choice-list" role="radiogroup" aria-labelledby="lbl-ratio">
+            ${Object.entries(RATIO_PRESETS).map(([k, r]) => `
+              <label class="choice">
+                <input type="radio" name="ratio" value="${k}"${s.settings.new_ratio === k ? ' checked' : ''}>
+                <span class="choice-mark" aria-hidden="true"></span>
+                <span class="choice-text"><span class="choice-label">${r.label}${k === 'can_bang' ? ' <span class="tag">mặc định</span>' : ''}</span><span class="choice-desc">${r.desc}</span></span>
+              </label>`).join('')}
+          </div>
+          <span class="field-note">số từ mới mỗi ngày chỉnh ở phần hồ sơ học phía trên</span>
+        </div>
+      </section>
+
+      <section class="card settings-card" aria-labelledby="set-sound">
+        <h2 class="card-title" id="set-sound"><span class="title-bow">${icons.bow}</span>giọng đọc & âm thanh</h2>
+        ${speechSupported() ? `
+        <div class="field">
+          <span class="field-label" id="lbl-accent">giọng đọc</span>
+          <div class="segmented segmented-fit" role="radiogroup" aria-labelledby="lbl-accent">
+            ${ACCENTS.map((a) => `<label class="segment-choice"><input type="radio" name="accent" value="${a}"${s.settings.speech_accent === a ? ' checked' : ''}><span>${a === 'en-GB' ? 'anh (en-gb)' : 'mỹ (en-us)'}</span></label>`).join('')}
+          </div>
+        </div>
+        <label class="range-row">
+          <span>tốc độ đọc: <b data-role="rate">${s.settings.speech_rate.toFixed(2)}</b></span>
+          <input type="range" min="${SPEECH_RATE.min}" max="${SPEECH_RATE.max}" step="0.05" value="${s.settings.speech_rate}" data-act="rate">
+        </label>
+        <button type="button" class="btn btn-ghost btn-small" data-act="try-voice">nghe thử</button>` : ''}
+        <label class="check"><input type="checkbox" data-act="sound"${s.settings.sound ? ' checked' : ''}><span>âm thanh hiệu ứng</span></label>
+        <label class="check"><input type="checkbox" data-act="vibrate"${s.settings.vibrate ? ' checked' : ''}><span>rung nhẹ (khi máy hỗ trợ)</span></label>
+      </section>
+
       <section class="card settings-card" aria-labelledby="set-data">
         <h2 class="card-title" id="set-data"><span class="title-bow">${icons.bow}</span>dữ liệu</h2>
         <p class="card-text">mọi thứ chỉ lưu trên trình duyệt này. xuất file để sao lưu hoặc chuyển sang máy khác.</p>
@@ -213,6 +259,25 @@ export function render(view) {
     });
   }
   syncTopics();
+
+  // ---------- học từ vựng ----------
+  for (const r of view.querySelectorAll('input[name="front"]')) {
+    r.addEventListener('change', () => { if (r.checked) { setFront(r.value); saved(); } });
+  }
+  for (const r of view.querySelectorAll('input[name="ratio"]')) {
+    r.addEventListener('change', () => { if (r.checked) { updateSettings({ new_ratio: r.value }); saved(); } });
+  }
+
+  // ---------- giọng đọc & âm thanh ----------
+  for (const r of view.querySelectorAll('input[name="accent"]')) {
+    r.addEventListener('change', () => { if (r.checked) { updateSettings({ speech_accent: r.value }); speak('Hello. This is how I sound.'); } });
+  }
+  const rate = view.querySelector('[data-act="rate"]');
+  rate?.addEventListener('input', () => { view.querySelector('[data-role="rate"]').textContent = Number(rate.value).toFixed(2); });
+  rate?.addEventListener('change', () => { updateSettings({ speech_rate: Number(rate.value) }); saved(); });
+  view.querySelector('[data-act="try-voice"]')?.addEventListener('click', () => speak('Consistency is the key to a band seven.'));
+  view.querySelector('[data-act="sound"]').addEventListener('change', (e) => { updateSettings({ sound: e.target.checked }); if (e.target.checked) play('right'); saved(); });
+  view.querySelector('[data-act="vibrate"]').addEventListener('change', (e) => { updateSettings({ vibrate: e.target.checked }); buzz(20); saved(); });
 
   // ---------- hiển thị ----------
   for (const r of $$('input[name="font"]')) {

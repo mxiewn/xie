@@ -6,7 +6,9 @@
 //   version: 1, onboarded: bool, created_at: iso, updated_at: iso,
 //   profile:  { name, target_band (6.5 | 7), exam_date ("yyyy-mm-dd" | null), daily_goal (50 | 80 | 120 | 200),
 //               new_words_per_day (3–20), topics: [id…], weak_skill ("writing" | "speaking" | "grammar" | "vocab" | null) },
-//   settings: { font_size ("nho" | "vua" | "lon") },
+//   settings: { font_size ("nho" | "vua" | "lon"), speech_accent ("en-GB" | "en-US"), speech_rate (0.6–1.2),
+//               sound (bool), vibrate (bool), new_ratio (preset tỉ lệ nguồn từ mới, xem vocab-core.js) },
+//   (các trường settings thêm ở giai đoạn 5 có giá trị mặc định nên không cần nâng version)
 //   visits:   { first_day, last_day ("yyyy-mm-dd" giờ việt nam), count }
 // }
 // các key khác giữ riêng: xie:theme, xie:skin, xie:talk, xie:taps, xie:voice,
@@ -19,6 +21,9 @@ export const DAILY_GOALS = [50, 80, 120, 200];
 export const MIN_DAILY_GOAL = 50;
 export const WEAK_SKILLS = ['writing', 'speaking', 'grammar', 'vocab'];
 export const FONT_SIZES = ['nho', 'vua', 'lon'];
+export const ACCENTS = ['en-GB', 'en-US'];
+export const SPEECH_RATE = { min: 0.6, max: 1.2, fallback: 0.9 };
+export const RATIO_IDS = ['can_bang', 'so_cua_tui', 'noi', 'viet', 'tu_dong'];
 export const NAME_MAX = 24;
 export const NEW_WORDS = { min: 3, max: 20, fallback: 8 };
 export const MAX_TOPICS = 4;
@@ -99,7 +104,7 @@ export function defaultState(now = new Date()) {
       topics: [],
       weak_skill: null,
     },
-    settings: { font_size: 'vua' },
+    settings: { font_size: 'vua', speech_accent: 'en-GB', speech_rate: SPEECH_RATE.fallback, sound: true, vibrate: true, new_ratio: 'can_bang' },
     visits: { first_day: null, last_day: null, count: 0 },
   };
 }
@@ -150,6 +155,13 @@ export function normalize(raw, knownTopics = null) {
     },
     settings: {
       font_size: FONT_SIZES.includes(set.font_size) ? set.font_size : 'vua',
+      speech_accent: ACCENTS.includes(set.speech_accent) ? set.speech_accent : 'en-GB',
+      speech_rate: Number.isFinite(Number(set.speech_rate)) && set.speech_rate !== null && set.speech_rate !== ''
+        ? Math.round(Math.min(SPEECH_RATE.max, Math.max(SPEECH_RATE.min, Number(set.speech_rate))) * 20) / 20
+        : SPEECH_RATE.fallback,
+      sound: set.sound !== false,
+      vibrate: set.vibrate !== false,
+      new_ratio: RATIO_IDS.includes(set.new_ratio) ? set.new_ratio : 'can_bang',
     },
     visits: {
       first_day: isValidDate(v.first_day) ? v.first_day : null,

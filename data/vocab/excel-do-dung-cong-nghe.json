@@ -1,0 +1,189 @@
+{
+ "topic": {
+  "id": "do-dung-cong-nghe",
+  "label": "đồ dùng & công nghệ",
+  "source": "excel",
+  "track": "daily"
+ },
+ "items": [
+  {
+   "id": "do-dung-cong-nghe-1",
+   "source": "excel",
+   "track": "daily",
+   "topic": "do-dung-cong-nghe",
+   "subgroup": "Đồng hồ & đồ cá nhân",
+   "type": "phrase",
+   "phrase": "a compact design",
+   "alternatives": [
+    "easy and portable"
+   ],
+   "meaning_vi": "thiết kế nhỏ gọn, dễ mang theo",
+   "examples": [
+    "My watch has a compact design."
+   ],
+   "use_for": "both",
+   "note": "Đã sửa nghĩa: list ghi \"dễ dàng portable (adj)\"",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "do-dung-cong-nghe-2",
+   "source": "excel",
+   "track": "daily",
+   "topic": "do-dung-cong-nghe",
+   "subgroup": "Đồng hồ & đồ cá nhân",
+   "type": "phrase",
+   "phrase": "a stylish accessory",
+   "alternatives": [
+    "on my wrist"
+   ],
+   "meaning_vi": "phụ kiện thời trang / đeo trên tay",
+   "examples": [
+    "A watch is a stylish accessory on my wrist."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "do-dung-cong-nghe-3",
+   "source": "excel",
+   "track": "daily",
+   "topic": "do-dung-cong-nghe",
+   "subgroup": "Đồng hồ & đồ cá nhân",
+   "type": "phrase",
+   "phrase": "the battery lasts a long time",
+   "alternatives": [],
+   "meaning_vi": "pin dùng lâu",
+   "examples": [
+    "The battery lasts a long time, so I rarely charge it."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "do-dung-cong-nghe-4",
+   "source": "excel",
+   "track": "daily",
+   "topic": "do-dung-cong-nghe",
+   "subgroup": "Đồng hồ & đồ cá nhân",
+   "type": "phrase",
+   "phrase": "help me keep track of time",
+   "alternatives": [
+    "remind me of appointments",
+    "convenient for quick glances"
+   ],
+   "meaning_vi": "giúp theo dõi giờ / nhắc lịch / tiện liếc nhanh",
+   "examples": [
+    "My watch helps me keep track of time."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "do-dung-cong-nghe-5",
+   "source": "excel",
+   "track": "daily",
+   "topic": "do-dung-cong-nghe",
+   "subgroup": "Đồng hồ & đồ cá nhân",
+   "type": "phrase",
+   "phrase": "keep my hands free",
+   "alternatives": [],
+   "meaning_vi": "rảnh tay",
+   "examples": [
+    "I use a backpack to keep my hands free."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "do-dung-cong-nghe-6",
+   "source": "excel",
+   "track": "daily",
+   "topic": "do-dung-cong-nghe",
+   "subgroup": "Đồng hồ & đồ cá nhân",
+   "type": "phrase",
+   "phrase": "pop them in",
+   "alternatives": [
+    "pop them in effortlessly"
+   ],
+   "meaning_vi": "nhét vào (tai, túi) nhanh gọn",
+   "examples": [
+    "My earbuds are tiny, I just pop them in."
+   ],
+   "use_for": "speaking",
+   "note": "Đoán từ ngữ cảnh: nói về tai nghe",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "do-dung-cong-nghe-7",
+   "source": "excel",
+   "track": "daily",
+   "topic": "do-dung-cong-nghe",
+   "subgroup": "App & điện thoại",
+   "type": "phrase",
+   "phrase": "ride-sharing apps",
+   "alternatives": [
+    "ride-hailing apps"
+   ],
+   "meaning_vi": "app gọi xe (như Grab)",
+   "examples": [
+    "I mostly use ride-sharing apps to get around."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "do-dung-cong-nghe-8",
+   "source": "excel",
+   "track": "daily",
+   "topic": "do-dung-cong-nghe",
+   "subgroup": "App & điện thoại",
+   "type": "phrase",
+   "phrase": "limit my screen time",
+   "alternatives": [],
+   "meaning_vi": "giới hạn thời gian dùng điện thoại",
+   "examples": [
+    "I try to limit my screen time at night."
+   ],
+   "use_for": "both",
+   "note": "Đã sửa: \"control usage time\" nghe không tự nhiên",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  }
+ ]
+}

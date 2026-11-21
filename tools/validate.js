@@ -10,6 +10,7 @@
 //      tối đa 15% câu lấy nguyên văn từ câu mẫu trong spec
 //   4. kho mẹo data/tips.json: đủ 40 mẹo, không trùng, viết thường, không từ cấm
 //   5. cấp (đúng 9, xp tăng dần), huy hiệu (≥ 20, id không trùng, viết thường, không từ cấm), thử thách mỗi ngày
+//   6. kho từ data/vocab: json hợp lệ, đủ trường bắt buộc, không trùng id / cụm, số mục khớp index, sổ excel đúng 157
 
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, extname, dirname } from 'node:path';
@@ -146,6 +147,8 @@ const PAIRS = [
   ['--accent-ink', '--pink-soft', 4.5],
   ['--ice-ink', '--surface', 3],
   ['--ice-ink', '--ice-soft', 3],
+  // 12 màu chủ đề từ vựng: chữ chính đọc được trên nền chủ đề, icon nổi trên nền chủ đề
+  ...Array.from({ length: 12 }, (_, i) => [['--text', `--t${i + 1}`, 4.5], ['--text-muted', `--t${i + 1}`, 4.5], [`--t${i + 1}-ink`, `--t${i + 1}`, 3]]).flat(),
 ];
 
 for (const [name, selector] of [['sáng', '\\[data-theme="light"\\]'], ['tối', '\\[data-theme="dark"\\]']]) {
@@ -346,6 +349,47 @@ if (tips) {
     if (!CHALLENGES.some((c) => c.skill === skill)) errors.push(`thử thách: kỹ năng "${skill}" chưa có bài nào`);
   }
   notes.push(`cấp: ${LEVELS.length} · huy hiệu: ${BADGES.length} · thử thách mỗi ngày: ${CHALLENGES.length}`);
+}
+
+// ---------- 6. kho từ data/vocab ----------
+{
+  const { normalizeItem, SOURCES, TRACKS, USE_FOR, TYPES } = await import('../js/vocab-core.js');
+  const vdir = join(root, 'data', 'vocab');
+  let index = null;
+  try { index = JSON.parse(readFileSync(join(vdir, 'index.json'), 'utf8')); } catch (e) { errors.push(`data/vocab/index.json: ${e.message}`); }
+  if (index) {
+    const seenIds = new Map();
+    const seenPhrase = new Map();
+    let excelTotal = 0;
+    for (const t of index.topics || []) {
+      const where = `data/vocab/${t.file}`;
+      if (t.label !== String(t.label).toLowerCase()) errors.push(`${where}: tên chủ đề có chữ hoa`);
+      let data;
+      try { data = JSON.parse(readFileSync(join(vdir, t.file), 'utf8')); } catch (e) { errors.push(`${where}: ${e.message}`); continue; }
+      const items = Array.isArray(data.items) ? data.items : [];
+      if (items.length !== t.count) errors.push(`${where}: index ghi ${t.count} mục, file có ${items.length}`);
+      if (t.source === 'excel') excelTotal += items.length;
+      items.forEach((raw, i) => {
+        const at = `${where} #${i + 1}`;
+        for (const f of ['id', 'phrase', 'meaning_vi']) if (!String(raw?.[f] ?? '').trim()) errors.push(`${at}: thiếu "${f}"`);
+        if (!SOURCES.includes(raw.source)) errors.push(`${at}: source lạ "${raw.source}"`);
+        if (!TRACKS.includes(raw.track)) errors.push(`${at}: track lạ "${raw.track}"`);
+        if (!USE_FOR.includes(raw.use_for)) errors.push(`${at}: use_for lạ "${raw.use_for}"`);
+        if (!TYPES.includes(raw.type)) errors.push(`${at}: type lạ "${raw.type}"`);
+        if (!Array.isArray(raw.examples) || !raw.examples.length) errors.push(`${at}: cần ít nhất 1 ví dụ`);
+        if (raw.topic !== t.id) errors.push(`${at}: topic "${raw.topic}" khác chủ đề của file "${t.id}"`);
+        if (!normalizeItem(raw)) errors.push(`${at}: không đọc được mục từ`);
+        if (seenIds.has(raw.id)) errors.push(`${at}: trùng id với ${seenIds.get(raw.id)}`);
+        seenIds.set(raw.id, at);
+        // không trùng cụm chính (đã chuẩn hoá chữ thường, bỏ "(sth)")
+        const key = String(raw.phrase).toLowerCase().replace(/\([^)]*\)/g, '').replace(/\s+/g, ' ').trim();
+        if (seenPhrase.has(key)) errors.push(`${at}: trùng cụm "${raw.phrase}" với ${seenPhrase.get(key)}`);
+        seenPhrase.set(key, at);
+      });
+    }
+    if (excelTotal !== 157) errors.push(`sổ của tui (excel): cần đúng 157 cụm, đang có ${excelTotal}`);
+    notes.push(`kho từ: ${seenIds.size} mục, ${(index.topics || []).length} chủ đề (sổ của tui ${excelTotal})`);
+  }
 }
 
 // ---------- kết quả ----------

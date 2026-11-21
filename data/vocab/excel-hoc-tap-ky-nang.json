@@ -1,0 +1,548 @@
+{
+ "topic": {
+  "id": "hoc-tap-ky-nang",
+  "label": "học tập & kỹ năng",
+  "source": "excel",
+  "track": "daily"
+ },
+ "items": [
+  {
+   "id": "hoc-tap-ky-nang-1",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Rèn kỹ năng",
+   "type": "phrase",
+   "phrase": "hone my skills",
+   "alternatives": [
+    "sharpen my skills",
+    "hone their skills"
+   ],
+   "meaning_vi": "rèn giũa kỹ năng",
+   "examples": [
+    "I practise speaking every day to hone my skills."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-2",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Rèn kỹ năng",
+   "type": "phrase",
+   "phrase": "boost my language skills",
+   "alternatives": [
+    "build my vocabulary",
+    "refine my pronunciation and grammar"
+   ],
+   "meaning_vi": "nâng kỹ năng ngôn ngữ / mở rộng từ vựng / chỉnh phát âm, ngữ pháp",
+   "examples": [
+    "Watching movies really boosts my language skills."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-3",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Rèn kỹ năng",
+   "type": "phrase",
+   "phrase": "get the hang of (sth)",
+   "alternatives": [],
+   "meaning_vi": "quen tay, nắm được cách làm",
+   "examples": [
+    "It took me a while to get the hang of it."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-4",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Rèn kỹ năng",
+   "type": "phrase",
+   "phrase": "nail down (sth)",
+   "alternatives": [
+    "nailing down"
+   ],
+   "meaning_vi": "nắm chắc / chốt được",
+   "examples": [
+    "I'm trying to nail down my grammar before the test."
+   ],
+   "use_for": "speaking",
+   "note": "Trong kinh doanh còn có nghĩa \"chốt kế hoạch\": nail down a plan",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-5",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Rèn kỹ năng",
+   "type": "phrase",
+   "phrase": "pick up (pronunciation)",
+   "alternatives": [],
+   "meaning_vi": "học lỏm, tiếp thu tự nhiên",
+   "examples": [
+    "I picked up a lot of pronunciation from YouTube."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-6",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Rèn kỹ năng",
+   "type": "phrase",
+   "phrase": "master a language",
+   "alternatives": [
+    "mastering a language"
+   ],
+   "meaning_vi": "thành thạo một ngôn ngữ",
+   "examples": [
+    "Mastering a language takes years."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-7",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Học sao cho hiệu quả",
+   "type": "phrase",
+   "phrase": "hit the books",
+   "alternatives": [],
+   "meaning_vi": "cắm đầu học",
+   "examples": [
+    "I need to hit the books before exams."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-8",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Học sao cho hiệu quả",
+   "type": "phrase",
+   "phrase": "maintain my focus",
+   "alternatives": [
+    "stay on track"
+   ],
+   "meaning_vi": "giữ tập trung / đi đúng kế hoạch",
+   "examples": [
+    "Lo-fi music helps me maintain my focus."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-9",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Học sao cho hiệu quả",
+   "type": "phrase",
+   "phrase": "practise consistently",
+   "alternatives": [
+    "maintain consistent practice",
+    "stay motivated"
+   ],
+   "meaning_vi": "luyện tập đều đặn / giữ động lực",
+   "examples": [
+    "The key is to practise consistently."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-10",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Học sao cho hiệu quả",
+   "type": "phrase",
+   "phrase": "a study schedule",
+   "alternatives": [
+    "self-study",
+    "daily materials"
+   ],
+   "meaning_vi": "lịch học / tự học / tài liệu hằng ngày",
+   "examples": [
+    "I made a study schedule for self-study."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-11",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Học sao cho hiệu quả",
+   "type": "phrase",
+   "phrase": "a hands-on approach",
+   "alternatives": [
+    "hands-on experience",
+    "hands-on projects"
+   ],
+   "meaning_vi": "học qua thực hành",
+   "examples": [
+    "I prefer a hands-on approach to learning."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-12",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Học sao cho hiệu quả",
+   "type": "phrase",
+   "phrase": "soak up information",
+   "alternatives": [
+    "absorb and retain information"
+   ],
+   "meaning_vi": "tiếp thu thông tin (như bọt biển)",
+   "examples": [
+    "Kids soak up information effortlessly."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-13",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Học sao cho hiệu quả",
+   "type": "phrase",
+   "phrase": "strengthen my memory",
+   "alternatives": [],
+   "meaning_vi": "củng cố trí nhớ",
+   "examples": [
+    "Reviewing often strengthens my memory."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-14",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Học sao cho hiệu quả",
+   "type": "phrase",
+   "phrase": "spot my errors",
+   "alternatives": [
+    "avoid common mistakes"
+   ],
+   "meaning_vi": "phát hiện lỗi / tránh lỗi hay gặp",
+   "examples": [
+    "Recording myself helps me spot my errors."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-15",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Học sao cho hiệu quả",
+   "type": "phrase",
+   "phrase": "create an English-speaking environment",
+   "alternatives": [
+    "long-term exposure"
+   ],
+   "meaning_vi": "tạo môi trường nói tiếng Anh / tiếp xúc lâu dài",
+   "examples": [
+    "I try to create an English-speaking environment at home."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-16",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Học sao cho hiệu quả",
+   "type": "phrase",
+   "phrase": "dive deeper (into sth)",
+   "alternatives": [
+    "broaden my horizons"
+   ],
+   "meaning_vi": "đào sâu / mở mang tầm nhìn",
+   "examples": [
+    "Reading helps me broaden my horizons."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-17",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Tài năng & tư duy",
+   "type": "phrase",
+   "phrase": "natural talent",
+   "alternatives": [
+    "innate talent"
+   ],
+   "meaning_vi": "tài năng bẩm sinh",
+   "examples": [
+    "You don't need natural talent to learn English."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-18",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Tài năng & tư duy",
+   "type": "phrase",
+   "phrase": "mental agility",
+   "alternatives": [
+    "flexible and receptive",
+    "adaptable and open"
+   ],
+   "meaning_vi": "đầu óc nhanh nhạy / linh hoạt, dễ tiếp thu",
+   "examples": [
+    "Young learners are usually adaptable and open."
+   ],
+   "use_for": "writing",
+   "note": "Đã sửa nghĩa dòng \"adaptable and open\" (list dịch lỗi)",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-19",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Tài năng & tư duy",
+   "type": "phrase",
+   "phrase": "real insights",
+   "alternatives": [],
+   "meaning_vi": "hiểu biết thực tế",
+   "examples": [
+    "Talking to teachers gives me real insights."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-20",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Tài năng & tư duy",
+   "type": "phrase",
+   "phrase": "showcase my creativity",
+   "alternatives": [],
+   "meaning_vi": "thể hiện sự sáng tạo",
+   "examples": [
+    "Art class lets me showcase my creativity."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-21",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Tài năng & tư duy",
+   "type": "phrase",
+   "phrase": "boost my confidence",
+   "alternatives": [],
+   "meaning_vi": "tăng tự tin",
+   "examples": [
+    "Speaking clubs really boost my confidence."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-22",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Tài năng & tư duy",
+   "type": "phrase",
+   "phrase": "hard work pays off",
+   "alternatives": [],
+   "meaning_vi": "công sức sẽ được đền đáp",
+   "examples": [
+    "I believe hard work pays off."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-23",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Tài năng & tư duy",
+   "type": "phrase",
+   "phrase": "language acquisition",
+   "alternatives": [],
+   "meaning_vi": "quá trình tiếp thu ngôn ngữ",
+   "examples": [
+    "Language acquisition is faster in childhood."
+   ],
+   "use_for": "writing",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "hoc-tap-ky-nang-24",
+   "source": "excel",
+   "track": "daily",
+   "topic": "hoc-tap-ky-nang",
+   "subgroup": "Tài năng & tư duy",
+   "type": "phrase",
+   "phrase": "a gap year",
+   "alternatives": [],
+   "meaning_vi": "năm nghỉ (thường trước đại học) để đi làm, trải nghiệm",
+   "examples": [
+    "I'd love to take a gap year to travel."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  }
+ ]
+}

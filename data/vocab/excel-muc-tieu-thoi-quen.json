@@ -1,0 +1,384 @@
+{
+ "topic": {
+  "id": "muc-tieu-thoi-quen",
+  "label": "mục tiêu & thói quen",
+  "source": "excel",
+  "track": "daily"
+ },
+ "items": [
+  {
+   "id": "muc-tieu-thoi-quen-1",
+   "source": "excel",
+   "track": "daily",
+   "topic": "muc-tieu-thoi-quen",
+   "subgroup": "Tạo thói quen",
+   "type": "phrase",
+   "phrase": "make it a habit",
+   "alternatives": [
+    "pick up a good habit"
+   ],
+   "meaning_vi": "biến thành thói quen / tạo thói quen tốt",
+   "examples": [
+    "I read a bit every night. I've made it a habit."
+   ],
+   "use_for": "both",
+   "note": "Đã sửa: \"pick up good habit\" → good habits (số nhiều)",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "muc-tieu-thoi-quen-2",
+   "source": "excel",
+   "track": "daily",
+   "topic": "muc-tieu-thoi-quen",
+   "subgroup": "Tạo thói quen",
+   "type": "phrase",
+   "phrase": "take small steps",
+   "alternatives": [],
+   "meaning_vi": "đi từng bước nhỏ",
+   "examples": [
+    "If you take small steps, it's easier to keep going."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "muc-tieu-thoi-quen-3",
+   "source": "excel",
+   "track": "daily",
+   "topic": "muc-tieu-thoi-quen",
+   "subgroup": "Tạo thói quen",
+   "type": "phrase",
+   "phrase": "stick to (a plan)",
+   "alternatives": [
+    "follow a workout plan diligently"
+   ],
+   "meaning_vi": "bám theo kế hoạch",
+   "examples": [
+    "I'm bad at sticking to plans, to be honest."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "muc-tieu-thoi-quen-4",
+   "source": "excel",
+   "track": "daily",
+   "topic": "muc-tieu-thoi-quen",
+   "subgroup": "Tạo thói quen",
+   "type": "phrase",
+   "phrase": "make an effort",
+   "alternatives": [],
+   "meaning_vi": "cố gắng",
+   "examples": [
+    "I make an effort to sleep before midnight."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "muc-tieu-thoi-quen-5",
+   "source": "excel",
+   "track": "daily",
+   "topic": "muc-tieu-thoi-quen",
+   "subgroup": "Đối mặt thử thách",
+   "type": "phrase",
+   "phrase": "tackle a new challenge",
+   "alternatives": [
+    "face challenges head-on",
+    "deal with difficulties"
+   ],
+   "meaning_vi": "đối mặt với thử thách / khó khăn",
+   "examples": [
+    "I like to tackle a new challenge every year."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "muc-tieu-thoi-quen-6",
+   "source": "excel",
+   "track": "daily",
+   "topic": "muc-tieu-thoi-quen",
+   "subgroup": "Đối mặt thử thách",
+   "type": "phrase",
+   "phrase": "a never-give-up attitude",
+   "alternatives": [
+    "a never-back-down attitude"
+   ],
+   "meaning_vi": "tinh thần không bỏ cuộc",
+   "examples": [
+    "I admire her never-give-up attitude."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "muc-tieu-thoi-quen-7",
+   "source": "excel",
+   "track": "daily",
+   "topic": "muc-tieu-thoi-quen",
+   "subgroup": "Đối mặt thử thách",
+   "type": "phrase",
+   "phrase": "at the first sign of difficulty",
+   "alternatives": [],
+   "meaning_vi": "mới gặp khó chút đã…",
+   "examples": [
+    "Some people give up at the first sign of difficulty."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "muc-tieu-thoi-quen-8",
+   "source": "excel",
+   "track": "daily",
+   "topic": "muc-tieu-thoi-quen",
+   "subgroup": "Đối mặt thử thách",
+   "type": "phrase",
+   "phrase": "appreciate the challenges",
+   "alternatives": [],
+   "meaning_vi": "trân trọng những thử thách",
+   "examples": [
+    "Now I appreciate the challenges I faced."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "muc-tieu-thoi-quen-9",
+   "source": "excel",
+   "track": "daily",
+   "topic": "muc-tieu-thoi-quen",
+   "subgroup": "Đối mặt thử thách",
+   "type": "phrase",
+   "phrase": "incredibly driven",
+   "alternatives": [
+    "focused on their goals"
+   ],
+   "meaning_vi": "cực kỳ quyết tâm, tập trung vào mục tiêu",
+   "examples": [
+    "Athletes are incredibly driven."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "muc-tieu-thoi-quen-10",
+   "source": "excel",
+   "track": "daily",
+   "topic": "muc-tieu-thoi-quen",
+   "subgroup": "Đối mặt thử thách",
+   "type": "phrase",
+   "phrase": "go through a ton of training",
+   "alternatives": [],
+   "meaning_vi": "trải qua rất nhiều luyện tập",
+   "examples": [
+    "Pilots go through a ton of training."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "muc-tieu-thoi-quen-11",
+   "source": "excel",
+   "track": "daily",
+   "topic": "muc-tieu-thoi-quen",
+   "subgroup": "Sống có ý nghĩa",
+   "type": "phrase",
+   "phrase": "a fulfilling life",
+   "alternatives": [
+    "find it fulfilling"
+   ],
+   "meaning_vi": "cuộc sống viên mãn / thấy mãn nguyện",
+   "examples": [
+    "I find helping others really fulfilling."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "muc-tieu-thoi-quen-12",
+   "source": "excel",
+   "track": "daily",
+   "topic": "muc-tieu-thoi-quen",
+   "subgroup": "Sống có ý nghĩa",
+   "type": "phrase",
+   "phrase": "make a positive impact",
+   "alternatives": [],
+   "meaning_vi": "tạo ảnh hưởng tích cực",
+   "examples": [
+    "I want to make a positive impact on my community."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "muc-tieu-thoi-quen-13",
+   "source": "excel",
+   "track": "daily",
+   "topic": "muc-tieu-thoi-quen",
+   "subgroup": "Sống có ý nghĩa",
+   "type": "phrase",
+   "phrase": "lend a helping hand",
+   "alternatives": [
+    "pitch in"
+   ],
+   "meaning_vi": "giúp một tay / cùng góp sức",
+   "examples": [
+    "Everyone pitched in to clean the classroom."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "muc-tieu-thoi-quen-14",
+   "source": "excel",
+   "track": "daily",
+   "topic": "muc-tieu-thoi-quen",
+   "subgroup": "Sống có ý nghĩa",
+   "type": "phrase",
+   "phrase": "enjoy learning new skills",
+   "alternatives": [],
+   "meaning_vi": "thích học kỹ năng mới",
+   "examples": [
+    "I really enjoy learning new skills."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "muc-tieu-thoi-quen-15",
+   "source": "excel",
+   "track": "daily",
+   "topic": "muc-tieu-thoi-quen",
+   "subgroup": "Sống có ý nghĩa",
+   "type": "phrase",
+   "phrase": "foster a sense of responsibility",
+   "alternatives": [
+    "develop a sense of responsibility"
+   ],
+   "meaning_vi": "nuôi dưỡng tinh thần trách nhiệm",
+   "examples": [
+    "Doing chores fosters a sense of responsibility."
+   ],
+   "use_for": "writing",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "muc-tieu-thoi-quen-16",
+   "source": "excel",
+   "track": "daily",
+   "topic": "muc-tieu-thoi-quen",
+   "subgroup": "Sống có ý nghĩa",
+   "type": "phrase",
+   "phrase": "feel tied down",
+   "alternatives": [],
+   "meaning_vi": "bị ràng buộc, mất tự do",
+   "examples": [
+    "I don't want to feel tied down by a 9-to-5 job."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "muc-tieu-thoi-quen-17",
+   "source": "excel",
+   "track": "daily",
+   "topic": "muc-tieu-thoi-quen",
+   "subgroup": "Sống có ý nghĩa",
+   "type": "phrase",
+   "phrase": "shine a light on (sth)",
+   "alternatives": [],
+   "meaning_vi": "làm nổi bật, khiến mọi người chú ý đến",
+   "examples": [
+    "The film shines a light on poverty."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  }
+ ]
+}

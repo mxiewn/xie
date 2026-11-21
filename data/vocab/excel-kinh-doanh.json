@@ -1,0 +1,379 @@
+{
+ "topic": {
+  "id": "kinh-doanh",
+  "label": "kinh doanh",
+  "source": "excel",
+  "track": "daily"
+ },
+ "items": [
+  {
+   "id": "kinh-doanh-1",
+   "source": "excel",
+   "track": "daily",
+   "topic": "kinh-doanh",
+   "subgroup": "Vì sao doanh nghiệp thất bại",
+   "type": "phrase",
+   "phrase": "poor financial management",
+   "alternatives": [
+    "financial problems",
+    "operational costs"
+   ],
+   "meaning_vi": "quản lý tài chính kém / vấn đề tài chính / chi phí vận hành",
+   "examples": [
+    "Many small businesses fail due to poor financial management."
+   ],
+   "use_for": "writing",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "kinh-doanh-2",
+   "source": "excel",
+   "track": "daily",
+   "topic": "kinh-doanh",
+   "subgroup": "Vì sao doanh nghiệp thất bại",
+   "type": "phrase",
+   "phrase": "poor leadership",
+   "alternatives": [],
+   "meaning_vi": "lãnh đạo kém",
+   "examples": [
+    "Poor leadership can ruin a company."
+   ],
+   "use_for": "writing",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "kinh-doanh-3",
+   "source": "excel",
+   "track": "daily",
+   "topic": "kinh-doanh",
+   "subgroup": "Vì sao doanh nghiệp thất bại",
+   "type": "phrase",
+   "phrase": "lack a solid plan",
+   "alternatives": [
+    "a solid game plan",
+    "a clear vision",
+    "a long-term vision"
+   ],
+   "meaning_vi": "thiếu kế hoạch vững / tầm nhìn rõ ràng, dài hạn",
+   "examples": [
+    "Startups often lack a solid plan."
+   ],
+   "use_for": "writing",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "kinh-doanh-4",
+   "source": "excel",
+   "track": "daily",
+   "topic": "kinh-doanh",
+   "subgroup": "Vì sao doanh nghiệp thất bại",
+   "type": "phrase",
+   "phrase": "ineffective marketing strategies",
+   "alternatives": [
+    "outdated marketing strategies",
+    "lack of market research"
+   ],
+   "meaning_vi": "marketing kém hiệu quả, lỗi thời / thiếu nghiên cứu thị trường",
+   "examples": [
+    "Outdated marketing strategies drive customers away."
+   ],
+   "use_for": "writing",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "kinh-doanh-5",
+   "source": "excel",
+   "track": "daily",
+   "topic": "kinh-doanh",
+   "subgroup": "Vì sao doanh nghiệp thất bại",
+   "type": "phrase",
+   "phrase": "failure to adapt to change",
+   "alternatives": [
+    "adapt quickly",
+    "keep up with customers' preferences"
+   ],
+   "meaning_vi": "không thích nghi / thích nghi nhanh / theo kịp sở thích khách",
+   "examples": [
+    "Failure to adapt to change is a common reason."
+   ],
+   "use_for": "writing",
+   "note": "\"catch up with customers' preferences\" → nói keep up with tự nhiên hơn",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "kinh-doanh-6",
+   "source": "excel",
+   "track": "daily",
+   "topic": "kinh-doanh",
+   "subgroup": "Vì sao doanh nghiệp thất bại",
+   "type": "phrase",
+   "phrase": "inadequate customer service",
+   "alternatives": [
+    "customer service",
+    "meet customer demand"
+   ],
+   "meaning_vi": "dịch vụ khách hàng kém / đáp ứng nhu cầu khách",
+   "examples": [
+    "Inadequate customer service loses loyal customers."
+   ],
+   "use_for": "writing",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "kinh-doanh-7",
+   "source": "excel",
+   "track": "daily",
+   "topic": "kinh-doanh",
+   "subgroup": "Vì sao doanh nghiệp thất bại",
+   "type": "phrase",
+   "phrase": "underlying factors",
+   "alternatives": [],
+   "meaning_vi": "nguyên nhân sâu xa",
+   "examples": [
+    "There are several underlying factors."
+   ],
+   "use_for": "writing",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "kinh-doanh-8",
+   "source": "excel",
+   "track": "daily",
+   "topic": "kinh-doanh",
+   "subgroup": "Để thành công",
+   "type": "phrase",
+   "phrase": "stay afloat",
+   "alternatives": [
+    "survive in the long term"
+   ],
+   "meaning_vi": "trụ vững / tồn tại lâu dài",
+   "examples": [
+    "Small shops struggle to stay afloat."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "kinh-doanh-9",
+   "source": "excel",
+   "track": "daily",
+   "topic": "kinh-doanh",
+   "subgroup": "Để thành công",
+   "type": "phrase",
+   "phrase": "startup capital",
+   "alternatives": [
+    "financial support"
+   ],
+   "meaning_vi": "vốn khởi nghiệp / hỗ trợ tài chính",
+   "examples": [
+    "Young people often lack startup capital."
+   ],
+   "use_for": "writing",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "kinh-doanh-10",
+   "source": "excel",
+   "track": "daily",
+   "topic": "kinh-doanh",
+   "subgroup": "Để thành công",
+   "type": "phrase",
+   "phrase": "a wealth of experience",
+   "alternatives": [
+    "deep knowledge",
+    "in the business world"
+   ],
+   "meaning_vi": "kinh nghiệm dày dặn / kiến thức sâu",
+   "examples": [
+    "Older owners have a wealth of experience in the business world."
+   ],
+   "use_for": "writing",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "kinh-doanh-11",
+   "source": "excel",
+   "track": "daily",
+   "topic": "kinh-doanh",
+   "subgroup": "Để thành công",
+   "type": "phrase",
+   "phrase": "human resources",
+   "alternatives": [],
+   "meaning_vi": "nguồn nhân lực",
+   "examples": [
+    "Good human resources are key."
+   ],
+   "use_for": "writing",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "kinh-doanh-12",
+   "source": "excel",
+   "track": "daily",
+   "topic": "kinh-doanh",
+   "subgroup": "Để thành công",
+   "type": "phrase",
+   "phrase": "a good location",
+   "alternatives": [],
+   "meaning_vi": "vị trí tốt",
+   "examples": [
+    "A café needs a good location."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "kinh-doanh-13",
+   "source": "excel",
+   "track": "daily",
+   "topic": "kinh-doanh",
+   "subgroup": "Để thành công",
+   "type": "phrase",
+   "phrase": "unique, appealing ideas",
+   "alternatives": [],
+   "meaning_vi": "ý tưởng độc đáo, hấp dẫn",
+   "examples": [
+    "Startups need unique, appealing ideas."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "kinh-doanh-14",
+   "source": "excel",
+   "track": "daily",
+   "topic": "kinh-doanh",
+   "subgroup": "Để thành công",
+   "type": "phrase",
+   "phrase": "rookie mistakes",
+   "alternatives": [
+    "avoid unnecessary mistakes"
+   ],
+   "meaning_vi": "lỗi của người mới / tránh lỗi không đáng",
+   "examples": [
+    "Planning ahead helps you avoid rookie mistakes."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "kinh-doanh-15",
+   "source": "excel",
+   "track": "daily",
+   "topic": "kinh-doanh",
+   "subgroup": "Khó khăn khi kinh doanh",
+   "type": "phrase",
+   "phrase": "industry competition",
+   "alternatives": [
+    "a lot of competition",
+    "even tougher"
+   ],
+   "meaning_vi": "cạnh tranh trong ngành / càng khó hơn",
+   "examples": [
+    "Industry competition is even tougher now."
+   ],
+   "use_for": "writing",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "kinh-doanh-16",
+   "source": "excel",
+   "track": "daily",
+   "topic": "kinh-doanh",
+   "subgroup": "Khó khăn khi kinh doanh",
+   "type": "phrase",
+   "phrase": "strict regulations",
+   "alternatives": [
+    "licensing requirements",
+    "tax regulations",
+    "a ton of paperwork",
+    "a time-consuming process"
+   ],
+   "meaning_vi": "quy định chặt / giấy phép / thuế / đống giấy tờ / quy trình tốn thời gian",
+   "examples": [
+    "Opening a shop involves a ton of paperwork."
+   ],
+   "use_for": "writing",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  }
+ ]
+}

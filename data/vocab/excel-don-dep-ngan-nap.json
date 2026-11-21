@@ -1,0 +1,238 @@
+{
+ "topic": {
+  "id": "don-dep-ngan-nap",
+  "label": "dọn dẹp & ngăn nắp",
+  "source": "excel",
+  "track": "daily"
+ },
+ "items": [
+  {
+   "id": "don-dep-ngan-nap-1",
+   "source": "excel",
+   "track": "daily",
+   "topic": "don-dep-ngan-nap",
+   "subgroup": "Gọn gàng",
+   "type": "phrase",
+   "phrase": "keep things in order",
+   "alternatives": [
+    "keep my ducks in a row",
+    "try to keep things tidy"
+   ],
+   "meaning_vi": "giữ mọi thứ đâu ra đấy",
+   "examples": [
+    "I try to keep things in order, especially my desk."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "don-dep-ngan-nap-2",
+   "source": "excel",
+   "track": "daily",
+   "topic": "don-dep-ngan-nap",
+   "subgroup": "Gọn gàng",
+   "type": "phrase",
+   "phrase": "neat and organized",
+   "alternatives": [
+    "spick and span",
+    "a clutter-free environment"
+   ],
+   "meaning_vi": "gọn gàng / sạch bong / không bừa bộn",
+   "examples": [
+    "My room is pretty neat and organized."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "don-dep-ngan-nap-3",
+   "source": "excel",
+   "track": "daily",
+   "topic": "don-dep-ngan-nap",
+   "subgroup": "Gọn gàng",
+   "type": "phrase",
+   "phrase": "fresh and inviting",
+   "alternatives": [],
+   "meaning_vi": "thoáng mát, dễ chịu",
+   "examples": [
+    "A clean room feels fresh and inviting."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "don-dep-ngan-nap-4",
+   "source": "excel",
+   "track": "daily",
+   "topic": "don-dep-ngan-nap",
+   "subgroup": "Gọn gàng",
+   "type": "phrase",
+   "phrase": "locate things in a jiffy",
+   "alternatives": [],
+   "meaning_vi": "tìm đồ trong nháy mắt",
+   "examples": [
+    "When everything is tidy, I can locate things in a jiffy."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "don-dep-ngan-nap-5",
+   "source": "excel",
+   "track": "daily",
+   "topic": "don-dep-ngan-nap",
+   "subgroup": "Bừa bộn",
+   "type": "phrase",
+   "phrase": "pretty messy",
+   "alternatives": [
+    "leave stuff everywhere",
+    "let clutter pile up"
+   ],
+   "meaning_vi": "khá bừa / để đồ lung tung / để đồ chất đống",
+   "examples": [
+    "To be honest, I'm pretty messy. I leave stuff everywhere."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "don-dep-ngan-nap-6",
+   "source": "excel",
+   "track": "daily",
+   "topic": "don-dep-ngan-nap",
+   "subgroup": "Dọn dẹp",
+   "type": "phrase",
+   "phrase": "declutter regularly",
+   "alternatives": [
+    "get rid of (sth)",
+    "keep only essentials"
+   ],
+   "meaning_vi": "dọn bớt đồ thường xuyên / bỏ đi / chỉ giữ đồ cần",
+   "examples": [
+    "I declutter regularly and keep only essentials."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "don-dep-ngan-nap-7",
+   "source": "excel",
+   "track": "daily",
+   "topic": "don-dep-ngan-nap",
+   "subgroup": "Dọn dẹp",
+   "type": "phrase",
+   "phrase": "sweep up",
+   "alternatives": [
+    "daily cleaning",
+    "clean up a storm"
+   ],
+   "meaning_vi": "quét dọn / dọn hằng ngày / dọn hăng say",
+   "examples": [
+    "I sweep up the floor every morning."
+   ],
+   "use_for": "speaking",
+   "note": "\"sweeping up a storm\" hiếm gặp, người ta hay nói \"clean up a storm\"",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "don-dep-ngan-nap-8",
+   "source": "excel",
+   "track": "daily",
+   "topic": "don-dep-ngan-nap",
+   "subgroup": "Dọn dẹp",
+   "type": "phrase",
+   "phrase": "straighten up (my room)",
+   "alternatives": [],
+   "meaning_vi": "dọn cho gọn",
+   "examples": [
+    "I straighten up my room every Sunday."
+   ],
+   "use_for": "speaking",
+   "note": "Đã sửa: \"straighten things out\" thường nghĩa là \"giải quyết ổn thoả vấn đề\", dọn phòng thì nói straighten up",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "don-dep-ngan-nap-9",
+   "source": "excel",
+   "track": "daily",
+   "topic": "don-dep-ngan-nap",
+   "subgroup": "Dọn dẹp",
+   "type": "phrase",
+   "phrase": "organize my desk",
+   "alternatives": [
+    "create a cleaning routine",
+    "set reminders"
+   ],
+   "meaning_vi": "sắp xếp bàn / tạo lịch dọn / đặt nhắc nhở",
+   "examples": [
+    "I set reminders to organize my desk."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "don-dep-ngan-nap-10",
+   "source": "excel",
+   "track": "daily",
+   "topic": "don-dep-ngan-nap",
+   "subgroup": "Dọn dẹp",
+   "type": "phrase",
+   "phrase": "remove pet hair",
+   "alternatives": [],
+   "meaning_vi": "dọn lông thú cưng",
+   "examples": [
+    "Removing pet hair from the sofa is a real headache."
+   ],
+   "use_for": "speaking",
+   "note": "\"remove fur\" nghe lạ, nói pet hair tự nhiên hơn",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  }
+ ]
+}

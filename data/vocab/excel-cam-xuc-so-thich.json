@@ -1,0 +1,647 @@
+{
+ "topic": {
+  "id": "cam-xuc-so-thich",
+  "label": "cảm xúc & sở thích",
+  "source": "excel",
+  "track": "daily"
+ },
+ "items": [
+  {
+   "id": "cam-xuc-so-thich-1",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Thích, mê cái gì",
+   "type": "phrase",
+   "phrase": "I'm all about (sth)",
+   "alternatives": [],
+   "meaning_vi": "tôi cực mê, toàn chọn cái đó",
+   "examples": [
+    "I'm all about comfy clothes these days."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-2",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Thích, mê cái gì",
+   "type": "phrase",
+   "phrase": "be quite into (sth)",
+   "alternatives": [
+    "be really into"
+   ],
+   "meaning_vi": "khá thích",
+   "examples": [
+    "I'm quite into drawing at the moment."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-3",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Thích, mê cái gì",
+   "type": "phrase",
+   "phrase": "be drawn to (sth)",
+   "alternatives": [],
+   "meaning_vi": "bị thu hút bởi",
+   "examples": [
+    "I've always been drawn to bright colors."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-4",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Thích, mê cái gì",
+   "type": "phrase",
+   "phrase": "catch my interest",
+   "alternatives": [
+    "catch my eye",
+    "catch my ear"
+   ],
+   "meaning_vi": "làm tôi chú ý, thấy hứng thú",
+   "examples": [
+    "Anything about art usually catches my interest."
+   ],
+   "use_for": "both",
+   "note": "List ghi \"catch me\": đứng một mình chưa đủ nghĩa, nói catch my interest / eye / ear",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-5",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Thích, mê cái gì",
+   "type": "phrase",
+   "phrase": "lean towards (sth)",
+   "alternatives": [],
+   "meaning_vi": "nghiêng về, thích cái này hơn",
+   "examples": [
+    "I tend to lean towards quiet places."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-6",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Thích, mê cái gì",
+   "type": "phrase",
+   "phrase": "I usually go for (sth)",
+   "alternatives": [
+    "I'd definitely go for"
+   ],
+   "meaning_vi": "tôi thường chọn / chắc chắn chọn",
+   "examples": [
+    "I usually go for black or white."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-7",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Không thích, thấy phiền, né tránh",
+   "type": "phrase",
+   "phrase": "kind of annoying",
+   "alternatives": [
+    "a bit of a nuisance",
+    "it annoys me when…"
+   ],
+   "meaning_vi": "hơi khó chịu, hơi phiền",
+   "examples": [
+    "Carrying a big bag around is a bit of a nuisance."
+   ],
+   "use_for": "speaking",
+   "note": "List ghi \"annoy her\": dùng mẫu It annoys me when… cho câu về bản thân",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-8",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Không thích, thấy phiền, né tránh",
+   "type": "phrase",
+   "phrase": "steer clear of (sth)",
+   "alternatives": [],
+   "meaning_vi": "tránh xa",
+   "examples": [
+    "I try to steer clear of crowded malls on weekends."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-9",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Tâm trạng tốt lên",
+   "type": "phrase",
+   "phrase": "boost my mood",
+   "alternatives": [
+    "uplift my mood",
+    "keep my mood positive"
+   ],
+   "meaning_vi": "làm tâm trạng tốt hơn / giữ tâm trạng tích cực",
+   "examples": [
+    "A short walk always boosts my mood."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-10",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Tâm trạng tốt lên",
+   "type": "phrase",
+   "phrase": "brighten my day",
+   "alternatives": [
+    "make everything feel better"
+   ],
+   "meaning_vi": "làm ngày của tôi vui hơn",
+   "examples": [
+    "A nice message from a friend can really brighten my day."
+   ],
+   "use_for": "speaking",
+   "note": "Đã sửa nghĩa: list dịch \"làm sáng tỏ\" là sai",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-11",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Tâm trạng tốt lên",
+   "type": "phrase",
+   "phrase": "an instant shot of joy",
+   "alternatives": [],
+   "meaning_vi": "liều vui vẻ tức thì",
+   "examples": [
+    "Upbeat songs give me an instant shot of joy."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-12",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Tâm trạng tốt lên",
+   "type": "phrase",
+   "phrase": "clear my mind",
+   "alternatives": [
+    "help me unwind"
+   ],
+   "meaning_vi": "đầu óc nhẹ nhõm, thư giãn",
+   "examples": [
+    "Tidying my desk helps me clear my mind."
+   ],
+   "use_for": "speaking",
+   "note": "\"unwind my mind\" nghe hơi lạ, nói \"help me unwind\" tự nhiên hơn",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-13",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Tâm trạng tốt lên",
+   "type": "phrase",
+   "phrase": "spark a bit of inspiration",
+   "alternatives": [],
+   "meaning_vi": "khơi chút cảm hứng",
+   "examples": [
+    "Going to galleries sparks a bit of inspiration for my drawings."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-14",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Tâm trạng tụt",
+   "type": "phrase",
+   "phrase": "feel down",
+   "alternatives": [
+    "bring down my mood"
+   ],
+   "meaning_vi": "thấy buồn / làm tụt mood",
+   "examples": [
+    "Rainy days kind of bring down my mood."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-15",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Thoải mái hay e ngại",
+   "type": "phrase",
+   "phrase": "feel at ease",
+   "alternatives": [
+    "feel way more at ease"
+   ],
+   "meaning_vi": "thấy thoải mái, yên tâm",
+   "examples": [
+    "I feel way more at ease in small groups."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-16",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Thoải mái hay e ngại",
+   "type": "phrase",
+   "phrase": "feel a bit intimidated",
+   "alternatives": [],
+   "meaning_vi": "thấy hơi ngợp, e dè",
+   "examples": [
+    "I feel a bit intimidated when I talk to strangers in English."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-17",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Thoải mái hay e ngại",
+   "type": "phrase",
+   "phrase": "the thought of + V-ing",
+   "alternatives": [],
+   "meaning_vi": "chỉ nghĩ đến việc… thôi đã…",
+   "examples": [
+    "The thought of being on stage makes me nervous."
+   ],
+   "use_for": "both",
+   "note": "List ghi \"thought of being\": cụm đầy đủ là the thought of + V-ing",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-18",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Thoải mái hay e ngại",
+   "type": "phrase",
+   "phrase": "feel out of place",
+   "alternatives": [],
+   "meaning_vi": "thấy lạc lõng, không hợp",
+   "examples": [
+    "I felt a bit out of place at my first big party."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-19",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Thoải mái hay e ngại",
+   "type": "phrase",
+   "phrase": "feel light as a feather",
+   "alternatives": [],
+   "meaning_vi": "nhẹ nhõm như lông hồng",
+   "examples": [
+    "After my last exam, I felt light as a feather."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-20",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Thoải mái hay e ngại",
+   "type": "phrase",
+   "phrase": "leave me speechless",
+   "alternatives": [],
+   "meaning_vi": "khiến tôi không nói nên lời",
+   "examples": [
+    "The surprise party totally left me speechless."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-21",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Thoải mái hay e ngại",
+   "type": "phrase",
+   "phrase": "keep myself entertained",
+   "alternatives": [],
+   "meaning_vi": "tự tìm cách giải trí",
+   "examples": [
+    "On long trips, I keep myself entertained with podcasts."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-22",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Nhấn mạnh & nối câu cho tự nhiên",
+   "type": "phrase",
+   "phrase": "way + so sánh hơn",
+   "alternatives": [
+    "way faster",
+    "way more convenient"
+   ],
+   "meaning_vi": "… hơn nhiều",
+   "examples": [
+    "Taking the train is way more convenient than driving."
+   ],
+   "use_for": "speaking",
+   "note": "List ghi \"faster and way\" bị cắt, dùng \"way faster\"",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-23",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Nhấn mạnh & nối câu cho tự nhiên",
+   "type": "phrase",
+   "phrase": "a ton of (sth)",
+   "alternatives": [
+    "a ton of time",
+    "come in a ton of colors",
+    "a ton of paperwork"
+   ],
+   "meaning_vi": "rất nhiều",
+   "examples": [
+    "My phone saves me a ton of time."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-24",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Nhấn mạnh & nối câu cho tự nhiên",
+   "type": "phrase",
+   "phrase": "on point",
+   "alternatives": [],
+   "meaning_vi": "chuẩn, đỉnh",
+   "examples": [
+    "Her outfit was totally on point."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-25",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Nhấn mạnh & nối câu cho tự nhiên",
+   "type": "phrase",
+   "phrase": "perfectly appropriate",
+   "alternatives": [],
+   "meaning_vi": "hoàn toàn phù hợp",
+   "examples": [
+    "Jeans are perfectly appropriate at my school."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-26",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Nhấn mạnh & nối câu cho tự nhiên",
+   "type": "phrase",
+   "phrase": "without much hassle",
+   "alternatives": [],
+   "meaning_vi": "không mấy rắc rối",
+   "examples": [
+    "I can book a ride without much hassle."
+   ],
+   "use_for": "speaking",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-27",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Nhấn mạnh & nối câu cho tự nhiên",
+   "type": "phrase",
+   "phrase": "related to",
+   "alternatives": [],
+   "meaning_vi": "liên quan đến",
+   "examples": [
+    "Most of my hobbies are related to art."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-28",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Nhấn mạnh & nối câu cho tự nhiên",
+   "type": "phrase",
+   "phrase": "it comes down to (sth)",
+   "alternatives": [],
+   "meaning_vi": "suy cho cùng là do…",
+   "examples": [
+    "It really comes down to personal taste."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  },
+  {
+   "id": "cam-xuc-so-thich-29",
+   "source": "excel",
+   "track": "daily",
+   "topic": "cam-xuc-so-thich",
+   "subgroup": "Nhấn mạnh & nối câu cho tự nhiên",
+   "type": "phrase",
+   "phrase": "on the flip side",
+   "alternatives": [],
+   "meaning_vi": "mặt khác",
+   "examples": [
+    "It's cheap. On the flip side, it breaks easily."
+   ],
+   "use_for": "both",
+   "note": "",
+   "level": "",
+   "speaking_questions": [],
+   "seed": {
+    "used_speaking": false
+   }
+  }
+ ]
+}
